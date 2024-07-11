@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://crvptphshx3l7"]
+
+[ext_resource type="Texture2D" uid="uid://ch6ymtelqnsj1" path="res://Scenes/Entity/Player/Asset/human_sheet.png" id="1_1j3ov"]
+[ext_resource type="Script" path="res://Scenes/Entity/Player/Player.gd" id="1_gvmva"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11mtv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqr8y"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a48mw"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5dkl"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6723s"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8rxm"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_noogm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqr8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a48mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5dkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6723s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8rxm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_0kpiw"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.1, 1, 0, 0.8, 0, 0.2, 1, 0, 1, 0, 0.3, 1, 0, 0.8, 0, 0.4, 1, 0, 1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqr71"]
+_data = {
+"Walk": SubResource("Animation_0kpiw")
+}
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+script = ExtResource("1_gvmva")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_11mtv")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825718, 0)
+pixel_size = 0.05
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_noogm")
+autoplay = "default"
+frame_progress = 0.678487
+
+[node name="Camera Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
+
+[node name="Walk AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sqr71")
+}
