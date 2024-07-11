@@ -5,6 +5,8 @@ const SPEED = 5.0
 @onready var walk_animation_player: AnimationPlayer = $"Walk AnimationPlayer"
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 
+@export var hp : int = 3
+
 var invert_look : bool
 
 func _physics_process(delta: float) -> void:
@@ -31,3 +33,11 @@ func move() -> void:
 		sprite.flip_h = !get_viewport().get_mouse_position().x < get_viewport().size.x / 2
 	else:
 		sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
+
+func damage() -> void:
+	hp -= 1
+	if hp <= 0:
+		death()
+
+func death() -> void:
+	pass
