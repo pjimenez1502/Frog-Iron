@@ -4,7 +4,7 @@ extends Node3D
 @onready var projectile_container: Node = $ProjectileContainer
 
 @export var enabled: bool
-@export var projectile: PackedScene
+@export var projectile_prefab: PackedScene
 
 var draw_strength : float
 var drawing : float
@@ -52,17 +52,19 @@ func fire(mouse_pos: Vector3) -> void:
 		draw_strength = 0
 		return
 		
-	spawn_projectile(mouse_pos, draw_strength)
+	spawn_projectile(draw_strength)
 	
 	sprite.play("drawn_0")
 	drawing = false
 	draw_strength = 0
 
-func spawn_projectile(target_pos: Vector3, strength: float) -> void:
-	var projectile_instance : projectile = projectile.instantiate()
+func spawn_projectile(strength: float) -> void:
+	var projectile_instance : projectile = projectile_prefab.instantiate()
 	projectile_container.add_child(projectile_instance)
 	projectile_instance.global_position = global_position
 	projectile_instance.global_transform.basis = global_transform.basis
+	
+	projectile_instance.speed = projectile_instance.speed * strength
 
 func get_mouse_pos():
 	var camera = get_viewport().get_camera_3d()

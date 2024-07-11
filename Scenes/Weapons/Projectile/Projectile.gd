@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 		check_collision(collision.get_collider(), collision.get_position())
 
 func check_collision(collision, point: Vector3) -> void:
-	print(collision)
+	print("projectile collided: ",collision)
 	if !"health" in collision:
 		queue_free()
 		return

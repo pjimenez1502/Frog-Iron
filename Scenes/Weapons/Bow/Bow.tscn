@@ -70,7 +70,7 @@ animations = [{
 [node name="Bow" type="Node3D"]
 script = ExtResource("1_l3qgv")
 enabled = true
-projectile = ExtResource("2_ks2ve")
+projectile_prefab = ExtResource("2_ks2ve")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.1)
