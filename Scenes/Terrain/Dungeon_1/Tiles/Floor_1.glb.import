@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/path": "res://Scenes/Dungeon_1/Dungeon1_mat.tres"
+"use_external/path": "res://Scenes/Terrain/Dungeon_1/Dungeon1_mat.tres"
 }
 }
 }

@@ -1,19 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvrf4yfda2yvk"]
+[gd_scene load_steps=3 format=3 uid="uid://bvrf4yfda2yvk"]
 
 [ext_resource type="PackedScene" uid="uid://rfi75wbvdjow" path="res://Scenes/Terrain/Dungeon_1/Tiles/Floor_1.glb" id="1_odvib"]
-[ext_resource type="PackedScene" uid="uid://dlgwmbnu7pwkv" path="res://Scenes/Terrain/Dungeon_1/Tiles/Floor_2.glb" id="2_efwne"]
-[ext_resource type="PackedScene" uid="uid://b6c7cfc4xtueq" path="res://Scenes/Terrain/Dungeon_1/Tiles/Floor_3.glb" id="3_ojoek"]
-[ext_resource type="PackedScene" uid="uid://cdg87y2ycrepp" path="res://Scenes/Terrain/Dungeon_1/Tiles/Floor_4.glb" id="4_dvw72"]
 [ext_resource type="PackedScene" uid="uid://cjxmrlq0slqn8" path="res://Scenes/Terrain/Dungeon_1/Tiles/Wall.glb" id="5_s1syj"]
 
 [node name="Tiles" type="Node3D"]
 
 [node name="Floor_1" parent="." instance=ExtResource("1_odvib")]
-
-[node name="Floor_2" parent="." instance=ExtResource("2_efwne")]
-
-[node name="Floor_3" parent="." instance=ExtResource("3_ojoek")]
-
-[node name="Floor_4" parent="." instance=ExtResource("4_dvw72")]
 
 [node name="Wall" parent="." instance=ExtResource("5_s1syj")]
