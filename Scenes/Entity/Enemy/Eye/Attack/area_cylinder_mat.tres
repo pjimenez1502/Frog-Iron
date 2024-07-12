@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bi8coesnigiyh"]
+
+[ext_resource type="Texture2D" uid="uid://m7dog1a3eg2s" path="res://Scenes/Entity/Enemy/Eye/Attack/area cylinder.png" id="1_1p1cd"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_1p1cd")
+texture_filter = 0
