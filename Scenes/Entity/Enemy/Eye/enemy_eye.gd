@@ -1,13 +1,17 @@
 extends CharacterBody3D
 class_name enemy_eye
 
+
+@onready var orbit_timer: Timer = %"Orbit Timer"
+@onready var pupil_timer: Timer = %"Pupil Timer"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var eyelids: AnimatedSprite3D = $Sprite/Eyelids
 @onready var pupil: AnimatedSprite3D = $Sprite/Pupil
 
-@onready var orbit_timer: Timer = %"Orbit Timer"
+@onready var attack_container: Node = $attack_container
 
+@export var fixed : bool
 @export var target : Node3D
 var target_offset : Vector3
 var hover_offset : Vector3
@@ -24,22 +28,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move(delta)
-	check_distance()
 	pupil_look()
+	check_distance()
 	#print("curr_speed: ",curr_speed)
 
 func shoot() -> void:
 	var attack_points = []
 	for i in attack_count:
 		## get random point close to player
-		var area_offset : Vector3 = Vector3(randf_range(-1,1), 0.01, randf_range(-1,1)) * area_offset_mult
+		var area_offset : Vector3 = Vector3(randf_range(-1,1), 0.05, randf_range(-2,-1)) * area_offset_mult
 		var attack_position = target.global_position + area_offset
 		
 		#for j in i-1:
 			#if attack_points[j].distance_to(attack_position) < 4:
-				#
+			
 		var projectile_instance : area_attack = eye_attack.instantiate()
-		get_parent().add_child(projectile_instance)
+		attack_container.add_child(projectile_instance)
 		projectile_instance.global_position = attack_position
 		projectile_instance.scale = Vector3.ONE * area_scale
 		await get_tree().create_timer(0.6).timeout
@@ -52,7 +56,7 @@ func start_orbiting() -> void:
 	
 func _on_orbit_timer_timeout() -> void:
 	print("orbit")
-	if randi_range(1,1) == 1:
+	if randi_range(0,1) == 1:
 		animation_player.play("Shoot")
 		return
 	
@@ -60,6 +64,8 @@ func _on_orbit_timer_timeout() -> void:
 	blink()
 
 func move(delta) -> void:
+	if fixed:
+		return
 	global_position = lerp(global_position, target.global_position + target_offset + hover_offset, delta * 0.6)
 	#var direction = global_position.direction_to(target.global_position + target_offset)
 	#print("dir: ",direction)
@@ -69,7 +75,7 @@ func move(delta) -> void:
 ## Eyelids
 func check_distance() -> void:
 	var distance = global_position.distance_to(target.global_position)
-	eye_closed(distance < 100)
+	eye_closed(distance < 5)
 
 var is_eye_open
 func eye_closed(value : bool) -> void:
@@ -81,26 +87,29 @@ func eye_closed(value : bool) -> void:
 		is_eye_open = true
 		eyelids.play("Open")
 
+func open() -> void:
+	eyelids.play("Open_full")
 func blink() -> void:
 	eyelids.play("Blink")
 func idle() -> void:
 	animation_player.play("Idle")
 
 ## PUPIL
+var pupil_offset : Vector3
 func pupil_look() -> void:
-	pupil.position = global_position.direction_to(target.global_position) * 0.3
+	pupil.position = global_position.direction_to(target.global_position) * 0.3 + pupil_offset
 	pupil.position.y = -pupil.position.z
 	pupil.position.z = 0
 
 func flicker_look() -> void: ## Flicker eye position by small ammounts to simulate fast eye movements
+	pupil_timer.start(randf_range(0.1, 1))
+	pupil_offset = Vector3(randf_range(-1,1),0,randf_range(-1,1)) * 0.05
 	pass
 	
 ## Float idly, swapping position around the player every x seconds. never let the player get too close.
 ## While idle, eye shines a bit dimmer.
 ## Gets ready to attack, eye shines brighter, eye gets a bit closer, indicating player to shoot. After a delay, shoot.
-
 ## invert colors when shooting?
-
 ## Sometimes, when idle, look straight center, as if looking at the camera.
 
 ##Util

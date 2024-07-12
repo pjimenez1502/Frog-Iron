@@ -163,17 +163,19 @@ radius = 0.717286
 script = ExtResource("1_rsftt")
 
 [node name="Base" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-modulate = Color(1, 1, 1, 0.509804)
+transform = Transform3D(1, 2.89599e-05, -1.04835e-10, 0, -3.61999e-06, -1, -2.89599e-05, 1, -3.61999e-06, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
 pixel_size = 0.05
 texture_filter = 0
 texture = ExtResource("1_5lfqv")
 
 [node name="Glyph" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 0, 0.00583947, 2.55251e-10)
+transform = Transform3D(1, 4.46638e-06, -1.61683e-11, 0, -3.61999e-06, -1, -4.46638e-06, 1, -3.61999e-06, 0, 0.00583947, 2.55251e-10)
+modulate = Color(1, 1, 1, 0)
 pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_g6wvb")
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -191,6 +193,6 @@ shape = SubResource("CylinderShape3D_nndwq")
 disabled = true
 
 [node name="area_cylinder" parent="." instance=ExtResource("4_7emn6")]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
