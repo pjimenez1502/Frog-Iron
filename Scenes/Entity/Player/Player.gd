@@ -1,6 +1,7 @@
 extends CharacterBody3D
+class_name player
 
-const SPEED = 5.0
+@export var SPEED = 5.0
 
 @onready var walk_animation_player: AnimationPlayer = $"Walk AnimationPlayer"
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
@@ -35,9 +36,11 @@ func move() -> void:
 		sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
 
 func damage() -> void:
+	print("hurt")
 	hp -= 1
 	if hp <= 0:
 		death()
 
 func death() -> void:
+	print("PLAYER DEAD")
 	pass
