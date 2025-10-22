@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbx6u2ltg7r5p"
-path="res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"
+uid="uid://8k87xhkbthxw"
+path="res://.godot/imported/crosshair.png-8803f647edbd9ba881c7d78fbf77ebc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"]
+source_file="res://Assets/UI/crosshair.png"
+dest_files=["res://.godot/imported/crosshair.png-8803f647edbd9ba881c7d78fbf77ebc7.ctex"]
 
 [params]
 

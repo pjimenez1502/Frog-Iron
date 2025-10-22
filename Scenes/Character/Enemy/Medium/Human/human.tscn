@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://cv77actnekh6j"]
+
+[ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_h4q5l"]
+[ext_resource type="Texture2D" uid="uid://cix14bby6cf76" path="res://Scenes/Character/Enemy/Medium/Human/human.png" id="2_8vurq"]
+[ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_ci687"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8vurq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5men"]
+
+[sub_resource type="Animation" id="Animation_0kpiw"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.1, 1, 0, 0.8, 0, 0.2, 1, 0, 1, 0, 0.3, 1, 0, 0.8, 0, 0.4, 1, 0, 1, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.258969, 0, 0, 0.965886, 0.1, 1, -0.257, -0.034, -0.126, 0.958, 0.2, 1, -0.258969, 0, 0, 0.965886, 0.3, 1, -0.257, 0.034, 0.126, 0.958, 0.4, 1, -0.258969, 0, 0, 0.965886)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqr71"]
+_data = {
+&"Walk": SubResource("Animation_0kpiw")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_58y3j"]
+height = 1.0
+radius = 8.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lxplw"]
+height = 1.0
+radius = 14.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8vurq"]
+height = 1.0
+radius = 1.0
+
+[node name="Human" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_h4q5l")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8658701, 0.5002687, 0, -0.5002687, 0.8658701, 0, 1, 0)
+pixel_size = 0.05
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_wee41")
+autoplay = "default"
+
+[node name="CharacterStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_ci687")
+SPEED = 3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_i5men")
+
+[node name="Walk AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sqr71")
+}
+
+[node name="Detection" type="Node3D" parent="."]
+
+[node name="CloseDetection" type="Area3D" parent="Detection"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/CloseDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_58y3j")
+
+[node name="FarDetection" type="Area3D" parent="Detection"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/FarDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_lxplw")
+
+[node name="LOS_Raycast" type="RayCast3D" parent="Detection"]
+unique_name_in_owner = true
+
+[node name="Attack" type="Node3D" parent="."]
+
+[node name="CloseDetection" type="Area3D" parent="Attack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack/CloseDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_8vurq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="NavigationAgent3D"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Detection/CloseDetection" to="." method="_on_close_detection_body_entered"]
+[connection signal="body_exited" from="Detection/CloseDetection" to="." method="_on_close_detection_body_exited"]
+[connection signal="body_entered" from="Detection/FarDetection" to="." method="_on_far_detection_body_entered"]
+[connection signal="body_exited" from="Detection/FarDetection" to="." method="_on_far_detection_body_exited"]
+[connection signal="timeout" from="NavigationAgent3D/Timer" to="." method="_on_timer_timeout"]

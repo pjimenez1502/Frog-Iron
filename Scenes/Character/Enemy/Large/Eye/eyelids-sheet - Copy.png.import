@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbx6u2ltg7r5p"
-path="res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"
+uid="uid://60gmgrtnq3y5"
+path="res://.godot/imported/eyelids-sheet - Copy.png-30c89a7b9c238d0d5f90fb8c9b823cc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"]
+source_file="res://Scenes/Character/Enemy/Large/Eye/eyelids-sheet - Copy.png"
+dest_files=["res://.godot/imported/eyelids-sheet - Copy.png-30c89a7b9c238d0d5f90fb8c9b823cc0.ctex"]
 
 [params]
 

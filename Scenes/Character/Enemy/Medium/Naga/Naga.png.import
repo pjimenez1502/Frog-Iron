@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbx6u2ltg7r5p"
-path="res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"
+uid="uid://coxjtdoqnho7s"
+path="res://.godot/imported/Naga.png-76e90a76884b51990f6a1a8730741902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"]
+source_file="res://Scenes/Character/Enemy/Medium/Naga/Naga.png"
+dest_files=["res://.godot/imported/Naga.png-76e90a76884b51990f6a1a8730741902.ctex"]
 
 [params]
 

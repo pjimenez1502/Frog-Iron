@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbx6u2ltg7r5p"
-path="res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"
+uid="uid://cix14bby6cf76"
+path="res://.godot/imported/human.png-45f0312bd51dacfb66194e2df855e7a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"]
+source_file="res://Scenes/Character/Enemy/Medium/Human/human.png"
+dest_files=["res://.godot/imported/human.png-45f0312bd51dacfb66194e2df855e7a1.ctex"]
 
 [params]
 

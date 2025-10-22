@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://gajp7nkjwdob"]
 
-[ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Entity/Player/Player.tscn" id="2_nu0p4"]
+[ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="2_nu0p4"]
 [ext_resource type="PackedScene" uid="uid://dxenb44h71v8u" path="res://Scenes/Terrain/Dungeon_1/dungeon_1_map.tscn" id="3_x65eq"]
-[ext_resource type="PackedScene" uid="uid://vqcf13u6ncyd" path="res://Scenes/Entity/Enemy/Boss_1/boss_1.tscn" id="4_bte2a"]
+[ext_resource type="PackedScene" uid="uid://vqcf13u6ncyd" path="res://Scenes/Character/Enemy/Large/Boss_1/boss_1.tscn" id="4_bte2a"]
 
 [sub_resource type="Environment" id="Environment_t7sdq"]
 background_mode = 1

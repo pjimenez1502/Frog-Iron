@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbx6u2ltg7r5p"
-path="res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"
+uid="uid://m7dog1a3eg2s"
+path="res://.godot/imported/area cylinder.png-c12e2c875095cdc8f0d0e73676e91082.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"]
+source_file="res://Scenes/Character/Enemy/Large/Eye/Attack/area cylinder.png"
+dest_files=["res://.godot/imported/area cylinder.png-c12e2c875095cdc8f0d0e73676e91082.ctex"]
 
 [params]
 

@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		drag_ball(get_mouse_pos())
 	
 	var scale_increase = clamp(linear_velocity.length() / 16 - 0.5, 0, 1)
-	print(scale_increase)
+	#print(scale_increase)
 	sprite.scale = Vector3.ONE * (1 + scale_increase)
 
 func drag_ball(mouse_pos: Vector3):
@@ -38,4 +38,3 @@ func get_mouse_pos():
 	if !position3D:
 		return Vector3.ZERO
 	return position3D
-

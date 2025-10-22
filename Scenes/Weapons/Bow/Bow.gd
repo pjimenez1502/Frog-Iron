@@ -47,7 +47,7 @@ func bow_draw(mouse_pos: Vector3, delta: float) -> void:
 	sprite.play(str("drawn_",str_value))
 
 func fire(mouse_pos: Vector3) -> void:
-	print(draw_strength)
+	#print(draw_strength)
 	if draw_strength < 0.25:
 		draw_strength = 0
 		return
@@ -61,7 +61,7 @@ func fire(mouse_pos: Vector3) -> void:
 func spawn_projectile(strength: float) -> void:
 	var projectile_instance : projectile = projectile_prefab.instantiate()
 	projectile_container.add_child(projectile_instance)
-	projectile_instance.global_position = global_position
+	projectile_instance.global_position = global_position 
 	projectile_instance.global_transform.basis = global_transform.basis
 	
 	projectile_instance.speed = projectile_instance.speed * strength

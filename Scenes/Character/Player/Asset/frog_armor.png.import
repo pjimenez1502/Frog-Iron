@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbx6u2ltg7r5p"
-path="res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"
+uid="uid://dmp23clg7m4xb"
+path="res://.godot/imported/frog_armor.png-93eb88d3845d65e3d39353d90965f8e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png-1ab7fe157b956b660a7b80839dfd8082.ctex"]
+source_file="res://Scenes/Character/Player/Asset/frog_armor.png"
+dest_files=["res://.godot/imported/frog_armor.png-93eb88d3845d65e3d39353d90965f8e1.ctex"]
 
 [params]
 

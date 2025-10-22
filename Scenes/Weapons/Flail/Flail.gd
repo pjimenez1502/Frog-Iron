@@ -1,7 +1,7 @@
 extends Node3D
 class_name flail
 
-@onready var _player: player = $"../.."
+@onready var _player: Player = $"../.."
 @onready var path_3d: Path3D = $Path3D
 @onready var morning_star: morningstar = %MorningStar
 
@@ -17,4 +17,3 @@ func _physics_process(delta: float) -> void:
 	path_3d.curve.set_point_position(0, position)
 	path_3d.curve.set_point_position(1, morning_star.position)
 	
-
