@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Frog Iron"
-run/main_scene="uid://w31voexjaly"
+config/tags=PackedStringArray("2025", "dungeon")
+run/main_scene="uid://ck2jmuxclwn0d"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
-config/tags=PackedStringArray("2025", "dungeon")
 
 [display]
 

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck2jmuxclwn0d"]
+
+[ext_resource type="PackedScene" uid="uid://w31voexjaly" path="res://Scenes/Terrain/Dungeon_1/MAP_Dungeon_Test.tscn" id="1_tba2g"]
+[ext_resource type="PackedScene" uid="uid://d1f8xxeridxnk" path="res://Scenes/UI/Cursor/Cursor.tscn" id="2_rw0po"]
+
+[node name="GAME" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DungeonView" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="DungeonView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="DungeonView/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Dungeon_1" parent="DungeonView/SubViewportContainer/SubViewport" instance=ExtResource("1_tba2g")]
+
+[node name="Cursor" parent="DungeonView" instance=ExtResource("2_rw0po")]
+layout_mode = 1
