@@ -1,10 +1,12 @@
 extends RigidBody3D
 class_name morningstar
 
-@onready var flail: flail = $".."
+@onready var weapon_stats: WeaponStats = %WeaponStats
+@onready var flail: Flail = $".."
 @onready var sprite: Sprite3D = $Sprite
 @export var max_distance : float = 3
 
+var speed_scale: float
 func _physics_process(delta: float) -> void:
 	if !flail.enabled:
 		return
@@ -12,17 +14,18 @@ func _physics_process(delta: float) -> void:
 	var distance = global_position.distance_to(flail.global_position)
 	if distance > 1:
 		apply_force(global_position.direction_to(flail.global_position) * 30 * distance)
-		
+	
 	if Input.is_action_pressed("FIRE"):
 		drag_ball(get_mouse_pos())
 	
-	var scale_increase = clamp(linear_velocity.length() / 16 - 0.5, 0, 1)
-	#print(scale_increase)
-	sprite.scale = Vector3.ONE * (1 + scale_increase)
+	speed_scale = clamp(linear_velocity.length() / 16 - 0.5, 0, 1)
+	weapon_stats.damage = weapon_stats.base_damage + (weapon_stats.base_damage * speed_scale)
+	
+	sprite.scale = Vector3.ONE * (1 + speed_scale)
 
 func drag_ball(mouse_pos: Vector3):
 	apply_force(global_position.direction_to(mouse_pos) * 40)
-	
+
 
 
 

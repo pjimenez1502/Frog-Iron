@@ -1,4 +1,5 @@
 extends Node3D
+class_name Bow
 
 @onready var sprite: AnimatedSprite3D = $Sprite
 @onready var projectile_container: Node = $ProjectileContainer

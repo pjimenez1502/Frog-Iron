@@ -1,5 +1,5 @@
 extends Node3D
-class_name flail
+class_name Flail
 
 @onready var _player: Player = $"../.."
 @onready var path_3d: Path3D = $Path3D

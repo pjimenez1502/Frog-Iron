@@ -9,14 +9,14 @@ func _physics_process(delta: float) -> void:
 	velocity = get_global_transform().basis.z * speed * delta
 	var collision = move_and_collide(velocity)
 	
-	if collision:
-		check_collision(collision.get_collider(), collision.get_position())
-
-func check_collision(collision, point: Vector3) -> void:
-	print("projectile collided: ",collision)
-	if !"health" in collision:
-		queue_free()
-		return
+	#if collision:
+		#check_collision(collision.get_collider(), collision.get_position())
+#
+#func check_collision(collision, point: Vector3) -> void:
+	#print("projectile collided: ",collision)
+	#if !"health" in collision:
+		#queue_free()
+		#return
 	
 	#if collision.health:
 		##hit(collision)

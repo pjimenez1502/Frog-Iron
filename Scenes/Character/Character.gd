@@ -4,7 +4,7 @@ class_name Character
 @onready var walk_animation_player: AnimationPlayer = $"Walk AnimationPlayer"
 @onready var sprite: AnimatedSprite3D = %Sprite
 
-@onready var character_stats: Node = %CharacterStats
+@onready var character_stats: CharacterStats = %CharacterStats
 
 var invert_look : bool
 

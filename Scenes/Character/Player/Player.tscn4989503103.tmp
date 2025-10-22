@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=22 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://dj1hllqmk7ku3" path="res://Scenes/Weapons/Flail/Flail.gd" id="4_t45cf"]
 [ext_resource type="Script" uid="uid://w2b8pf7cwubg" path="res://Scenes/Weapons/Flail/MorningStar.gd" id="5_mu520"]
 [ext_resource type="Texture2D" uid="uid://8qlseac4sj8q" path="res://Scenes/Weapons/Lance/lance.png" id="7_im63d"]
-[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Character/Weapon/WeaponStats.gd" id="7_yty6f"]
 [ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Character/Weapon/WeaponHit.gd" id="8_jw8fk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqr8y"]
@@ -156,11 +155,6 @@ axis_lock_angular_z = true
 mass = 2.0
 linear_damp = 1.0
 script = ExtResource("5_mu520")
-
-[node name="WeaponStats" type="Node" parent="Weapons/Flail/MorningStar"]
-unique_name_in_owner = true
-script = ExtResource("7_yty6f")
-base_damage = 4
 
 [node name="Sprite" type="Sprite3D" parent="Weapons/Flail/MorningStar"]
 transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, -0.5, 0)

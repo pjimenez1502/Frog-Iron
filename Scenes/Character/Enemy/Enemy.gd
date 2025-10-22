@@ -20,7 +20,7 @@ func move() -> void:
 
 func make_nav_path() -> void:
 	target = find_target()
-	print(target)
+	#print(target)
 	if !target:
 		nav_agent.target_position = global_position
 		return
