@@ -7,3 +7,7 @@ var damage: float
 
 func _ready() -> void:
 	damage = base_damage
+
+func inherit_data(stats: WeaponStats) -> void:
+	damage = stats.damage
+	knockback = stats.knockback

@@ -1,19 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://db0soby7y3qg8"]
+[gd_scene load_steps=6 format=3 uid="uid://db0soby7y3qg8"]
 
 [ext_resource type="Script" uid="uid://cyrn5lc5b1yi7" path="res://Scenes/Weapon/Projectile/Projectile.gd" id="1_88rfi"]
 [ext_resource type="Texture2D" uid="uid://1mnys3lpxeb2" path="res://Scenes/Weapon/Projectile/Arrow.png" id="1_u4hip"]
 [ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="3_1i3x2"]
 [ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Weapon/WeaponHit.gd" id="4_hcij0"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_bc4o0"]
-radius = 0.2
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r4gem"]
+radius = 0.24560547
+height = 1.2728271
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_dcuho"]
-radius = 0.44066724
-
-[node name="Arrow" type="CharacterBody3D"]
-collision_layer = 128
-collision_mask = 5
+[node name="Arrow" type="Node3D"]
+physics_interpolation_mode = 1
 script = ExtResource("1_88rfi")
 speed = 40.0
 
@@ -29,14 +26,9 @@ pixel_size = 0.05
 texture_filter = 0
 texture = ExtResource("1_u4hip")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026179552, 0.0871858)
-shape = SubResource("SphereShape3D_bc4o0")
-
 [node name="WeaponStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_1i3x2")
-base_damage = 4
 
 [node name="HitArea" type="Area3D" parent="." node_paths=PackedStringArray("weapon_stats")]
 collision_layer = 128
@@ -45,5 +37,5 @@ script = ExtResource("4_hcij0")
 weapon_stats = NodePath("../WeaponStats")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07174581)
-shape = SubResource("SphereShape3D_dcuho")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -2.990751e-09, 0.06842041)
+shape = SubResource("CapsuleShape3D_r4gem")

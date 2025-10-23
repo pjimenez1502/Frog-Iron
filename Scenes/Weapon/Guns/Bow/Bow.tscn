@@ -84,4 +84,6 @@ animation = &"drawn_0"
 [node name="WeaponStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_3mrnk")
+base_damage = 6
+knockback = 10.0
 metadata/_custom_type_script = "uid://b316g7ijpxpy4"
