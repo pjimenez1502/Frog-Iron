@@ -2,12 +2,20 @@ extends Character
 class_name Enemy
 
 @onready var nav_agent: NavigationAgent3D = %NavigationAgent3D
+@onready var attack: Node3D = %Attack
 var close_target: Node3D
 var far_target: Node3D
 var target: Node3D
 
+func _ready() -> void:
+	character_stats.DEAD.connect(enemy_dead)
+
+func enemy_dead() -> void:
+	character_dead()
+	attack_enabled(false)
+	# drop loot
+
 func move() -> void:
-	
 	var direction: Vector3 = to_local(nav_agent.get_next_path_position()).normalized()
 	if direction:
 		velocity.x = direction.x * character_stats.SPEED
@@ -41,7 +49,6 @@ func check_lineofsight() -> bool:
 		return false
 	return true
 
-
 func _on_timer_timeout() -> void:
 	make_nav_path()
 
@@ -59,3 +66,6 @@ func _on_far_detection_body_entered(body: Node3D) -> void:
 func _on_far_detection_body_exited(body: Node3D) -> void:
 	if far_target == body:
 		far_target = null
+
+func attack_enabled(value: bool) -> void:
+	attack.process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED
