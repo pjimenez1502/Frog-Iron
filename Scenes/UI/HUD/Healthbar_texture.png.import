@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8k87xhkbthxw"
-path="res://.godot/imported/crosshair.png-8803f647edbd9ba881c7d78fbf77ebc7.ctex"
+uid="uid://dbkduc6pw2bv4"
+path="res://.godot/imported/Healthbar_texture.png-8ed84316e02e951a54f3a9a4855a15b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/crosshair.png"
-dest_files=["res://.godot/imported/crosshair.png-8803f647edbd9ba881c7d78fbf77ebc7.ctex"]
+source_file="res://Scenes/UI/HUD/Healthbar_texture.png"
+dest_files=["res://.godot/imported/Healthbar_texture.png-8ed84316e02e951a54f3a9a4855a15b4.ctex"]
 
 [params]
 

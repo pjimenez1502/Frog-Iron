@@ -1,5 +1,9 @@
-class_name CharacterStats
 extends Node
+class_name CharacterStats
+
+signal HEALTH_UPDATE
+signal DAMAGED
+signal DEAD
 
 @onready var status_animation_player: AnimationPlayer = $"../Status Animation Player"
 @export var SPEED = 5.0
@@ -7,11 +11,13 @@ extends Node
 var current_HP
 
 func _ready() -> void:
-	current_HP = max_HP
 	invul_timer_setup()
+	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
 
-signal HEALTH_UPDATE
-signal DAMAGED
+func init_hp() -> void:
+	current_HP = max_HP
+	HEALTH_UPDATE.emit(max_HP, current_HP)
+
 func damage(damage: int) -> void:
 	if invulnerable:
 		return
@@ -22,11 +28,9 @@ func damage(damage: int) -> void:
 		return
 	status_animation_player.play("Damage")
 	DAMAGED.emit()
-	HEALTH_UPDATE.emit(current_HP)
+	HEALTH_UPDATE.emit(max_HP, current_HP)
 
-signal DEAD
 func death() -> void:
-	print("dead")
 	status_animation_player.play("Death")
 	DEAD.emit()
 
