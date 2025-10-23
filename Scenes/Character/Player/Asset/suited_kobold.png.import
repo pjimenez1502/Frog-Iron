@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b73ps5pcelq3q"
-path="res://.godot/imported/bow-sheet.png-13b9acb75aabf5a9231797e56235865e.ctex"
+uid="uid://bbh2tcfqh55yi"
+path="res://.godot/imported/suited_kobold.png-77cdfc72459e11c32d0e21fdf89d8887.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Weapon/Bow/bow-sheet.png"
-dest_files=["res://.godot/imported/bow-sheet.png-13b9acb75aabf5a9231797e56235865e.ctex"]
+source_file="res://Scenes/Character/Player/Asset/suited_kobold.png"
+dest_files=["res://.godot/imported/suited_kobold.png-77cdfc72459e11c32d0e21fdf89d8887.ctex"]
 
 [params]
 

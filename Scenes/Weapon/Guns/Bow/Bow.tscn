@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://5u61rs18y8k8"]
+[gd_scene load_steps=11 format=3 uid="uid://5u61rs18y8k8"]
 
-[ext_resource type="Script" uid="uid://0ctoghy4hbe8" path="res://Scenes/Weapon/Bow/Bow.gd" id="1_l3qgv"]
-[ext_resource type="Texture2D" uid="uid://b73ps5pcelq3q" path="res://Scenes/Weapon/Bow/bow-sheet.png" id="2_hmoq4"]
+[ext_resource type="Script" uid="uid://0ctoghy4hbe8" path="res://Scenes/Weapon/Guns/Bow/Bow.gd" id="1_l3qgv"]
+[ext_resource type="Texture2D" uid="uid://b73ps5pcelq3q" path="res://Scenes/Weapon/Guns/Bow/bow-sheet.png" id="2_hmoq4"]
 [ext_resource type="PackedScene" uid="uid://db0soby7y3qg8" path="res://Scenes/Weapon/Projectile/Arrow.tscn" id="2_ks2ve"]
+[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="4_3mrnk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keqyq"]
 atlas = ExtResource("2_hmoq4")
@@ -73,10 +74,15 @@ enabled = true
 projectile_prefab = ExtResource("2_ks2ve")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.1)
+transform = Transform3D(-4.3711378e-08, 1, 4.37114e-08, -3.8213786e-15, 4.37114e-08, -1, -1, -4.3711378e-08, 1.91069e-15, 0, 0, -0.1)
 pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_68yfx")
 animation = &"drawn_0"
 
 [node name="ProjectileContainer" type="Node" parent="."]
+
+[node name="WeaponStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_3mrnk")
+metadata/_custom_type_script = "uid://b316g7ijpxpy4"

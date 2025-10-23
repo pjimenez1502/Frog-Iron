@@ -8,3 +8,6 @@ func _ready() -> void:
 	var tween: Tween = create_tween()
 	await tween.tween_property($Sprite3D, "modulate:a", 0, time).finished
 	queue_free()
+
+func set_weapon_data(stats: WeaponStats) -> void:
+	weapon_stats.base_damage

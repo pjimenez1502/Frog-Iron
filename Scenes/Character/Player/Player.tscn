@@ -1,53 +1,17 @@
-[gd_scene load_steps=27 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=15 format=3 uid="uid://crvptphshx3l7"]
 
-[ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
-[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/Bow/Bow.tscn" id="3_dj2t7"]
+[ext_resource type="Texture2D" uid="uid://bbh2tcfqh55yi" path="res://Scenes/Character/Player/Asset/suited_kobold.png" id="2_yty6f"]
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/Guns/Bow/Bow.tscn" id="3_dj2t7"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
-[ext_resource type="Texture2D" uid="uid://ms4qrp0lbdcj" path="res://Scenes/Weapon/Flail/morning_star_ball.png" id="4_ovteh"]
-[ext_resource type="Script" uid="uid://dj1hllqmk7ku3" path="res://Scenes/Weapon/Flail/Flail.gd" id="4_t45cf"]
-[ext_resource type="Script" uid="uid://w2b8pf7cwubg" path="res://Scenes/Weapon/Flail/MorningStar.gd" id="5_mu520"]
+[ext_resource type="PackedScene" uid="uid://c6xc5t2lii4pj" path="res://Scenes/Weapon/Flail/flail.tscn" id="6_3gn43"]
 [ext_resource type="Texture2D" uid="uid://8qlseac4sj8q" path="res://Scenes/Weapon/Lance/lance.png" id="7_im63d"]
-[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="7_yty6f"]
-[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Weapon/WeaponHit.gd" id="8_jw8fk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yqr8y"]
-atlas = ExtResource("1_1j3ov")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a48mw"]
-atlas = ExtResource("1_1j3ov")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5dkl"]
-atlas = ExtResource("1_1j3ov")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6723s"]
-atlas = ExtResource("1_1j3ov")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8rxm"]
-atlas = ExtResource("1_1j3ov")
-region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_noogm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yqr8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a48mw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5dkl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6723s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8rxm")
+"texture": ExtResource("2_yty6f")
 }],
 "loop": true,
 "name": &"default",
@@ -158,20 +122,6 @@ _data = {
 &"RESET": SubResource("Animation_lq7hj")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ul1or"]
-height = 0.9
-radius = 0.3
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_f0b02"]
-radius = 0.4
-
-[sub_resource type="Curve3D" id="Curve3D_vavu4"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0)
-}
-point_count = 1
-
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 7
@@ -223,53 +173,8 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Bow" parent="Weapons" instance=ExtResource("3_dj2t7")]
-visible = false
-enabled = false
 
-[node name="Flail" type="Node3D" parent="Weapons"]
-script = ExtResource("4_t45cf")
-enabled = true
-
-[node name="MorningStar" type="RigidBody3D" parent="Weapons/Flail"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49638, 0, 0.434516)
-collision_layer = 128
-collision_mask = 129
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-mass = 2.0
-linear_damp = 1.0
-script = ExtResource("5_mu520")
-
-[node name="WeaponStats" type="Node" parent="Weapons/Flail/MorningStar"]
-unique_name_in_owner = true
-script = ExtResource("7_yty6f")
-base_damage = 4
-
-[node name="Sprite" type="Sprite3D" parent="Weapons/Flail/MorningStar"]
-transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, -0.5, 0)
-pixel_size = 0.05
-texture_filter = 0
-texture = ExtResource("4_ovteh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapons/Flail/MorningStar"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("CylinderShape3D_ul1or")
-
-[node name="HitArea" type="Area3D" parent="Weapons/Flail/MorningStar" node_paths=PackedStringArray("weapon_stats")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-collision_layer = 128
-collision_mask = 4
-script = ExtResource("8_jw8fk")
-weapon_stats = NodePath("../WeaponStats")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapons/Flail/MorningStar/HitArea"]
-shape = SubResource("SphereShape3D_f0b02")
-
-[node name="Path3D" type="Path3D" parent="Weapons/Flail"]
-curve = SubResource("Curve3D_vavu4")
+[node name="Flail" parent="Weapons" instance=ExtResource("6_3gn43")]
 
 [node name="Lance" type="Node3D" parent="Weapons"]
 visible = false
@@ -279,5 +184,3 @@ transform = Transform3D(0.676272, -0.736652, -3.22001e-08, -1.18108e-16, -4.3711
 pixel_size = 0.07
 texture_filter = 0
 texture = ExtResource("7_im63d")
-
-[editable path="Weapons/Bow"]

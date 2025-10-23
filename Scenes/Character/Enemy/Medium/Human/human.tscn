@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cv77actnekh6j"]
+[gd_scene load_steps=19 format=3 uid="uid://cv77actnekh6j"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_h4q5l"]
 [ext_resource type="Texture2D" uid="uid://cix14bby6cf76" path="res://Scenes/Character/Enemy/Medium/Human/human.png" id="2_8vurq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_30x3r"]
 [ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/Weapon.gd" id="5_65gb3"]
 [ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/Hits/slash.tscn" id="6_lq7hj"]
+[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="7_4f1yr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
 animations = [{
@@ -209,6 +210,13 @@ shape = SubResource("CylinderShape3D_8vurq")
 script = ExtResource("5_65gb3")
 attack_hit = ExtResource("6_lq7hj")
 metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
+
+[node name="WeaponStats" type="Node" parent="Attack/Weapon"]
+unique_name_in_owner = true
+script = ExtResource("7_4f1yr")
+base_damage = 1
+knockback = 10.0
+metadata/_custom_type_script = "uid://b316g7ijpxpy4"
 
 [node name="Hits" type="Node" parent="Attack/Weapon"]
 
