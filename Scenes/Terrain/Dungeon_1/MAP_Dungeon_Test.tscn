@@ -39,4 +39,13 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Human" parent="." instance=ExtResource("3_0h72o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.906825, 0, 10.545787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.906825, 0, 11.545787)
+
+[node name="Human2" parent="." instance=ExtResource("3_0h72o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.906825, 0, 8.545787)
+
+[node name="Human3" parent="." instance=ExtResource("3_0h72o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.906825, 0, 13.545787)
+
+[node name="Human4" parent="." instance=ExtResource("3_0h72o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.906825, 0, 13.545787)

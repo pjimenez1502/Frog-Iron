@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 	
 	var mouse_pos = get_mouse_pos()
 	rotate_weapon(mouse_pos, delta)
+	check_trigger(delta)
 
 func check_trigger(delta: float) -> void:
 	if Input.is_action_pressed("FIRE"):

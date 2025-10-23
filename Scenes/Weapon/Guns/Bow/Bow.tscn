@@ -70,7 +70,6 @@ animations = [{
 
 [node name="Bow" type="Node3D"]
 script = ExtResource("1_l3qgv")
-enabled = true
 projectile_prefab = ExtResource("2_ks2ve")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]

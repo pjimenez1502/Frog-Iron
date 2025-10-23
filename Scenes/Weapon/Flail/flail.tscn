@@ -34,6 +34,7 @@ axis_lock_angular_z = true
 mass = 2.0
 linear_damp = 1.0
 script = ExtResource("1_wrw7r")
+enabled = true
 max_distance = 0.5
 pullback_strength = 60
 

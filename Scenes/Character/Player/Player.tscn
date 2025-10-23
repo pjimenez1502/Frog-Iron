@@ -1,17 +1,49 @@
-[gd_scene load_steps=15 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=20 format=3 uid="uid://crvptphshx3l7"]
 
+[ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
-[ext_resource type="Texture2D" uid="uid://bbh2tcfqh55yi" path="res://Scenes/Character/Player/Asset/suited_kobold.png" id="2_yty6f"]
 [ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/Guns/Bow/Bow.tscn" id="3_dj2t7"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
 [ext_resource type="PackedScene" uid="uid://c6xc5t2lii4pj" path="res://Scenes/Weapon/Flail/flail.tscn" id="6_3gn43"]
 [ext_resource type="Texture2D" uid="uid://8qlseac4sj8q" path="res://Scenes/Weapon/Lance/lance.png" id="7_im63d"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qy38"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gn43"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0b02"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw8fk"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yty6f"]
+atlas = ExtResource("1_1j3ov")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_noogm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_yty6f")
+"texture": SubResource("AtlasTexture_7qy38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gn43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0b02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw8fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yty6f")
 }],
 "loop": true,
 "name": &"default",
@@ -30,7 +62,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("View/Sprite")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.1, 1, 0, 0.8, 0, 0.2, 1, 0, 1, 0, 0.3, 1, 0, 0.8, 0, 0.4, 1, 0, 1, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.2, 0, 0.1, 1, 0, 0.8, 0, 0.2, 1, 0, 1.2, 0, 0.3, 1, 0, 0.8, 0, 0.4, 1, 0, 1.2, 0)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -131,12 +163,11 @@ script = ExtResource("1_gvmva")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="View"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.86587, 0.50026864, 0, -0.50026864, 0.86587, 0, 1, 0)
+transform = Transform3D(0.9767878, 0.2142088, -0.00031976396, -0.18529204, 0.8456747, 0.5005005, 0.10748207, -0.4888235, 0.86573595, 0, 0.86999655, 0)
 pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_noogm")
 autoplay = "default"
-frame_progress = 0.676413
 
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -173,8 +204,10 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Bow" parent="Weapons" instance=ExtResource("3_dj2t7")]
+visible = false
 
 [node name="Flail" parent="Weapons" instance=ExtResource("6_3gn43")]
+visible = true
 
 [node name="Lance" type="Node3D" parent="Weapons"]
 visible = false

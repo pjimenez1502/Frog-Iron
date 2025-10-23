@@ -12,9 +12,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
+	if !enabled:
+		return
 	check_trigger(delta)
 
 func check_trigger(delta: float) -> void:
+	print("umm")
 	if Input.is_action_pressed("FIRE"):
 		bow_draw(delta)
 	if Input.is_action_just_released("FIRE"):
