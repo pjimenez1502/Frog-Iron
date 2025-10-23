@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv77actnekh6j"]
+[gd_scene load_steps=18 format=3 uid="uid://cv77actnekh6j"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_h4q5l"]
 [ext_resource type="Texture2D" uid="uid://cix14bby6cf76" path="res://Scenes/Character/Enemy/Medium/Human/human.png" id="2_8vurq"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_ci687"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_30x3r"]
+[ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/Weapon.gd" id="5_65gb3"]
+[ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/Hits/slash.tscn" id="6_lq7hj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
 animations = [{
@@ -58,33 +60,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_lq7hj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("View:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("View/Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_30x3r"]
 resource_name = "Death"
 length = 0.6
@@ -111,6 +86,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.5058824, 0.5058824, 0.5058824, 0.44313726)]
+}
+
+[sub_resource type="Animation" id="Animation_lq7hj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vurq"]
@@ -187,17 +189,28 @@ shape = SubResource("CylinderShape3D_lxplw")
 [node name="LOS_Raycast" type="RayCast3D" parent="Detection"]
 unique_name_in_owner = true
 
-[node name="Attack" type="Node3D" parent="."]
+[node name="Attack" type="Node3D" parent="." node_paths=PackedStringArray("close_weapon")]
 unique_name_in_owner = true
 script = ExtResource("4_30x3r")
+attack_cd = 0.6
+close_weapon = NodePath("Weapon")
 
 [node name="CloseDetection" type="Area3D" parent="Attack"]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack/CloseDetection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_8vurq")
 
 [node name="AttackTimer" type="Timer" parent="Attack"]
+
+[node name="Weapon" type="Node3D" parent="Attack"]
+script = ExtResource("5_65gb3")
+attack_hit = ExtResource("6_lq7hj")
+metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
+
+[node name="Hits" type="Node" parent="Attack/Weapon"]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
@@ -211,4 +224,6 @@ autostart = true
 [connection signal="body_entered" from="Detection/FarDetection" to="." method="_on_far_detection_body_entered"]
 [connection signal="body_exited" from="Detection/FarDetection" to="." method="_on_far_detection_body_exited"]
 [connection signal="body_entered" from="Attack/CloseDetection" to="Attack" method="_on_close_detection_body_entered"]
+[connection signal="body_exited" from="Attack/CloseDetection" to="Attack" method="_on_close_detection_body_exited"]
+[connection signal="timeout" from="Attack/AttackTimer" to="Attack" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="NavigationAgent3D/NavTimer" to="." method="_on_timer_timeout"]

@@ -1,11 +1,10 @@
-class_name WeaponHit
 extends Area3D
+class_name WeaponHit
 
-@onready var weapon_stats: WeaponStats = %WeaponStats
+@export var weapon_stats: WeaponStats
 
 func _ready() -> void:
 	body_entered.connect(_on_body_hit)
 
 func _on_body_hit(character: Character) -> void:
-	#print(character)
 	character.character_stats.damage(weapon_stats.damage)

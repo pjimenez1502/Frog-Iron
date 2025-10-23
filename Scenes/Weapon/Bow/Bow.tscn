@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://5u61rs18y8k8"]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/Bow/Bow.gd" id="1_l3qgv"]
-[ext_resource type="Texture2D" uid="uid://b73ps5pcelq3q" path="res://Scenes/Weapons/Bow/bow-sheet.png" id="2_hmoq4"]
-[ext_resource type="PackedScene" uid="uid://db0soby7y3qg8" path="res://Scenes/Weapons/Projectile/Arrow.tscn" id="2_ks2ve"]
+[ext_resource type="Script" uid="uid://0ctoghy4hbe8" path="res://Scenes/Weapon/Bow/Bow.gd" id="1_l3qgv"]
+[ext_resource type="Texture2D" uid="uid://b73ps5pcelq3q" path="res://Scenes/Weapon/Bow/bow-sheet.png" id="2_hmoq4"]
+[ext_resource type="PackedScene" uid="uid://db0soby7y3qg8" path="res://Scenes/Weapon/Projectile/Arrow.tscn" id="2_ks2ve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keqyq"]
 atlas = ExtResource("2_hmoq4")

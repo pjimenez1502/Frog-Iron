@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
-[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapons/Bow/Bow.tscn" id="3_dj2t7"]
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/Bow/Bow.tscn" id="3_dj2t7"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
-[ext_resource type="Texture2D" uid="uid://ms4qrp0lbdcj" path="res://Scenes/Weapons/Flail/morning_star_ball.png" id="4_ovteh"]
-[ext_resource type="Script" uid="uid://dj1hllqmk7ku3" path="res://Scenes/Weapons/Flail/Flail.gd" id="4_t45cf"]
-[ext_resource type="Script" uid="uid://w2b8pf7cwubg" path="res://Scenes/Weapons/Flail/MorningStar.gd" id="5_mu520"]
-[ext_resource type="Texture2D" uid="uid://8qlseac4sj8q" path="res://Scenes/Weapons/Lance/lance.png" id="7_im63d"]
-[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Character/Weapon/WeaponStats.gd" id="7_yty6f"]
-[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Character/Weapon/WeaponHit.gd" id="8_jw8fk"]
+[ext_resource type="Texture2D" uid="uid://ms4qrp0lbdcj" path="res://Scenes/Weapon/Flail/morning_star_ball.png" id="4_ovteh"]
+[ext_resource type="Script" uid="uid://dj1hllqmk7ku3" path="res://Scenes/Weapon/Flail/Flail.gd" id="4_t45cf"]
+[ext_resource type="Script" uid="uid://w2b8pf7cwubg" path="res://Scenes/Weapon/Flail/MorningStar.gd" id="5_mu520"]
+[ext_resource type="Texture2D" uid="uid://8qlseac4sj8q" path="res://Scenes/Weapon/Lance/lance.png" id="7_im63d"]
+[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="7_yty6f"]
+[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Weapon/WeaponHit.gd" id="8_jw8fk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqr8y"]
 atlas = ExtResource("1_1j3ov")
@@ -96,33 +96,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_lq7hj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("View:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("View/Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_30x3r"]
 resource_name = "Death"
 length = 0.6
@@ -149,6 +122,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.5058824, 0.5058824, 0.5058824, 0.44313726)]
+}
+
+[sub_resource type="Animation" id="Animation_lq7hj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vurq"]
@@ -258,11 +258,12 @@ texture = ExtResource("4_ovteh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CylinderShape3D_ul1or")
 
-[node name="HitArea" type="Area3D" parent="Weapons/Flail/MorningStar"]
+[node name="HitArea" type="Area3D" parent="Weapons/Flail/MorningStar" node_paths=PackedStringArray("weapon_stats")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 128
 collision_mask = 4
 script = ExtResource("8_jw8fk")
+weapon_stats = NodePath("../WeaponStats")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapons/Flail/MorningStar/HitArea"]
 shape = SubResource("SphereShape3D_f0b02")

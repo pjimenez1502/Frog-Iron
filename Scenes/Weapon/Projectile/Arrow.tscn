@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://db0soby7y3qg8"]
 
-[ext_resource type="Script" uid="uid://cyrn5lc5b1yi7" path="res://Scenes/Weapons/Projectile/Projectile.gd" id="1_88rfi"]
-[ext_resource type="Texture2D" uid="uid://1mnys3lpxeb2" path="res://Scenes/Weapons/Projectile/Arrow.png" id="1_u4hip"]
-[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Character/Weapon/WeaponStats.gd" id="3_1i3x2"]
-[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Character/Weapon/WeaponHit.gd" id="4_hcij0"]
+[ext_resource type="Script" uid="uid://cyrn5lc5b1yi7" path="res://Scenes/Weapon/Projectile/Projectile.gd" id="1_88rfi"]
+[ext_resource type="Texture2D" uid="uid://1mnys3lpxeb2" path="res://Scenes/Weapon/Projectile/Arrow.png" id="1_u4hip"]
+[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="3_1i3x2"]
+[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Weapon/WeaponHit.gd" id="4_hcij0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bc4o0"]
 radius = 0.2
@@ -37,9 +37,10 @@ unique_name_in_owner = true
 script = ExtResource("3_1i3x2")
 base_damage = 4
 
-[node name="HitArea" type="Area3D" parent="."]
+[node name="HitArea" type="Area3D" parent="." node_paths=PackedStringArray("weapon_stats")]
 collision_layer = 128
 script = ExtResource("4_hcij0")
+weapon_stats = NodePath("../WeaponStats")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
 shape = SubResource("SphereShape3D_dcuho")
