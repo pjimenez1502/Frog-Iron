@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b4p1ptyuwlvcq"
-path="res://.godot/imported/Wall.glb-fc6986ba7ba243d2904191e15e119243.scn"
+uid="uid://c0lpi6lge3kni"
+path="res://.godot/imported/Floor.glb-52d2f681bdd0e9b719688fe7e7fd6fcc.scn"
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Tiles/Wall.glb"
-dest_files=["res://.godot/imported/Wall.glb-fc6986ba7ba243d2904191e15e119243.scn"]
+source_file="res://Scenes/Terrain/Dungeon_1/Tiles/Floor.glb"
+dest_files=["res://.godot/imported/Floor.glb-52d2f681bdd0e9b719688fe7e7fd6fcc.scn"]
 
 [params]
 

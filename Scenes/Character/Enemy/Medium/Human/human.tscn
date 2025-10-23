@@ -144,7 +144,7 @@ script = ExtResource("1_h4q5l")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="View"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.86587, 0.50026864, 0, -0.50026864, 0.86587, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071066, 0.7071066, 0, -0.7071066, 0.7071066, 0, 1, 0)
 pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_wee41")

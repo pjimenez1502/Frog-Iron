@@ -163,7 +163,7 @@ script = ExtResource("1_gvmva")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="View"]
 unique_name_in_owner = true
-transform = Transform3D(0.9767878, 0.2142088, -0.00031976396, -0.18529204, 0.8456747, 0.5005005, 0.10748207, -0.4888235, 0.86573595, 0, 0.86999655, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.70710653, 0.7071066, 0, -0.70710653, 0.7071066, 0, 1.2, 0)
 pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_noogm")
@@ -179,7 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_11mtv")
 
 [node name="Camera Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.90630805, 0.42261842, 0, -0.42261842, 0.90630805, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.69451, 4.92463)
@@ -204,10 +204,9 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Bow" parent="Weapons" instance=ExtResource("3_dj2t7")]
-visible = false
+enabled = true
 
 [node name="Flail" parent="Weapons" instance=ExtResource("6_3gn43")]
-visible = true
 
 [node name="Lance" type="Node3D" parent="Weapons"]
 visible = false
