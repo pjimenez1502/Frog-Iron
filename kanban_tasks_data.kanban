@@ -1,0 +1,108 @@
+{
+	"categories": [
+		{
+			"uuid": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"title": "Task",
+			"color": "3d85f2"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "6ab65983-ee93-4cc0-90e6-92dd8f712bb5",
+			"title": "STASH",
+			"tasks": [
+				"dbeeb071-035a-41fd-ae70-777918e76f4a",
+				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
+				"46152144-11fe-4a23-984d-145b9544ab88",
+				"c88cb1ca-ee09-4405-9a35-43db31db161e",
+				"79dd6f0c-4e14-44ca-a411-ce71c11a499b"
+			]
+		},
+		{
+			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
+			"title": "ToDo",
+			"tasks": [
+				"d80d05f7-191e-4483-b18e-40b2c88e621f"
+			]
+		},
+		{
+			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
+			"title": "Doing",
+			"tasks": [
+				"7a06beb2-38bb-485c-9f11-a839a5060d5a"
+			]
+		},
+		{
+			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "d5df15ac-40f7-40a5-8feb-55d752fafbb5",
+			"title": "Character Stats",
+			"description": "\nHP\n\nSTR\t - mods Physical Damage\nINT\t - mods Magic Damage\nCON - mods HP\nWIS\t - mods status resistance\n\nLevel\nXP (only player, allows them to progress lvl. enemies live with the lvl they spawned in)\n\nValue of stats es calculated when used.\nEx: Max Health calculation (baseHP + (CON * 4)) is recalculated every time stats can change (equipment change, stat buffs/debuffs)\nEx: Damage (baseDmg + (STR * weaponSTRmod)) is recalculated every hit",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "79dd6f0c-4e14-44ca-a411-ce71c11a499b",
+			"title": "Dungeon Generation",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "d80d05f7-191e-4483-b18e-40b2c88e621f",
+			"title": "Objects and Interaction",
+			"description": "\nWooden Door\nLever -> connected barred door\nChest",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "7a06beb2-38bb-485c-9f11-a839a5060d5a",
+			"title": "First Vertical Slice",
+			"description": "\nPlayer Movement\nEnemy detection, pathfinding and basic attack\n\nInventory\nTreasure\nEnemy loot\n\n\nPlayer can explore",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "dbeeb071-035a-41fd-ae70-777918e76f4a",
+			"title": "Enemy Expansion",
+			"description": "\nLvl and stat system at spawn\n\nMore melee attacks?\nRanged attacks\nPreference to stay at range?\n",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "46152144-11fe-4a23-984d-145b9544ab88",
+			"title": "Inventory",
+			"description": "\nGold\n\nEquipment Slots: (8 slots)\n- Head\n- Torso\n- Arms\n- Legs\n- Tail\n= necklace\n= ring\n= Weapon\n\nBag: (8 slots?)",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "c88cb1ca-ee09-4405-9a35-43db31db161e",
+			"title": "Level UP",
+			"description": "\nSelect Stat Increase\nGain perks?",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"6ab65983-ee93-4cc0-90e6-92dd8f712bb5"
+			],
+			[
+				"2922da1b-8f41-4b85-b661-35d778cd22ea"
+			],
+			[
+				"801bf3e5-4495-4d0e-8137-bfffa6a51b9a"
+			],
+			[
+				"6949537f-6883-462a-b4ff-1073e5c1f452"
+			]
+		]
+	}
+}

@@ -31,7 +31,7 @@ window/main_scene="uid://ck2jmuxclwn0d"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg")
+enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
 
 [importer_defaults]
 
