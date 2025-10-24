@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_uhhdc"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_xa7qo"]
 [ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/Weapon.gd" id="5_3dr14"]
-[ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/Hits/slash.tscn" id="6_3rtpd"]
+[ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/_Hits/slash.tscn" id="6_3rtpd"]
 [ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="7_fdo4h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
@@ -195,7 +195,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 script = ExtResource("4_xa7qo")
 attack_cd = 0.6
-close_weapon = NodePath("Weapon")
+close_weapon = NodePath("Claws")
 
 [node name="CloseDetection" type="Area3D" parent="Attack"]
 collision_layer = 0
@@ -207,19 +207,20 @@ shape = SubResource("CylinderShape3D_8vurq")
 
 [node name="AttackTimer" type="Timer" parent="Attack"]
 
-[node name="Weapon" type="Node3D" parent="Attack"]
+[node name="Claws" type="Node3D" parent="Attack"]
 script = ExtResource("5_3dr14")
 attack_hit = ExtResource("6_3rtpd")
 metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
 
-[node name="WeaponStats" type="Node" parent="Attack/Weapon"]
+[node name="WeaponStats" type="Node" parent="Attack/Claws"]
 unique_name_in_owner = true
 script = ExtResource("7_fdo4h")
+target_layer = 2
 base_damage = 1
-knockback = 10.0
+knockback = 20.0
 metadata/_custom_type_script = "uid://b316g7ijpxpy4"
 
-[node name="Hits" type="Node" parent="Attack/Weapon"]
+[node name="Hits" type="Node" parent="Attack/Claws"]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true

@@ -1,13 +1,13 @@
 extends Gun
 class_name Bow
 
-
 @export var draw_speed: float = 3
 var draw_strength : float
 
 #var drawing : float
 
 func _ready() -> void:
+	visible = enabled
 	sprite.play("drawn_0")
 
 func _physics_process(delta: float) -> void:

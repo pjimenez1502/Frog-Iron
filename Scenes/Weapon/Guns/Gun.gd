@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	if !enabled:
 		return
 	
-	var mouse_pos = get_mouse_pos()
+	var mouse_pos = Util.get_mouse_pos(self)
 	rotate_weapon(mouse_pos, delta)
 	check_trigger(delta)
 
@@ -38,12 +38,3 @@ func spawn_projectile(weapon_stats: WeaponStats, strength: float= 1) -> void:
 	projectile_instance.global_position = global_position 
 	projectile_instance.global_transform.basis = global_transform.basis
 	projectile_instance.speed = projectile_instance.speed * strength
-
-func get_mouse_pos():
-	var camera = get_viewport().get_camera_3d()
-	var position2D = get_viewport().get_mouse_position()
-	var dropPlane  = Plane(Vector3(0, 1, 0), 1)
-	var position3D = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
-	if !position3D:
-		return Vector3.ZERO
-	return position3D

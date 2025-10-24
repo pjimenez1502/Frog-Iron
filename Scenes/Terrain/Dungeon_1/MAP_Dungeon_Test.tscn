@@ -12,7 +12,7 @@
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.05
+ambient_light_energy = 0.08
 reflected_light_source = 1
 glow_enabled = true
 
@@ -22,10 +22,6 @@ polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Arr
 agent_radius = 0.3
 
 [node name="Dungeon_1" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.6308821, -0.433016, -0.64380467, -0.7623942, 0.49999797, 0.41079974, 0.14401829, 0.74999905, -0.6455695, 5.0574503, 7.0958138, -1.8105837)
-shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_0h72o")]
 

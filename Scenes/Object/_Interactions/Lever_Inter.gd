@@ -21,7 +21,6 @@ func lever_interaction(value: bool) -> void:
 func swing_lever(value: bool) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(hinge, "rotation_degrees", Vector3(0, 0, target_opening if value else -target_opening), opening_time).set_trans(Tween.TRANS_BOUNCE)
-	print("mew")
 	await tween.finished
 
 func interact() -> void:

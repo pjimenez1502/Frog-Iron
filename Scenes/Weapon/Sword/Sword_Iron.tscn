@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://5hq65fmgnl6q"]
+
+[ext_resource type="Script" uid="uid://cskucf7jaxpde" path="res://Scenes/Weapon/PlayerMeleeWeapon.gd" id="1_utj50"]
+[ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/_Hits/slash.tscn" id="2_j6tws"]
+[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="3_r1hjf"]
+[ext_resource type="Texture2D" uid="uid://4ywphkt81gcq" path="res://Scenes/Weapon/Sword/Sword.png" id="4_b85fv"]
+
+[node name="Iron Sword" type="Node3D"]
+script = ExtResource("1_utj50")
+enabled = true
+attack_hit = ExtResource("2_j6tws")
+metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
+
+[node name="WeaponStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_r1hjf")
+target_layer = 4
+base_damage = 4
+knockback = 100.0
+metadata/_custom_type_script = "uid://b316g7ijpxpy4"
+
+[node name="Hits" type="Node" parent="."]
+
+[node name="Sprite" type="Sprite3D" parent="."]
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("4_b85fv")
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

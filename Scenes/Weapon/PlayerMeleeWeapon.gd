@@ -1,0 +1,29 @@
+extends Weapon
+class_name PlayerMeleeWeapon
+
+@onready var sprite: Sprite3D = $Sprite
+@onready var attack_timer: Timer = %AttackTimer
+
+@export var enabled: bool
+@export var swing_cd: float
+var attack_available: bool = true
+
+func _ready() -> void:
+	attack_timer.wait_time = swing_cd
+
+func _physics_process(delta: float) -> void:
+	if !enabled:
+		return
+	if Input.is_action_pressed("FIRE"):
+		try_attack()
+
+func try_attack() -> void:
+	if !attack_available:
+		return
+	attack(Util.get_mouse_direction(self))
+	attack_available = false
+	attack_timer.start()
+
+
+func _on_attack_timer_timeout() -> void:
+	attack_available = true

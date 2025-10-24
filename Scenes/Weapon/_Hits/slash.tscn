@@ -1,19 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlweiwdwse41w"]
+[gd_scene load_steps=4 format=3 uid="uid://dlweiwdwse41w"]
 
 [ext_resource type="Script" uid="uid://dw4fgwkvtnhgq" path="res://Scenes/Weapon/WeaponHitTemp.gd" id="1_y0l4r"]
 [ext_resource type="Texture2D" uid="uid://bx510q28asqmq" path="res://Assets/FX/slash_1.png" id="2_nkgcy"]
-[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="3_nkgcy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i7o23"]
 radius = 0.6296513
 
-[node name="Area3D" type="Area3D" node_paths=PackedStringArray("weapon_stats")]
+[node name="Slash" type="Area3D"]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_y0l4r")
-weapon_stats = NodePath("WeaponStats")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.051)
 shape = SubResource("SphereShape3D_i7o23")
 
@@ -23,7 +22,3 @@ flip_v = true
 pixel_size = 0.05
 texture_filter = 0
 texture = ExtResource("2_nkgcy")
-
-[node name="WeaponStats" type="Node" parent="."]
-script = ExtResource("3_nkgcy")
-metadata/_custom_type_script = "uid://b316g7ijpxpy4"

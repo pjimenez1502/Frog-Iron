@@ -6,7 +6,7 @@ class_name Weapon
 @onready var weapon_stats: WeaponStats = %WeaponStats
 
 func attack(direction:Vector3) -> void:
-	var new_hit: WeaponHitTemp = attack_hit.instantiate()
+	var new_hit:  = attack_hit.instantiate()
 	hits.add_child(new_hit)
 	new_hit.set_weapon_data(weapon_stats)
 	new_hit.global_position = global_position + direction

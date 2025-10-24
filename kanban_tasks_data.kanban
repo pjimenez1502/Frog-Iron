@@ -32,8 +32,8 @@
 			"title": "STASH",
 			"tasks": [
 				"dbeeb071-035a-41fd-ae70-777918e76f4a",
-				"46152144-11fe-4a23-984d-145b9544ab88",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
+				"46152144-11fe-4a23-984d-145b9544ab88",
 				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b"
@@ -87,8 +87,8 @@
 		},
 		{
 			"uuid": "7a06beb2-38bb-485c-9f11-a839a5060d5a",
-			"title": "First Vertical Slice",
-			"description": "\nPlayer Movement\nEnemy detection, pathfinding and basic attack\n\nInventory\nTreasure\nEnemy loot\n\n\nPlayer can explore",
+			"title": "Vertical Slice 1",
+			"description": "\n",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		},
@@ -108,8 +108,8 @@
 		},
 		{
 			"uuid": "c88cb1ca-ee09-4405-9a35-43db31db161e",
-			"title": "Level UP",
-			"description": "\nSelect Stat Increase\nGain perks?",
+			"title": "XP",
+			"description": "\nEnemy give XP on kill depending on their difficulty modifiers\n\nOn Level Up:\n\tSelect Stat Increase\n\tGain perks?",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=27 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c6xc5t2lii4pj" path="res://Scenes/Weapon/Flail/flail.tscn" id="6_3gn43"]
 [ext_resource type="Script" uid="uid://diatversdlecu" path="res://Scenes/Character/Player/PlayerInteraction.gd" id="7_3gn43"]
 [ext_resource type="Texture2D" uid="uid://8qlseac4sj8q" path="res://Scenes/Weapon/Lance/lance.png" id="7_im63d"]
-[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/Sword/Sword_Iron.tscn" id="7_jw8fk"]
+[ext_resource type="Script" uid="uid://cskucf7jaxpde" path="res://Scenes/Weapon/PlayerMeleeWeapon.gd" id="7_uwo8e"]
+[ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/_Hits/slash.tscn" id="8_372xo"]
 [ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/Interaction/E_Key.png" id="8_f0b02"]
+[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="9_uwo8e"]
+[ext_resource type="Texture2D" uid="uid://4ywphkt81gcq" path="res://Scenes/Weapon/Sword/Sword.png" id="10_372xo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qy38"]
 atlas = ExtResource("1_1j3ov")
@@ -231,9 +234,24 @@ pixel_size = 0.07
 texture_filter = 0
 texture = ExtResource("7_im63d")
 
-[node name="Iron Sword" parent="Weapons" instance=ExtResource("7_jw8fk")]
-transform = Transform3D(0.50000006, 0.86602545, 0, -0.43301266, 0.25000003, 0.86602545, 0.74999994, -0.43301278, 0.49999994, 0.45160428, 0.36323917, 0.17636244)
-swing_cd = 0.5
+[node name="Melee" type="Node3D" parent="Weapons"]
+script = ExtResource("7_uwo8e")
+enabled = true
+attack_hit = ExtResource("8_372xo")
+metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
+
+[node name="WeaponStats" type="Node" parent="Weapons/Melee"]
+unique_name_in_owner = true
+script = ExtResource("9_uwo8e")
+target_layer = 4
+base_damage = 4
+knockback = 20.0
+metadata/_custom_type_script = "uid://b316g7ijpxpy4"
+
+[node name="Hits" type="Node" parent="Weapons/Melee"]
+
+[node name="Sprite" type="Sprite3D" parent="Weapons/Melee"]
+texture = ExtResource("10_372xo")
 
 [node name="InteractionArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -266,5 +284,3 @@ texture = ExtResource("8_f0b02")
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
 [connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="find_closest_interactable"]
-
-[editable path="Weapons/Iron Sword"]

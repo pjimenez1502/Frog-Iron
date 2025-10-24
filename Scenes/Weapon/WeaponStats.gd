@@ -1,6 +1,7 @@
 extends Node
 class_name WeaponStats
 
+@export var target_layer: Util.CollisionLayers
 @export var base_damage: int
 var damage: float
 @export var knockback: float

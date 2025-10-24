@@ -1,4 +1,6 @@
 extends Node3D
+class_name EnemyAttack
+
 @onready var enemy: Enemy = $".."
 @onready var attack_timer: Timer = $AttackTimer
 @export var attack_cd: float
@@ -7,6 +9,9 @@ extends Node3D
 var attack_target: Character
 var attack_available: bool = true
 
+func _ready() -> void:
+	attack_timer.wait_time = attack_cd
+	
 func _physics_process(delta: float) -> void:
 	if attack_target:
 		try_attack()
