@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b4drebfuh1icb"
-path="res://.godot/imported/Door_Frame.glb-9b57b96b979816a93a50fe2a34e4835c.scn"
+path="res://.godot/imported/Door_Frame.glb-8cd6c6e8255b00609aad50aa2b94b1a5.scn"
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Object/Door_Frame.glb"
-dest_files=["res://.godot/imported/Door_Frame.glb-9b57b96b979816a93a50fe2a34e4835c.scn"]
+source_file="res://Scenes/Object/Door/Component/Door_Frame.glb"
+dest_files=["res://.godot/imported/Door_Frame.glb-8cd6c6e8255b00609aad50aa2b94b1a5.scn"]
 
 [params]
 

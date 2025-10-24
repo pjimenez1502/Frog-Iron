@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://h0gubelgrff"
-path="res://.godot/imported/Door.glb-ba9edfb70e582c4bd0a444a38d8b3ed4.scn"
+path="res://.godot/imported/Door.glb-b6d52e67453f0563bc3767becdf351ce.scn"
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Object/Door.glb"
-dest_files=["res://.godot/imported/Door.glb-ba9edfb70e582c4bd0a444a38d8b3ed4.scn"]
+source_file="res://Scenes/Object/Door/Component/Door.glb"
+dest_files=["res://.godot/imported/Door.glb-b6d52e67453f0563bc3767becdf351ce.scn"]
 
 [params]
 
@@ -37,6 +37,14 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Scenes/Terrain/Dungeon_1/Dungeon1_mat.tres",
+"use_external/path": "uid://dxw8753d2eof4"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

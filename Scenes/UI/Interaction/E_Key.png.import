@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duk1lsdbmdom6"
-path="res://.godot/imported/Dungeon_1_tiles.png.001.png-edb335dfedb5dfb5c687dc07fef2223e.ctex"
+uid="uid://lk6xa04s1mm8"
+path="res://.godot/imported/E_Key.png-2deb0d33667281595338634fbcccc914.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/textures/Dungeon_1_tiles.png.001.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.png.001.png-edb335dfedb5dfb5c687dc07fef2223e.ctex"]
+source_file="res://Scenes/UI/Interaction/E_Key.png"
+dest_files=["res://.godot/imported/E_Key.png-2deb0d33667281595338634fbcccc914.ctex"]
 
 [params]
 

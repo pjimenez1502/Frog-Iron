@@ -1,12 +1,13 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dxw8753d2eof4"]
 
-[ext_resource type="Shader" path="res://Assets/Shader/new_shader.gdshader" id="1_klrl2"]
-[ext_resource type="Texture2D" uid="uid://cbx6u2ltg7r5p" path="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.png" id="2_i6wwu"]
+[ext_resource type="Shader" uid="uid://b7lary20wfb3b" path="res://Assets/Shader/new_shader.gdshader" id="1_klrl2"]
+[ext_resource type="Texture2D" uid="uid://cbx6u2ltg7r5p" path="res://Scenes/Terrain/Dungeon_1/textures/Dungeon_1_tiles.png" id="2_i6wwu"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_klrl2")
 shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_i6wwu")
 shader_parameter/metallic = 0.0
 shader_parameter/use_normalmap = false
 shader_parameter/shadow_size = 0.0
@@ -19,4 +20,3 @@ shader_parameter/rimlight_blend = 0.01
 shader_parameter/rimlight_color = Color(1, 1, 1, 1)
 shader_parameter/normal_bias = Vector3(0, 0, 0)
 shader_parameter/light_bias = Vector3(0, 0, 0)
-shader_parameter/albedo_texture = ExtResource("2_i6wwu")

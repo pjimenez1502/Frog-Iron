@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxenb44h71v8u"]
 
-[ext_resource type="MeshLibrary" uid="uid://b2d08ab6dhlb6" path="res://Scenes/Terrain/Dungeon_1/Dungeon_1_Meshlibrary.tres" id="1_0r0d6"]
+[ext_resource type="MeshLibrary" uid="uid://b2d08ab6dhlb6" path="res://Scenes/Terrain/Dungeon_1/Tiles/Dungeon_1_Meshlibrary.tres" id="1_0r0d6"]
 [ext_resource type="PackedScene" uid="uid://2m1xhwqevmcu" path="res://Scenes/Terrain/Dungeon_1/trap.tscn" id="2_gdevb"]
 
 [node name="Dungeon_1_map" type="GridMap"]
