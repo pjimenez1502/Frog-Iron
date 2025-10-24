@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpqcq56fmgsv2"]
+
+[ext_resource type="Script" uid="uid://cqi85dardqd5j" path="res://Scenes/Object/_Interactions/Lever_Inter.gd" id="1_flupf"]
+[ext_resource type="Script" uid="uid://cr4f5idmhvycs" path="res://Scenes/Object/Button/Lever.gd" id="1_j67je"]
+[ext_resource type="PackedScene" uid="uid://ckgb6fib0mnj5" path="res://Scenes/Object/Button/Component/LeverBase.glb" id="2_flupf"]
+[ext_resource type="PackedScene" uid="uid://chyl5x5io3aht" path="res://Scenes/Object/Button/Component/LeverHandle.glb" id="3_j67je"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_efhx5"]
+radius = 1.0
+
+[node name="Lever" type="Node3D"]
+script = ExtResource("1_j67je")
+
+[node name="Interaction" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_flupf")
+
+[node name="InteractableArea" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_efhx5")
+
+[node name="LeverBase" parent="." instance=ExtResource("2_flupf")]
+
+[node name="Hinge" type="Node3D" parent="LeverBase"]
+unique_name_in_owner = true
+
+[node name="LeverHandle" parent="LeverBase/Hinge" instance=ExtResource("3_j67je")]

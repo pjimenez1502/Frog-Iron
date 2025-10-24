@@ -8,3 +8,6 @@ func set_active(value: bool) -> void:
 
 func interact() -> void:
 	interaction.interact()
+
+func interact_valued(value: bool) -> void:
+	interaction.interact_valued(value)

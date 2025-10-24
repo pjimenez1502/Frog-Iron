@@ -1,0 +1,4 @@
+extends InteractableObject
+class_name Lever_IntObject
+
+@export var connected_interaction: InteractableObject
