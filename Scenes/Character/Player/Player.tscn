@@ -186,14 +186,23 @@ shape = SubResource("CapsuleShape3D_11mtv")
 [node name="Camera Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Camera Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.69451, 4.92463)
+[node name="Camera3D Close" type="Camera3D" parent="Camera Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99875563, 0.04987835, 0, -0.04987835, 0.99875563, 0, 1.364158, 3.74229)
 fov = 100.0
 
-[node name="Camera3D2" type="Camera3D" parent="Camera Pivot"]
+[node name="Camera3D Far" type="Camera3D" parent="Camera Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.788945, 0.614464, 0, -0.614464, 0.788945, 0, 6.83338, 6.956)
 current = true
 fov = 100.0
+
+[node name="Vision" type="Node3D" parent="Camera Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.86602515, -0.49999988, 0, 0.49999988, 0.86602515, 0, 0, 0)
+
+[node name="PlayerLight" type="OmniLight3D" parent="Camera Pivot/Vision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8320885, 0)
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.1
 
 [node name="Walk Animation Player" type="AnimationPlayer" parent="."]
 libraries = {

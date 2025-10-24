@@ -146,6 +146,7 @@ script = ExtResource("1_ghg1f")
 unique_name_in_owner = true
 transform = Transform3D(0.9908228, 0.13516717, 0.00010331717, -0.09566624, 0.7007263, 0.70698655, 0.09548903, -0.7005083, 0.7072265, 0, 0.89673185, 0)
 pixel_size = 0.05
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_wee41")
 autoplay = "default"

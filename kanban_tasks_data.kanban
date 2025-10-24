@@ -12,7 +12,7 @@
 		},
 		{
 			"uuid": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
-			"title": "Mechanic",
+			"title": "Concept",
 			"color": "b400ee"
 		},
 		{
@@ -58,7 +58,9 @@
 		{
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"73d2c789-8b03-4250-bea9-c3830459548b"
+			]
 		}
 	],
 	"tasks": [
@@ -72,7 +74,7 @@
 		{
 			"uuid": "79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 			"title": "Dungeon Generation",
-			"description": "",
+			"description": "\nGroup in 5 levels\n- 1\n- 2 (share theme with 3)\n- 3 (miniboss?)\n- 4 (share theme with 5)\n- 5 (Boss)\n\n",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
@@ -130,6 +132,13 @@
 			"title": "StepInteractable",
 			"description": "Activated when stepping on them\n\nPressure plates (buttons)\nTraps",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "73d2c789-8b03-4250-bea9-c3830459548b",
+			"title": "MAIN CONCEPT",
+			"description": "\nDungeon Crawler\n\n- customization - allow players to edit their pixelart character\n- easy to expand once finished (new enemies, new equipment, etc) via extensions (mods?)\n",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}
 	],
