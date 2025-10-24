@@ -1,7 +1,7 @@
 extends Interaction
+class_name LeverInteraction
 
 @onready var lever: Lever_IntObject = $".."
-
 @onready var hinge: Node3D = %Hinge
 @export var target_opening: int = 45
 @export var opening_time: float = 0.5

@@ -4,6 +4,26 @@
 			"uuid": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"title": "Task",
 			"color": "3d85f2"
+		},
+		{
+			"uuid": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"title": "UI",
+			"color": "56ff00"
+		},
+		{
+			"uuid": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"title": "Mechanic",
+			"color": "b400ee"
+		},
+		{
+			"uuid": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"title": "System",
+			"color": "f7b300"
+		},
+		{
+			"uuid": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"title": "Combat",
+			"color": "df0a00"
 		}
 	],
 	"stages": [
@@ -12,8 +32,9 @@
 			"title": "STASH",
 			"tasks": [
 				"dbeeb071-035a-41fd-ae70-777918e76f4a",
-				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 				"46152144-11fe-4a23-984d-145b9544ab88",
+				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
+				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b"
 			]
@@ -22,14 +43,16 @@
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
-				"d80d05f7-191e-4483-b18e-40b2c88e621f"
+				"567e576c-c841-4ca3-a66c-beffa1d34f7c",
+				"8973c324-1b6b-4b89-bba6-2e2101300e31"
 			]
 		},
 		{
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"7a06beb2-38bb-485c-9f11-a839a5060d5a"
+				"7a06beb2-38bb-485c-9f11-a839a5060d5a",
+				"d80d05f7-191e-4483-b18e-40b2c88e621f"
 			]
 		},
 		{
@@ -43,21 +66,21 @@
 			"uuid": "d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 			"title": "Character Stats",
 			"description": "\nHP\n\nSTR\t - mods Physical Damage\nINT\t - mods Magic Damage\nCON - mods HP\nWIS\t - mods status resistance\n\nLevel\nXP (only player, allows them to progress lvl. enemies live with the lvl they spawned in)\n\nValue of stats es calculated when used.\nEx: Max Health calculation (baseHP + (CON * 4)) is recalculated every time stats can change (equipment change, stat buffs/debuffs)\nEx: Damage (baseDmg + (STR * weaponSTRmod)) is recalculated every hit",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{
 			"uuid": "79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 			"title": "Dungeon Generation",
 			"description": "",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{
 			"uuid": "d80d05f7-191e-4483-b18e-40b2c88e621f",
 			"title": "Objects and Interaction",
-			"description": "\nWooden Door\nLever -> connected barred door\nChest",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"description": "\n== Done:\nWooden Door\nBar Door\nLever\n\n== STASH:\nChest",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{
@@ -71,21 +94,42 @@
 			"uuid": "dbeeb071-035a-41fd-ae70-777918e76f4a",
 			"title": "Enemy Expansion",
 			"description": "\nLvl and stat system at spawn\n\nMore melee attacks?\nRanged attacks\nPreference to stay at range?\n",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"steps": []
 		},
 		{
 			"uuid": "46152144-11fe-4a23-984d-145b9544ab88",
 			"title": "Inventory",
 			"description": "\nGold\n\nEquipment Slots: (8 slots)\n- Head\n- Torso\n- Arms\n- Legs\n- Tail\n= necklace\n= ring\n= Weapon\n\nBag: (8 slots?)",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		},
 		{
 			"uuid": "c88cb1ca-ee09-4405-9a35-43db31db161e",
 			"title": "Level UP",
 			"description": "\nSelect Stat Increase\nGain perks?",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "567e576c-c841-4ca3-a66c-beffa1d34f7c",
+			"title": "Sword",
+			"description": "",
+			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"steps": []
+		},
+		{
+			"uuid": "eeaada73-88c3-4954-9a3c-64c7c2f9230b",
+			"title": "ingame UI",
+			"description": "\nSTATS\nINVENTORY\nSKILLS",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "8973c324-1b6b-4b89-bba6-2e2101300e31",
+			"title": "StepInteractable",
+			"description": "Activated when stepping on them\n\nPressure plates (buttons)\nTraps",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

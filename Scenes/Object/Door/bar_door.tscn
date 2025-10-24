@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdooinc4mh5c8"]
+
+[ext_resource type="Script" uid="uid://d4csp0bp15e66" path="res://Scenes/Object/InteractableObject.gd" id="1_3pepu"]
+[ext_resource type="Script" uid="uid://dotlwconwvlqb" path="res://Scenes/Object/_Interactions/Door_Inter.gd" id="2_mvm3j"]
+[ext_resource type="PackedScene" uid="uid://b4drebfuh1icb" path="res://Scenes/Object/Door/Component/Door_Frame.glb" id="3_pdlnr"]
+[ext_resource type="PackedScene" uid="uid://dkxjrm5rvjpai" path="res://Scenes/Object/Door/Component/BarDoor.glb" id="4_3pepu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y0hmi"]
+radius = 1.0
+
+[node name="BarDoor" type="Node3D"]
+script = ExtResource("1_3pepu")
+
+[node name="Interaction" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_mvm3j")
+door_type = 1
+target_opening = 3
+
+[node name="InteractableArea" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_y0hmi")
+
+[node name="Door_Frame" parent="." instance=ExtResource("3_pdlnr")]
+
+[node name="Hinge" type="Node3D" parent="Door_Frame"]
+unique_name_in_owner = true
+
+[node name="BarDoor2" parent="Door_Frame/Hinge" instance=ExtResource("4_3pepu")]

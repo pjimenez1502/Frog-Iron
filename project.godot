@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/main_scene="uid://ck2jmuxclwn0d"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/pjime/Videos/Captures/godor.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
