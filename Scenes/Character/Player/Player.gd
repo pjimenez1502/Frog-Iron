@@ -2,7 +2,7 @@ extends Character
 class_name Player
 
 func _ready() -> void:
-	print("PLAYER READY")
+	SignalBus.ShowPopupText.emit("Meowmeow")
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
 	character_stats.DEAD.connect(player_death)
 
@@ -22,4 +22,5 @@ func player_update_hp(max_hp: int, current_hp:int) -> void:
 	SignalBus.UpdatePlayerHP.emit(max_hp, current_hp)
 
 func player_death() -> void:
+	set_process(false)
 	SignalBus.PlayerDead.emit()

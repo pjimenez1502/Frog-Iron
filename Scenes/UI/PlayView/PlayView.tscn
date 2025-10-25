@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=11 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
+[ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
 [ext_resource type="PackedScene" uid="uid://w31voexjaly" path="res://Scenes/Terrain/Dungeon_1/MAP_Dungeon_Test.tscn" id="2_oklkm"]
 [ext_resource type="Script" uid="uid://d0qhm3bot5pxa" path="res://Scenes/UI/HUD/HUD.gd" id="3_ch5r3"]
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="4_3p3yu"]
+[ext_resource type="Script" uid="uid://fq6v5jfy7nau" path="res://Scenes/UI/PlayView/PopupText.gd" id="4_ch5r3"]
+[ext_resource type="Texture2D" uid="uid://d4djiikmkfebp" path="res://Scenes/UI/Interaction/F_Key.png" id="5_3p3yu"]
 [ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="5_povyt"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="6_ufkdj"]
 [ext_resource type="PackedScene" uid="uid://d1f8xxeridxnk" path="res://Scenes/UI/Cursor/Cursor.tscn" id="7_uldec"]
@@ -15,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_oklkm")
 script = ExtResource("1_j5275")
 DEMO_DUNGEON = ExtResource("2_oklkm")
 
@@ -43,6 +47,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PopupText" type="Control" parent="UI"]
+custom_minimum_size = Vector2(600, 160)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_bottom = 160.0
+grow_horizontal = 2
+script = ExtResource("4_ch5r3")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+
+[node name="Panel" type="Panel" parent="UI/PopupText/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PopupText/MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/PopupText/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -21.0
+offset_right = -11.0
+offset_bottom = 19.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_3p3yu")
+
+[node name="Control" type="Control" parent="UI/PopupText/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 1

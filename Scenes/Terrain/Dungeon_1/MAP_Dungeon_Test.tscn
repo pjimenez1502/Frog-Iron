@@ -27,6 +27,7 @@ filter_low_hanging_obstacles = true
 [node name="Dungeon_1" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0h72o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4853184, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t7sdq")

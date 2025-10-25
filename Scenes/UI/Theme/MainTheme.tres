@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://quyp3hv3edt"]
+
+[ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Menu/BorderSquare.png" id="1_ta5cs"]
+[ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="2_tcwhh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tcwhh"]
+texture = ExtResource("1_ta5cs")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_tcwhh")
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("2_tcwhh")
