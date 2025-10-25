@@ -24,10 +24,8 @@ Util="*res://Global/Util.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep_width"
 window/main_scene="uid://ck2jmuxclwn0d"
 
 [editor]

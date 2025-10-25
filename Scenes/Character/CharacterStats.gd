@@ -10,6 +10,12 @@ signal DEAD
 @export var max_HP = 10
 var current_HP
 
+var STR: int
+var DEX: int
+var INT: int
+var WIS: int
+var CON: int
+
 func _ready() -> void:
 	invul_timer_setup()
 	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows

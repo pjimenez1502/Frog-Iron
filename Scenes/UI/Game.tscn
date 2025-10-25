@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck2jmuxclwn0d"]
+[gd_scene load_steps=7 format=3 uid="uid://ck2jmuxclwn0d"]
 
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="1_t3bkm"]
 [ext_resource type="PackedScene" uid="uid://w31voexjaly" path="res://Scenes/Terrain/Dungeon_1/MAP_Dungeon_Test.tscn" id="1_tba2g"]
 [ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="2_ql7ex"]
 [ext_resource type="PackedScene" uid="uid://d1f8xxeridxnk" path="res://Scenes/UI/Cursor/Cursor.tscn" id="2_rw0po"]
 [ext_resource type="Script" uid="uid://d0qhm3bot5pxa" path="res://Scenes/UI/HUD.gd" id="2_x4q1c"]
+[ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="5_x4q1c"]
 
 [node name="GAME" type="Control"]
 layout_mode = 3
@@ -21,10 +22,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
+stretch_shrink = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(640, 360)
+size = Vector2i(576, 324)
 render_target_update_mode = 4
 
 [node name="Dungeon_1" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_tba2g")]
@@ -52,9 +55,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -60.0
-offset_right = 80.0
+offset_left = -160.0
+offset_top = -120.0
+offset_right = 160.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_x4q1c")
@@ -74,7 +77,7 @@ alignment = 1
 
 [node name="HP_Bar" type="TextureProgressBar" parent="DungeonView/UI/HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 8)
+custom_minimum_size = Vector2(160, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -88,9 +91,27 @@ texture_under = ExtResource("1_t3bkm")
 texture_progress = ExtResource("2_ql7ex")
 tint_progress = Color(0, 1, 0, 1)
 
+[node name="HP_Label" type="Label" parent="DungeonView/UI/HUD/MarginContainer/VBoxContainer/HP_Bar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_x4q1c")
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="XP_Bar" type="TextureProgressBar" parent="DungeonView/UI/HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 4)
+custom_minimum_size = Vector2(160, 6)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
