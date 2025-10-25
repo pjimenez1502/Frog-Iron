@@ -11,12 +11,13 @@ var dead: bool
 var invert_look : bool
 
 func _physics_process(delta: float) -> void:
+	gravity(delta)
 	move()
 
 func move() -> void:
 	if dead:
 		return
-		
+	
 	velocity += velocity_mod
 	velocity_mod.x = move_toward(velocity_mod.x, 0, character_stats.SPEED)
 	velocity_mod.z = move_toward(velocity_mod.z, 0, character_stats.SPEED)
@@ -31,6 +32,9 @@ func move() -> void:
 		sprite.flip_h = !get_viewport().get_mouse_position().x < get_viewport().size.x / 2
 	else:
 		sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
+
+func gravity(delta: float) -> void:
+	velocity.y = -300 * delta
 
 func knockback(direction: Vector3, strength: float) -> void:
 	velocity_mod += direction * strength * 10
