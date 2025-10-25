@@ -16,7 +16,7 @@ unique_name_in_owner = true
 script = ExtResource("3_r1hjf")
 target_layer = 4
 base_damage = 4
-knockback = 100.0
+knockback = 2.0
 metadata/_custom_type_script = "uid://b316g7ijpxpy4"
 
 [node name="Hits" type="Node" parent="."]

@@ -33,7 +33,7 @@ func move() -> void:
 		sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
 
 func knockback(direction: Vector3, strength: float) -> void:
-	velocity_mod += direction * strength
+	velocity_mod += direction * strength * 10
 
 func character_dead() -> void:
 	animation_player.stop()

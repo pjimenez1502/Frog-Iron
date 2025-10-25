@@ -232,7 +232,6 @@ texture_filter = 0
 texture = ExtResource("7_im63d")
 
 [node name="Iron Sword" parent="Weapons" instance=ExtResource("7_jw8fk")]
-transform = Transform3D(0.50000006, 0.86602545, 0, -0.43301266, 0.25000003, 0.86602545, 0.74999994, -0.43301278, 0.49999994, 0.45160428, 0.36323917, 0.17636244)
 swing_cd = 0.5
 
 [node name="InteractionArea" type="Area3D" parent="."]
@@ -266,5 +265,3 @@ texture = ExtResource("8_f0b02")
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
 [connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="find_closest_interactable"]
-
-[editable path="Weapons/Iron Sword"]
