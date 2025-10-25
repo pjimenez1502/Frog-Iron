@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbsf41bly11ev"]
+
+[ext_resource type="PackedScene" uid="uid://b4drebfuh1icb" path="res://Scenes/Object/Door/Component/Door_Frame.glb" id="3_rqobk"]
+
+[node name="DoorArch" type="Node3D"]
+
+[node name="Door_Frame" parent="." instance=ExtResource("3_rqobk")]
+
+[editable path="Door_Frame"]

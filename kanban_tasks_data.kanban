@@ -24,6 +24,11 @@
 			"uuid": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"title": "Combat",
 			"color": "df0a00"
+		},
+		{
+			"uuid": "a1886d67-74d1-4025-9877-4525aba4402a",
+			"title": "Asset",
+			"color": "00fff9"
 		}
 	],
 	"stages": [
@@ -36,30 +41,33 @@
 				"46152144-11fe-4a23-984d-145b9544ab88",
 				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
-				"79dd6f0c-4e14-44ca-a411-ce71c11a499b"
+				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
+				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
+				"73d2c789-8b03-4250-bea9-c3830459548b",
+				"a11dc16a-f20e-48be-b636-1005ab2d25dc"
 			]
 		},
 		{
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
-				"567e576c-c841-4ca3-a66c-beffa1d34f7c",
-				"8973c324-1b6b-4b89-bba6-2e2101300e31"
+				"8973c324-1b6b-4b89-bba6-2e2101300e31",
+				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
+				"95d12487-7eb5-4a68-a65d-ec22a5252160"
 			]
 		},
 		{
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"7a06beb2-38bb-485c-9f11-a839a5060d5a",
-				"d80d05f7-191e-4483-b18e-40b2c88e621f"
+				"7a06beb2-38bb-485c-9f11-a839a5060d5a"
 			]
 		},
 		{
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
-				"73d2c789-8b03-4250-bea9-c3830459548b"
+				"567e576c-c841-4ca3-a66c-beffa1d34f7c"
 			]
 		}
 	],
@@ -75,20 +83,13 @@
 			"uuid": "79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 			"title": "Dungeon Generation",
 			"description": "\nGroup in 5 levels\n- 1\n- 2 (share theme with 3)\n- 3 (miniboss?)\n- 4 (share theme with 5)\n- 5 (Boss)\n\n",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
-			"steps": []
-		},
-		{
-			"uuid": "d80d05f7-191e-4483-b18e-40b2c88e621f",
-			"title": "Objects and Interaction",
-			"description": "\n== Done:\nWooden Door\nBar Door\nLever\n\n== STASH:\nChest",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
 		{
 			"uuid": "7a06beb2-38bb-485c-9f11-a839a5060d5a",
 			"title": "Vertical Slice 1",
-			"description": "\n",
+			"description": "\nStart in entrance room. Exit at exit room.\n\n6 Rooms\n",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		},
@@ -115,7 +116,7 @@
 		},
 		{
 			"uuid": "567e576c-c841-4ca3-a66c-beffa1d34f7c",
-			"title": "Sword",
+			"title": "Player Melee Weapon (swingable)",
 			"description": "",
 			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"steps": []
@@ -139,6 +140,34 @@
 			"title": "MAIN CONCEPT",
 			"description": "\nDungeon Crawler\n\n- customization - allow players to edit their pixelart character\n- easy to expand once finished (new enemies, new equipment, etc) via extensions (mods?)\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "606f8f84-268b-49f5-91f7-a7c0892a5cb5",
+			"title": "Fog of War",
+			"description": "",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "a11dc16a-f20e-48be-b636-1005ab2d25dc",
+			"title": "Popup Message",
+			"description": "",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "95d12487-7eb5-4a68-a65d-ec22a5252160",
+			"title": "Objects",
+			"description": "\n== Stash:\nSliding Fake Wall\nChest\nEnemyTrackingTrigger (object checks for x enemies to die before triggering)\nItemCage (surrounds an interactable object and blocks it until it is released)\n\n== Done:\nBarDoor\nDoor\nLever\n",
+			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
+			"steps": []
+		},
+		{
+			"uuid": "2eac660f-a0b0-4c49-865a-6a88de5cad47",
+			"title": "Tiles",
+			"description": "\nStairs\n",
+			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		}
 	],

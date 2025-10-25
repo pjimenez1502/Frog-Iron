@@ -38,6 +38,10 @@ movie_writer/movie_file="C:/Users/pjime/Videos/Captures/godor.avi"
 
 enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
 
+[global_group]
+
+Enemy=""
+
 [importer_defaults]
 
 texture={
