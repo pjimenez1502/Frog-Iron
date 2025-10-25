@@ -4,3 +4,8 @@ signal UpdatePlayerHP
 signal PlayerDead
 
 signal NavmeshBakeRequest
+
+
+
+
+signal LaunchDemoScene

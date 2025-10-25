@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://doa3ilpvhjo38"]
+
+[ext_resource type="Script" uid="uid://bqfib6ygbqm3i" path="res://Scenes/UI/StartMenu/DynamicBackground.gd" id="1_5i01g"]
+[ext_resource type="Script" uid="uid://brojg5jkfpp8e" path="res://Scenes/UI/StartMenu/StartMenu.gd" id="1_y0opo"]
+
+[sub_resource type="Gradient" id="Gradient_fy4ai"]
+offsets = PackedFloat32Array(0, 0.86911)
+colors = PackedColorArray(0.19, 0.1083, 0.187277, 1, 0.1978, 0.43, 0.39517, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1474k"]
+noise_type = 2
+frequency = 0.2
+fractal_type = 0
+cellular_distance_function = 3
+cellular_jitter = -1.16
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0e7t5"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_1474k")
+color_ramp = SubResource("Gradient_fy4ai")
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0opo")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5i01g")
+
+[node name="Background" type="TextureRect" parent="Background"]
+texture_filter = 1
+custom_minimum_size = Vector2(1600, 900)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_0e7t5")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 83.0
+offset_right = 451.0
+offset_bottom = 332.0
+theme_override_font_sizes/font_size = 64
+text = "MEOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 78.0
+offset_top = 375.0
+offset_right = 348.0
+offset_bottom = 565.0
+
+[node name="Buttons" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Start" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+text = "Start"
+
+[node name="Continue" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+disabled = true
+text = "Continue"
+
+[node name="Settings" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="Control/Buttons/Start" to="." method="new_game"]
+[connection signal="pressed" from="Control/Buttons/Continue" to="." method="load_game"]
+[connection signal="pressed" from="Control/Buttons/Settings" to="." method="open_settings"]
+[connection signal="pressed" from="Control/Buttons/Exit" to="." method="exit"]
