@@ -5,6 +5,6 @@ class_name WeaponHitTemp
 
 func _ready() -> void:
 	super._ready()
-	var tween: Tween = create_tween()
+	var tween: Tween = get_tree().create_tween()
 	await tween.tween_property($Sprite3D, "modulate:a", 0, duration).finished
 	queue_free()

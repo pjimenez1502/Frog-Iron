@@ -8,7 +8,7 @@ class_name Character
 
 var velocity_mod: Vector3
 var dead: bool
-var invert_look : bool
+@export var turn_at_mouse : bool
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
@@ -28,10 +28,13 @@ func move() -> void:
 	else:
 		animation_player.play("Walk")
 	
-	if invert_look:
-		sprite.flip_h = !get_viewport().get_mouse_position().x < get_viewport().size.x / 2
-	else:
+	sprite_look()
+
+func sprite_look() -> void:
+	if turn_at_mouse:
 		sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
+	else:
+		sprite.flip_h = velocity.x < 0
 
 func gravity(delta: float) -> void:
 	velocity.y = -300 * delta

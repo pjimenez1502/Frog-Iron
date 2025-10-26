@@ -8,3 +8,6 @@ signal PlayerDead
 signal NavmeshBakeRequest
 
 signal ShowPopupText
+
+signal PauseGame
+signal TimeScaleChange

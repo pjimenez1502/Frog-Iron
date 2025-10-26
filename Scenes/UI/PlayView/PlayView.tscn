@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=14 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -10,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="5_povyt"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="6_ufkdj"]
 [ext_resource type="PackedScene" uid="uid://d1f8xxeridxnk" path="res://Scenes/UI/Cursor/Cursor.tscn" id="7_uldec"]
+[ext_resource type="Script" uid="uid://mvwuldoxl7by" path="res://Scenes/UI/PlayView/Vignette.gd" id="8_povyt"]
+[ext_resource type="Shader" uid="uid://kvauqeyvssi4" path="res://Assets/Shader/Vignette.gdshader" id="8_ufkdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
+shader = ExtResource("8_ufkdj")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/closure = 15.0
 
 [node name="PlayView" type="Control"]
 layout_mode = 3
@@ -48,67 +56,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PopupText" type="Control" parent="UI"]
-custom_minimum_size = Vector2(600, 160)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_bottom = 160.0
-grow_horizontal = 2
-script = ExtResource("4_ch5r3")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/PopupText"]
+[node name="Vignette" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_uldec")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 64
-
-[node name="Panel" type="Panel" parent="UI/PopupText/MarginContainer"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/PopupText/MarginContainer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="UI/PopupText/MarginContainer/Panel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -51.0
-offset_top = -21.0
-offset_right = -11.0
-offset_bottom = 19.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("5_3p3yu")
-
-[node name="Control" type="Control" parent="UI/PopupText/MarginContainer/Panel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+script = ExtResource("8_povyt")
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 1
@@ -186,6 +142,70 @@ stretch_margin_bottom = 2
 texture_under = ExtResource("4_3p3yu")
 texture_progress = ExtResource("5_povyt")
 tint_progress = Color(0, 1, 1, 1)
+
+[node name="PopupText" type="Control" parent="UI"]
+custom_minimum_size = Vector2(600, 160)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 160.0
+grow_horizontal = 2
+script = ExtResource("4_ch5r3")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+
+[node name="Panel" type="Panel" parent="UI/PopupText/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PopupText/MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/PopupText/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -21.0
+offset_right = -11.0
+offset_bottom = 19.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_3p3yu")
+
+[node name="Control" type="Control" parent="UI/PopupText/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Cursor" parent="." instance=ExtResource("7_uldec")]
 layout_mode = 1
