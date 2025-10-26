@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://chenbcu36627c"]
+[gd_scene load_steps=18 format=3 uid="uid://chenbcu36627c"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_ghg1f"]
 [ext_resource type="Texture2D" uid="uid://dkry738lk1ete" path="res://Scenes/Character/Enemy/Medium/Rat_Med/Rat.png" id="2_lq07w"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_uhhdc"]
+[ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="4_lu8p1"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_xa7qo"]
 [ext_resource type="PackedScene" uid="uid://cc856frj7mepq" path="res://Scenes/Weapon/_MELEE/Claws/small_claws.tscn" id="5_sattg"]
 
@@ -152,6 +153,11 @@ autoplay = "default"
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_uhhdc")
+
+[node name="Loot" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_lu8p1")
+xp = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

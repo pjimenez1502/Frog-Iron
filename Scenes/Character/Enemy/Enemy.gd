@@ -3,17 +3,18 @@ class_name Enemy
 
 @onready var nav_agent: NavigationAgent3D = %NavigationAgent3D
 @onready var attack: Node3D = %Attack
+@onready var loot: Loot = %Loot
 var close_target: Node3D
 var far_target: Node3D
 var target: Node3D
 
 func _ready() -> void:
 	super._ready()
-	character_stats.DEAD.connect(enemy_dead)
 
-func enemy_dead() -> void:
+func death() -> void:
 	character_dead()
 	attack_enabled(false)
+	loot.drop_loot()
 	# drop loot
 
 func move() -> void:
@@ -26,6 +27,8 @@ func move() -> void:
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
 	super.move()
+
+
 
 func make_nav_path() -> void:
 	target = find_target()

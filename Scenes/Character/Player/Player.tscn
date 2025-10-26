@@ -179,6 +179,9 @@ unique_name_in_owner = true
 script = ExtResource("3_f0b02")
 character_tag = 1
 base_HP = 6
+STR = 6
+DEX = 10
+CON = 20
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

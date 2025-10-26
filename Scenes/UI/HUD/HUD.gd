@@ -8,8 +8,13 @@ class_name HUD
 func _ready() -> void:
 	print("HUD READY")
 	SignalBus.UpdatePlayerHP.connect(update_hp)
+	SignalBus.UpdatePlayerXP.connect(update_xp)
 
 func update_hp(max_hp: int, current_hp: int) -> void:
 	hp_bar.max_value = max_hp
 	hp_bar.value = current_hp
 	hp_label.text = "%d/%d" % [current_hp, max_hp]
+
+func update_xp(xp: int, max_xp:int) -> void:
+	xp_bar.max_value = max_xp
+	xp_bar.value = xp

@@ -2,6 +2,8 @@ extends Node
 
 signal LaunchDemoScene
 
+signal AddPlayerXP
+signal UpdatePlayerXP
 signal UpdatePlayerHP
 signal PlayerDead
 

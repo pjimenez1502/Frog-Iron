@@ -9,10 +9,14 @@ var velocity_mod: Vector3
 var dead: bool
 @export var turn_at_mouse : bool
 
+var level: int = 1
+
 func _ready() -> void:
 	animation_player = $"Walk Animation Player"
 	sprite = %Sprite
 	character_stats = %CharacterStats
+	
+	character_stats.DEAD.connect(death)
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
@@ -44,8 +48,10 @@ func gravity(delta: float) -> void:
 	velocity.y = -300 * delta
 
 func damage(damage: int) -> void:
-	print(damage)
 	character_stats.damage(damage)
+
+func death() -> void:
+	character_dead()
 
 func knockback(direction: Vector3, strength: float) -> void:
 	velocity_mod += direction * strength * 10

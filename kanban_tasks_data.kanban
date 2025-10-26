@@ -40,18 +40,18 @@
 				"a75810cd-be3e-4876-8d28-0506c370bec2",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"46152144-11fe-4a23-984d-145b9544ab88",
-				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
-				"a11dc16a-f20e-48be-b636-1005ab2d25dc"
+				"ec8cfbf4-20c0-4153-9710-f40c9f8f0362"
 			]
 		},
 		{
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
+				"3291ab44-2e6f-4c46-9dcb-0e7f61ac8a5f",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160"
@@ -61,14 +61,16 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"7a06beb2-38bb-485c-9f11-a839a5060d5a"
+				"7a06beb2-38bb-485c-9f11-a839a5060d5a",
+				"d5df15ac-40f7-40a5-8feb-55d752fafbb5"
 			]
 		},
 		{
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
-				"567e576c-c841-4ca3-a66c-beffa1d34f7c"
+				"e98b5aef-b729-4b98-b394-4427c825b8a1",
+				"a11dc16a-f20e-48be-b636-1005ab2d25dc"
 			]
 		}
 	],
@@ -76,7 +78,7 @@
 		{
 			"uuid": "d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 			"title": "Character Stats",
-			"description": "\nHP\n\nSTR\t - mods Physical Damage\nINT\t - mods Magic Damage\nCON - mods HP\nWIS\t - mods status resistance\n\nLevel\nXP (only player, allows them to progress lvl. enemies live with the lvl they spawned in)\n\nValue of stats es calculated when used.\nEx: Max Health calculation (baseHP + (CON * 4)) is recalculated every time stats can change (equipment change, stat buffs/debuffs)\nEx: Damage (baseDmg + (STR * weaponSTRmod)) is recalculated every hit",
+			"description": "\nHP\n\nSTR\t - mods Physical Damage\nDEX - mods speed and Ranged and Dex Damage\nINT\t - mods Magical Damage\nCON - mods HP\nWIS\t - mods status resistance\n\nLevel\nXP (only player, allows them to progress lvl. enemies live with the lvl they spawned in)\n\nValue of stats is calculated when used.\nEx: Max Health calculation (baseHP + (CON * 4)) is recalculated every time stats can change (equipment change, stat buffs/debuffs)\nEx: Damage (baseDmg + (STR * weaponSTRmod)) is recalculated every hit",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
@@ -113,13 +115,6 @@
 			"title": "XP",
 			"description": "\nEnemy give XP on kill depending on their difficulty modifiers\n\nOn Level Up:\n\tSelect Stat Increase\n\tGain perks?",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
-			"steps": []
-		},
-		{
-			"uuid": "567e576c-c841-4ca3-a66c-beffa1d34f7c",
-			"title": "Player Melee Weapon (swingable)",
-			"description": "",
-			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"steps": []
 		},
 		{
@@ -160,7 +155,7 @@
 		{
 			"uuid": "95d12487-7eb5-4a68-a65d-ec22a5252160",
 			"title": "Objects",
-			"description": "\n== Stash:\nSliding Fake Wall\nChest\nEnemyTrackingTrigger (object checks for x enemies to die before triggering)\nItemCage (surrounds an interactable object and blocks it until it is released)\n\n== Done:\nBarDoor\nDoor\nLever\n",
+			"description": "\n== Stash:\nSliding Fake Wall\nChest\nEnemyTrackingTrigger (object checks for x enemies to die before triggering)\nItemCage (surrounds an interactable object and blocks it until it is released)\n\n== Done:\nBarDoor\nDoor\nLever\nArcheryDummy",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		},
@@ -174,6 +169,27 @@
 		{
 			"uuid": "a75810cd-be3e-4876-8d28-0506c370bec2",
 			"title": "Menu Flow",
+			"description": "",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "e98b5aef-b729-4b98-b394-4427c825b8a1",
+			"title": "MELEE WEAPONS",
+			"description": "",
+			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"steps": []
+		},
+		{
+			"uuid": "3291ab44-2e6f-4c46-9dcb-0e7f61ac8a5f",
+			"title": "RANGED WEAPONS",
+			"description": "",
+			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"steps": []
+		},
+		{
+			"uuid": "ec8cfbf4-20c0-4153-9710-f40c9f8f0362",
+			"title": "Damage Numbers",
 			"description": "",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []

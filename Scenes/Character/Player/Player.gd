@@ -4,7 +4,8 @@ class_name Player
 func _ready() -> void:
 	super._ready()
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
-	character_stats.DEAD.connect(player_death)
+	SignalBus.AddPlayerXP.connect(update_xp)
+	set_xp(0)
 
 func move() -> void:
 	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
@@ -21,5 +22,25 @@ func move() -> void:
 func player_update_hp(max_hp: int, current_hp:int) -> void:
 	SignalBus.UpdatePlayerHP.emit(max_hp, current_hp)
 
-func player_death() -> void:
+func death() -> void:
 	SignalBus.PlayerDead.emit()
+
+
+var xp: int
+func set_xp(value:int) -> void:
+	xp = value
+	
+	SignalBus.UpdatePlayerXP.emit(xp - get_level_treshold(level-1), get_level_treshold(level))
+func update_xp(value: int) -> void:
+	xp += value
+	check_level_up(xp)
+	SignalBus.UpdatePlayerXP.emit(xp - get_level_treshold(level-1), get_level_treshold(level)-get_level_treshold(level-1))
+
+func check_level_up(xp: int) -> void:
+	print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
+	if xp >= get_level_treshold(level):
+		print("levelup")
+		level += 1
+
+func get_level_treshold(level: int) -> int:
+	return level * 10 * 1.5
