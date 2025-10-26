@@ -1,14 +1,18 @@
 extends CharacterBody3D
 class_name Character
 
-@onready var animation_player: AnimationPlayer = $"Walk Animation Player"
-@onready var sprite: AnimatedSprite3D = %Sprite
-
-@onready var character_stats: CharacterStats = %CharacterStats
+var animation_player: AnimationPlayer
+var sprite: AnimatedSprite3D
+var character_stats: CharacterStats
 
 var velocity_mod: Vector3
 var dead: bool
 @export var turn_at_mouse : bool
+
+func _ready() -> void:
+	animation_player = $"Walk Animation Player"
+	sprite = %Sprite
+	character_stats = %CharacterStats
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
@@ -38,6 +42,10 @@ func sprite_look() -> void:
 
 func gravity(delta: float) -> void:
 	velocity.y = -300 * delta
+
+func damage(damage: int) -> void:
+	print(damage)
+	character_stats.damage(damage)
 
 func knockback(direction: Vector3, strength: float) -> void:
 	velocity_mod += direction * strength * 10

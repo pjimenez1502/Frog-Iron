@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dut5hauwt2iwl"]
+
+[ext_resource type="Script" uid="uid://che5olypult7a" path="res://Scenes/Character/Enemy/Dummy/Dummy.gd" id="1_iyluo"]
+[ext_resource type="PackedScene" uid="uid://ngn620mm6qu1" path="res://Scenes/Character/Enemy/Dummy/ArcheryTarget.glb" id="1_otu44"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iyluo"]
+radius = 1.359912
+
+[node name="ArcheryTarget" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_iyluo")
+
+[node name="ArcheryTarget" parent="." instance=ExtResource("1_otu44")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -0.24000002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_iyluo")

@@ -14,7 +14,7 @@ func _on_body_hit(body: Character) -> void:
 	
 	if body is not Character:
 		return
-	body.character_stats.damage(damage)
+	body.damage(damage)
 	var direction: Vector3 = ((body.global_position - global_position) * Vector3(1,0,1)).normalized()
 	body.knockback(direction, knockback)
 

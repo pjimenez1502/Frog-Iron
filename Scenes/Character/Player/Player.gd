@@ -2,6 +2,7 @@ extends Character
 class_name Player
 
 func _ready() -> void:
+	super._ready()
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
 	character_stats.DEAD.connect(player_death)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://w31voexjaly"]
+[gd_scene load_steps=12 format=3 uid="uid://w31voexjaly"]
 
 [ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="1_0h72o"]
 [ext_resource type="Script" uid="uid://bouwtyhvldfxb" path="res://Scenes/Terrain/NavRegion.gd" id="2_65vxh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpqcq56fmgsv2" path="res://Scenes/Object/Button/lever.tscn" id="5_j68b2"]
 [ext_resource type="PackedScene" uid="uid://bdooinc4mh5c8" path="res://Scenes/Object/Door/bar_door.tscn" id="6_r3tmk"]
 [ext_resource type="PackedScene" uid="uid://cbsf41bly11ev" path="res://Scenes/Object/Door/empty_door.tscn" id="7_a8hvq"]
+[ext_resource type="PackedScene" uid="uid://dut5hauwt2iwl" path="res://Scenes/Character/Enemy/Dummy/archery_target.tscn" id="9_pvoku"]
 
 [sub_resource type="Environment" id="Environment_t7sdq"]
 background_mode = 1
@@ -16,6 +17,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.08
 reflected_light_source = 1
 glow_enabled = true
+glow_hdr_threshold = 2.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0h72o"]
 vertices = PackedVector3Array(12.5, 0.5, -12.25, 15.75, 0.5, -12.25, 16, 0.5, -12.75, 12.5, 0.5, -43.5, 23.75, 0.5, -12.25, 23.75, 0.5, -43.5, 16.25, 4.5, -12.25, 16.25, 4.5, -11.75, 19.75, 4.5, -11.75, 19.75, 4.5, -12.25, 19, 0.5, -11, 18.75, 0.5, -11.5, 17.25, 0.5, -11.5, 16.5, 0.5, -11, 16.5, 0.5, -1.75, 19.75, 0.5, -1.5, 19.75, 0.5, -11, 7.25, 0.5, 0, 7.75, 0.5, -0.25, 7.75, 0.5, -3.5, -3.5, 0.5, -3.5, -3.5, 0.5, 7.75, 7.75, 0.5, 7.75, 24, 0.5, 17.5, 24.25, 0.5, 18.75, 25, 0.5, 19, 25, 0.5, 1, 24.5, 0.5, 1.25, 24.5, 0.5, 2.75, 25, 0.5, 3, 35.75, 0.5, -3.5, 25, 0.5, 4, 25, 0.5, 16, 35.75, 0.5, 23.75, 25, 0.5, 17, 24.5, 0.5, -3.5, 24.5, 0.5, -0.25, 25, 0.5, 0, 25, 0.5, 20, 24.5, 0.5, 20.25, 24.5, 0.5, 23.75, 24.5, 0.5, 4.25, 24.5, 0.5, 15.75, 9, 0.5, 0.5, 8.5, 0.5, 1.25, 9, 0.5, 3.75, 16, 0.5, 0.5, 16.5, 0.5, 0, 20, 0.5, 0.5, 23.25, 0.5, 3.75, 23.25, 0.5, 0.5, 7.75, 4.5, 0.25, 7.75, 4.5, 3.75, 8.25, 4.5, 3.75, 8.25, 4.5, 0.25, 23.75, 4.5, 0.25, 23.75, 4.5, 3.75, 24.25, 4.5, 3.75, 24.25, 4.5, 0.25, 11.25, 0.5, 16, 11.75, 0.5, 15.75, 11.75, 0.5, 12.5, -3.5, 0.5, 12.5, -3.5, 0.5, 27.5, 11.75, 0.5, 27.5, 11.75, 4.5, 16.25, 11.75, 4.5, 19.75, 12.25, 4.5, 19.75, 12.25, 4.5, 16.25, 23.75, 4.5, 16.25, 23.75, 4.5, 19.75, 24.25, 4.5, 19.75, 24.25, 4.5, 16.25, 23.25, 0.5, 19, 23.25, 0.5, 17.25, 23.25, 0.5, 16.5, 13, 0.5, 16.5, 12.5, 0.5, 17.25, 12.5, 0.5, 18.75, 13, 0.5, 19, 13, 0.5, 19.75, 23.25, 0.5, 19.75)
@@ -27,6 +29,7 @@ filter_low_hanging_obstacles = true
 [node name="Dungeon_1" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0h72o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t7sdq")
@@ -85,3 +88,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22)
 
 [node name="Rat8" parent="Enemies" instance=ExtResource("5_65vxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
+
+[node name="ArcheryTarget" parent="." instance=ExtResource("9_pvoku")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2, 0, -2)

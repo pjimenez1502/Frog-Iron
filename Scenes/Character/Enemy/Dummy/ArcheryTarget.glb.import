@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckgb6fib0mnj5"
-path="res://.godot/imported/LeverBase.glb-2aab14f04ea61d7aaf764acb0a604070.scn"
+uid="uid://ngn620mm6qu1"
+path="res://.godot/imported/ArcheryTarget.glb-8086d1bed6a64e0a64d1961d7b5d72e8.scn"
 
 [deps]
 
-source_file="res://Scenes/Object/Button/Component/LeverBase.glb"
-dest_files=["res://.godot/imported/LeverBase.glb-2aab14f04ea61d7aaf764acb0a604070.scn"]
+source_file="res://Scenes/Character/Enemy/Dummy/ArcheryTarget.glb"
+dest_files=["res://.godot/imported/ArcheryTarget.glb-8086d1bed6a64e0a64d1961d7b5d72e8.scn"]
 
 [params]
 

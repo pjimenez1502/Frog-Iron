@@ -8,6 +8,7 @@ var far_target: Node3D
 var target: Node3D
 
 func _ready() -> void:
+	super._ready()
 	character_stats.DEAD.connect(enemy_dead)
 
 func enemy_dead() -> void:
