@@ -9,5 +9,5 @@ func _ready() -> void:
 func move() -> void:
 	pass
 
-func damage(damage: int) -> void:
-	print("Dummy damaged: ", damage)
+func damage(_damage: int) -> void:
+	print("Dummy damaged: ", _damage)

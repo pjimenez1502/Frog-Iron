@@ -10,7 +10,7 @@ enum CHAR_TAG {ENEMY, PLAYER}
 @export var character_tag : CHAR_TAG
 
 @export var base_speed: int = 5
-var speed: int
+var speed: float
 @export var base_HP: int = 4
 var max_HP: int
 var current_HP: int
@@ -35,10 +35,10 @@ func init_hp() -> void:
 	current_HP = max_HP
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 
-func damage(damage: int) -> void:
+func damage(_damage: int) -> void:
 	if invulnerable:
 		return
-	current_HP -= damage
+	current_HP -= _damage
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 	damage_invulnerability()
 	

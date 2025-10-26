@@ -47,8 +47,8 @@ func sprite_look() -> void:
 func gravity(delta: float) -> void:
 	velocity.y = -300 * delta
 
-func damage(damage: int) -> void:
-	character_stats.damage(damage)
+func damage(_damage: int) -> void:
+	character_stats.damage(_damage)
 
 func death() -> void:
 	character_dead()

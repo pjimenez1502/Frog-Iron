@@ -12,7 +12,7 @@ var attack_available: bool = true
 func _ready() -> void:
 	attack_timer.wait_time = attack_cd
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if attack_target:
 		try_attack()
 

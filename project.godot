@@ -22,6 +22,12 @@ Global="*res://Global/Global.gd"
 SignalBus="*res://Global/SignalBus.gd"
 Util="*res://Global/Util.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+gdscript/warnings/narrowing_conversion=0
+gdscript/warnings/enum_variable_without_default=0
+
 [display]
 
 window/stretch/mode="viewport"

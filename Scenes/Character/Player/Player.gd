@@ -36,11 +36,11 @@ func update_xp(value: int) -> void:
 	check_level_up(xp)
 	SignalBus.UpdatePlayerXP.emit(xp - get_level_treshold(level-1), get_level_treshold(level)-get_level_treshold(level-1))
 
-func check_level_up(xp: int) -> void:
-	print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
-	if xp >= get_level_treshold(level):
-		print("levelup")
+func check_level_up(_xp: int) -> void:
+	#print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
+	if _xp >= get_level_treshold(level):
 		level += 1
+		print("levelup: ", level)
 
-func get_level_treshold(level: int) -> int:
-	return level * 10 * 1.5
+func get_level_treshold(_level: int) -> int:
+	return _level * 10 * 1.5

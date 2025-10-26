@@ -12,7 +12,7 @@ var attack_available: bool = true
 func _ready() -> void:
 	attack_timer.wait_time = swing_cd
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !enabled:
 		return
 	if Input.is_action_pressed("FIRE"):
