@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://5u61rs18y8k8"]
+[gd_scene load_steps=10 format=3 uid="uid://5u61rs18y8k8"]
 
 [ext_resource type="Script" uid="uid://0ctoghy4hbe8" path="res://Scenes/Weapon/Guns/Bow/Bow.gd" id="1_l3qgv"]
 [ext_resource type="Texture2D" uid="uid://b73ps5pcelq3q" path="res://Scenes/Weapon/Guns/Bow/bow-sheet.png" id="2_hmoq4"]
 [ext_resource type="PackedScene" uid="uid://db0soby7y3qg8" path="res://Scenes/Weapon/Projectile/Arrow.tscn" id="2_ks2ve"]
-[ext_resource type="Script" uid="uid://b316g7ijpxpy4" path="res://Scenes/Weapon/WeaponStats.gd" id="4_3mrnk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keqyq"]
 atlas = ExtResource("2_hmoq4")
@@ -80,10 +79,3 @@ sprite_frames = SubResource("SpriteFrames_68yfx")
 animation = &"drawn_0"
 
 [node name="ProjectileContainer" type="Node" parent="."]
-
-[node name="WeaponStats" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("4_3mrnk")
-base_damage = 6
-knockback = 10.0
-metadata/_custom_type_script = "uid://b316g7ijpxpy4"

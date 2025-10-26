@@ -19,11 +19,11 @@ func enemy_dead() -> void:
 func move() -> void:
 	var direction: Vector3 = to_local(nav_agent.get_next_path_position()).normalized()
 	if direction:
-		velocity.x = direction.x * character_stats.SPEED
-		velocity.z = direction.z * character_stats.SPEED
+		velocity.x = direction.x * character_stats.speed
+		velocity.z = direction.z * character_stats.speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, character_stats.SPEED)
-		velocity.z = move_toward(velocity.z, 0, character_stats.SPEED)
+		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
+		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
 	super.move()
 

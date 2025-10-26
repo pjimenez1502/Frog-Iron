@@ -5,7 +5,6 @@ class_name Gun
 
 @onready var sprite: AnimatedSprite3D = $Sprite
 @onready var projectile_container: Node = $ProjectileContainer
-@onready var weapon_stats: WeaponStats = %WeaponStats
 
 @export var projectile_prefab: PackedScene
 @export var aim_speed: float = 3
@@ -23,7 +22,8 @@ func check_trigger(delta: float) -> void:
 		fire()
 
 func fire() -> void:
-	spawn_projectile(weapon_stats)
+	#spawn_projectile(null)
+	pass
 
 
 
@@ -31,10 +31,10 @@ var target_rotation : float
 func rotate_weapon(target_pos: Vector3, delta:float) -> void:
 	global_transform = global_transform.interpolate_with(global_transform.looking_at(target_pos), delta * aim_speed)
 
-func spawn_projectile(weapon_stats: WeaponStats, strength: float= 1) -> void:
-	var projectile_instance : projectile = projectile_prefab.instantiate()
-	projectile_container.add_child(projectile_instance)
-	projectile_instance.weapon_stats.inherit_data(weapon_stats)
-	projectile_instance.global_position = global_position 
-	projectile_instance.global_transform.basis = global_transform.basis
-	projectile_instance.speed = projectile_instance.speed * strength
+#func spawn_projectile(weapon_stats: WeaponStats, strength: float= 1) -> void:
+	#var projectile_instance : projectile = projectile_prefab.instantiate()
+	#projectile_container.add_child(projectile_instance)
+	##projectile_instance.weapon_stats.inherit_data(weapon_stats)
+	#projectile_instance.global_position = global_position 
+	#projectile_instance.global_transform.basis = global_transform.basis
+	#projectile_instance.speed = projectile_instance.speed * strength

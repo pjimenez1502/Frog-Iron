@@ -23,8 +23,8 @@ func move() -> void:
 		return
 	
 	velocity += velocity_mod
-	velocity_mod.x = move_toward(velocity_mod.x, 0, character_stats.SPEED)
-	velocity_mod.z = move_toward(velocity_mod.z, 0, character_stats.SPEED)
+	velocity_mod.x = move_toward(velocity_mod.x, 0, character_stats.speed)
+	velocity_mod.z = move_toward(velocity_mod.z, 0, character_stats.speed)
 	move_and_slide()
 	
 	if velocity.length() < .1:

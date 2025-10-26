@@ -18,7 +18,7 @@ func _on_body_hit(body: Character) -> void:
 	var direction: Vector3 = ((body.global_position - global_position) * Vector3(1,0,1)).normalized()
 	body.knockback(direction, knockback)
 
-func set_weapon_data(stats: WeaponStats) -> void:
-	damage = stats.damage
-	knockback = stats.knockback
-	set_collision_mask(stats.target_layer)
+func set_weapon_data(_damage: int, _knockback: int, target_layer: Util.CollisionLayer) -> void:
+	damage = _damage
+	knockback = _knockback
+	set_collision_mask(target_layer)

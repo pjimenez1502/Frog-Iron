@@ -1,6 +1,6 @@
 extends Node
 
-enum CollisionLayers {Terrain = 0b1, Player = 0b10, Enemy = 0b100}
+enum CollisionLayer {Terrain = 0b1, Player = 0b10, Enemy = 0b100}
 
 func first_closer(origin:Vector3, a: Vector3, b:Vector3) -> bool:
 	return origin.distance_squared_to(a) <= origin.distance_squared_to(b)

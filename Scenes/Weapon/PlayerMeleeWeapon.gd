@@ -1,11 +1,12 @@
-extends Weapon
+extends Node3D
 class_name PlayerMeleeWeapon
 
-@onready var sprite: Sprite3D = $Sprite
 @onready var attack_timer: Timer = %AttackTimer
 
 @export var enabled: bool
 @export var swing_cd: float
+@export var weapon: Weapon
+
 var attack_available: bool = true
 
 func _ready() -> void:
@@ -18,9 +19,9 @@ func _physics_process(delta: float) -> void:
 		try_attack()
 
 func try_attack() -> void:
-	if !attack_available:
+	if !attack_available or !weapon:
 		return
-	attack(Util.get_mouse_direction(self))
+	weapon.attack(Util.get_mouse_direction(self))
 	attack_available = false
 	attack_timer.start()
 
