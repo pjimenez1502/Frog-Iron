@@ -4,7 +4,7 @@ class_name EnemyAttack
 @onready var enemy: Enemy = $".."
 @onready var attack_timer: Timer = $AttackTimer
 @export var attack_cd: float
-@export var close_weapon: Weapon
+@export var close_weapon: MeleeWeapon
 
 var attack_target: Character
 var attack_available: bool = true

@@ -1,11 +1,11 @@
 extends Node3D
 class_name PlayerMeleeWeapon
 
-@onready var attack_timer: Timer = %AttackTimer
+@onready var attack_timer: Timer = %MeleeTimer
 
 @export var enabled: bool
 @export var swing_cd: float
-@export var weapon: Weapon
+@export var weapon: MeleeWeapon
 
 var attack_available: bool = true
 

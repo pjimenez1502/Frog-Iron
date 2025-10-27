@@ -1,11 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=24 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
+[ext_resource type="Script" uid="uid://c4w0xtjmxpon1" path="res://Scenes/Weapon/PlayerRangedWeapon.gd" id="6_f0b02"]
 [ext_resource type="Script" uid="uid://diatversdlecu" path="res://Scenes/Character/Player/PlayerInteraction.gd" id="7_3gn43"]
 [ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="7_jw8fk"]
 [ext_resource type="Script" uid="uid://cskucf7jaxpde" path="res://Scenes/Weapon/PlayerMeleeWeapon.gd" id="7_nyt8s"]
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow/Bow.tscn" id="7_yty6f"]
 [ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/HUD/Interaction/E_Key.png" id="8_f0b02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qy38"]
@@ -179,9 +181,6 @@ unique_name_in_owner = true
 script = ExtResource("3_f0b02")
 character_tag = 1
 base_HP = 6
-STR = 6
-DEX = 10
-CON = 20
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -223,14 +222,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="PlayerMelee" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
 script = ExtResource("7_nyt8s")
-enabled = true
 swing_cd = 0.5
 weapon = NodePath("Iron Sword")
 
-[node name="AttackTimer" type="Timer" parent="Weapons/PlayerMelee"]
+[node name="MeleeTimer" type="Timer" parent="Weapons/PlayerMelee"]
 unique_name_in_owner = true
 
 [node name="Iron Sword" parent="Weapons/PlayerMelee" instance=ExtResource("7_jw8fk")]
+
+[node name="PlayerRanged" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
+script = ExtResource("6_f0b02")
+enabled = true
+weapon = NodePath("Bow")
+
+[node name="Bow" parent="Weapons/PlayerRanged" instance=ExtResource("7_yty6f")]
 
 [node name="InteractionArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -260,7 +265,7 @@ fixed_size = true
 texture_filter = 0
 texture = ExtResource("8_f0b02")
 
-[connection signal="timeout" from="Weapons/PlayerMelee/AttackTimer" to="Weapons/PlayerMelee" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Weapons/PlayerMelee/MeleeTimer" to="Weapons/PlayerMelee" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
 [connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="find_closest_interactable"]

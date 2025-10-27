@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8qlseac4sj8q"
-path="res://.godot/imported/lance.png-7a8fa38fe319ce32bed9aabe6592392d.ctex"
+uid="uid://ms4qrp0lbdcj"
+path="res://.godot/imported/morning_star_ball.png-a3d35351a2bb73478da50ae321eed83d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Weapon/Lance/lance.png"
-dest_files=["res://.godot/imported/lance.png-7a8fa38fe319ce32bed9aabe6592392d.ctex"]
+source_file="res://Scenes/Weapon/WIP/Flail/morning_star_ball.png"
+dest_files=["res://.godot/imported/morning_star_ball.png-a3d35351a2bb73478da50ae321eed83d.ctex"]
 
 [params]
 

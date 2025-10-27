@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc856frj7mepq"]
 
-[ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/Weapon.gd" id="1_evkrl"]
+[ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/MeleeWeapon.gd" id="1_evkrl"]
 [ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/_Hits/slash.tscn" id="2_byfxr"]
 
 [node name="Small Claws" type="Node3D"]

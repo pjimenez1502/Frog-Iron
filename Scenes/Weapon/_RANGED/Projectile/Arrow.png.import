@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cim7ik0g1m8xb"
-path="res://.godot/imported/chain.png-98c15dce92168c751c7e99a71f0c697d.ctex"
+uid="uid://1mnys3lpxeb2"
+path="res://.godot/imported/Arrow.png-a42bab8222fdbe02f9fdec247e4ef666.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Weapon/Flail/chain.png"
-dest_files=["res://.godot/imported/chain.png-98c15dce92168c751c7e99a71f0c697d.ctex"]
+source_file="res://Scenes/Weapon/_RANGED/Projectile/Arrow.png"
+dest_files=["res://.godot/imported/Arrow.png-a42bab8222fdbe02f9fdec247e4ef666.ctex"]
 
 [params]
 

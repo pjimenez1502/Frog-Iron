@@ -1,5 +1,5 @@
 extends Node3D
-class_name Weapon
+class_name MeleeWeapon
 
 @onready var character_stats: CharacterStats = %CharacterStats
 
@@ -14,12 +14,9 @@ var target_layer: Util.CollisionLayer
 @export var INT_mod: float = .0
 @export var knockback: int = 1
 
+
 func _ready() -> void:
-	match character_stats.character_tag:
-		character_stats.CHAR_TAG.PLAYER:
-			target_layer = Util.CollisionLayer.Enemy
-		character_stats.CHAR_TAG.ENEMY:
-			target_layer = Util.CollisionLayer.Player
+	set_target_layer()
 
 func attack(direction:Vector3) -> void:
 	var new_hit: WeaponHit = attack_hit.instantiate()
@@ -31,3 +28,10 @@ func attack(direction:Vector3) -> void:
 	new_hit.set_weapon_data(calc_damage, calc_knockback, target_layer)
 	new_hit.global_position = global_position + direction
 	new_hit.look_at(new_hit.global_position + direction, Vector3.UP)
+
+func set_target_layer() -> void:
+	match character_stats.character_tag:
+		character_stats.CHAR_TAG.PLAYER:
+			target_layer = Util.CollisionLayer.Enemy
+		character_stats.CHAR_TAG.ENEMY:
+			target_layer = Util.CollisionLayer.Player
