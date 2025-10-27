@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://2m1xhwqevmcu"]
 
 [ext_resource type="Script" path="res://Scenes/Terrain/Dungeon_1/Tiles/Trap.gd" id="2_e53tb"]
-[ext_resource type="PackedScene" uid="uid://qajh7n8fgl5" path="res://Scenes/Terrain/Dungeon_1/Tiles/TrapSpikes.glb" id="2_gyrhq"]
-[ext_resource type="Material" uid="uid://dxw8753d2eof4" path="res://Scenes/Terrain/Dungeon_1/Dungeon1_mat.tres" id="2_vg686"]
+[ext_resource type="PackedScene" path="res://Scenes/Terrain/Dungeon_1/Tiles/TrapSpikes.glb" id="2_gyrhq"]
+[ext_resource type="Material" uid="uid://dxw8753d2eof4" path="res://Assets/Material/Dungeon1/Dungeon1.tres" id="2_vg686"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3cmcq"]
 _surfaces = [{

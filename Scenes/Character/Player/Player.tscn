@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://diatversdlecu" path="res://Scenes/Character/Player/PlayerInteraction.gd" id="7_3gn43"]
 [ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="7_jw8fk"]
 [ext_resource type="Script" uid="uid://cskucf7jaxpde" path="res://Scenes/Weapon/PlayerMeleeWeapon.gd" id="7_nyt8s"]
-[ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/Interaction/E_Key.png" id="8_f0b02"]
+[ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/HUD/Interaction/E_Key.png" id="8_f0b02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qy38"]
 atlas = ExtResource("1_1j3ov")

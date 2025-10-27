@@ -2,16 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt2xx7gkxkbaq"
-path="res://.godot/imported/Dungeon_1_tiles_normal.png-1959c95e187aa5750a7279419129dd5d.ctex"
+uid="uid://rni04cl446ov"
+path="res://.godot/imported/func.svg-139842caa5b4b7e4839711b6c756d0f7.ctex"
 metadata={
+"has_editor_variant": true,
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/textures/Dungeon_1_tiles_normal.png"
-dest_files=["res://.godot/imported/Dungeon_1_tiles_normal.png-1959c95e187aa5750a7279419129dd5d.ctex"]
+source_file="res://addons/script-ide/icon/func.svg"
+dest_files=["res://.godot/imported/func.svg-139842caa5b4b7e4839711b6c756d0f7.ctex"]
 
 [params]
 
@@ -37,4 +38,7 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=true
+editor/convert_colors_with_editor_theme=false

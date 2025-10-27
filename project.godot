@@ -40,7 +40,19 @@ movie_writer/movie_file="C:/Users/pjime/Videos/Captures/godor.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
+enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Global/": "red",
+"res://Scenes/Character/": "teal",
+"res://Scenes/Object/": "pink",
+"res://Scenes/Terrain/": "purple",
+"res://Scenes/UI/": "green",
+"res://Scenes/Weapon/": "orange",
+"res://addons/": "gray"
+}
 
 [global_group]
 

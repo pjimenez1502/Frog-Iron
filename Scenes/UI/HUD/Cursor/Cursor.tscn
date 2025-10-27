@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1f8xxeridxnk"]
 
-[ext_resource type="Script" uid="uid://iy0hjfckmmkm" path="res://Scenes/UI/Cursor/Cursor.gd" id="1_5vgfa"]
-[ext_resource type="Texture2D" uid="uid://8k87xhkbthxw" path="res://Scenes/UI/Cursor/crosshair.png" id="1_vq2lg"]
+[ext_resource type="Script" uid="uid://iy0hjfckmmkm" path="res://Scenes/UI/HUD/Cursor/Cursor.gd" id="1_5vgfa"]
+[ext_resource type="Texture2D" uid="uid://8k87xhkbthxw" path="res://Scenes/UI/HUD/Cursor/crosshair.png" id="1_vq2lg"]
 
 [sub_resource type="Animation" id="Animation_vq2lg"]
 resource_name = "Cursor"

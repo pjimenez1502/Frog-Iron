@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lk6xa04s1mm8"
-path="res://.godot/imported/E_Key.png-2deb0d33667281595338634fbcccc914.ctex"
+path="res://.godot/imported/E_Key.png-60b3fa224a89fa7bfd85880d8df5e1af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Interaction/E_Key.png"
-dest_files=["res://.godot/imported/E_Key.png-2deb0d33667281595338634fbcccc914.ctex"]
+source_file="res://Scenes/UI/HUD/Interaction/E_Key.png"
+dest_files=["res://.godot/imported/E_Key.png-60b3fa224a89fa7bfd85880d8df5e1af.ctex"]
 
 [params]
 
