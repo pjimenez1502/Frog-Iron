@@ -62,5 +62,5 @@ func damage_invulnerability() -> void:
 
 func invul_timer_setup() -> void:
 	invul_timer = Timer.new()
-	invul_timer.wait_time = .4
+	invul_timer.wait_time = Global.INVUL_DURATION
 	add_child(invul_timer)

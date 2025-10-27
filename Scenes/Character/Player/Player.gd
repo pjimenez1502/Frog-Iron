@@ -43,4 +43,4 @@ func check_level_up(_xp: int) -> void:
 		print("levelup: ", level)
 
 func get_level_treshold(_level: int) -> int:
-	return _level * 10 * 1.5
+	return _level * 10 * Global.LEVEL_GROWTH_MULT
