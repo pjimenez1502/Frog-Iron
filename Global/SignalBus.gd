@@ -9,6 +9,7 @@ signal PlayerDead
 
 signal StatsUpdate
 signal PlayerStatIncrease
+signal AvailableStatUP
 
 signal NavmeshBakeRequest
 

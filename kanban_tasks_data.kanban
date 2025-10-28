@@ -197,7 +197,7 @@
 		{
 			"uuid": "6d1eb545-d276-4ed8-9cf3-dc682234330c",
 			"title": "Character Stats UI",
-			"description": "",
+			"description": "Track and Show stat increases available",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		}

@@ -4,10 +4,12 @@ class_name Player
 func _ready() -> void:
 	super._ready()
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
-	SignalBus.AddPlayerXP.connect(update_xp)
 	set_xp(0)
-	SignalBus.StatsUpdate.emit(character_stats.get_stats())
+	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
+	
+	SignalBus.StatsUpdate.emit(character_stats.get_stats())
+	SignalBus.AvailableStatUP.emit(available_statup)
 
 func move() -> void:
 	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
@@ -22,7 +24,11 @@ func move() -> void:
 	super.move()
 
 func increase_stat(stat:String, count:int) -> void:
+	if !available_statup > 0:
+		return
 	SignalBus.StatsUpdate.emit(character_stats.increase_stat(stat, count))
+	available_statup -= 1
+	SignalBus.AvailableStatUP.emit(available_statup)
 
 func player_update_hp(max_hp: int, current_hp:int) -> void:
 	SignalBus.UpdatePlayerHP.emit(max_hp, current_hp)
@@ -42,10 +48,21 @@ func update_xp(value: int) -> void:
 	SignalBus.UpdatePlayerXP.emit(xp - get_level_treshold(level-1), get_level_treshold(level)-get_level_treshold(level-1))
 
 func check_level_up(_xp: int) -> void:
-	#print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
 	if _xp >= get_level_treshold(level):
 		level += 1
-		print("levelup: ", level)
+		level_up()
+	
+	print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
+
+var available_statup: int
+func level_up() -> void:
+	#print("levelup: ", level)
+	available_statup += Global.LEVEL_STATUP_REWARD
+	SignalBus.AvailableStatUP.emit(available_statup)
 
 func get_level_treshold(_level: int) -> int:
-	return _level * 10 * Global.LEVEL_GROWTH_MULT
+	return (_level * _level * 10 * Global.LEVEL_GROWTH_MULT)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("_debug addxp"):
+		update_xp(10)

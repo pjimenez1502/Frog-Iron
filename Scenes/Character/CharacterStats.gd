@@ -56,8 +56,7 @@ func calc_speed() -> void:
 
 func init_hp() -> void:
 	max_HP = base_HP + CON
-	#current_HP = max_HP
-	current_HP = 4
+	current_HP = max_HP
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 
 func recalc_hp() -> void:
