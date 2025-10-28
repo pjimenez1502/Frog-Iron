@@ -222,6 +222,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="PlayerMelee" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
 script = ExtResource("7_nyt8s")
+enabled = true
 swing_cd = 0.5
 weapon = NodePath("Iron Sword")
 
@@ -232,7 +233,6 @@ unique_name_in_owner = true
 
 [node name="PlayerRanged" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
 script = ExtResource("6_f0b02")
-enabled = true
 weapon = NodePath("Bow")
 
 [node name="Bow" parent="Weapons/PlayerRanged" instance=ExtResource("7_yty6f")]

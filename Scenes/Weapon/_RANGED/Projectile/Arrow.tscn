@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyrn5lc5b1yi7" path="res://Scenes/Weapon/_RANGED/Projectile/Projectile.gd" id="1_88rfi"]
 [ext_resource type="Texture2D" uid="uid://1mnys3lpxeb2" path="res://Scenes/Weapon/_RANGED/Projectile/Arrow.png" id="1_u4hip"]
-[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Weapon/WeaponHit.gd" id="4_hcij0"]
+[ext_resource type="Script" uid="uid://dalnx4e0uwqxt" path="res://Scenes/Weapon/RangedHit.gd" id="4_hcij0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r4gem"]
 radius = 0.24560547

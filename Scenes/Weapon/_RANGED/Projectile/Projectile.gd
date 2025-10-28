@@ -2,7 +2,7 @@ extends Node3D
 class_name Projectile
 
 @export var base_speed: float = 10
-@onready var hit_area: WeaponHit = $HitArea
+@onready var hit_area: RangedWeaponHit = $HitArea
 
 var damage : int
 var knockback : int

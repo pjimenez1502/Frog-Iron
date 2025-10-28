@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0hdjgor6g8ce"
-path="res://.godot/imported/BorderSquare_flatBottom.png-9610accab9366b34263381d85c5902f3.ctex"
+uid="uid://c2hdf6ivt8kwr"
+path="res://.godot/imported/BorderSquare.png-034ed3239246aa70ba955623ded89462.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Menu/BorderSquare_flatBottom.png"
-dest_files=["res://.godot/imported/BorderSquare_flatBottom.png-9610accab9366b34263381d85c5902f3.ctex"]
+source_file="res://Scenes/UI/Asset/BorderSquare.png"
+dest_files=["res://.godot/imported/BorderSquare.png-034ed3239246aa70ba955623ded89462.ctex"]
 
 [params]
 

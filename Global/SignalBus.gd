@@ -7,6 +7,9 @@ signal UpdatePlayerXP
 signal UpdatePlayerHP
 signal PlayerDead
 
+signal StatsUpdate
+signal PlayerStatIncrease
+
 signal NavmeshBakeRequest
 
 signal ShowPopupText

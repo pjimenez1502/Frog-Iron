@@ -27,13 +27,46 @@ func _ready() -> void:
 	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
 	calc_speed()
 
+func increase_stat(stat: String, count: int) -> Dictionary:
+	match stat:
+		"STR":
+			STR += count
+		"DEX":
+			DEX += count
+		"INT":
+			INT += count
+		"WIS":
+			WIS += count
+		"CON":
+			CON += count
+	
+	recalculate_stats()
+	return get_stats()
+
+func get_stats() -> Dictionary:
+	return { "STR": STR, "DEX": DEX, "INT": INT, "WIS": WIS, "CON": CON }
+
+func recalculate_stats() -> void:
+	calc_speed()
+	recalc_hp()
+
+
 func calc_speed() -> void:
 	speed = base_speed + DEX*0.5
 
 func init_hp() -> void:
 	max_HP = base_HP + CON
-	current_HP = max_HP
+	#current_HP = max_HP
+	current_HP = 4
 	HEALTH_UPDATE.emit(max_HP, current_HP)
+
+func recalc_hp() -> void:
+	var prev_max_hp: int = max_HP
+	
+	max_HP = base_HP + CON
+	current_HP = roundi(float(current_HP) / float(prev_max_hp)  * max_HP)
+	HEALTH_UPDATE.emit(max_HP, current_HP)
+
 
 func damage(_damage: int) -> void:
 	if invulnerable:

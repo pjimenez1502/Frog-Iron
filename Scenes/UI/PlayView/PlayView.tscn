@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=18 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://d1f8xxeridxnk" path="res://Scenes/UI/HUD/Cursor/Cursor.tscn" id="7_uldec"]
 [ext_resource type="Script" uid="uid://mvwuldoxl7by" path="res://Scenes/UI/PlayView/Vignette.gd" id="8_povyt"]
 [ext_resource type="Shader" uid="uid://kvauqeyvssi4" path="res://Assets/Material/Shader/Vignette.gdshader" id="8_ufkdj"]
+[ext_resource type="Script" uid="uid://chm6fnyrdc77i" path="res://Scenes/UI/PlayView/PlayMenu.gd" id="12_uldec"]
+[ext_resource type="Texture2D" uid="uid://dnoq88bdyt026" path="res://Scenes/UI/Asset/X_button.png" id="13_t3llb"]
+[ext_resource type="Script" uid="uid://bkx5uuva7n2ca" path="res://Scenes/UI/PlayView/CharacterDataView.gd" id="14_0bptl"]
+[ext_resource type="Texture2D" uid="uid://dgr4imrjp48uu" path="res://Scenes/UI/Asset/+_button.png" id="14_r5ygv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
 shader = ExtResource("8_ufkdj")
@@ -162,7 +166,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="Panel" type="Panel" parent="UI/PopupText/MarginContainer"]
 layout_mode = 2
@@ -207,5 +214,216 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="PlayMenu" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_uldec")
+
+[node name="Background" type="ColorRect" parent="UI/PlayMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4745098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="HBoxContainer" parent="UI/PlayMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="Tabs" type="TabBar" parent="UI/PlayMenu/VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+current_tab = 0
+clip_tabs = false
+close_with_middle_mouse = false
+scrolling_enabled = false
+scroll_to_selected = false
+tab_count = 4
+tab_0/title = "Character"
+tab_1/title = "Inventory"
+tab_2/title = "Skills"
+tab_3/title = "Options"
+
+[node name="Close" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Control"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture_normal = ExtResource("13_t3llb")
+stretch_mode = 0
+
+[node name="Menu Panel" type="Panel" parent="UI/PlayMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterMenu" type="Control" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer"]
+layout_mode = 2
+script = ExtResource("14_0bptl")
+
+[node name="STATS" type="Panel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_bottom = 162.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatBox" type="HBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox"]
+layout_mode = 2
+
+[node name="Strength" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Strength"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Dexterity" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Dexterity"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Intelligence" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Intelligence"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Wisdom" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Wisdom"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Constitution" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Constitution"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox"]
+layout_mode = 2
+
+[node name="Strength_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "2"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Dexterity_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Intelligence_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Wisdom_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Constitution_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox"]
+layout_mode = 2
+
+[node name="Strength_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("14_r5ygv")
+stretch_mode = 0
+
+[node name="Dexterity_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("14_r5ygv")
+stretch_mode = 0
+
+[node name="Intelligence_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("14_r5ygv")
+stretch_mode = 0
+
+[node name="Wisdom_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("14_r5ygv")
+stretch_mode = 0
+
+[node name="Constitution_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("14_r5ygv")
+stretch_mode = 0
+
 [node name="Cursor" parent="." instance=ExtResource("7_uldec")]
 layout_mode = 1
+
+[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3/Strength_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["STR"]]
+[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3/Dexterity_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["DEX"]]
+[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3/Intelligence_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["INT"]]
+[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3/Wisdom_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["WIS"]]
+[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/STATS/MarginContainer/StatBox/VBoxContainer3/Constitution_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["CON"]]

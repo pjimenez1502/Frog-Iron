@@ -1,5 +1,5 @@
 extends Area3D
-class_name WeaponHit
+class_name RangedWeaponHit
 
 signal HIT
 @onready var projectile: Projectile = $".."

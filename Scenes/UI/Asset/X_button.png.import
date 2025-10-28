@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2hdf6ivt8kwr"
-path="res://.godot/imported/BorderSquare.png-d9aaa53194780e47f444d054650a0c65.ctex"
+uid="uid://dnoq88bdyt026"
+path="res://.godot/imported/X_button.png-8761ebff6cf9d08e03d6f7b8a31da5cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Menu/BorderSquare.png"
-dest_files=["res://.godot/imported/BorderSquare.png-d9aaa53194780e47f444d054650a0c65.ctex"]
+source_file="res://Scenes/UI/Asset/X_button.png"
+dest_files=["res://.godot/imported/X_button.png-8761ebff6cf9d08e03d6f7b8a31da5cf.ctex"]
 
 [params]
 

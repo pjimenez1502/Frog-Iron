@@ -19,7 +19,7 @@ func _ready() -> void:
 	set_target_layer()
 
 func attack(direction:Vector3) -> void:
-	var new_hit: WeaponHit = attack_hit.instantiate()
+	var new_hit: MeleeWeaponHit = attack_hit.instantiate()
 	hits.add_child(new_hit)
 	
 	var calc_damage: int = base_damage + (STR_mod * character_stats.STR) + (DEX_mod * character_stats.DEX) + (INT_mod * character_stats.INT)

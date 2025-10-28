@@ -6,6 +6,8 @@ func _ready() -> void:
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
 	SignalBus.AddPlayerXP.connect(update_xp)
 	set_xp(0)
+	SignalBus.StatsUpdate.emit(character_stats.get_stats())
+	SignalBus.PlayerStatIncrease.connect(increase_stat)
 
 func move() -> void:
 	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
@@ -18,6 +20,9 @@ func move() -> void:
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
 	super.move()
+
+func increase_stat(stat:String, count:int) -> void:
+	SignalBus.StatsUpdate.emit(character_stats.increase_stat(stat, count))
 
 func player_update_hp(max_hp: int, current_hp:int) -> void:
 	SignalBus.UpdatePlayerHP.emit(max_hp, current_hp)

@@ -5,6 +5,10 @@ class_name PlayerRangedWeapon
 @export var weapon: RangedWeapon
 
 func _physics_process(delta: float) -> void:
+	if !enabled:
+		weapon.visible = false
+		return
+	
 	if Input.is_action_pressed("FIRE"):
 		weapon.pressed(delta)
 	if Input.is_action_just_released("FIRE"):

@@ -14,7 +14,9 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if !enabled:
+		weapon.visible = false
 		return
+	
 	if Input.is_action_pressed("FIRE"):
 		try_attack()
 
