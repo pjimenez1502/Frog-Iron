@@ -1,19 +1,23 @@
 extends Node
 
-signal LaunchDemoScene
-
+## Player Signals
 signal AddPlayerXP
-signal UpdatePlayerXP
-signal UpdatePlayerHP
-signal PlayerDead
-
-signal StatsUpdate
+signal AddPlayerCoin
 signal PlayerStatIncrease
 signal AvailableStatUP
+signal PlayerDead
 
+## Player UI Update
+signal PlayerXPUpdate
+signal PlayerHPUpdate
+signal PlayerCoinUpdate
+signal PlayerStatsUpdate
+
+
+#Game Signals
+signal LaunchDemoScene
 signal NavmeshBakeRequest
 
 signal ShowPopupText
-
 signal PauseGame
 signal TimeScaleChange

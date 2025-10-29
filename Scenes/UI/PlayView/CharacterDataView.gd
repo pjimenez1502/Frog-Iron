@@ -17,7 +17,7 @@ class_name CharacterMenu
 @onready var available_increase: RichTextLabel = %AvailableIncrease
 
 func _ready() -> void:
-	SignalBus.StatsUpdate.connect(update_stats)
+	SignalBus.PlayerStatsUpdate.connect(update_stats)
 	SignalBus.AvailableStatUP.connect(update_availableUP)
 
 func update_stats(stats: Dictionary) -> void:

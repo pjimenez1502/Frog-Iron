@@ -7,6 +7,7 @@
 [node name="Iron Sword" type="Node3D"]
 script = ExtResource("1_6qwjl")
 attack_hit = ExtResource("2_l1afs")
+knockback = 2
 metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
 
 [node name="Hits" type="Node" parent="."]

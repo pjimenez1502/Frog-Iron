@@ -1,6 +1,8 @@
 extends Character
 class_name Player
 
+@onready var player_inventory: PlayerInventory = %PlayerInventory
+
 func _ready() -> void:
 	super._ready()
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
@@ -8,7 +10,7 @@ func _ready() -> void:
 	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
 	
-	SignalBus.StatsUpdate.emit(character_stats.get_stats())
+	SignalBus.PlayerStatsUpdate.emit(character_stats.get_stats())
 	SignalBus.AvailableStatUP.emit(available_statup)
 
 func move() -> void:
@@ -26,12 +28,12 @@ func move() -> void:
 func increase_stat(stat:String, count:int) -> void:
 	if !available_statup > 0:
 		return
-	SignalBus.StatsUpdate.emit(character_stats.increase_stat(stat, count))
+	SignalBus.PlayerStatsUpdate.emit(character_stats.increase_stat(stat, count))
 	available_statup -= 1
 	SignalBus.AvailableStatUP.emit(available_statup)
 
 func player_update_hp(max_hp: int, current_hp:int) -> void:
-	SignalBus.UpdatePlayerHP.emit(max_hp, current_hp)
+	SignalBus.PlayerHPUpdate.emit(max_hp, current_hp)
 
 func death() -> void:
 	SignalBus.PlayerDead.emit()
@@ -40,12 +42,11 @@ func death() -> void:
 var xp: int
 func set_xp(value:int) -> void:
 	xp = value
-	
-	SignalBus.UpdatePlayerXP.emit(xp - get_level_treshold(level-1), get_level_treshold(level))
+	SignalBus.PlayerXPUpdate.emit(xp - get_level_treshold(level-1), get_level_treshold(level))
 func update_xp(value: int) -> void:
 	xp += value
 	check_level_up(xp)
-	SignalBus.UpdatePlayerXP.emit(xp - get_level_treshold(level-1), get_level_treshold(level)-get_level_treshold(level-1))
+	SignalBus.PlayerXPUpdate.emit(xp - get_level_treshold(level-1), get_level_treshold(level)-get_level_treshold(level-1))
 
 func check_level_up(_xp: int) -> void:
 	if _xp >= get_level_treshold(level):

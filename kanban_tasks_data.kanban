@@ -39,7 +39,6 @@
 				"dbeeb071-035a-41fd-ae70-777918e76f4a",
 				"a75810cd-be3e-4876-8d28-0506c370bec2",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
-				"46152144-11fe-4a23-984d-145b9544ab88",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
@@ -60,8 +59,7 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
-				"6d1eb545-d276-4ed8-9cf3-dc682234330c"
+				"46152144-11fe-4a23-984d-145b9544ab88"
 			]
 		},
 		{
@@ -70,7 +68,9 @@
 			"tasks": [
 				"e98b5aef-b729-4b98-b394-4427c825b8a1",
 				"04bbfd17-e996-4198-8965-dc94910ce1d1",
-				"a11dc16a-f20e-48be-b636-1005ab2d25dc"
+				"a11dc16a-f20e-48be-b636-1005ab2d25dc",
+				"d5df15ac-40f7-40a5-8feb-55d752fafbb5",
+				"6d1eb545-d276-4ed8-9cf3-dc682234330c"
 			]
 		}
 	],
@@ -78,7 +78,7 @@
 		{
 			"uuid": "d5df15ac-40f7-40a5-8feb-55d752fafbb5",
 			"title": "Character Stats",
-			"description": "\nHP\n\nSTR\t - mods Physical Damage\nDEX - mods speed and Ranged and Dex Damage\nINT\t - mods Magical Damage\nCON - mods HP\nWIS\t - mods status resistance\n\nLevel\nXP (only player, allows them to progress lvl. enemies live with the lvl they spawned in)\n\nValue of stats is calculated when used.\nEx: Max Health calculation (baseHP + (CON * 4)) is recalculated every time stats can change (equipment change, stat buffs/debuffs)\nEx: Damage (baseDmg + (STR * weaponSTRmod)) is recalculated every hit",
+			"description": "\nSpeed\nHP\n\nSTR\t - mods Physical Damage\nDEX - mods Speed and Ranged and Dex Damage\nINT\t - mods Magical Damage\nCON - mods HP\nWIS\t - mods status resistance\n\nLevel\nXP (only player, allows them to progress lvl. enemies live with the lvl they spawned in)\n\nValue of stats is calculated when used.\nEx: Max Health calculation (baseHP + (CON * 4)) is recalculated every time stats can change (equipment change, stat buffs/debuffs)\nEx: Damage (baseDmg + (STR * weaponSTRmod)) is recalculated every hit",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
@@ -99,7 +99,7 @@
 		{
 			"uuid": "46152144-11fe-4a23-984d-145b9544ab88",
 			"title": "Inventory",
-			"description": "\nGold\n\nEquipment Slots: (8 slots)\n- Head\n- Torso\n- Arms\n- Legs\n- Tail\n= necklace\n= ring\n= Weapon\n\nBag: (8 slots?)",
+			"description": "\nGold\n\nEquipment Slots: (8 slots)\n- Head\n- Torso\n- Arms\n- Legs\n- Tail?\n= necklace\n= ring\n\n= Melee Weapon\n= Ranged Weapon\n\nBag: (8 slots?)",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		},
