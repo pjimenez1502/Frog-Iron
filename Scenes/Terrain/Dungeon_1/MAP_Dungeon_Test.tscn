@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://w31voexjaly"]
+[gd_scene load_steps=13 format=3 uid="uid://w31voexjaly"]
 
 [ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="1_0h72o"]
 [ext_resource type="Script" uid="uid://bouwtyhvldfxb" path="res://Scenes/Terrain/NavRegion.gd" id="2_65vxh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bdooinc4mh5c8" path="res://Scenes/Object/Door/bar_door.tscn" id="6_r3tmk"]
 [ext_resource type="PackedScene" uid="uid://cbsf41bly11ev" path="res://Scenes/Object/Door/empty_door.tscn" id="7_a8hvq"]
 [ext_resource type="PackedScene" uid="uid://dut5hauwt2iwl" path="res://Scenes/Character/Enemy/Dummy/archery_target.tscn" id="9_pvoku"]
+[ext_resource type="PackedScene" uid="uid://dmgk0o744xmbo" path="res://Scenes/Object/Chest/Chest.tscn" id="10_kw3t7"]
 
 [sub_resource type="Environment" id="Environment_t7sdq"]
 background_mode = 1
@@ -91,3 +92,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
 
 [node name="ArcheryTarget" parent="." instance=ExtResource("9_pvoku")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2, 0, -2)
+
+[node name="Chest" parent="." instance=ExtResource("10_kw3t7")]
+transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 34, 0, 2)
+
+[editable path="Chest"]

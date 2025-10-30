@@ -1,8 +1,8 @@
 extends Control
 class_name PlayMenuView
 
-@onready var character_menu: CharacterMenu = $"VBoxContainer/Menu Panel/MarginContainer/CharacterMenu"
-@onready var inventory_menu: Control = $"VBoxContainer/Menu Panel/MarginContainer/InventoryMenu"
+@onready var character_menu: Panel = %CharacterMenu
+@onready var inventory_menu: Panel = %InventoryMenu
 
 enum PlayMenu {CHARACTER, INVENTORY, SKILLS, PAUSE, NONE}
 var current_menu: PlayMenu = PlayMenu.NONE

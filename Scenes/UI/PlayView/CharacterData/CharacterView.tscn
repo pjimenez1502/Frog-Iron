@@ -1,0 +1,183 @@
+[gd_scene load_steps=5 format=3 uid="uid://dodsm3tdy1yuc"]
+
+[ext_resource type="Script" uid="uid://bkx5uuva7n2ca" path="res://Scenes/UI/PlayView/CharacterData/CharacterDataView.gd" id="1_50cbx"]
+[ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_f4rtk"]
+[ext_resource type="Texture2D" uid="uid://dgr4imrjp48uu" path="res://Scenes/UI/Asset/+_button.png" id="2_f4rtk"]
+[ext_resource type="Texture2D" uid="uid://i2gp5kx2jtuh" path="res://Scenes/UI/Asset/+_button_disabled.png" id="3_w35rc"]
+
+[node name="Menu Panel" type="Panel"]
+offset_right = 716.0
+offset_bottom = 374.0
+size_flags_vertical = 3
+theme = ExtResource("1_f4rtk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterMenu" type="Control" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_50cbx")
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/CharacterMenu"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 448.0
+offset_right = 698.0
+offset_bottom = 358.0
+
+[node name="STATS" type="Panel" parent="MarginContainer/CharacterMenu/Stats"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CharacterMenu/Stats/STATS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer"]
+layout_mode = 2
+
+[node name="AvailableIncrease" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+text = "Available: (2)"
+horizontal_alignment = 1
+
+[node name="StatBox" type="HBoxContainer" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox"]
+layout_mode = 2
+
+[node name="Strength" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Strength"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Dexterity" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Dexterity"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Intelligence" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Intelligence"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Wisdom" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Wisdom"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Constitution" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
+layout_mode = 2
+text = "Constitution"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Strength_value" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 26)
+layout_mode = 2
+text = "2"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Dexterity_value" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 26)
+layout_mode = 2
+text = "2"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Intelligence_value" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 26)
+layout_mode = 2
+text = "2"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Wisdom_value" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 26)
+layout_mode = 2
+text = "2"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Constitution_value" type="RichTextLabel" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 26)
+layout_mode = 2
+text = "2"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox"]
+layout_mode = 2
+
+[node name="Strength_button" type="TextureButton" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("2_f4rtk")
+texture_disabled = ExtResource("3_w35rc")
+stretch_mode = 0
+
+[node name="Dexterity_button" type="TextureButton" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("2_f4rtk")
+texture_disabled = ExtResource("3_w35rc")
+stretch_mode = 0
+
+[node name="Intelligence_button" type="TextureButton" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("2_f4rtk")
+texture_disabled = ExtResource("3_w35rc")
+stretch_mode = 0
+
+[node name="Wisdom_button" type="TextureButton" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("2_f4rtk")
+texture_disabled = ExtResource("3_w35rc")
+stretch_mode = 0
+
+[node name="Constitution_button" type="TextureButton" parent="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture_normal = ExtResource("2_f4rtk")
+texture_disabled = ExtResource("3_w35rc")
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Strength_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["STR"]]
+[connection signal="pressed" from="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Dexterity_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["DEX"]]
+[connection signal="pressed" from="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Intelligence_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["INT"]]
+[connection signal="pressed" from="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Wisdom_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["WIS"]]
+[connection signal="pressed" from="MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Constitution_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["CON"]]

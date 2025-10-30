@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=19 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -14,10 +14,9 @@
 [ext_resource type="Shader" uid="uid://kvauqeyvssi4" path="res://Assets/Material/Shader/Vignette.gdshader" id="8_ufkdj"]
 [ext_resource type="Script" uid="uid://chm6fnyrdc77i" path="res://Scenes/UI/PlayView/PlayMenu.gd" id="12_uldec"]
 [ext_resource type="Texture2D" uid="uid://dnoq88bdyt026" path="res://Scenes/UI/Asset/X_button.png" id="13_t3llb"]
-[ext_resource type="Script" uid="uid://bkx5uuva7n2ca" path="res://Scenes/UI/PlayView/CharacterDataView.gd" id="14_0bptl"]
-[ext_resource type="Texture2D" uid="uid://dgr4imrjp48uu" path="res://Scenes/UI/Asset/+_button.png" id="14_r5ygv"]
-[ext_resource type="Texture2D" uid="uid://i2gp5kx2jtuh" path="res://Scenes/UI/Asset/+_button_disabled.png" id="16_m0chj"]
-[ext_resource type="Script" uid="uid://k6jpgqu6wugu" path="res://Scenes/UI/PlayView/Inventory View.gd" id="17_5me5s"]
+[ext_resource type="PackedScene" uid="uid://dodsm3tdy1yuc" path="res://Scenes/UI/PlayView/CharacterData/CharacterView.tscn" id="14_0bptl"]
+[ext_resource type="Script" uid="uid://cf6xo6j4jqked" path="res://Scenes/UI/PlayView/EmergentInventoryView.gd" id="16_m0chj"]
+[ext_resource type="PackedScene" uid="uid://bb85h5bl4ip1t" path="res://Scenes/UI/PlayView/Inventory/InventoryView.tscn" id="17_5me5s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
 shader = ExtResource("8_ufkdj")
@@ -274,11 +273,59 @@ layout_mode = 2
 texture_normal = ExtResource("13_t3llb")
 stretch_mode = 0
 
-[node name="Menu Panel" type="Panel" parent="UI/PlayMenu/VBoxContainer"]
+[node name="Content" type="Control" parent="UI/PlayMenu/VBoxContainer"]
+custom_minimum_size = Vector2(716, 374)
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel"]
+[node name="CharacterMenu" parent="UI/PlayMenu/VBoxContainer/Content" instance=ExtResource("14_0bptl")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryMenu" parent="UI/PlayMenu/VBoxContainer/Content" instance=ExtResource("17_5me5s")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Emergent Inventory" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("16_m0chj")
+
+[node name="Panel" type="Panel" parent="UI/Emergent Inventory"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -100.0
+offset_right = -18.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_oklkm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Emergent Inventory/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -286,242 +333,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterMenu" type="Control" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer"]
-visible = false
-layout_mode = 2
-script = ExtResource("14_0bptl")
-
-[node name="Stats" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 448.0
-offset_right = 698.0
-offset_bottom = 358.0
-
-[node name="STATS" type="Panel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer"]
-layout_mode = 2
-
-[node name="AvailableIncrease" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 2
-text = "Available: (2)"
-horizontal_alignment = 1
-
-[node name="StatBox" type="HBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox"]
-layout_mode = 2
-
-[node name="Strength" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
-layout_mode = 2
-text = "Strength"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Dexterity" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
-layout_mode = 2
-text = "Dexterity"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Intelligence" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
-layout_mode = 2
-text = "Intelligence"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Wisdom" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
-layout_mode = 2
-text = "Wisdom"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Constitution" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer"]
-layout_mode = 2
-text = "Constitution"
-fit_content = true
-autowrap_mode = 0
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Strength_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 26)
-layout_mode = 2
-text = "2"
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="Dexterity_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 26)
-layout_mode = 2
-text = "2"
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="Intelligence_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 26)
-layout_mode = 2
-text = "2"
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="Wisdom_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 26)
-layout_mode = 2
-text = "2"
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="Constitution_value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 26)
-layout_mode = 2
-text = "2"
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox"]
-layout_mode = 2
-
-[node name="Strength_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(26, 26)
-layout_mode = 2
-texture_normal = ExtResource("14_r5ygv")
-texture_disabled = ExtResource("16_m0chj")
-stretch_mode = 0
-
-[node name="Dexterity_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(26, 26)
-layout_mode = 2
-texture_normal = ExtResource("14_r5ygv")
-texture_disabled = ExtResource("16_m0chj")
-stretch_mode = 0
-
-[node name="Intelligence_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(26, 26)
-layout_mode = 2
-texture_normal = ExtResource("14_r5ygv")
-texture_disabled = ExtResource("16_m0chj")
-stretch_mode = 0
-
-[node name="Wisdom_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(26, 26)
-layout_mode = 2
-texture_normal = ExtResource("14_r5ygv")
-texture_disabled = ExtResource("16_m0chj")
-stretch_mode = 0
-
-[node name="Constitution_button" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(26, 26)
-layout_mode = 2
-texture_normal = ExtResource("14_r5ygv")
-texture_disabled = ExtResource("16_m0chj")
-stretch_mode = 0
-
-[node name="InventoryMenu" type="Control" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer"]
-layout_mode = 2
-script = ExtResource("17_5me5s")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="EQUIP" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Equipped_title" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-bbcode_enabled = true
-text = "Equipped"
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="Equipment" type="ScrollContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP"]
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Equipment_content" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Emergent Inventory/Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Head" type="FoldableContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
-layout_mode = 2
-title = "Head"
-
-[node name="INV" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Inventory_title" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-bbcode_enabled = true
-text = "Inventory"
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="Inventory" type="ScrollContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV"]
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Inventory_content" type="VBoxContainer" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/Inventory"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Coin Value" type="RichTextLabel" parent="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/InventoryMenu/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "10 G"
-fit_content = true
-horizontal_alignment = 2
 
 [node name="Cursor" parent="." instance=ExtResource("7_uldec")]
 layout_mode = 1
 
 [connection signal="tab_changed" from="UI/PlayMenu/VBoxContainer/MenuTop/Tabs" to="UI/PlayMenu" method="_tab_changed"]
 [connection signal="pressed" from="UI/PlayMenu/VBoxContainer/MenuTop/Close" to="UI/PlayMenu" method="close_menu"]
-[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Strength_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["STR"]]
-[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Dexterity_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["DEX"]]
-[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Intelligence_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["INT"]]
-[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Wisdom_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["WIS"]]
-[connection signal="pressed" from="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Constitution_button" to="UI/PlayMenu/VBoxContainer/Menu Panel/MarginContainer/CharacterMenu" method="increase_stat" binds= ["CON"]]

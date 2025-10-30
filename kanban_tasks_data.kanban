@@ -59,7 +59,9 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"46152144-11fe-4a23-984d-145b9544ab88"
+				"46152144-11fe-4a23-984d-145b9544ab88",
+				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
+				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7"
 			]
 		},
 		{
@@ -199,6 +201,20 @@
 			"title": "Character Stats UI",
 			"description": "Track and Show stat increases available",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
+			"title": "Item Loot",
+			"description": "\nFrom Enemy:\n\t- Not that common. ex: not all enemies drop tons of stuff. Maybe some tough enemies drop an equipable or a cool item sometimes\n\t- It doesnt feel like enemies drop tons of shit that ends up in the ground and you have to avoid if there is something in the ground that you want\n\nFrom Chests:\n\t- Open small menu with contents on interaction. (visually represent if they are locked and requiere a key?)",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
+			"title": "Chest",
+			"description": "\n\noptions:\n\t- as an interaction. Player has to come close and manually interact to open the inventory ui and the animation. when player closes the ui or is too far, close\n\n\t- Automatically, if chest is unlocked, when player is near open the inventory ui and the opening animation. When player leaves, close both.\n\n\nif locked:\n\t- player has to manually interact to spend a key and open the chest",
+			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		}
 	],

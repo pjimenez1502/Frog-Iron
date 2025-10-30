@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmgk0o744xmbo"]
+
+[ext_resource type="Script" uid="uid://ik27op68ulgs" path="res://Scenes/Object/_Interactions/Chest_Inter.gd" id="2_0gw11"]
+[ext_resource type="PackedScene" uid="uid://cqmlc8ygditui" path="res://Scenes/Object/Chest/Component/Chest_Base.glb" id="3_0gw11"]
+[ext_resource type="PackedScene" uid="uid://cvs0fu753s53" path="res://Scenes/Object/Chest/Component/Chest_Lid.glb" id="4_hu82h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r7jxm"]
+radius = 1.7743995
+
+[node name="Chest" type="Node3D"]
+
+[node name="Interaction" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_0gw11")
+target_opening = -130
+
+[node name="AutoInteractableArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AutoInteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_r7jxm")
+
+[node name="Chest" type="Node3D" parent="."]
+
+[node name="Chest_Base" parent="Chest" instance=ExtResource("3_0gw11")]
+
+[node name="Hinge" type="Node3D" parent="Chest/Chest_Base"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.7)
+
+[node name="Chest_Lid" parent="Chest/Chest_Base/Hinge" instance=ExtResource("4_hu82h")]
+
+[connection signal="body_entered" from="AutoInteractableArea" to="Interaction" method="on_enter"]
+[connection signal="body_exited" from="AutoInteractableArea" to="Interaction" method="on_exit"]

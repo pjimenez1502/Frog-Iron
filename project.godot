@@ -45,7 +45,9 @@ enabled=PackedStringArray("res://addons/function_type_autocomplete/plugin.cfg", 
 [file_customization]
 
 folder_colors={
+"res://Data/": "teal",
 "res://Global/": "red",
+"res://Scenes/": "pink",
 "res://Scenes/Character/": "teal",
 "res://Scenes/Object/": "pink",
 "res://Scenes/Terrain/": "purple",
