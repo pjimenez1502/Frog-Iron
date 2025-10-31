@@ -5,6 +5,8 @@ class_name PlayerRangedWeapon
 @export var weapon: RangedWeapon
 
 func _physics_process(delta: float) -> void:
+	if !weapon:
+		return
 	if !enabled:
 		weapon.visible = false
 		return

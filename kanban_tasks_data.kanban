@@ -213,7 +213,7 @@
 		{
 			"uuid": "9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
 			"title": "Chest",
-			"description": "\n\noptions:\n\t- as an interaction. Player has to come close and manually interact to open the inventory ui and the animation. when player closes the ui or is too far, close\n\n\t- Automatically, if chest is unlocked, when player is near open the inventory ui and the opening animation. When player leaves, close both.\n\n\nif locked:\n\t- player has to manually interact to spend a key and open the chest",
+			"description": "\n\n\t- Automatically, if chest is unlocked, when player is near open the inventory ui and the opening animation. When player leaves, close both.\n\nif locked:\n\t- player has to manually interact to spend a key and open the chests",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		}

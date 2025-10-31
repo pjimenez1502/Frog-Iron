@@ -13,6 +13,8 @@ func _ready() -> void:
 	attack_timer.wait_time = swing_cd
 
 func _physics_process(_delta: float) -> void:
+	if !weapon:
+		return
 	if !enabled:
 		weapon.visible = false
 		return

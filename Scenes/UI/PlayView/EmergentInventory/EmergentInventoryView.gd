@@ -21,7 +21,7 @@ func show_inventory() -> void:
 		var inventory_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
 		content.add_child(inventory_entry)
 		inventory_entry.populate(item)
-		inventory_entry.ItemPressed.connect(grab_item)
+		inventory_entry.button.pressed.connect(grab_item.bind(inventory_entry.item_data))
 	visible = true
 
 func clear_inventory() -> void:

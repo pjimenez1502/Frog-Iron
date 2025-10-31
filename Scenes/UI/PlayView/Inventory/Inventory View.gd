@@ -12,13 +12,17 @@ func _ready() -> void:
 func update_equipped(equipped: Dictionary) -> void:
 	pass
 
+
 func update_inventory(inventory: Array[ItemResource]) -> void:
 	clear_inventory()
 	for item: ItemResource in inventory:
 		var inventory_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
 		inventory_content.add_child(inventory_entry)
 		inventory_entry.populate(item)
-		#inventory_entry.ItemPressed.connect(grab_item) ##Item Function
+		inventory_entry.button.pressed.connect(use_item.bind(inventory_entry.item_data))
+
+func use_item(item_data: ItemResource) -> void:
+	SignalBus.ItemUsed.emit(item_data)
 
 func clear_inventory() -> void:
 	for entry: ItemDataEntry in inventory_content.get_children():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=23 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
@@ -6,9 +6,7 @@
 [ext_resource type="Script" uid="uid://dwkk4t4i8di8q" path="res://Scenes/Character/Player/PlayerInventory.gd" id="4_yty6f"]
 [ext_resource type="Script" uid="uid://c4w0xtjmxpon1" path="res://Scenes/Weapon/PlayerRangedWeapon.gd" id="6_f0b02"]
 [ext_resource type="Script" uid="uid://diatversdlecu" path="res://Scenes/Character/Player/PlayerInteraction.gd" id="7_3gn43"]
-[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="7_jw8fk"]
 [ext_resource type="Script" uid="uid://cskucf7jaxpde" path="res://Scenes/Weapon/PlayerMeleeWeapon.gd" id="7_nyt8s"]
-[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow/Bow.tscn" id="7_yty6f"]
 [ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/HUD/Interaction/E_Key.png" id="8_f0b02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qy38"]
@@ -191,6 +189,24 @@ script = ExtResource("4_yty6f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_11mtv")
 
+[node name="Weapons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PlayerMelee" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
+unique_name_in_owner = true
+script = ExtResource("7_nyt8s")
+enabled = true
+swing_cd = 0.5
+weapon = NodePath("")
+
+[node name="MeleeTimer" type="Timer" parent="Weapons/PlayerMelee"]
+unique_name_in_owner = true
+
+[node name="PlayerRanged" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
+unique_name_in_owner = true
+script = ExtResource("6_f0b02")
+weapon = NodePath("")
+
 [node name="Camera Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0, 0)
 
@@ -221,26 +237,6 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_8vurq")
 }
-
-[node name="Weapons" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="PlayerMelee" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
-script = ExtResource("7_nyt8s")
-enabled = true
-swing_cd = 0.5
-weapon = NodePath("Iron Sword")
-
-[node name="MeleeTimer" type="Timer" parent="Weapons/PlayerMelee"]
-unique_name_in_owner = true
-
-[node name="Iron Sword" parent="Weapons/PlayerMelee" instance=ExtResource("7_jw8fk")]
-
-[node name="PlayerRanged" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
-script = ExtResource("6_f0b02")
-weapon = NodePath("Bow")
-
-[node name="Bow" parent="Weapons/PlayerRanged" instance=ExtResource("7_yty6f")]
 
 [node name="InteractionArea" type="Area3D" parent="."]
 collision_layer = 0

@@ -66,6 +66,10 @@ func recalc_hp() -> void:
 	current_HP = roundi(float(current_HP) / float(prev_max_hp)  * max_HP)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 
+func heal(_value: int) -> void:
+	current_HP = clamp(current_HP + _value, 0, max_HP)
+	HEALTH_UPDATE.emit(max_HP, current_HP)
+	print("healed: ", _value)
 
 func damage(_damage: int) -> void:
 	if invulnerable:

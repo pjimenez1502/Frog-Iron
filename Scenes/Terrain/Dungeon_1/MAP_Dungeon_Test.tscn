@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://w31voexjaly"]
+[gd_scene load_steps=18 format=3 uid="uid://w31voexjaly"]
 
 [ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="1_0h72o"]
 [ext_resource type="Script" uid="uid://bouwtyhvldfxb" path="res://Scenes/Terrain/NavRegion.gd" id="2_65vxh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmgk0o744xmbo" path="res://Scenes/Object/Chest/Chest.tscn" id="10_kw3t7"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="11_vrenn"]
 [ext_resource type="Script" uid="uid://c82c1yicuqdig" path="res://Data/Item/Consumable/ConsumableResource.gd" id="12_plwq1"]
+[ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Bow.tres" id="13_plwq1"]
 
 [sub_resource type="Environment" id="Environment_t7sdq"]
 background_mode = 1
@@ -108,4 +109,4 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 
 [node name="Chest" parent="." instance=ExtResource("10_kw3t7")]
 transform = Transform3D(-0.4999999, 0, 0.8660255, 0, 1, 0, -0.86602545, 0, -0.49999994, -2, 0, 6)
-inventory = Array[ExtResource("11_vrenn")]([SubResource("Resource_0yevh"), SubResource("Resource_26rif")])
+inventory = Array[ExtResource("11_vrenn")]([SubResource("Resource_0yevh"), SubResource("Resource_26rif"), ExtResource("13_plwq1")])

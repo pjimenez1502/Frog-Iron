@@ -15,6 +15,8 @@ signal PlayerHPUpdate
 signal PlayerCoinUpdate
 signal PlayerStatsUpdate
 
+signal ItemUsed
+
 signal OpenEmergentInv
 signal CloseEmergentInv
 signal UpdateEmergentInv
