@@ -43,5 +43,3 @@ func timescale_change(target: float, transition: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("_debug Reset"):
 		open_demo()
-	if event.is_action_pressed("MENU_PAUSE"):
-		SignalBus.PauseGame.emit(!paused)
