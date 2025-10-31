@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmgk0o744xmbo"]
+[gd_scene load_steps=6 format=3 uid="uid://dmgk0o744xmbo"]
 
+[ext_resource type="Script" uid="uid://c2spiiw2lrrr7" path="res://Scenes/Object/Chest/Chest.gd" id="1_0gw11"]
 [ext_resource type="Script" uid="uid://ik27op68ulgs" path="res://Scenes/Object/_Interactions/Chest_Inter.gd" id="2_0gw11"]
 [ext_resource type="PackedScene" uid="uid://cqmlc8ygditui" path="res://Scenes/Object/Chest/Component/Chest_Base.glb" id="3_0gw11"]
 [ext_resource type="PackedScene" uid="uid://cvs0fu753s53" path="res://Scenes/Object/Chest/Component/Chest_Lid.glb" id="4_hu82h"]
@@ -8,6 +9,7 @@
 radius = 1.7743995
 
 [node name="Chest" type="Node3D"]
+script = ExtResource("1_0gw11")
 
 [node name="Interaction" type="Node" parent="."]
 unique_name_in_owner = true

@@ -6,4 +6,5 @@
 script = ExtResource("1_07p50")
 name = "Healing Potion"
 desc = "Restores a small ammount of Health"
+rarity = 1
 metadata/_custom_type_script = "uid://c82c1yicuqdig"

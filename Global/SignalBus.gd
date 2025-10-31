@@ -3,6 +3,8 @@ extends Node
 ## Player Signals
 signal AddPlayerXP
 signal AddPlayerCoin
+signal AddPlayerItem
+signal PlayerInventoryUpdate
 signal PlayerStatIncrease
 signal AvailableStatUP
 signal PlayerDead
@@ -13,6 +15,9 @@ signal PlayerHPUpdate
 signal PlayerCoinUpdate
 signal PlayerStatsUpdate
 
+signal OpenEmergentInv
+signal CloseEmergentInv
+signal UpdateEmergentInv
 
 #Game Signals
 signal LaunchDemoScene

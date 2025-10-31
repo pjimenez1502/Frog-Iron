@@ -1,8 +1,20 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://quyp3hv3edt"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://quyp3hv3edt"]
 
 [ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Asset/BorderSquare.png" id="1_ta5cs"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="2_tcwhh"]
 [ext_resource type="Texture2D" uid="uid://c0hdjgor6g8ce" path="res://Scenes/UI/Asset/BorderSquare_flatBottom.png" id="3_uqe2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh8l4"]
+bg_color = Color(1, 1, 1, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7mtl"]
+bg_color = Color(1, 1, 1, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqe2k"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j7d1"]
+bg_color = Color(1, 1, 1, 0.47058824)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tcwhh"]
 texture = ExtResource("1_ta5cs")
@@ -35,6 +47,10 @@ texture_margin_bottom = 8.0
 modulate_color = Color(0.5, 0.5, 0.5, 1)
 
 [resource]
+Button/styles/focus = SubResource("StyleBoxFlat_jh8l4")
+Button/styles/hover = SubResource("StyleBoxFlat_q7mtl")
+Button/styles/normal = SubResource("StyleBoxFlat_uqe2k")
+Button/styles/pressed = SubResource("StyleBoxFlat_0j7d1")
 FoldableContainer/font_sizes/font_size = 32
 FoldableContainer/fonts/font = ExtResource("2_tcwhh")
 MarginContainer/constants/margin_bottom = 8

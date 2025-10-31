@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://chm6fnyrdc77i" path="res://Scenes/UI/PlayView/PlayMenu.gd" id="12_uldec"]
 [ext_resource type="Texture2D" uid="uid://dnoq88bdyt026" path="res://Scenes/UI/Asset/X_button.png" id="13_t3llb"]
 [ext_resource type="PackedScene" uid="uid://dodsm3tdy1yuc" path="res://Scenes/UI/PlayView/CharacterData/CharacterView.tscn" id="14_0bptl"]
-[ext_resource type="PackedScene" uid="uid://b218jse6ii6kd" path="res://Scenes/UI/PlayView/EmergentInventory/emergent_inventory.tscn" id="16_m0chj"]
+[ext_resource type="Script" uid="uid://cf6xo6j4jqked" path="res://Scenes/UI/PlayView/EmergentInventoryView.gd" id="16_m0chj"]
 [ext_resource type="PackedScene" uid="uid://bb85h5bl4ip1t" path="res://Scenes/UI/PlayView/Inventory/InventoryView.tscn" id="17_5me5s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
@@ -234,16 +234,15 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.4745098)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayMenu"]
-custom_minimum_size = Vector2(600, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
+offset_left = -358.0
 offset_top = -208.0
-offset_right = 300.0
+offset_right = 358.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -275,38 +274,69 @@ texture_normal = ExtResource("13_t3llb")
 stretch_mode = 0
 
 [node name="Content" type="Control" parent="UI/PlayMenu/VBoxContainer"]
-custom_minimum_size = Vector2(600, 374)
+custom_minimum_size = Vector2(716, 374)
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="CharacterMenu" parent="UI/PlayMenu/VBoxContainer/Content" instance=ExtResource("14_0bptl")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="InventoryMenu" parent="UI/PlayMenu/VBoxContainer/Content" instance=ExtResource("17_5me5s")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Emergent Inventory" parent="UI" instance=ExtResource("16_m0chj")]
+[node name="Emergent Inventory" type="Control" parent="UI"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("16_m0chj")
+
+[node name="Panel" type="Panel" parent="UI/Emergent Inventory"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -100.0
+offset_right = -18.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_oklkm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Emergent Inventory/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Emergent Inventory/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Cursor" parent="." instance=ExtResource("7_uldec")]
 layout_mode = 1

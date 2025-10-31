@@ -4,8 +4,17 @@
 [ext_resource type="Script" uid="uid://k6jpgqu6wugu" path="res://Scenes/UI/PlayView/Inventory/Inventory View.gd" id="1_6jqdy"]
 
 [node name="Menu Panel" type="Panel"]
-offset_right = 716.0
-offset_bottom = 374.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -187.0
+offset_right = 300.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("1_1ltnd")
 
@@ -77,6 +86,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Inventory_content" type="VBoxContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/Inventory"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
