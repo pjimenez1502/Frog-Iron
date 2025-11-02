@@ -65,22 +65,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Weapon" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
 layout_mode = 2
 title = "Weapon"
 
 [node name="Head" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
 layout_mode = 2
 title = "Head"
 
 [node name="Torso" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
 layout_mode = 2
 title = "Torso"
 
 [node name="Arms" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
 layout_mode = 2
 title = "Arms"
 
 [node name="Legs" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
 layout_mode = 2
 title = "Legs"
 

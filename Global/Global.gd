@@ -9,7 +9,7 @@ var rarity_colors : Array[Color] = [
 	Color(0.783, 0.0, 1.0, 1.0),
 	Color(0.999, 0.568, 0.0, 1.0),]
 enum ItemCategory { POTION, GRENADE, ARMOR, JEWELRY, LOOT }
-enum EquipSlot { WEAPON, HEAD, TORSO, ARMS, LEGS }
+enum EquipSlot { RANGEDWEAPON, MELEEWEAPON, HEAD, TORSO, ARMS, LEGS }
 
 
 

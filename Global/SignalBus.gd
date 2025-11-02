@@ -5,6 +5,7 @@ signal AddPlayerXP
 signal AddPlayerCoin
 signal AddPlayerItem
 signal PlayerInventoryUpdate
+signal PlayerEquipmentUpdate
 signal PlayerStatIncrease
 signal AvailableStatUP
 signal PlayerDead

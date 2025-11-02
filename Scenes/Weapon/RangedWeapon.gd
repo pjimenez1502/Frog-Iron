@@ -2,7 +2,7 @@ extends Node3D
 class_name RangedWeapon
 
 @export var enabled: bool
-@onready var character_stats: CharacterStats = %CharacterStats
+var character_stats: CharacterStats
 
 @onready var sprite: AnimatedSprite3D = $Sprite
 @onready var projectile_container: Node = $ProjectileContainer
@@ -21,9 +21,12 @@ var target_layer: Util.CollisionLayer
 @export var knockback: int = 1
 
 func _ready() -> void:
-	set_target_layer()
 	if !charged:
 		attack_timer.wait_time = cooldown
+
+func equipped(_character_stats: CharacterStats) -> void:
+	character_stats = _character_stats
+	set_target_layer()
 
 func pressed(_delta: float) -> void:
 	if !charged:

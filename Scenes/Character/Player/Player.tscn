@@ -192,20 +192,18 @@ shape = SubResource("CapsuleShape3D_11mtv")
 [node name="Weapons" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="PlayerMelee" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
+[node name="PlayerMelee" type="Node3D" parent="Weapons"]
 unique_name_in_owner = true
 script = ExtResource("7_nyt8s")
 enabled = true
 swing_cd = 0.5
-weapon = NodePath("")
 
 [node name="MeleeTimer" type="Timer" parent="Weapons/PlayerMelee"]
 unique_name_in_owner = true
 
-[node name="PlayerRanged" type="Node3D" parent="Weapons" node_paths=PackedStringArray("weapon")]
+[node name="PlayerRanged" type="Node3D" parent="Weapons"]
 unique_name_in_owner = true
 script = ExtResource("6_f0b02")
-weapon = NodePath("")
 
 [node name="Camera Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0, 0)
