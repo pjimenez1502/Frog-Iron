@@ -52,35 +52,52 @@ func consume_item(item_data: ConsumableResource) -> void:
 ## EQUIPMENT
 
 func equip_item(item_data: EquipableResource) -> void:
-	match item_data.equip_slot:
-		Global.EquipSlot.RANGEDWEAPON:
-			if check_already_equipped(item_data):
-				unequip_ranged_weapon(item_data)
-				return
-			equip_ranged_weapon(item_data)
-		pass
+	if check_already_equipped(item_data):
+		unequip_weapon(item_data)
+		return
+	equip_weapon(item_data)
 
 
 @onready var player_melee: PlayerMeleeWeapon = %PlayerMelee
 @onready var player_ranged: PlayerRangedWeapon = %PlayerRanged
 
-func equip_ranged_weapon(item_data: EquipableResource) -> void:
-	var weapon: RangedWeapon = item_data.scene.instantiate()
-	player_ranged.add_child(weapon)
-	weapon.equipped(character_stats)
-	player_ranged.enabled = true
-	player_ranged.weapon = weapon
+func equip_weapon(item_data: EquipableResource) -> void:
+	if equipment["WEAPON"]:
+		unequip_weapon(equipment["WEAPON"])
+	
+	var weapon: Node3D
+	match item_data.equip_slot:
+		Global.EquipSlot.RANGEDWEAPON:
+			weapon = item_data.scene.instantiate()
+			player_ranged.add_child(weapon)
+			player_ranged.enabled = true
+			player_ranged.weapon = weapon
+			weapon.equipped(character_stats)
+			
+		Global.EquipSlot.MELEEWEAPON:
+			weapon = item_data.scene.instantiate()
+			player_melee.add_child(weapon)
+			player_melee.enabled = true
+			player_melee.weapon = weapon
+			weapon.equipped(character_stats)
+	
 	equipment["WEAPON"] = item_data
 	inventory.erase(item_data)
 	SignalBus.PlayerInventoryUpdate.emit(inventory)
 	SignalBus.PlayerEquipmentUpdate.emit(equipment)
 
-func unequip_ranged_weapon(item_data: EquipableResource) -> void:
-	player_ranged.weapon.queue_free()
+func unequip_weapon(item_data: EquipableResource) -> void:
+	match item_data.equip_slot:
+		Global.EquipSlot.RANGEDWEAPON:
+			player_ranged.weapon.queue_free()
+		Global.EquipSlot.MELEEWEAPON:
+			player_melee.weapon.queue_free()
 	equipment["WEAPON"] = null
 	inventory.append(item_data)
 	SignalBus.PlayerInventoryUpdate.emit(inventory)
 	SignalBus.PlayerEquipmentUpdate.emit(equipment)
+
+
 
 func check_already_equipped(item_data: EquipableResource) -> bool:
 	for slot_key in equipment.keys():

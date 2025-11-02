@@ -52,7 +52,8 @@
 			"tasks": [
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
-				"95d12487-7eb5-4a68-a65d-ec22a5252160"
+				"95d12487-7eb5-4a68-a65d-ec22a5252160",
+				"32721204-c3d2-4d44-b6c0-1a474ab15e7c"
 			]
 		},
 		{
@@ -215,6 +216,13 @@
 			"title": "Chest",
 			"description": "\n\n\t- Automatically, if chest is unlocked, when player is near open the inventory ui and the opening animation. When player leaves, close both.\n\nif locked:\n\t- player has to manually interact to spend a key and open the chests",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
+			"steps": []
+		},
+		{
+			"uuid": "32721204-c3d2-4d44-b6c0-1a474ab15e7c",
+			"title": "Check Resources stats get applied to weapons",
+			"description": "",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

@@ -4,7 +4,7 @@ class_name ConsumableResource
 enum EFFECT { HEALTH, SHIELD, }
 @export var effect: EFFECT
 
-var heal_value
+var heal_value: int = 4
 
 func consumable_effect(target: Character) -> void:
 	match effect:

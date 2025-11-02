@@ -1,7 +1,6 @@
 extends Node3D
 class_name RangedWeapon
 
-@export var enabled: bool
 var character_stats: CharacterStats
 
 @onready var sprite: AnimatedSprite3D = $Sprite
@@ -19,6 +18,7 @@ var target_layer: Util.CollisionLayer
 @export var DEX_mod: float = .5
 @export var INT_mod: float = .0
 @export var knockback: int = 1
+
 
 func _ready() -> void:
 	if !charged:

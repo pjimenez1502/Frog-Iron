@@ -1,7 +1,7 @@
 extends Node3D
 class_name MeleeWeapon
 
-@onready var character_stats: CharacterStats = %CharacterStats
+var character_stats: CharacterStats
 
 @onready var hits: Node = $Hits
 @export var attack_hit: PackedScene
@@ -16,6 +16,10 @@ var target_layer: Util.CollisionLayer
 
 
 func _ready() -> void:
+	pass
+	
+func equipped(_character_stats: CharacterStats) -> void:
+	character_stats = _character_stats
 	set_target_layer()
 
 func attack(direction:Vector3) -> void:
