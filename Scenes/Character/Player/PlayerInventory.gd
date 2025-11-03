@@ -52,10 +52,16 @@ func consume_item(item_data: ConsumableResource) -> void:
 ## EQUIPMENT
 
 func equip_item(item_data: EquipableResource) -> void:
-	if check_already_equipped(item_data):
-		unequip_weapon(item_data)
-		return
-	equip_weapon(item_data)
+	if item_data.equip_slot == Global.EquipSlot.RANGEDWEAPON or item_data.equip_slot == Global.EquipSlot.MELEEWEAPON:
+		if check_already_equipped(item_data):
+			unequip_weapon(item_data)
+			return
+		equip_weapon(item_data)
+	else:
+		if check_already_equipped(item_data):
+			unequip_armor(item_data)
+			return
+		equip_armor(item_data)
 
 
 @onready var player_melee: PlayerMeleeWeapon = %PlayerMelee
@@ -97,7 +103,42 @@ func unequip_weapon(item_data: EquipableResource) -> void:
 	SignalBus.PlayerInventoryUpdate.emit(inventory)
 	SignalBus.PlayerEquipmentUpdate.emit(equipment)
 
+func equip_armor(item_data: EquipableResource) -> void:
+	var slotname: String
+	match item_data.equip_slot:
+		Global.EquipSlot.HEAD:
+			slotname = "HEAD"
+		Global.EquipSlot.TORSO:
+			slotname = "TORSO"
+		Global.EquipSlot.ARMS:
+			slotname = "ARMS"
+		Global.EquipSlot.LEGS:
+			slotname = "LEGS"
+	
+	if equipment[slotname]:
+		unequip_armor(equipment[slotname])
+	equipment[slotname] = item_data
+	
+	inventory.erase(item_data)
+	SignalBus.PlayerInventoryUpdate.emit(inventory)
+	SignalBus.PlayerEquipmentUpdate.emit(equipment)
 
+func unequip_armor(item_data: EquipableResource) -> void:
+	var slotname: String
+	match item_data.equip_slot:
+		Global.EquipSlot.HEAD:
+			slotname = "HEAD"
+		Global.EquipSlot.TORSO:
+			slotname = "TORSO"
+		Global.EquipSlot.ARMS:
+			slotname = "ARMS"
+		Global.EquipSlot.LEGS:
+			slotname = "LEGS"
+	equipment[slotname] = null
+	
+	inventory.append(item_data)
+	SignalBus.PlayerInventoryUpdate.emit(inventory)
+	SignalBus.PlayerEquipmentUpdate.emit(equipment)
 
 func check_already_equipped(item_data: EquipableResource) -> bool:
 	for slot_key in equipment.keys():

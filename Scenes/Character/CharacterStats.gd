@@ -16,53 +16,76 @@ var max_HP: int
 var current_HP: int
 
 @export_category("CharStats")
-@export var STR: int = 2
-@export var DEX: int = 2
-@export var INT: int = 2
-@export var WIS: int = 2
-@export var CON: int = 2
+@export var base_stats: Dictionary = {
+	"STR": 2,
+	"DEX": 2,
+	"INT": 2,
+	"WIS": 2,
+	"CON": 2,
+}
+var bonus_stats: Dictionary = {
+	"STR": 0,
+	"DEX": 0,
+	"INT": 0,
+	"WIS": 0,
+	"CON": 0,
+}
+var calculated_stats : Dictionary
 
 func _ready() -> void:
 	invul_timer_setup()
+	calculate_stats()
 	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
-	calc_speed()
+	calculate_speed()
 
-func increase_stat(stat: String, count: int) -> Dictionary:
+func increase_stat(stat: String, count: int) -> void:
 	match stat:
 		"STR":
-			STR += count
+			base_stats["STR"] += count
 		"DEX":
-			DEX += count
+			base_stats["DEX"] += count
 		"INT":
-			INT += count
+			base_stats["INT"] += count
 		"WIS":
-			WIS += count
+			base_stats["WIS"] += count
 		"CON":
-			CON += count
-	
-	recalculate_stats()
-	return get_stats()
+			base_stats["CON"] += count
 
-func get_stats() -> Dictionary:
-	return { "STR": STR, "DEX": DEX, "INT": INT, "WIS": WIS, "CON": CON }
+func update_equipment_bonus(equipment: Dictionary) -> void:
+	bonus_stats = { "STR": 0, "DEX": 0, "INT": 0, "WIS": 0, "CON": 0 }
+	for slot: String in equipment:
+		if !equipment[slot]:
+			continue
+		for stat: String in equipment[slot].bonus_stats:
+			bonus_stats[stat] += equipment[slot].bonus_stats[stat]
+
+func calculate_stats() -> Dictionary:
+	calculated_stats = {
+		"STR": base_stats["STR"] + bonus_stats["STR"],
+		"DEX": base_stats["DEX"] + bonus_stats["DEX"],
+		"INT": base_stats["INT"] + bonus_stats["INT"],
+		"WIS": base_stats["WIS"] + bonus_stats["WIS"],
+		"CON": base_stats["CON"] + bonus_stats["CON"],
+	}
+	recalculate_stats()
+	return calculated_stats
 
 func recalculate_stats() -> void:
-	calc_speed()
-	recalc_hp()
+	calculate_hp()
+	calculate_speed()
 
-
-func calc_speed() -> void:
-	speed = base_speed + DEX*0.5
+func calculate_speed() -> void:
+	speed = base_speed + calculated_stats["DEX"] * 0.5
 
 func init_hp() -> void:
-	max_HP = base_HP + CON
+	max_HP = base_HP + calculated_stats["CON"]
 	current_HP = max_HP
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 
-func recalc_hp() -> void:
+func calculate_hp() -> void:
 	var prev_max_hp: int = max_HP
 	
-	max_HP = base_HP + CON
+	max_HP = base_HP + calculated_stats["CON"]
 	current_HP = roundi(float(current_HP) / float(prev_max_hp)  * max_HP)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 

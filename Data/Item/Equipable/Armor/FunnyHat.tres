@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://clyy05uhfnac6"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/Equipable/EquipableResource.gd" id="1_78cqf"]
+
+[resource]
+script = ExtResource("1_78cqf")
+equip_slot = 2
+bonus_stats = {
+"CON": 4,
+"DEX": 0,
+"INT": 0,
+"STR": 10,
+"WIS": 0
+}
+name = "Funny hat"
+rarity = 2
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

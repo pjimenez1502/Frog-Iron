@@ -10,8 +10,9 @@ func _ready() -> void:
 	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
 	
-	SignalBus.PlayerStatsUpdate.emit(character_stats.get_stats())
+	SignalBus.PlayerStatsUpdate.emit(character_stats.base_stats, character_stats.calculate_stats())
 	SignalBus.AvailableStatUP.emit(available_statup)
+	SignalBus.PlayerEquipmentUpdate.connect(equipment_update)
 
 func move() -> void:
 	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
@@ -28,9 +29,14 @@ func move() -> void:
 func increase_stat(stat:String, count:int) -> void:
 	if !available_statup > 0:
 		return
-	SignalBus.PlayerStatsUpdate.emit(character_stats.increase_stat(stat, count))
+	character_stats.increase_stat(stat, count)
+	SignalBus.PlayerStatsUpdate.emit(character_stats.base_stats, character_stats.calculate_stats())
 	available_statup -= 1
 	SignalBus.AvailableStatUP.emit(available_statup)
+
+func equipment_update(equipment: Dictionary) -> void:
+	character_stats.update_equipment_bonus(equipment)
+	SignalBus.PlayerStatsUpdate.emit(character_stats.base_stats, character_stats.calculate_stats())
 
 func player_update_hp(max_hp: int, current_hp:int) -> void:
 	SignalBus.PlayerHPUpdate.emit(max_hp, current_hp)

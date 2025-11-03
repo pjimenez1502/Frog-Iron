@@ -14,18 +14,31 @@ class_name CharacterMenu
 @onready var wisdom_value: RichTextLabel = %Wisdom_value
 @onready var constitution_value: RichTextLabel = %Constitution_value
 
+@onready var strength_value_calc: RichTextLabel = %Strength_value_calc
+@onready var dexterity_value_calc: RichTextLabel = %Dexterity_value_calc
+@onready var intelligence_value_calc: RichTextLabel = %Intelligence_value_calc
+@onready var wisdom_value_calc: RichTextLabel = %Wisdom_value_calc
+@onready var constitution_value_calc: RichTextLabel = %Constitution_value_calc
+
+
 @onready var available_increase: RichTextLabel = %AvailableIncrease
 
 func _ready() -> void:
 	SignalBus.PlayerStatsUpdate.connect(update_stats)
 	SignalBus.AvailableStatUP.connect(update_availableUP)
 
-func update_stats(stats: Dictionary) -> void:
-	strength_value.text = str(stats["STR"])
-	dexterity_value.text = str(stats["DEX"])
-	intelligence_value.text = str(stats["INT"])
-	wisdom_value.text = str(stats["WIS"])
-	constitution_value.text = str(stats["CON"])
+func update_stats(base_stats: Dictionary, calculated_stats: Dictionary) -> void:
+	strength_value.text = str(base_stats["STR"])
+	dexterity_value.text = str(base_stats["DEX"])
+	intelligence_value.text = str(base_stats["INT"])
+	wisdom_value.text = str(base_stats["WIS"])
+	constitution_value.text = str(base_stats["CON"])
+	
+	strength_value_calc.text = str(calculated_stats["STR"])
+	dexterity_value_calc.text = str(calculated_stats["DEX"])
+	intelligence_value_calc.text = str(calculated_stats["INT"])
+	wisdom_value_calc.text = str(calculated_stats["WIS"])
+	constitution_value_calc.text = str(calculated_stats["CON"])
 
 func update_availableUP(value: int) -> void:
 	available_increase.text = "Available: (%d)" % value

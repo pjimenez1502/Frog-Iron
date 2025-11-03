@@ -71,7 +71,8 @@ func release_charged_shot() -> void:
 
 func shoot(strength: float=1) -> void:
 	#print("Shot Charge: ", charge)
-	var calc_damage: int = (base_damage + (STR_mod * character_stats.STR) + (DEX_mod * character_stats.DEX) + (INT_mod * character_stats.INT)) * strength
+	var calculated_stats = character_stats.calculate_stats()
+	var calc_damage: int = base_damage + (STR_mod * calculated_stats["STR"]) + (DEX_mod * calculated_stats["DEX"]) + (INT_mod * calculated_stats["INT"])
 	var calc_knockback: int = knockback
 	spawn_projectile(calc_damage, calc_knockback, strength)
 

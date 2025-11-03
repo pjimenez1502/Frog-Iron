@@ -24,9 +24,9 @@ func equipped(_character_stats: CharacterStats) -> void:
 
 func attack(direction:Vector3) -> void:
 	var new_hit: MeleeWeaponHit = attack_hit.instantiate()
-	hits.add_child(new_hit)
-	
-	var calc_damage: int = base_damage + (STR_mod * character_stats.STR) + (DEX_mod * character_stats.DEX) + (INT_mod * character_stats.INT)
+	hits.add_child(new_hit) 
+	var calculated_stats = character_stats.calculate_stats()
+	var calc_damage: int = base_damage + (STR_mod * calculated_stats["STR"]) + (DEX_mod * calculated_stats["DEX"]) + (INT_mod * calculated_stats["INT"])
 	var calc_knockback: int = knockback
 	
 	new_hit.set_weapon_data(calc_damage, calc_knockback, target_layer)
