@@ -38,6 +38,13 @@ func open_character() -> void:
 		match_menu(PlayMenu.CHARACTER)
 	else:
 		close_menu()
+
+func open_inventory() -> void:
+	if current_menu == PlayMenu.NONE:
+		match_menu(PlayMenu.INVENTORY)
+	else:
+		close_menu()
+
 func open_pause() -> void:
 	if current_menu == PlayMenu.NONE:
 		match_menu(PlayMenu.PAUSE)
@@ -52,3 +59,5 @@ func _input(event: InputEvent) -> void:
 		open_pause()
 	if event.is_action_pressed("MENU_CHARACTER"):
 		open_character()
+	if event.is_action_pressed("MENU_INVENTORY"):
+		open_inventory()

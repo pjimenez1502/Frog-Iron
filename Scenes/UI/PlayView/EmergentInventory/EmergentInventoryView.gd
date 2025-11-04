@@ -34,7 +34,10 @@ func close_inv() -> void:
 	visible = false
 
 func grab_item(item_data: ItemResource) -> void:
-	SignalBus.AddPlayerItem.emit(item_data)
+	if item_data is CoinResource:
+		SignalBus.AddPlayerCoin.emit(item_data.amount)
+	else:
+		SignalBus.AddPlayerItem.emit(item_data)
 	
 	inventory.erase(item_data)
 	show_inventory()

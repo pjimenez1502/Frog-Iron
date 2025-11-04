@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CoinResource" load_steps=2 format=3 uid="uid://cusdadd4b8psh"]
+
+[ext_resource type="Script" uid="uid://bjmy5iaodbrpj" path="res://Data/Item/CoinResource.gd" id="1_ghi3t"]
+
+[resource]
+script = ExtResource("1_ghi3t")
+amount = 16
+name = "Coin Sack"
+rarity = 5
+metadata/_custom_type_script = "uid://bjmy5iaodbrpj"
