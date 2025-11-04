@@ -18,3 +18,12 @@ class_name EquipableResource
 
 func on_use() -> void:
 	print("Used Equipable")
+
+func get_tooltip_content() -> String:
+	var tooltip: String
+	tooltip = "[color=#%s]%s[/color] \n%s" % [Global.rarity_colors[rarity].to_html() ,name, desc]
+	tooltip += "\n Damage: %d" % weapon_stats["DAMAGE"] if equip_slot == Global.EquipSlot.RANGEDWEAPON or equip_slot == Global.EquipSlot.MELEEWEAPON else ""
+	for stat in bonus_stats:
+		if bonus_stats[stat] != 0:
+			tooltip += "\n -%s: +%d" % [stat, bonus_stats[stat]]
+	return tooltip

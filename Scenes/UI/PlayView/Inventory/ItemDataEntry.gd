@@ -13,3 +13,6 @@ func populate(_item_data: ItemResource) -> void:
 	self_modulate = Global.rarity_colors[item_data.rarity]
 	item_name.modulate = Global.rarity_colors[item_data.rarity]
 	#item_icon.texture = item_data.icon
+
+func show_tooltip(value: bool) -> void:
+	SignalBus.ShowTooltip.emit(value, item_data.get_tooltip_content())

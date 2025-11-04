@@ -27,5 +27,7 @@ signal LaunchDemoScene
 signal NavmeshBakeRequest
 
 signal ShowPopupText
+signal ShowTooltip
+
 signal PauseGame
 signal TimeScaleChange

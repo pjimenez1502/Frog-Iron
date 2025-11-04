@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://quyp3hv3edt"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://quyp3hv3edt"]
 
 [ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Asset/BorderSquare.png" id="1_ta5cs"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="2_tcwhh"]
@@ -22,6 +22,14 @@ texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0j7d1"]
+texture = ExtResource("1_ta5cs")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.7058824)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7mtl"]
 texture = ExtResource("3_uqe2k")
@@ -58,6 +66,7 @@ MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 8
 Panel/styles/panel = SubResource("StyleBoxTexture_tcwhh")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_0j7d1")
 RichTextLabel/font_sizes/normal_font_size = 32
 RichTextLabel/fonts/normal_font = ExtResource("2_tcwhh")
 TabBar/font_sizes/font_size = 32
