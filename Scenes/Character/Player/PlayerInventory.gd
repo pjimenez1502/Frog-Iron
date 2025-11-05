@@ -78,14 +78,14 @@ func equip_weapon(item_data: EquipableResource) -> void:
 			player_ranged.add_child(weapon)
 			player_ranged.enabled = true
 			player_ranged.weapon = weapon
-			weapon.equipped(character_stats)
+			weapon.setup(item_data, character_stats)
 			
 		Global.EquipSlot.MELEEWEAPON:
 			weapon = item_data.scene.instantiate()
 			player_melee.add_child(weapon)
 			player_melee.enabled = true
 			player_melee.weapon = weapon
-			weapon.equipped(character_stats)
+			weapon.setup(item_data, character_stats)
 	
 	equipment["WEAPON"] = item_data
 	inventory.erase(item_data)

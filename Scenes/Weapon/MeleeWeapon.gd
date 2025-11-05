@@ -8,17 +8,16 @@ var character_stats: CharacterStats
 
 var target_layer: Util.CollisionLayer
 @export_group("Damage")
-@export var base_damage: int = 2
+var base_damage: int = 0
 @export var STR_mod: float = .5
 @export var DEX_mod: float = .0
 @export var INT_mod: float = .0
-@export var knockback: int = 1
+var knockback: int = 0
 
 
-func _ready() -> void:
-	pass
-	
-func equipped(_character_stats: CharacterStats) -> void:
+func setup(item_data: EquipableResource, _character_stats: CharacterStats) -> void:
+	base_damage = item_data.weapon_stats["DAMAGE"]
+	knockback = item_data.weapon_stats["KNOCKBACK"]
 	character_stats = _character_stats
 	set_target_layer()
 

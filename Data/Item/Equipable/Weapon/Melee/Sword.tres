@@ -6,6 +6,10 @@
 [resource]
 script = ExtResource("2_bhtp4")
 equip_slot = 1
+weapon_stats = {
+"DAMAGE": 2,
+"KNOCKBACK": 2
+}
 scene = ExtResource("1_f3o2h")
 name = "Sword"
 rarity = 1
