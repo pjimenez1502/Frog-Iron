@@ -20,9 +20,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
-	move()
+	move(delta)
 
-func move() -> void:
+func move(_delta: float) -> void:
 	if dead:
 		return
 	

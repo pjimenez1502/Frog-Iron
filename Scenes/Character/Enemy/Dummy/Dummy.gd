@@ -6,7 +6,7 @@ func _ready() -> void:
 	sprite = null
 	character_stats = null
 
-func move() -> void:
+func move(_delta: float) -> void:
 	pass
 
 func damage(_damage: int) -> void:

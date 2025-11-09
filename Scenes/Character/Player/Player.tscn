@@ -1,13 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=29 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Texture2D" uid="uid://dmp23clg7m4xb" path="res://Scenes/Character/Player/Asset/frog_armor.png" id="1_1j3ov"]
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
+[ext_resource type="PackedScene" uid="uid://cq7v2m8irhut3" path="res://Scenes/Character/Player/Asset/ZhenTest.glb" id="3_jw8fk"]
 [ext_resource type="Script" uid="uid://dwkk4t4i8di8q" path="res://Scenes/Character/Player/PlayerInventory.gd" id="4_yty6f"]
 [ext_resource type="Script" uid="uid://c4w0xtjmxpon1" path="res://Scenes/Weapon/PlayerRangedWeapon.gd" id="6_f0b02"]
 [ext_resource type="Script" uid="uid://diatversdlecu" path="res://Scenes/Character/Player/PlayerInteraction.gd" id="7_3gn43"]
 [ext_resource type="Script" uid="uid://cskucf7jaxpde" path="res://Scenes/Weapon/PlayerMeleeWeapon.gd" id="7_nyt8s"]
 [ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/HUD/Interaction/E_Key.png" id="8_f0b02"]
+[ext_resource type="Script" uid="uid://cvdsrijlqpqta" path="res://Scenes/Character/Player/CameraPivot.gd" id="8_yty6f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qy38"]
 atlas = ExtResource("1_1j3ov")
@@ -51,6 +53,25 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jw8fk"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yty6f"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nyt8s"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jw8fk")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_yty6f")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_372xo"]
+graph_offset = Vector2(-104.68596, -72.57025)
+nodes/output/position = Vector2(560, 60)
+nodes/WalkBlend/node = SubResource("AnimationNodeBlendSpace1D_nyt8s")
+nodes/WalkBlend/position = Vector2(240, 0)
+node_connections = [&"output", 0, &"WalkBlend"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11mtv"]
 
@@ -170,10 +191,110 @@ turn_at_mouse = true
 [node name="Sprite" type="AnimatedSprite3D" parent="View"]
 unique_name_in_owner = true
 transform = Transform3D(0.99999994, 0, 0, 0, 0.70675814, 0.7074548, 0, -0.7074548, 0.70675814, 0, 1.2, 0)
+visible = false
 pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_noogm")
 autoplay = "default"
+
+[node name="AnimationTree" type="AnimationTree" parent="View"]
+unique_name_in_owner = true
+root_node = NodePath("%3D/ZhenTest")
+tree_root = SubResource("AnimationNodeBlendTree_372xo")
+anim_player = NodePath("../3D/ZhenTest/AnimationPlayer")
+parameters/WalkBlend/blend_position = 0.0
+
+[node name="3D" type="Node3D" parent="View"]
+unique_name_in_owner = true
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="ZhenTest" parent="View/3D" instance=ExtResource("3_jw8fk")]
+
+[node name="Skeleton3D" parent="View/3D/ZhenTest/Armature_L" index="0"]
+bones/0/position = Vector3(3.554121e-15, 1.5137863, -0.09834197)
+bones/1/position = Vector3(0.2791155, 0.93710345, -0.0708181)
+bones/1/rotation = Quaternion(0.9130416, 0.0461345, 0.25334334, 0.3162971)
+bones/2/position = Vector3(0.38602775, 1.2487519, -0.3638394)
+bones/3/position = Vector3(0.14131972, 0.026260374, -0.17062135)
+bones/3/rotation = Quaternion(0.7526266, 0.08099161, -0.06915206, 0.64977807)
+bones/4/position = Vector3(-0.14131972, 0.026260374, -0.17062135)
+bones/4/rotation = Quaternion(0.7526267, -0.08099161, 0.06915207, 0.6497781)
+bones/5/position = Vector3(0.21723968, 0.41371527, 0.36029357)
+bones/6/position = Vector3(-0.21723968, 0.41371527, 0.36029357)
+bones/7/position = Vector3(-2.0065527e-09, 0.8051606, -0.14756595)
+bones/7/rotation = Quaternion(0.045756947, 1.19084426e-07, 5.454654e-09, 0.9989526)
+bones/8/rotation = Quaternion(-0.0013106886, -2.3841838e-07, -4.5796726e-16, 0.99999917)
+bones/10/rotation = Quaternion(-0.0097270645, -4.7640995e-07, -5.359908e-09, 0.99995273)
+bones/11/rotation = Quaternion(0.009035724, 7.148164e-07, 7.6787385e-09, 0.9999592)
+bones/12/rotation = Quaternion(0.28827825, 0.2475916, -0.923314, 0.055546694)
+bones/13/rotation = Quaternion(0.5484123, -0.000698811, 0.31415418, 0.774952)
+bones/14/rotation = Quaternion(0.104573466, 0.9846844, -0.05690976, 0.1273666)
+bones/16/rotation = Quaternion(-0.00016781162, -3.8580172e-05, 0.17600669, 0.98438895)
+bones/17/rotation = Quaternion(-0.0043018064, 0.0011193185, 0.2810608, 0.9596797)
+bones/18/rotation = Quaternion(0.0072901715, -0.5091783, 0.21216008, 0.83406985)
+bones/19/rotation = Quaternion(-0.018483145, 0.009755415, -0.2940572, 0.9555593)
+bones/21/rotation = Quaternion(0.0011522912, -0.00031517405, 0.22410531, 0.9745642)
+bones/22/rotation = Quaternion(-0.001395162, 8.0341066e-05, 0.07830577, 0.99692845)
+bones/24/rotation = Quaternion(0.0021350072, 0.0004279066, 0.22402568, 0.9745809)
+bones/25/rotation = Quaternion(0.0005632248, 0.0020762114, 0.14453489, 0.98949736)
+bones/27/rotation = Quaternion(0.0025030302, 0.00087493414, 0.2239908, 0.97458774)
+bones/28/rotation = Quaternion(0.001067365, 0.0032438354, 0.09088084, 0.995856)
+bones/29/rotation = Quaternion(0.28827807, -0.24759169, 0.923314, 0.055546522)
+bones/30/rotation = Quaternion(0.54841256, 0.0006987217, -0.3141544, 0.7749519)
+bones/31/rotation = Quaternion(-0.10457352, 0.9846844, -0.05690989, -0.12736662)
+bones/33/rotation = Quaternion(-0.00016778562, 3.855152e-05, -0.1760067, 0.98438895)
+bones/34/rotation = Quaternion(-0.004301782, -0.0011193267, -0.28106076, 0.9596797)
+bones/35/rotation = Quaternion(0.007290149, 0.5091783, -0.21216008, 0.83406985)
+bones/36/rotation = Quaternion(-0.018483132, -0.00975539, 0.29405728, 0.95555925)
+bones/38/rotation = Quaternion(0.0011522903, 0.000315157, -0.22410524, 0.97456425)
+bones/39/rotation = Quaternion(-0.0013951794, -8.031613e-05, -0.07830577, 0.99692845)
+bones/41/rotation = Quaternion(0.0021350028, -0.00042790032, -0.22402567, 0.9745809)
+bones/42/rotation = Quaternion(0.0005632455, -0.0020762014, -0.14453484, 0.98949736)
+bones/44/rotation = Quaternion(0.0025029974, -0.0008749501, -0.2239908, 0.97458774)
+bones/45/rotation = Quaternion(0.0010673766, -0.0032438245, -0.09088084, 0.995856)
+bones/46/rotation = Quaternion(0.9431082, 0.08448508, -0.15144321, 0.2836797)
+bones/47/rotation = Quaternion(0.4486646, 0.068290435, 0.0923156, 0.8862926)
+bones/48/rotation = Quaternion(-0.7988711, 0.016396085, -0.05279652, 0.5989563)
+bones/49/rotation = Quaternion(0.94220936, -0.08580331, 0.15691972, 0.2832943)
+bones/50/rotation = Quaternion(0.44866434, -0.0682904, -0.092315525, 0.88629264)
+bones/51/rotation = Quaternion(-0.7987233, -0.021316286, 0.049902502, 0.5992466)
+bones/52/rotation = Quaternion(-0.9293367, -0.04692017, -0.09659158, 0.35327327)
+bones/53/rotation = Quaternion(0.18386057, 3.2689305e-09, -9.648145e-09, 0.98295236)
+bones/54/rotation = Quaternion(0.0880235, -3.2822048e-10, -5.2596434e-09, 0.9961184)
+bones/55/rotation = Quaternion(0.09542517, -1.2901044e-09, 4.426989e-09, 0.9954366)
+bones/56/position = Vector3(-0.2791155, 0.93710345, -0.0708181)
+bones/56/rotation = Quaternion(0.9130416, -0.046134446, -0.2533434, 0.31629717)
+bones/57/position = Vector3(-0.38602775, 1.2487519, -0.3638394)
+
+[node name="Arms" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="0"]
+layers = 2
+
+[node name="Body" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="1"]
+layers = 2
+
+[node name="Ears" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="2"]
+layers = 2
+
+[node name="Feet" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="3"]
+layers = 2
+
+[node name="Hand_L" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="4"]
+layers = 2
+
+[node name="Head" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="5"]
+layers = 2
+
+[node name="Horns" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="6"]
+layers = 2
+
+[node name="Leg_1" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="7"]
+layers = 2
+
+[node name="Leg_2" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="8"]
+layers = 2
+
+[node name="Tail" parent="View/3D/ZhenTest/Armature_L/Skeleton3D" index="9"]
+layers = 2
 
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -207,14 +328,17 @@ script = ExtResource("6_f0b02")
 
 [node name="Camera Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0, 0)
+script = ExtResource("8_yty6f")
+cam_speed = 2
 
-[node name="Camera3D Close" type="Camera3D" parent="Camera Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.99875563, 0.04987835, 0, -0.04987835, 0.99875563, 0, 1.364158, 3.74229)
+[node name="Camera" type="Camera3D" parent="Camera Pivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 1.5, 3.8)
+current = true
 fov = 100.0
 
 [node name="Camera3D Far" type="Camera3D" parent="Camera Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.788945, 0.614464, 0, -0.614464, 0.788945, 0, 6.83338, 6.956)
-current = true
+transform = Transform3D(1, 0, 0, 0, 0.7880109, 0.61566156, 0, -0.61566156, 0.7880109, 0, 7, 7)
 fov = 100.0
 
 [node name="Vision" type="Node3D" parent="Camera Pivot"]
@@ -223,6 +347,7 @@ transform = Transform3D(1, 0, 0, 0, 0.86602515, -0.49999988, 0, 0.49999988, 0.86
 [node name="PlayerLight" type="OmniLight3D" parent="Camera Pivot/Vision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8320885, 0)
 shadow_enabled = true
+shadow_caster_mask = 4294967293
 omni_range = 10.0
 omni_attenuation = 0.1
 
@@ -268,3 +393,5 @@ texture = ExtResource("8_f0b02")
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
 [connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="find_closest_interactable"]
+
+[editable path="View/3D/ZhenTest"]

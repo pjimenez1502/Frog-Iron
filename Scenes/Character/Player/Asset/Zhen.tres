@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dj7wty206tygp"]
+
+[ext_resource type="Texture2D" uid="uid://cyul6afbr3los" path="res://Assets/Material/Creature/ZHEN_REF_16x8.png" id="1_2m4bc"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_2m4bc")
+texture_filter = 0

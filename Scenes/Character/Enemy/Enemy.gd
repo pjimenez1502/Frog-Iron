@@ -17,7 +17,7 @@ func death() -> void:
 	loot.drop_loot()
 	# drop loot
 
-func move() -> void:
+func move(_delta: float) -> void:
 	var direction: Vector3 = to_local(nav_agent.get_next_path_position()).normalized()
 	if direction:
 		velocity.x = direction.x * character_stats.speed
@@ -26,7 +26,7 @@ func move() -> void:
 		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
-	super.move()
+	super.move(_delta)
 
 
 

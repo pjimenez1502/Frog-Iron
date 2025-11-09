@@ -2,6 +2,8 @@ extends Character
 class_name Player
 
 @onready var player_inventory: PlayerInventory = %PlayerInventory
+@onready var animation_tree: AnimationTree = %AnimationTree
+@onready var _3d: Node3D = %"3D"
 
 func _ready() -> void:
 	super._ready()
@@ -14,7 +16,7 @@ func _ready() -> void:
 	SignalBus.AvailableStatUP.emit(available_statup)
 	SignalBus.PlayerEquipmentUpdate.connect(equipment_update)
 
-func move() -> void:
+func move(_delta: float) -> void:
 	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -24,7 +26,15 @@ func move() -> void:
 		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
-	super.move()
+	movement_animation(Vector3(velocity.x, 0, velocity.z), direction, _delta)
+	
+	super.move(_delta)
+
+func movement_animation(_velocity: Vector3, direction: Vector3, _delta:float) -> void:
+	animation_tree.set("parameters/WalkBlend/blend_position", _velocity.length())
+	if !direction:
+		return
+	_3d.rotation.y = lerp_angle(_3d.rotation.y, atan2(direction.x, direction.z), _delta * 12)
 
 func increase_stat(stat:String, count:int) -> void:
 	if !available_statup > 0:
