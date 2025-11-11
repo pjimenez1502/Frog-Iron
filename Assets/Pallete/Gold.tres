@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bq61a77auhqrx"]
+
+[ext_resource type="Texture2D" uid="uid://bv0a2eaawane7" path="res://Assets/Pallete/Gold.png" id="1_j4lq6"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_j4lq6")
+texture_filter = 1

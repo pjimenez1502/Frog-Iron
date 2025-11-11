@@ -4,22 +4,35 @@ class_name EnemyAttack
 @onready var enemy: Enemy = $".."
 @onready var attack_timer: Timer = $AttackTimer
 @export var attack_cd: float
-@export var close_weapon: MeleeWeapon
+@export var melee_weapon_data: EquipableResource
+@export var ranged_weapon_data: EquipableResource
+
+var melee_weapon: MeleeWeapon
+var ranged_weapon: RangedWeapon
 
 var attack_target: Character
 var attack_available: bool = true
 
 func _ready() -> void:
 	attack_timer.wait_time = attack_cd
-	
+	init_weapons()
+
 func _physics_process(_delta: float) -> void:
 	if attack_target:
 		try_attack()
 
+func init_weapons() -> void:
+	if melee_weapon_data:
+		var melee: MeleeWeapon = melee_weapon_data.scene.instantiate()
+		add_child(melee)
+		melee_weapon = melee
+		melee.setup(melee_weapon_data, %CharacterStats)
+	#if ranged_weapon_data:
+
 func try_attack() -> void:
 	if !attack_available:
 		return
-	close_weapon.attack(dir_to_target())
+	melee_weapon.attack(dir_to_target())
 	attack_available = false
 	attack_timer.start()
 

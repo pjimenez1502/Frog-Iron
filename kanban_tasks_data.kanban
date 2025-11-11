@@ -43,7 +43,8 @@
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"ec8cfbf4-20c0-4153-9710-f40c9f8f0362",
 				"c52ce17b-65e5-41c6-a482-0deb9a8f7526",
-				"73d2c789-8b03-4250-bea9-c3830459548b"
+				"73d2c789-8b03-4250-bea9-c3830459548b",
+				"033c5afc-3a7a-4774-a24a-23395fb68aa1"
 			]
 		},
 		{
@@ -246,6 +247,13 @@
 			"title": "3D Player",
 			"description": "",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
+			"steps": []
+		},
+		{
+			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
+			"title": "Character Creation",
+			"description": "\nChoose starting character race (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\nDrake\t\t\t(Str:+3, Dex: +3, Int:+2, Wis:+1, Con:+1)\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\n\nShow:\n\t- character preview\n\t- color selection\n\t- Small Description\n\t- Stat changes\n\n\t- character name",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}
 	],

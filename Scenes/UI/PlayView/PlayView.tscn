@@ -296,6 +296,7 @@ offset_bottom = 0.0
 
 [node name="InventoryMenu" parent="UI/PlayMenu/VBoxContainer/Content" instance=ExtResource("17_5me5s")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_left = 0.0
@@ -309,6 +310,7 @@ offset_bottom = 0.0
 
 [node name="SkillsMenu" type="Panel" parent="UI/PlayMenu/VBoxContainer/Content"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -318,6 +320,7 @@ grow_vertical = 2
 
 [node name="OptionsMenu" type="Panel" parent="UI/PlayMenu/VBoxContainer/Content"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

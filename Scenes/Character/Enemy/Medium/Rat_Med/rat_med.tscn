@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://chenbcu36627c"]
+[gd_scene load_steps=23 format=3 uid="uid://chenbcu36627c"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_ghg1f"]
 [ext_resource type="Texture2D" uid="uid://dkry738lk1ete" path="res://Scenes/Character/Enemy/Medium/Rat_Med/Rat.png" id="2_lq07w"]
+[ext_resource type="PackedScene" uid="uid://cle0m3o5ilqoj" path="res://Scenes/Character/Enemy/Medium/Rat_Med/Rat.glb" id="3_lq07w"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_uhhdc"]
 [ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="4_lu8p1"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_xa7qo"]
-[ext_resource type="PackedScene" uid="uid://cc856frj7mepq" path="res://Scenes/Weapon/_MELEE/Claws/small_claws.tscn" id="5_sattg"]
+[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Sword.tres" id="7_5bbps"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
 animations = [{
@@ -17,6 +18,25 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lq07w"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5bbps"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nyt8s"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lq07w")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_5bbps")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g5da4"]
+graph_offset = Vector2(-267.7938, -82.17357)
+nodes/output/position = Vector2(560, 60)
+nodes/WalkBlend/node = SubResource("AnimationNodeBlendSpace1D_nyt8s")
+nodes/WalkBlend/position = Vector2(240, 0)
+node_connections = [&"output", 0, &"WalkBlend"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5men"]
 
@@ -138,17 +158,36 @@ radius = 1.0
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_ghg1f")
+turn_at_mouse = null
 
 [node name="View" type="Node3D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite3D" parent="View"]
 unique_name_in_owner = true
 transform = Transform3D(0.9908228, 0.13516717, 0.00010331717, -0.09566624, 0.7007263, 0.70698655, 0.09548903, -0.7005083, 0.7072265, 0, 0.89673185, 0)
+visible = false
 pixel_size = 0.05
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_wee41")
 autoplay = "default"
+
+[node name="AnimationTree" type="AnimationTree" parent="View"]
+unique_name_in_owner = true
+root_node = NodePath("%3D")
+tree_root = SubResource("AnimationNodeBlendTree_g5da4")
+anim_player = NodePath("../3D/AnimationPlayer")
+parameters/WalkBlend/blend_position = -0.0053476095
+
+[node name="3D" parent="View" instance=ExtResource("3_lq07w")]
+unique_name_in_owner = true
+
+[node name="Rat" parent="View/3D" index="0"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="Skeleton3D" parent="View/3D/Rat" index="0"]
+bones/1/rotation = Quaternion(0.00046246368, 0.9951333, -0.098537624, -4.5749723e-05)
+bones/2/rotation = Quaternion(-0.75238407, 0.00022190812, 0.0002534597, 0.65872467)
 
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -195,11 +234,11 @@ shape = SubResource("CylinderShape3D_lxplw")
 [node name="LOS_Raycast" type="RayCast3D" parent="Detection"]
 unique_name_in_owner = true
 
-[node name="Attack" type="Node3D" parent="." node_paths=PackedStringArray("close_weapon")]
+[node name="Attack" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_xa7qo")
 attack_cd = 0.6
-close_weapon = NodePath("Small Claws")
+melee_weapon_data = ExtResource("7_5bbps")
 
 [node name="CloseDetection" type="Area3D" parent="Attack"]
 collision_layer = 0
@@ -210,8 +249,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_8vurq")
 
 [node name="AttackTimer" type="Timer" parent="Attack"]
-
-[node name="Small Claws" parent="Attack" instance=ExtResource("5_sattg")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
@@ -228,3 +265,5 @@ autostart = true
 [connection signal="body_exited" from="Attack/CloseDetection" to="Attack" method="_on_close_detection_body_exited"]
 [connection signal="timeout" from="Attack/AttackTimer" to="Attack" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="NavigationAgent3D/NavTimer" to="." method="_on_timer_timeout"]
+
+[editable path="View/3D"]

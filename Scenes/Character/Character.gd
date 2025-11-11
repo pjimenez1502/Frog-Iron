@@ -9,6 +9,9 @@ var velocity_mod: Vector3
 var dead: bool
 @export var turn_at_mouse : bool
 
+@onready var _3D_VIEW: Node3D = %"3D"
+@onready var animation_tree: AnimationTree = %AnimationTree
+
 var level: int = 1
 
 func _ready() -> void:
@@ -31,18 +34,25 @@ func move(_delta: float) -> void:
 	velocity_mod.z = move_toward(velocity_mod.z, 0, character_stats.speed)
 	move_and_slide()
 	
-	if velocity.length() < .1:
-		animation_player.stop()
-	else:
-		animation_player.play("Walk")
-	
-	sprite_look()
+	#if velocity.length() < .1:
+		#animation_player.stop()
+	#else:
+		#animation_player.play("Walk")
+	#sprite_look()
 
-func sprite_look() -> void:
-	if turn_at_mouse:
-		sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
-	else:
-		sprite.flip_h = velocity.x < 0
+func movement_animation(_velocity: Vector3, direction: Vector3, _delta:float) -> void:
+	if dead:
+		return
+	animation_tree.set("parameters/WalkBlend/blend_position", _velocity.length())
+	if !direction:
+		return
+	_3D_VIEW.rotation.y = lerp_angle(_3D_VIEW.rotation.y, atan2(direction.x, direction.z), _delta * 12)
+	
+#func sprite_look() -> void:
+	#if turn_at_mouse:
+		#sprite.flip_h = get_viewport().get_mouse_position().x < get_viewport().size.x / 2
+	#else:
+		#sprite.flip_h = velocity.x < 0
 
 func gravity(delta: float) -> void:
 	velocity.y = -300 * delta

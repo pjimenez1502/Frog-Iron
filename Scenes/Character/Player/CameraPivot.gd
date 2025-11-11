@@ -9,6 +9,11 @@ class_name CameraPivot
 @export var close_position: Vector3 = Vector3(0, 1.5, 3.8)
 @export var close_rotation: Vector3 = Vector3(0, 0, 0)
 
+func _ready() -> void:
+	zoom_value = 0
+	pos_target = far_position
+	rot_target = far_rotation
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ZOOM_IN"):
 		move_target(1, delta)

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ccm125p15w4v7"]
+
+[ext_resource type="Shader" uid="uid://cq7wlr4ulrv8q" path="res://Assets/Material/Shader/GradientMapColoring.tres" id="1_e8rqe"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_e8rqe")
+shader_parameter/Body_1 = Color(0.61, 0.61, 0.61, 1)
+shader_parameter/Body_1_Shadow = Color(0.29, 0.29, 0.29, 1)
+shader_parameter/Body_2 = Color(0.86149, 0.516207, 1e-06, 1)
+shader_parameter/Body_2_Shadow = Color(0.118134, 0.582845, 0.761485, 1)
+shader_parameter/Marking = Color(0.988309, 0, 0.287508, 1)
+shader_parameter/Eye = Color(0.88, 0, 0, 1)
+shader_parameter/Hard = Color(0, 0, 0, 1)
+shader_parameter/Flesh = Color(0, 0.622864, 0.542363, 1)
+shader_parameter/White = Color(1, 1, 1, 1)
