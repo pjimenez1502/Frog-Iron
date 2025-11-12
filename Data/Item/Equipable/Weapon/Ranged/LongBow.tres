@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://bpmp7adf5vwl"]
+
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow/Bow.tscn" id="1_0ngyf"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_lcu6a"]
+
+[resource]
+script = ExtResource("2_lcu6a")
+weapon_stats = {
+"DAMAGE": 4,
+"DELAY": 2.0,
+"KNOCKBACK": 2
+}
+scene = ExtResource("1_0ngyf")
+name = "Longbow"
+desc = "A powerful but harder to draw bow"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

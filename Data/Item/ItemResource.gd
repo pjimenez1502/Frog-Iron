@@ -6,4 +6,7 @@ class_name ItemResource
 @export var rarity: Global.Rarity
 
 func get_tooltip_content() -> String:
-	return "[color=#%s]%s[/color] \n%s" % [Global.rarity_colors[rarity].to_html() ,name, desc]
+	var tooltip: String
+	tooltip = "[color=#%s]%s[/color]" % [Global.rarity_colors[rarity].to_html() ,name]
+	tooltip += "\n[color=#888]%s[/color]" % desc
+	return tooltip

@@ -18,7 +18,6 @@ var icon_dictionary: Dictionary = {
 var item_data : ItemResource
 
 func populate(_item_data: ItemResource) -> void:
-	print(_item_data.rarity)
 	item_data = _item_data
 	item_name.text = item_data.name
 	self_modulate = Global.rarity_colors[item_data.rarity]

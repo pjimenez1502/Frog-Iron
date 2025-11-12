@@ -62,7 +62,6 @@ func generate_armor(cost: int) -> ItemResource:
 	#print("%s: %s, %d" % [selected.name, Global.Rarity.keys()[selected.rarity], selected.rarity])
 	
 	for i: int in selected.rarity:	## add statboosts depending on rarity
-		print(i)
 		var stat: String = selected.bonus_stats.keys().pick_random()
 		selected.bonus_stats[stat] += 1
 	return selected

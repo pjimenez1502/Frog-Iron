@@ -7,4 +7,5 @@
 script = ExtResource("1_pfp3g")
 scene = ExtResource("1_4pweq")
 name = "Bow"
+desc = "A simple bow"
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"
