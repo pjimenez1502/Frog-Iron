@@ -1,16 +1,17 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://jy6230hcgqdm"]
 
 [ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="1_f3o2h"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/Equipable/EquipableResource.gd" id="2_bhtp4"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_bhtp4"]
 
 [resource]
 script = ExtResource("2_bhtp4")
 equip_slot = 1
 weapon_stats = {
 "DAMAGE": 2,
-"KNOCKBACK": 2
+"DELAY": 0.5,
+"KNOCKBACK": 1
 }
 scene = ExtResource("1_f3o2h")
-name = "Sword"
-rarity = 1
+name = "Shortsword"
+desc = "Simple and lightweight"
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"

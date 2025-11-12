@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://bg6m32ufatn5h"]
 
 [ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow/Bow.tscn" id="1_4pweq"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/Equipable/EquipableResource.gd" id="1_pfp3g"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_pfp3g"]
 
 [resource]
 script = ExtResource("1_pfp3g")

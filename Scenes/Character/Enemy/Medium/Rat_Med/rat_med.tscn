@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_uhhdc"]
 [ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="4_lu8p1"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_xa7qo"]
-[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Sword.tres" id="7_5bbps"]
+[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="7_5bbps"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
 animations = [{
@@ -186,8 +186,8 @@ unique_name_in_owner = true
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(0.00046246368, 0.9951333, -0.098537624, -4.5749723e-05)
-bones/2/rotation = Quaternion(-0.75238407, 0.00022190812, 0.0002534597, 0.65872467)
+bones/1/rotation = Quaternion(0.017597057, 0.9949778, -0.098522216, -0.0017424095)
+bones/2/rotation = Quaternion(-0.75232244, 0.008438864, 0.009638728, 0.65867066)
 
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -237,7 +237,6 @@ unique_name_in_owner = true
 [node name="Attack" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_xa7qo")
-attack_cd = 0.6
 melee_weapon_data = ExtResource("7_5bbps")
 
 [node name="CloseDetection" type="Area3D" parent="Attack"]

@@ -27,6 +27,7 @@ func _ready() -> void:
 func setup(item_data: EquipableResource, _character_stats: CharacterStats) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
+	charge_time = item_data.weapon_stats["DELAY"]
 	character_stats = _character_stats
 	set_target_layer()
 
@@ -55,7 +56,7 @@ func direct_shot() -> void:
 
 ## CHARGED
 @export_group("Charged")
-@export var charge_time: float = 1
+var charge_time: float = 1
 @export var min_charge: float = 0.4
 var current_charge_time: float
 var charge: float

@@ -3,7 +3,7 @@ class_name EnemyAttack
 
 @onready var enemy: Enemy = $".."
 @onready var attack_timer: Timer = $AttackTimer
-@export var attack_cd: float
+var attack_delay: float
 @export var melee_weapon_data: EquipableResource
 @export var ranged_weapon_data: EquipableResource
 
@@ -14,12 +14,15 @@ var attack_target: Character
 var attack_available: bool = true
 
 func _ready() -> void:
-	attack_timer.wait_time = attack_cd
 	init_weapons()
 
 func _physics_process(_delta: float) -> void:
 	if attack_target:
 		try_attack()
+
+func set_attack_delay(time: float) -> void:
+	attack_delay = time
+	attack_timer.wait_time = attack_delay
 
 func init_weapons() -> void:
 	if melee_weapon_data:

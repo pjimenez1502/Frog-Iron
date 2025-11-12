@@ -4,13 +4,10 @@ class_name PlayerMeleeWeapon
 @onready var attack_timer: Timer = %MeleeTimer
 
 @export var enabled: bool
-@export var swing_cd: float
+var attack_delay: float
 @export var weapon: MeleeWeapon
 
 var attack_available: bool = true
-
-func _ready() -> void:
-	attack_timer.wait_time = swing_cd
 
 func _physics_process(_delta: float) -> void:
 	if !weapon:
@@ -21,6 +18,10 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("FIRE"):
 		try_attack()
+
+func set_attack_delay(time: float) -> void:
+	attack_delay = time
+	attack_timer.wait_time = attack_delay
 
 func try_attack() -> void:
 	if !attack_available or !weapon:

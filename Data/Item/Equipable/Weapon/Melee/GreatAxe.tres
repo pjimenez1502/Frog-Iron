@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://b8kxy76mrfb1d"]
+
+[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="1_s06rb"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_lgv7a"]
+
+[resource]
+script = ExtResource("2_lgv7a")
+equip_slot = 1
+weapon_stats = {
+"DAMAGE": 4,
+"DELAY": 1.0,
+"KNOCKBACK": 2
+}
+scene = ExtResource("1_s06rb")
+name = "Greataxe"
+desc = "A slow but fierce weapon."
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

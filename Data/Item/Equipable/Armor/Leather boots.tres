@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://bkjn4q4csihjs"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_i83u3"]
+
+[resource]
+script = ExtResource("1_i83u3")
+equip_slot = 5
+bonus_stats = {
+"CON": 0,
+"DEX": 1,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+name = "Leather Boots"
+desc = "Comfortable for long walks"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

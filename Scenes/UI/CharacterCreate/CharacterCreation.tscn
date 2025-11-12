@@ -1,0 +1,205 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq2ka0lnsoxmk"]
+
+[ext_resource type="Script" uid="uid://bqfib6ygbqm3i" path="res://Scenes/UI/StartMenu/DynamicBackground.gd" id="1_fyr0b"]
+[ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_uyqrr"]
+[ext_resource type="PackedScene" uid="uid://cq7v2m8irhut3" path="res://Scenes/Character/Player/Asset/ZhenTest.glb" id="3_75a77"]
+
+[sub_resource type="Gradient" id="Gradient_fy4ai"]
+offsets = PackedFloat32Array(0, 0.86911)
+colors = PackedColorArray(0.19, 0.1083, 0.187277, 1, 0.1978, 0.43, 0.39517, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1474k"]
+noise_type = 2
+frequency = 0.2
+fractal_type = 0
+cellular_distance_function = 3
+cellular_jitter = -1.16
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uyqrr"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_1474k")
+color_ramp = SubResource("Gradient_fy4ai")
+
+[node name="CharacterCreation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uyqrr")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fyr0b")
+
+[node name="Background" type="TextureRect" parent="Background"]
+texture_filter = 1
+custom_minimum_size = Vector2(1600, 900)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_uyqrr")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(624, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Preview, name" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Preview" type="Panel" parent="Panel/MarginContainer/HBoxContainer/Preview, name"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 300)
+render_target_update_mode = 4
+
+[node name="CharacterPreview" type="Node3D" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer/SubViewport"]
+
+[node name="ZhenTest" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer/SubViewport/CharacterPreview" instance=ExtResource("3_75a77")]
+
+[node name="Skeleton3D" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer/SubViewport/CharacterPreview/ZhenTest/Armature_L" index="0"]
+bones/0/position = Vector3(3.554121e-15, 1.5137863, -0.09834197)
+bones/1/position = Vector3(0.2791155, 0.9361486, -0.07154435)
+bones/1/rotation = Quaternion(0.9130416, 0.0461345, 0.25334334, 0.3162971)
+bones/2/position = Vector3(0.38602775, 1.2487519, -0.3638394)
+bones/3/position = Vector3(0.14131972, 0.026260374, -0.17062135)
+bones/3/rotation = Quaternion(0.7526266, 0.08099161, -0.06915206, 0.64977807)
+bones/4/position = Vector3(-0.14131972, 0.026260374, -0.17062135)
+bones/4/rotation = Quaternion(0.7526267, -0.08099161, 0.06915207, 0.6497781)
+bones/5/position = Vector3(0.21723968, 0.41371527, 0.36029357)
+bones/6/position = Vector3(-0.21723968, 0.41371527, 0.36029357)
+bones/7/position = Vector3(3.398129e-17, 0.8056259, -0.14769284)
+bones/7/rotation = Quaternion(0.045756947, 1.19084426e-07, 5.454654e-09, 0.9989526)
+bones/8/rotation = Quaternion(-0.0013106886, -2.3841838e-07, -4.5796726e-16, 0.99999917)
+bones/10/rotation = Quaternion(-0.009185005, -4.7681718e-07, 2.189882e-09, 0.99995786)
+bones/11/rotation = Quaternion(0.008493673, 7.1523004e-07, -1.4210855e-14, 0.999964)
+bones/12/rotation = Quaternion(0.2887442, 0.24677703, -0.92339677, 0.055374436)
+bones/13/rotation = Quaternion(0.5459833, -0.00070088165, 0.31276274, 0.7772266)
+bones/14/rotation = Quaternion(0.10309199, 0.9850172, -0.05445654, 0.1270742)
+bones/16/rotation = Quaternion(-0.00016781162, -3.8580172e-05, 0.17600669, 0.98438895)
+bones/17/rotation = Quaternion(-0.0043018064, 0.0011193185, 0.2810608, 0.9596797)
+bones/18/rotation = Quaternion(0.0072901715, -0.5091783, 0.21216008, 0.83406985)
+bones/19/rotation = Quaternion(-0.018483145, 0.009755415, -0.2940572, 0.9555593)
+bones/21/rotation = Quaternion(0.0011522912, -0.00031517405, 0.22410531, 0.9745642)
+bones/22/rotation = Quaternion(-0.001395162, 8.0341066e-05, 0.07830577, 0.99692845)
+bones/24/rotation = Quaternion(0.0021350072, 0.0004279066, 0.22402568, 0.9745809)
+bones/25/rotation = Quaternion(0.0005632248, 0.0020762114, 0.14453489, 0.98949736)
+bones/27/rotation = Quaternion(0.0025030302, 0.00087493414, 0.2239908, 0.97458774)
+bones/28/rotation = Quaternion(0.001067365, 0.0032438354, 0.09088084, 0.995856)
+bones/29/rotation = Quaternion(0.28874397, -0.24677715, 0.9233969, 0.055374205)
+bones/30/rotation = Quaternion(0.54598343, 0.0007008742, -0.312763, 0.77722645)
+bones/31/rotation = Quaternion(-0.10309216, 0.9850171, -0.05445666, -0.12707415)
+bones/33/rotation = Quaternion(-0.00016778562, 3.855152e-05, -0.1760067, 0.98438895)
+bones/34/rotation = Quaternion(-0.004301782, -0.0011193267, -0.28106076, 0.9596797)
+bones/35/rotation = Quaternion(0.007290149, 0.5091783, -0.21216008, 0.83406985)
+bones/36/rotation = Quaternion(-0.018483132, -0.00975539, 0.29405728, 0.95555925)
+bones/38/rotation = Quaternion(0.0011522903, 0.000315157, -0.22410524, 0.97456425)
+bones/39/rotation = Quaternion(-0.0013951794, -8.031613e-05, -0.07830577, 0.99692845)
+bones/41/rotation = Quaternion(0.0021350028, -0.00042790032, -0.22402567, 0.9745809)
+bones/42/rotation = Quaternion(0.0005632455, -0.0020762014, -0.14453484, 0.98949736)
+bones/44/rotation = Quaternion(0.0025029974, -0.0008749501, -0.2239908, 0.97458774)
+bones/45/rotation = Quaternion(0.0010673766, -0.0032438245, -0.09088084, 0.995856)
+bones/46/rotation = Quaternion(0.94327337, 0.08428898, -0.15146461, 0.2831771)
+bones/47/rotation = Quaternion(0.44782963, 0.068324134, 0.092143826, 0.88672996)
+bones/48/rotation = Quaternion(-0.79855895, 0.01631222, -0.052745525, 0.5993792)
+bones/49/rotation = Quaternion(0.94237447, -0.085603334, 0.15694208, 0.28279254)
+bones/50/rotation = Quaternion(0.4478294, -0.068324104, -0.09214376, 0.8867301)
+bones/51/rotation = Quaternion(-0.79841167, -0.021231411, 0.049849723, 0.5996691)
+bones/52/rotation = Quaternion(-0.9290578, -0.048111618, -0.09904434, 0.35316727)
+bones/53/rotation = Quaternion(0.18386057, 3.2689305e-09, -9.648145e-09, 0.98295236)
+bones/54/rotation = Quaternion(0.0880235, -3.2822048e-10, -5.2596434e-09, 0.9961184)
+bones/55/rotation = Quaternion(0.09542517, -1.2901044e-09, 4.426989e-09, 0.9954366)
+bones/56/position = Vector3(-0.2791155, 0.9361486, -0.07154435)
+bones/56/rotation = Quaternion(0.9130416, -0.046134446, -0.2533434, 0.31629717)
+bones/57/position = Vector3(-0.38602775, 1.2487519, -0.3638394)
+
+[node name="AnimationPlayer" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer/SubViewport/CharacterPreview/ZhenTest" index="1"]
+autoplay = "Idle"
+
+[node name="Camera3D" type="Camera3D" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer/SubViewport/CharacterPreview"]
+transform = Transform3D(1, 0, 0, 0, 0.9842574, 0.17674118, 0, -0.17674118, 0.9842574, 0, 0.71147436, 0.7249269)
+
+[node name="Name" type="Panel" parent="Panel/MarginContainer/HBoxContainer/Preview, name"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/Preview, name/Name"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name..."
+
+[node name="OriginSel, Desc" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Parts, Color" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[editable path="Panel/MarginContainer/HBoxContainer/Preview, name/Preview/SubViewportContainer/SubViewport/CharacterPreview/ZhenTest"]

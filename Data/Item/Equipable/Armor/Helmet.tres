@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://clyy05uhfnac6"]
 
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/Equipable/EquipableResource.gd" id="1_78cqf"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_hqflw"]
 
 [resource]
-script = ExtResource("1_78cqf")
+script = ExtResource("1_hqflw")
 equip_slot = 2
 bonus_stats = {
-"CON": 4,
+"CON": 1,
 "DEX": 0,
 "INT": 0,
-"STR": 10,
+"STR": 0,
 "WIS": 0
 }
-name = "Funny hat"
-rarity = 2
+name = "Helmet"
+desc = "Simple Head Protection"
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"

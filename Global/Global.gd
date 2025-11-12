@@ -1,7 +1,7 @@
 extends Node
 
 ## ITEM AND INVENTORY
-enum Rarity { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, LOOT}
+enum Rarity { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, LOOT }
 var rarity_colors : Array[Color] = [
 	Color(1.0, 1.0, 1.0, 1.0),
 	Color(0.083, 1.0, 0.0, 1.0),
@@ -9,7 +9,7 @@ var rarity_colors : Array[Color] = [
 	Color(0.783, 0.0, 1.0, 1.0),
 	Color(0.999, 0.568, 0.0, 1.0),
 	Color(0.603, 0.29, 0.0, 1.0)]
-enum ItemCategory { POTION, GRENADE, ARMOR, JEWELRY, LOOT }
+enum ItemCategory { POTION, GRENADE, WEAPON, ARMOR, JEWELRY, LOOT }
 enum EquipSlot { RANGEDWEAPON, MELEEWEAPON, HEAD, TORSO, ARMS, LEGS }
 
 
@@ -19,3 +19,5 @@ var LEVEL_STATUP_REWARD: int = 2
 var LEVEL_GROWTH_MULT: float = 0.3
 
 var INVUL_DURATION: float = 0.4
+
+var CHEST_BUDGET: int = 10

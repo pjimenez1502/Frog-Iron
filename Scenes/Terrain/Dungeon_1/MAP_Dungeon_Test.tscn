@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://w31voexjaly"]
+[gd_scene load_steps=18 format=3 uid="uid://w31voexjaly"]
 
 [ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="1_0h72o"]
 [ext_resource type="Script" uid="uid://bouwtyhvldfxb" path="res://Scenes/Terrain/NavRegion.gd" id="2_65vxh"]
@@ -11,10 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dut5hauwt2iwl" path="res://Scenes/Character/Enemy/Dummy/archery_target.tscn" id="9_pvoku"]
 [ext_resource type="PackedScene" uid="uid://dmgk0o744xmbo" path="res://Scenes/Object/Chest/Chest.tscn" id="10_kw3t7"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="11_vrenn"]
-[ext_resource type="Script" uid="uid://c82c1yicuqdig" path="res://Data/Item/Consumable/ConsumableResource.gd" id="12_plwq1"]
 [ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Ranged/Bow.tres" id="13_plwq1"]
-[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Sword.tres" id="14_0yevh"]
-[ext_resource type="Resource" uid="uid://clyy05uhfnac6" path="res://Data/Item/Equipable/Armor/FunnyHat.tres" id="15_26rif"]
+[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="14_0yevh"]
+[ext_resource type="Resource" uid="uid://clyy05uhfnac6" path="res://Data/Item/Equipable/Armor/Helmet.tres" id="15_26rif"]
 [ext_resource type="Resource" uid="uid://cusdadd4b8psh" path="res://Data/Item/Coin.tres" id="16_n6r2f"]
 
 [sub_resource type="Environment" id="Environment_t7sdq"]
@@ -32,17 +31,6 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 1
 agent_radius = 0.2
 filter_low_hanging_obstacles = true
-
-[sub_resource type="Resource" id="Resource_0yevh"]
-script = ExtResource("12_plwq1")
-name = "Health Potion"
-metadata/_custom_type_script = "uid://c82c1yicuqdig"
-
-[sub_resource type="Resource" id="Resource_26rif"]
-script = ExtResource("12_plwq1")
-name = "Health Potion"
-rarity = 2
-metadata/_custom_type_script = "uid://c82c1yicuqdig"
 
 [node name="Dungeon_1" type="Node3D"]
 
@@ -112,4 +100,8 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 
 [node name="Chest" parent="." instance=ExtResource("10_kw3t7")]
 transform = Transform3D(-0.4999999, 0, 0.8660255, 0, 1, 0, -0.86602545, 0, -0.49999994, -2, 0, 6)
-inventory = Array[ExtResource("11_vrenn")]([SubResource("Resource_0yevh"), SubResource("Resource_26rif"), ExtResource("13_plwq1"), ExtResource("14_0yevh"), ExtResource("15_26rif"), ExtResource("16_n6r2f")])
+inventory = Array[ExtResource("11_vrenn")]([ExtResource("13_plwq1"), ExtResource("14_0yevh"), ExtResource("15_26rif"), ExtResource("16_n6r2f")])
+
+[node name="Chest2" parent="." instance=ExtResource("10_kw3t7")]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 6, 0, 5.999999)
+random = true

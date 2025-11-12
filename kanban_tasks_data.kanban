@@ -54,7 +54,8 @@
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
-				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7"
+				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
+				"d4dce253-705e-4195-a307-437a08c6d143"
 			]
 		},
 		{
@@ -62,7 +63,8 @@
 			"title": "Doing",
 			"tasks": [
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
-				"eeaada73-88c3-4954-9a3c-64c7c2f9230b"
+				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
+				"f63fc33d-d92d-4087-beae-5066bca0bd87"
 			]
 		},
 		{
@@ -254,6 +256,20 @@
 			"title": "Character Creation",
 			"description": "\nChoose starting character race (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\nDrake\t\t\t(Str:+3, Dex: +3, Int:+2, Wis:+1, Con:+1)\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\n\nShow:\n\t- character preview\n\t- color selection\n\t- Small Description\n\t- Stat changes\n\n\t- character name",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "d4dce253-705e-4195-a307-437a08c6d143",
+			"title": "Data Pools (resources?)",
+			"description": "",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "f63fc33d-d92d-4087-beae-5066bca0bd87",
+			"title": "Chest with loot generated from pools",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		}
 	],

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://b131i3va3kpv8"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_m34q2"]
+
+[resource]
+script = ExtResource("1_m34q2")
+equip_slot = 5
+bonus_stats = {
+"CON": 1,
+"DEX": 0,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+name = "Greaves"
+desc = "Lightly plated boots"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

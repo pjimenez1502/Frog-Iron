@@ -12,6 +12,7 @@ class_name EquipableResource
 @export var weapon_stats: Dictionary = {
 	"DAMAGE": 2,
 	"KNOCKBACK": 1,
+	"DELAY": 1.0
 }
 
 @export var scene: PackedScene

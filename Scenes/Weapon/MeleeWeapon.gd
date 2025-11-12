@@ -13,12 +13,15 @@ var base_damage: int = 0
 @export var DEX_mod: float = .0
 @export var INT_mod: float = .0
 var knockback: int = 0
+var attack_delay: float = 1
 
 
 func setup(item_data: EquipableResource, _character_stats: CharacterStats) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
+	attack_delay = item_data.weapon_stats["DELAY"]
 	character_stats = _character_stats
+	get_parent().set_attack_delay(attack_delay)
 	set_target_layer()
 
 func attack(direction:Vector3) -> void:

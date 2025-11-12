@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://sh4mi7xnrmlt"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_v2yt5"]
+
+[resource]
+script = ExtResource("1_v2yt5")
+equip_slot = 3
+bonus_stats = {
+"CON": 2,
+"DEX": 0,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+name = "Chestplate"
+desc = "Solid protection"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"
