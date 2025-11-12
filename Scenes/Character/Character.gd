@@ -64,7 +64,8 @@ func death() -> void:
 	character_dead()
 
 func knockback(direction: Vector3, strength: float) -> void:
-	velocity_mod += direction * strength * 10
+	print(strength)
+	velocity_mod += direction * strength * 20
 
 func character_dead() -> void:
 	animation_player.stop()

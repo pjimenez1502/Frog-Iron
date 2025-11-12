@@ -6,10 +6,24 @@
 [resource]
 script = ExtResource("2_0e2xc")
 equip_slot = 1
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 1,
+"INT": 0,
+"STR": 4,
+"WIS": 0
+}
 weapon_stats = {
 "DAMAGE": 3,
 "DELAY": 0.65,
-"KNOCKBACK": 2
+"KNOCKBACK": 3
+}
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.25,
+"INT": 0.0,
+"STR": 0.5,
+"WIS": 0.0
 }
 scene = ExtResource("1_vo2re")
 name = "Longsword"

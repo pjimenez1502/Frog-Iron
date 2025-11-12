@@ -1,17 +1,31 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://jy6230hcgqdm"]
 
-[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="1_f3o2h"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_bhtp4"]
+[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="1_rd3e7"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_53cxs"]
 
 [resource]
-script = ExtResource("2_bhtp4")
+script = ExtResource("2_53cxs")
 equip_slot = 1
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 4,
+"INT": 0,
+"STR": 1,
+"WIS": 0
+}
 weapon_stats = {
 "DAMAGE": 2,
 "DELAY": 0.5,
-"KNOCKBACK": 1
+"KNOCKBACK": 2
 }
-scene = ExtResource("1_f3o2h")
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.25,
+"INT": 0.0,
+"STR": 0.25,
+"WIS": 0.0
+}
+scene = ExtResource("1_rd3e7")
 name = "Shortsword"
 desc = "Simple and lightweight"
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"

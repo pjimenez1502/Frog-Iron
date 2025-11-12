@@ -9,10 +9,26 @@ class_name EquipableResource
 	"WIS": 0,
 	"CON": 0,
 }
+@export var bonus_stats_weights: Dictionary = {
+	"STR": 0,
+	"DEX": 0,
+	"INT": 0,
+	"WIS": 0,
+	"CON": 0,
+}
+
+@export_group("WEAPON")
 @export var weapon_stats: Dictionary = {
 	"DAMAGE": 2,
 	"KNOCKBACK": 1,
 	"DELAY": 1.0
+}
+@export var damage_scaling: Dictionary ={
+	"STR": 0.0,
+	"DEX": 0.0,
+	"INT": 0.0,
+	"WIS": 0.0,
+	"CON": 0.0,
 }
 
 @export var scene: PackedScene

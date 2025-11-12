@@ -6,10 +6,24 @@
 [resource]
 script = ExtResource("2_lgv7a")
 equip_slot = 1
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 0,
+"INT": 0,
+"STR": 4,
+"WIS": 1
+}
 weapon_stats = {
 "DAMAGE": 4,
 "DELAY": 1.0,
-"KNOCKBACK": 2
+"KNOCKBACK": 4
+}
+damage_scaling = {
+"CON": 0.2,
+"DEX": 0.0,
+"INT": 0.0,
+"STR": 1.0,
+"WIS": 0.0
 }
 scene = ExtResource("1_s06rb")
 name = "Greataxe"

@@ -38,7 +38,7 @@ func generate_chest_loot(budget: int) -> Array[ItemResource]:
 	return loot
 
 func generate_potion(cost: int) -> ItemResource:
-	var selected: ConsumableResource = POTION_POOL.pick_random()
+	var selected: ConsumableResource = POTION_POOL.pick_random().duplicate(true)
 	selected.rarity = cost -1 as Global.Rarity	## select rarity depending on budget
 	return selected
 
@@ -46,23 +46,25 @@ func generate_grenade(cost: int) -> ItemResource:
 	return null
 
 func generate_weapon(cost: int) -> ItemResource:
-	var selected: EquipableResource = WEAPON_POOL.pick_random()
+	var selected: EquipableResource = WEAPON_POOL.pick_random().duplicate(true)
 	selected.rarity = cost -1 as Global.Rarity	## select rarity depending on budget
 	#print("%s: %s, %d" % [selected.name, Global.Rarity.keys()[selected.rarity], selected.rarity])
 	
+	var stat_weights = selected.bonus_stats_weights.values()
 	for i: int in selected.rarity:	## add statboosts depending on rarity
-		var stat: String = selected.bonus_stats.keys().pick_random()
+		var stat: String = selected.bonus_stats.keys()[rng.rand_weighted(stat_weights)]
 		selected.bonus_stats[stat] += 1
 	selected.weapon_stats["DAMAGE"] += selected.rarity
 	return selected
 
 func generate_armor(cost: int) -> ItemResource:
-	var selected: EquipableResource = ARMOR_POOL.pick_random()
+	var selected: EquipableResource = ARMOR_POOL.pick_random().duplicate(true)
 	selected.rarity = cost -1 as Global.Rarity	## select rarity depending on budget
 	#print("%s: %s, %d" % [selected.name, Global.Rarity.keys()[selected.rarity], selected.rarity])
 	
+	var stat_weights = selected.bonus_stats_weights.values()
 	for i: int in selected.rarity:	## add statboosts depending on rarity
-		var stat: String = selected.bonus_stats.keys().pick_random()
+		var stat: String = selected.bonus_stats.keys()[rng.rand_weighted(stat_weights)]
 		selected.bonus_stats[stat] += 1
 	return selected
 

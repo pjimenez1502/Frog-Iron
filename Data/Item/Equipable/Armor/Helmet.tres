@@ -12,6 +12,13 @@ bonus_stats = {
 "STR": 0,
 "WIS": 0
 }
+bonus_stats_weights = {
+"CON": 4,
+"DEX": 0,
+"INT": 0,
+"STR": 1,
+"WIS": 1
+}
 name = "Helmet"
 desc = "Simple Head Protection"
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"

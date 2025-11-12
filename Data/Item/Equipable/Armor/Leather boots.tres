@@ -12,6 +12,13 @@ bonus_stats = {
 "STR": 0,
 "WIS": 0
 }
+bonus_stats_weights = {
+"CON": 1,
+"DEX": 4,
+"INT": 0,
+"STR": 0,
+"WIS": 1
+}
 name = "Leather Boots"
 desc = "Comfortable for long walks"
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"

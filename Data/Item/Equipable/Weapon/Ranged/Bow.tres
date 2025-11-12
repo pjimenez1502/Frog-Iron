@@ -5,6 +5,32 @@
 
 [resource]
 script = ExtResource("1_pfp3g")
+bonus_stats = {
+"CON": 0,
+"DEX": 1,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 4,
+"INT": 0,
+"STR": 0,
+"WIS": 1
+}
+weapon_stats = {
+"DAMAGE": 2,
+"DELAY": 0.8,
+"KNOCKBACK": 1
+}
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.5,
+"INT": 0.0,
+"STR": 0.0,
+"WIS": 0.0
+}
 scene = ExtResource("1_4pweq")
 name = "Bow"
 desc = "A simple bow"

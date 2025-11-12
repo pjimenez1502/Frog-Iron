@@ -9,9 +9,10 @@ var character_stats: CharacterStats
 var target_layer: Util.CollisionLayer
 @export_group("Damage")
 var base_damage: int = 0
-@export var STR_mod: float = .5
-@export var DEX_mod: float = .0
-@export var INT_mod: float = .0
+var damage_scaling: Dictionary
+#@export var STR_mod: float = .5
+#@export var DEX_mod: float = .0
+#@export var INT_mod: float = .0
 var knockback: int = 0
 var attack_delay: float = 1
 
@@ -20,6 +21,7 @@ func setup(item_data: EquipableResource, _character_stats: CharacterStats) -> vo
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
 	attack_delay = item_data.weapon_stats["DELAY"]
+	damage_scaling = item_data.damage_scaling
 	character_stats = _character_stats
 	get_parent().set_attack_delay(attack_delay)
 	set_target_layer()
@@ -28,7 +30,12 @@ func attack(direction:Vector3) -> void:
 	var new_hit: MeleeWeaponHit = attack_hit.instantiate()
 	hits.add_child(new_hit) 
 	var calculated_stats = character_stats.calculate_stats()
-	var calc_damage: int = base_damage + (STR_mod * calculated_stats["STR"]) + (DEX_mod * calculated_stats["DEX"]) + (INT_mod * calculated_stats["INT"])
+	var calc_damage: int = (base_damage + 
+	(damage_scaling["STR"] * calculated_stats["STR"]) + 
+	(damage_scaling["DEX"] * calculated_stats["DEX"]) + 
+	(damage_scaling["INT"] * calculated_stats["INT"]) +
+	(damage_scaling["WIS"] * calculated_stats["WIS"]) +
+	(damage_scaling["CON"] * calculated_stats["CON"]))
 	var calc_knockback: int = knockback
 	
 	new_hit.set_weapon_data(calc_damage, calc_knockback, target_layer)

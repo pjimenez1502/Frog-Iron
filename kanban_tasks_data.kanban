@@ -42,7 +42,6 @@
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"ec8cfbf4-20c0-4153-9710-f40c9f8f0362",
-				"c52ce17b-65e5-41c6-a482-0deb9a8f7526",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
 				"033c5afc-3a7a-4774-a24a-23395fb68aa1"
 			]
@@ -55,7 +54,7 @@
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
-				"d4dce253-705e-4195-a307-437a08c6d143"
+				"c52ce17b-65e5-41c6-a482-0deb9a8f7526"
 			]
 		},
 		{
@@ -63,8 +62,7 @@
 			"title": "Doing",
 			"tasks": [
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
-				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
-				"f63fc33d-d92d-4087-beae-5066bca0bd87"
+				"eeaada73-88c3-4954-9a3c-64c7c2f9230b"
 			]
 		},
 		{
@@ -78,7 +76,8 @@
 				"6d1eb545-d276-4ed8-9cf3-dc682234330c",
 				"46152144-11fe-4a23-984d-145b9544ab88",
 				"e858a2cb-f5a4-44cd-9197-b3c3484790a9",
-				"11586427-f3af-4591-8e31-c4ed219f9748"
+				"11586427-f3af-4591-8e31-c4ed219f9748",
+				"f63fc33d-d92d-4087-beae-5066bca0bd87"
 			]
 		}
 	],
@@ -240,28 +239,21 @@
 		{
 			"uuid": "4de87959-b07e-4826-a150-8efaf0887e59",
 			"title": "Stackable Items?",
-			"description": "",
+			"description": "ex: multiple potions together?",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{
 			"uuid": "c52ce17b-65e5-41c6-a482-0deb9a8f7526",
 			"title": "3D Player",
-			"description": "",
-			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
+			"description": "\nSelect species when starting run\nspecies can change ingame\ncolor customization??\n\n\nEquipables show in model\nweapon animations",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{
 			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
 			"title": "Character Creation",
-			"description": "\nChoose starting character race (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\nDrake\t\t\t(Str:+3, Dex: +3, Int:+2, Wis:+1, Con:+1)\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\n\nShow:\n\t- character preview\n\t- color selection\n\t- Small Description\n\t- Stat changes\n\n\t- character name",
-			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
-			"steps": []
-		},
-		{
-			"uuid": "d4dce253-705e-4195-a307-437a08c6d143",
-			"title": "Data Pools (resources?)",
-			"description": "",
+			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+3, Dex: +3, Int:+2, Wis:+1, Con:+1)\t=>\t\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\n\n\nShow:\n\t- character preview?\n\t- color selection?\n\t- species selection\n\t\t- Small Description\n\t\t- Stat changes\n\t- character name",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
