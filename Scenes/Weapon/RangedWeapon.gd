@@ -2,13 +2,12 @@ extends Node3D
 class_name RangedWeapon
 
 var character_stats: CharacterStats
+var character_animation: CharacterAnimation
 
-@onready var sprite: AnimatedSprite3D = $Sprite
 @onready var projectile_container: Node = $ProjectileContainer
-
 @export var projectile_prefab: PackedScene
-@export var aim_speed: float = 3 ##Rotation Speed
 
+@export var aim_speed: float = 3 ##Rotation Speed
 @export var charged: bool
 
 var target_layer: Util.CollisionLayer
@@ -24,11 +23,16 @@ func _ready() -> void:
 	if !charged:
 		attack_timer.wait_time = cooldown
 
-func setup(item_data: EquipableResource, _character_stats: CharacterStats) -> void:
+func _physics_process(delta: float) -> void:
+	character_animation.bow_draw(charge)
+
+func setup(item_data: EquipableResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
 	charge_time = item_data.weapon_stats["DELAY"]
 	character_stats = _character_stats
+	character_animation = _character_animation
+	character_animation.torso_state(item_data.torso_state)
 	set_target_layer()
 
 func pressed(_delta: float) -> void:
@@ -63,17 +67,15 @@ var charge: float
 func charge_shot(_delta: float)->void:
 	current_charge_time = snapped(clampf(current_charge_time+_delta, 0, charge_time), 0.01)
 	charge = current_charge_time / charge_time
-	sprite.play(str("drawn_", int(charge*4)))
 
 func release_charged_shot() -> void:
 	current_charge_time = 0
 	if charge < min_charge:
 		return
 	shoot(charge)
-	sprite.play("drawn_0")
+	charge = 0
 
 func shoot(strength: float=1) -> void:
-	#print("Shot Charge: ", charge)
 	var calculated_stats = character_stats.calculate_stats()
 	var calc_damage: int = base_damage + (STR_mod * calculated_stats["STR"]) + (DEX_mod * calculated_stats["DEX"]) + (INT_mod * calculated_stats["INT"])
 	var calc_knockback: int = knockback

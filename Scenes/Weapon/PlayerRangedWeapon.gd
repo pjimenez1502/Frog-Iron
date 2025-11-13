@@ -16,5 +16,5 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("FIRE"):
 		weapon.released()
 	
-	var mouse_pos = Util.get_mouse_pos(self)
-	weapon.rotate_weapon(mouse_pos, delta)
+	#var mouse_pos = Util.get_mouse_pos(self)
+	#weapon.rotate_weapon(mouse_pos, delta)

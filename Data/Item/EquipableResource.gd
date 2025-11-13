@@ -30,6 +30,7 @@ class_name EquipableResource
 	"WIS": 0.0,
 	"CON": 0.0,
 }
+@export var torso_state: CharacterAnimation.TorsoState
 
 @export var scene: PackedScene
 

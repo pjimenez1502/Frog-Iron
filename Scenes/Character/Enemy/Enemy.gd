@@ -9,6 +9,7 @@ var far_target: Node3D
 var target: Node3D
 
 func _ready() -> void:
+	add_child(stop_movement_timer)
 	super._ready()
 
 func death() -> void:
@@ -18,6 +19,8 @@ func death() -> void:
 	# drop loot
 
 func move(_delta: float) -> void:
+	if movement_disabled:
+		return
 	var direction: Vector3 = to_local(nav_agent.get_next_path_position()).normalized()
 	if direction:
 		velocity.x = direction.x * character_stats.speed
@@ -26,10 +29,16 @@ func move(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
-	movement_animation(Vector3(velocity.x, 0, velocity.z), direction, _delta)
+	character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, _delta)
 	super.move(_delta)
 
-
+var stop_movement_timer: Timer = Timer.new()
+var movement_disabled: bool
+func stop_movement(time: float) -> void:
+	movement_disabled = true
+	stop_movement_timer.start(time)
+	await stop_movement_timer.timeout
+	movement_disabled = false
 
 func make_nav_path() -> void:
 	target = find_target()

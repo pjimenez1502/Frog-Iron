@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://c05ednb6nnd4l"]
 
-[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/Sword/Sword_Iron.tscn" id="1_vo2re"]
+[ext_resource type="PackedScene" uid="uid://brim6mv0ypf07" path="res://Scenes/Weapon/_MELEE/LongSword.tscn" id="1_vo2re"]
 [ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_0e2xc"]
 
 [resource]

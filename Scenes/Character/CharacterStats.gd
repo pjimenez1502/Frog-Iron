@@ -5,7 +5,6 @@ signal HEALTH_UPDATE
 signal DAMAGED
 signal DEAD
 
-@onready var status_animation_player: AnimationPlayer = $"../Status Animation Player"
 enum CHAR_TAG {ENEMY, PLAYER}
 @export var character_tag : CHAR_TAG
 
@@ -104,11 +103,9 @@ func damage(_damage: int) -> void:
 	if current_HP <= 0:
 		death()
 		return
-	status_animation_player.play("Damage")
 	DAMAGED.emit()
 
 func death() -> void:
-	status_animation_player.play("Death")
 	DEAD.emit()
 
 var invulnerable: bool

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceg26cvdi6v60"]
+
+[ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/MeleeWeapon.gd" id="1_4pme4"]
+[ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/_Hits/slash.tscn" id="2_aet85"]
+[ext_resource type="PackedScene" uid="uid://unpib37amuj2" path="res://Scenes/Weapon/_MELEE/GreatAxe.glb" id="3_4pme4"]
+
+[node name="Iron Sword" type="Node3D"]
+script = ExtResource("1_4pme4")
+attack_hit = ExtResource("2_aet85")
+metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
+
+[node name="Hits" type="Node" parent="."]
+
+[node name="GreatAxe2" parent="." instance=ExtResource("3_4pme4")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

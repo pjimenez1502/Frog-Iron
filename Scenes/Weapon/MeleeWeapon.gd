@@ -2,6 +2,7 @@ extends Node3D
 class_name MeleeWeapon
 
 var character_stats: CharacterStats
+var character_animation: CharacterAnimation
 
 @onready var hits: Node = $Hits
 @export var attack_hit: PackedScene
@@ -17,12 +18,14 @@ var knockback: int = 0
 var attack_delay: float = 1
 
 
-func setup(item_data: EquipableResource, _character_stats: CharacterStats) -> void:
+func setup(item_data: EquipableResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
 	attack_delay = item_data.weapon_stats["DELAY"]
 	damage_scaling = item_data.damage_scaling
 	character_stats = _character_stats
+	character_animation = _character_animation
+	character_animation.torso_state(item_data.torso_state)
 	get_parent().set_attack_delay(attack_delay)
 	set_target_layer()
 

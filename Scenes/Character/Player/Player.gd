@@ -24,7 +24,7 @@ func move(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
 	
-	movement_animation(Vector3(velocity.x, 0, velocity.z), direction, _delta)
+	character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, _delta)
 	super.move(_delta)
 
 

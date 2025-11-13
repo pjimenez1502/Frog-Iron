@@ -50,19 +50,21 @@
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
+				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
-				"c52ce17b-65e5-41c6-a482-0deb9a8f7526"
+				"c52ce17b-65e5-41c6-a482-0deb9a8f7526",
+				"3013a1f6-56cb-4b0a-9f18-a394c0970e17",
+				"d18d8189-a08b-45cb-84b3-a5348b879ad9"
 			]
 		},
 		{
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
-				"eeaada73-88c3-4954-9a3c-64c7c2f9230b"
+				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41"
 			]
 		},
 		{
@@ -253,7 +255,7 @@
 		{
 			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
 			"title": "Character Creation",
-			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+3, Dex: +3, Int:+2, Wis:+1, Con:+1)\t=>\t\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\n\n\nShow:\n\t- character preview?\n\t- color selection?\n\t- species selection\n\t\t- Small Description\n\t\t- Stat changes\n\t- character name",
+			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\n\n\nShow:\n\t- character preview?\n\t- color selection?\n\t- species selection\n\t\t- Small Description\n\t\t- Stat changes\n\t- character name",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -262,6 +264,20 @@
 			"title": "Chest with loot generated from pools",
 			"description": "",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "3013a1f6-56cb-4b0a-9f18-a394c0970e17",
+			"title": "Proper 3D Animations",
+			"description": "\nCharacter always look towards target.\t\t\n\tplayer -> towards mouse\n\tenemies -> towards target pathfind or player\n\n\t(blend legs for movement and torso for weapon holding)\n\n\teach weapon has a holding animation and an attack animation",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "d18d8189-a08b-45cb-84b3-a5348b879ad9",
+			"title": "Fix Knockback",
+			"description": "\nCharacter movement overrides knockback too easily",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

@@ -4155,7 +4155,7 @@ _subresources={
 "materials": {
 "ZhenLowpo": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Scenes/Character/Player/Asset/Zhen.tres",
+"use_external/fallback_path": "res://Assets/Material/Creature/Zhen.tres",
 "use_external/path": "uid://dj7wty206tygp"
 }
 }

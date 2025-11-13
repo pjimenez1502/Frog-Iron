@@ -29,7 +29,7 @@ func init_weapons() -> void:
 		var melee: MeleeWeapon = melee_weapon_data.scene.instantiate()
 		add_child(melee)
 		melee_weapon = melee
-		melee.setup(melee_weapon_data, %CharacterStats)
+		melee.setup(melee_weapon_data, %CharacterStats, %CharacterAnimation)
 	#if ranged_weapon_data:
 
 func try_attack() -> void:
@@ -38,6 +38,7 @@ func try_attack() -> void:
 	melee_weapon.attack(dir_to_target())
 	attack_available = false
 	attack_timer.start()
+	enemy.stop_movement(0.5)
 
 func _on_close_detection_body_entered(body: Node3D) -> void:
 	attack_target = body
