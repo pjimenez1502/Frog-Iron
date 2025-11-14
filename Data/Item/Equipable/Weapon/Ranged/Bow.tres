@@ -31,6 +31,7 @@ damage_scaling = {
 "STR": 0.0,
 "WIS": 0.0
 }
+torso_state = 1
 scene = ExtResource("1_4pweq")
 name = "Bow"
 desc = "A simple bow"

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://bpmp7adf5vwl"]
 
-[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow.tscn" id="1_0ngyf"]
+[ext_resource type="PackedScene" uid="uid://cyp037ydl2u1g" path="res://Scenes/Weapon/_RANGED/LongBow.tscn" id="1_0ngyf"]
 [ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_lcu6a"]
 
 [resource]
@@ -31,6 +31,7 @@ damage_scaling = {
 "STR": 0.5,
 "WIS": 0.0
 }
+torso_state = 1
 scene = ExtResource("1_0ngyf")
 name = "Longbow"
 desc = "A powerful but harder to draw bow"

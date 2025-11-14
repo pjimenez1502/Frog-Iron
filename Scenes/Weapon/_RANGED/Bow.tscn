@@ -15,6 +15,6 @@ charged = true
 unique_name_in_owner = true
 
 [node name="Bow2" parent="." instance=ExtResource("3_l2qql")]
-transform = Transform3D(-1.3113417e-07, 0, -3, 0, 2.9999998, 0, 3.0000002, 0, -1.3113416e-07, 0, 0, 0)
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0, 0, 0)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

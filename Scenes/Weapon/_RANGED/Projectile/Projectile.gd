@@ -12,7 +12,7 @@ func _ready() -> void:
 	hit_area.HIT.connect(hit)
 
 func _physics_process(delta: float) -> void:
-	global_position += -get_global_transform().basis.z * speed * delta
+	global_position += get_global_transform().basis.z * speed * delta
 
 func setup_projectile(_damage: int, _knockback:int, strength: float, target_layer: int) -> void:
 	damage = _damage

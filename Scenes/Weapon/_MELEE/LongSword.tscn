@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://g7i6tfhkxq3r" path="res://Scenes/Weapon/_MELEE/LongSword.glb" id="3_3so6u"]
 
 [node name="Iron Sword" type="Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_d23or")
 attack_hit = ExtResource("2_70x6f")
 metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"

@@ -25,7 +25,7 @@ damage_scaling = {
 "STR": 0.25,
 "WIS": 0.0
 }
-torso_state = 1
+torso_state = 2
 scene = ExtResource("1_rd3e7")
 name = "Shortsword"
 desc = "Simple and lightweight"

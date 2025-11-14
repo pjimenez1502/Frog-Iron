@@ -25,6 +25,7 @@ damage_scaling = {
 "STR": 0.5,
 "WIS": 0.0
 }
+torso_state = 2
 scene = ExtResource("1_vo2re")
 name = "Longsword"
 desc = "A staple in any arsenal."

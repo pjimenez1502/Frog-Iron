@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyp037ydl2u1g"]
+
+[ext_resource type="Script" uid="uid://djq7yn4je1cgp" path="res://Scenes/Weapon/RangedWeapon.gd" id="1_72k23"]
+[ext_resource type="PackedScene" uid="uid://db0soby7y3qg8" path="res://Scenes/Weapon/_RANGED/Projectile/Arrow.tscn" id="2_4yp6n"]
+[ext_resource type="PackedScene" uid="uid://dufki70f4h1iy" path="res://Scenes/Weapon/_RANGED/Bow.glb" id="3_v2wkl"]
+
+[node name="LongBow" type="Node3D"]
+script = ExtResource("1_72k23")
+projectile_prefab = ExtResource("2_4yp6n")
+charged = true
+
+[node name="ProjectileContainer" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="Bow2" parent="." instance=ExtResource("3_v2wkl")]
+transform = Transform3D(-1.3113417e-07, 0, -3, 0, 2.9999998, 0, 3.0000002, 0, -1.3113416e-07, 0, 0, 0)
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://b8kxy76mrfb1d"]
 
-[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/ShortSword.tscn" id="1_s06rb"]
+[ext_resource type="PackedScene" uid="uid://ceg26cvdi6v60" path="res://Scenes/Weapon/_MELEE/GreatAxe.tscn" id="1_s06rb"]
 [ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_lgv7a"]
 
 [resource]
@@ -25,6 +25,7 @@ damage_scaling = {
 "STR": 1.0,
 "WIS": 0.0
 }
+torso_state = 3
 scene = ExtResource("1_s06rb")
 name = "Greataxe"
 desc = "A slow but fierce weapon."
