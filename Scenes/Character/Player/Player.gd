@@ -17,16 +17,20 @@ func _ready() -> void:
 func move(_delta: float) -> void:
 	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	
+	#real_time_movement(direction, _delta)
+	
+	super.move(_delta)
+
+func real_time_movement(direction: Vector3, delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * character_stats.speed
 		velocity.z = direction.z * character_stats.speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
 		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
-	
-	character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, _delta)
-	super.move(_delta)
-
+	character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, delta)
 
 
 func increase_stat(stat:String, count:int) -> void:

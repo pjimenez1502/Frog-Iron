@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://w31voexjaly"]
+[gd_scene load_steps=19 format=3 uid="uid://w31voexjaly"]
 
 [ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="1_0h72o"]
 [ext_resource type="Script" uid="uid://bouwtyhvldfxb" path="res://Scenes/Terrain/NavRegion.gd" id="2_65vxh"]
 [ext_resource type="MeshLibrary" uid="uid://b2d08ab6dhlb6" path="res://Scenes/Terrain/Dungeon_1/Tiles/Dungeon_1_Meshlibrary.tres" id="2_tl0hd"]
 [ext_resource type="PackedScene" uid="uid://dbrvim0p68m4k" path="res://Scenes/Object/Door/wooden_door.tscn" id="4_fokxn"]
-[ext_resource type="PackedScene" uid="uid://chenbcu36627c" path="res://Scenes/Character/Enemy/Medium/Rat_Med/rat_med.tscn" id="5_65vxh"]
 [ext_resource type="PackedScene" uid="uid://bpqcq56fmgsv2" path="res://Scenes/Object/Button/lever.tscn" id="5_j68b2"]
 [ext_resource type="PackedScene" uid="uid://bdooinc4mh5c8" path="res://Scenes/Object/Door/bar_door.tscn" id="6_r3tmk"]
 [ext_resource type="PackedScene" uid="uid://cbsf41bly11ev" path="res://Scenes/Object/Door/empty_door.tscn" id="7_a8hvq"]
@@ -57,7 +56,7 @@ metadata/_custom_type_script = "uid://cclko7w6ctl7a"
 [node name="Dungeon_1" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0h72o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t7sdq")
@@ -108,21 +107,6 @@ connected_interaction = NodePath("../BarDoor -roomD2")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 0, 18)
 
 [node name="Enemies" type="Node3D" parent="."]
-
-[node name="Rat4" parent="Enemies" instance=ExtResource("5_65vxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -18)
-
-[node name="Rat5" parent="Enemies" instance=ExtResource("5_65vxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -22)
-
-[node name="Rat6" parent="Enemies" instance=ExtResource("5_65vxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18)
-
-[node name="Rat7" parent="Enemies" instance=ExtResource("5_65vxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22)
-
-[node name="Rat8" parent="Enemies" instance=ExtResource("5_65vxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
 
 [node name="ArcheryTarget" parent="." instance=ExtResource("9_pvoku")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2, 0, -2)

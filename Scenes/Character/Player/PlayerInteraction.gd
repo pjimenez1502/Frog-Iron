@@ -28,9 +28,9 @@ func find_closest_interactable() -> void:
 		interaction_ui.global_position = closest_interactable.global_position
 		closest_interactable.active = true
 
-func _on_area_entered(area: Area3D) -> void:
-	interactables.append(area.get_parent())
-func _on_area_exited(area: Area3D) -> void:
-	if !interactables.has(area.get_parent()):
-		return
-	interactables.erase(area.get_parent())
+#func _on_area_entered(area: Area3D) -> void:
+	#interactables.append(area.get_parent())
+#func _on_area_exited(area: Area3D) -> void:
+	#if !interactables.has(area.get_parent()):
+		#return
+	#interactables.erase(area.get_parent())

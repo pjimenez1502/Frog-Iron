@@ -23,6 +23,8 @@ signal CloseEmergentInv
 signal UpdateEmergentInv
 
 #Game Signals
+signal TurnFinished
+
 signal LaunchDemoScene
 signal NavmeshBakeRequest
 

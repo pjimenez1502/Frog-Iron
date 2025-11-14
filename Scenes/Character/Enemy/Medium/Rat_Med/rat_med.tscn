@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chenbcu36627c"]
+[gd_scene load_steps=19 format=3 uid="uid://chenbcu36627c"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_ghg1f"]
 [ext_resource type="Texture2D" uid="uid://dkry738lk1ete" path="res://Scenes/Character/Enemy/Medium/Rat_Med/Rat.png" id="2_lq07w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="4_lu8p1"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_xa7qo"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="6_5bbps"]
+[ext_resource type="Script" uid="uid://d3w7anlgskstc" path="res://Scenes/Character/GridMovement.gd" id="6_g5da4"]
 [ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="7_5bbps"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
@@ -77,8 +78,8 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(0.039678626, 0.994342, -0.09845926, -0.0039289165)
-bones/2/rotation = Quaternion(-0.75206995, 0.019037334, 0.021744126, 0.65844953)
+bones/1/rotation = Quaternion(0.047181617, 0.99401426, -0.09842679, -0.004671858)
+bones/2/rotation = Quaternion(-0.7519397, 0.02263849, 0.025857303, 0.6583355)
 
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -101,6 +102,26 @@ root_node = NodePath("%3D")
 tree_root = SubResource("AnimationNodeBlendTree_g5da4")
 anim_player = NodePath("../../View/3D/AnimationPlayer")
 parameters/WalkBlend/blend_position = -0.0053476095
+
+[node name="GridMovement" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_g5da4")
+
+[node name="North" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.3711385e-08, -4.371139e-08, -1, -1, 0, 4.371139e-08, 0, 1, -4.371139e-08, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+
+[node name="Shouth" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.3711385e-08, 1.3113416e-07, 1, -1, -7.642741e-15, -4.371138e-08, 0, -1, 1.3113416e-07, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+
+[node name="West" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.371138e-08, 1, -1.7484555e-07, -1, -4.371138e-08, 9.284769e-15, 0, 1.7484555e-07, 1, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+
+[node name="East" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.371138e-08, -1, 8.742277e-08, -1, 4.371138e-08, -2.179342e-15, 0, -8.742277e-08, -1, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -4,6 +4,7 @@ class_name Character
 
 var character_stats: CharacterStats
 var character_animation: CharacterAnimation
+var character_grid_movement: CharacterGridMovement
 
 var velocity_mod: Vector3
 var dead: bool
@@ -15,6 +16,9 @@ var level: int = 1
 func _ready() -> void:
 	character_animation = %CharacterAnimation
 	character_stats = %CharacterStats
+	character_grid_movement = %GridMovement
+	
+	character_grid_movement.setup(self)
 	character_stats.DEAD.connect(death)
 
 func _physics_process(delta: float) -> void:
