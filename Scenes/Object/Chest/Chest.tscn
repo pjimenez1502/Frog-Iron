@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmgk0o744xmbo"]
+[gd_scene load_steps=7 format=3 uid="uid://dmgk0o744xmbo"]
 
 [ext_resource type="Script" uid="uid://c2spiiw2lrrr7" path="res://Scenes/Object/Chest/Chest.gd" id="1_0gw11"]
 [ext_resource type="Script" uid="uid://ik27op68ulgs" path="res://Scenes/Object/_Interactions/Chest_Inter.gd" id="2_0gw11"]
 [ext_resource type="PackedScene" uid="uid://cqmlc8ygditui" path="res://Scenes/Object/Chest/Component/Chest_Base.glb" id="3_0gw11"]
 [ext_resource type="PackedScene" uid="uid://cvs0fu753s53" path="res://Scenes/Object/Chest/Component/Chest_Lid.glb" id="4_hu82h"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_r7jxm"]
-radius = 1.7743995
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0gw11"]
+radius = 1.4
 
-[node name="Chest" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_r7jxm"]
+radius = 4.352435
+
+[node name="Chest" type="StaticBody3D"]
 script = ExtResource("1_0gw11")
 
 [node name="Interaction" type="Node" parent="."]
@@ -16,8 +19,12 @@ unique_name_in_owner = true
 script = ExtResource("2_0gw11")
 target_opening = -130
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_0gw11")
+
 [node name="AutoInteractableArea" type="Area3D" parent="."]
-collision_layer = 32
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AutoInteractableArea"]

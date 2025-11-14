@@ -1,7 +1,5 @@
-extends Node3D
+extends InteractableObject
 class_name Chest
-
-@export var locked: bool
 
 @export var random: bool
 @export var inventory : Array[ItemResource]

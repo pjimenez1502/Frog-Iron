@@ -10,12 +10,17 @@ var move_tween: Tween
 var in_turn_cooldown: bool
 
 @export var movement_duration: float = 0.25
+var grid_position: Vector3
 
 func _ready() -> void:
 	SignalBus.TurnFinished.connect(turn_finished)
 
 func setup(_character: Character) -> void:
 	character = _character
+
+func set_at_position(_grid_position: Vector3) -> void:
+	grid_position = _grid_position
+	
 
 func action(direction: Vector2) -> void:
 	in_turn_cooldown = true
@@ -31,19 +36,19 @@ func action(direction: Vector2) -> void:
 			collided = raycasts["EAST"].get_collider()
 	
 	
-	
 	if !collided:
 		move(direction)
-	if collided is Enemy:
+	elif collided is Enemy:
 		attack(collided)
-	if collided is InteractableObject:
+	elif collided is InteractableObject:
 		interact(collided)
-	if collided is GridMap:
-		print("WALL")
-		SignalBus.TurnFinished.emit()
+	else:
+		wall(collided)
 
 func move(direction: Vector2) -> void:
-	var target_position = get_parent().global_position + (Vector3(direction.x, 0, direction.y) * GRID_DISTANCE)
+	grid_position += Vector3(direction.x, 0, direction.y)
+	
+	var target_position = grid_position * GRID_DISTANCE + Vector3(2, 0, 2)
 	move_tween = get_tree().create_tween()
 	await move_tween.tween_property(character, "global_position", target_position, movement_duration).finished
 	SignalBus.TurnFinished.emit()
@@ -54,6 +59,11 @@ func attack(target: Character) -> void:
 
 func interact(target: InteractableObject) -> void:
 	print("Interacting: %s" % target)
+	target.interact()
+	SignalBus.TurnFinished.emit()
+
+func wall(collided: Node3D) -> void:
+	print("Moving into wall: %s" % collided)
 	SignalBus.TurnFinished.emit()
 
 
@@ -72,3 +82,5 @@ func _input(event: InputEvent) -> void:
 		action(Vector2(-1,0))
 	if event.is_action_pressed("RIGHT"):
 		action(Vector2(1,0))
+	if event.is_action_pressed("INTERACT"):
+		action(Util.round_direction(Util.get_mouse_direction(self)))

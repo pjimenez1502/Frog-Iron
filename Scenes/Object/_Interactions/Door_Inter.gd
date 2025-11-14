@@ -4,6 +4,8 @@ class_name DoorInteraction
 enum DoorType {Hinge, SlideDown, SlideSide}
 
 @onready var hinge: Node3D = %Hinge
+@onready var collision_shape_3d: CollisionShape3D = $"../CollisionShape3D"
+
 @export var door_type: DoorType
 @export var target_opening: int = 90
 @export var opening_time: float = 0.5
@@ -39,6 +41,7 @@ func slide_door_side(value) -> void:
 
 func interact() -> void:
 	open = !open
+	collision_shape_3d.disabled = open
 	door_interaction(open)
 
 func interact_valued(value: bool) -> void:

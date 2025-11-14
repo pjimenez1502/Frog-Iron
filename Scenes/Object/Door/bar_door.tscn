@@ -8,8 +8,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y0hmi"]
 radius = 1.0
 
-[node name="BarDoor" type="Node3D"]
+[node name="BarDoor" type="StaticBody3D"]
 script = ExtResource("1_3pepu")
+locked = true
 
 [node name="Interaction" type="Node" parent="."]
 unique_name_in_owner = true
@@ -17,15 +18,11 @@ script = ExtResource("2_mvm3j")
 door_type = 1
 target_opening = 3
 
-[node name="InteractableArea" type="Area3D" parent="."]
-collision_layer = 32
-collision_mask = 0
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 shape = SubResource("CylinderShape3D_y0hmi")
+disabled = true
 
 [node name="Door_Frame" parent="." instance=ExtResource("3_pdlnr")]
 
@@ -33,3 +30,5 @@ shape = SubResource("CylinderShape3D_y0hmi")
 unique_name_in_owner = true
 
 [node name="BarDoor2" parent="Door_Frame/Hinge" instance=ExtResource("4_3pepu")]
+
+[editable path="Door_Frame/Hinge/BarDoor2"]
