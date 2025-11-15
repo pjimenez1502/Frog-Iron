@@ -38,7 +38,7 @@ func attack(direction:Vector3) -> void:
 	var calc_knockback: int = knockback
 	
 	new_hit.set_weapon_data(calc_damage, calc_knockback, target_layer)
-	new_hit.global_position = global_position + direction*4
+	new_hit.global_position = GameDirector.level_gridmap.grid_to_globalpos(GameDirector.level_gridmap.globalpos_to_grid(global_position + direction * 4))
 	new_hit.look_at(new_hit.global_position + direction, Vector3.UP)
 
 func set_target_layer() -> void:

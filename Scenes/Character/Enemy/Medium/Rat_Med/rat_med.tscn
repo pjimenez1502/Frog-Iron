@@ -53,11 +53,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(-0.02082249, 0.9949155, -0.098516054, 0.002061877)
-bones/2/rotation = Quaternion(-0.75229764, -0.009990006, -0.011410415, 0.65864897)
+bones/1/rotation = Quaternion(-0.0013313697, 0.99513245, -0.098537534, 0.00013187467)
+bones/2/rotation = Quaternion(-0.75238377, -0.00063881703, -0.0007296461, 0.65872437)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.9991243, 0.041026965, -0.008205485, -8.754432e-08, -0.19611609, -0.98058057, -0.041839484, 0.9797218, -0.19594441, 0, 0.030000001, 0.08)
+transform = Transform3D(0.99999654, 0.0026237885, -0.0005248453, -8.571078e-08, -0.1961161, -0.9805808, -0.0026757678, 0.98057693, -0.19611543, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 
