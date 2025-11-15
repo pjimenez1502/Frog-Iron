@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://bdntcukq7he2r"]
+
+[ext_resource type="PackedScene" uid="uid://cc856frj7mepq" path="res://Scenes/Weapon/_MELEE/Unarmed_Claws.tscn" id="1_ewuqt"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_vu2eb"]
+
+[resource]
+script = ExtResource("2_vu2eb")
+equip_slot = 1
+weapon_stats = {
+"DAMAGE": 1,
+"DELAY": 0.5,
+"KNOCKBACK": 2
+}
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.25,
+"INT": 0.0,
+"STR": 0.25,
+"WIS": 0.0
+}
+torso_state = 2
+scene = ExtResource("1_ewuqt")
+name = "Shortsword"
+desc = "Simple and lightweight"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

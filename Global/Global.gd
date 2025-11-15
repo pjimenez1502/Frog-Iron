@@ -20,3 +20,6 @@ var LEVEL_GROWTH_MULT: float = 0.3
 var INVUL_DURATION: float = 0.4
 
 var CHEST_BUDGET: int = 4
+
+var PLAYER_TURN_DURATION: float = 0.2
+var ENEMY_TURN_DURATION: float = 0.1

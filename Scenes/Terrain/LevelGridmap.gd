@@ -20,7 +20,6 @@ var connection_offsets: Array[Vector3i] = [Vector3i(1, 0,0),Vector3i(-1, 0,0),Ve
 func update_AStar() -> void:
 	## WALKABLE
 	var walkable_tiles: Array[Vector3i] = get_floor_tile_positions()
-	print(walkable_tiles)
 	for i: int in walkable_tiles.size(): ## Add points to Astarmap and create walkables dictionary
 		AStar["WALKABLE"].add_point(i, walkable_tiles[i])
 		walk_points["WALKABLE"][i] = walkable_tiles[i]
@@ -44,8 +43,6 @@ func get_floor_tile_positions() -> Array[Vector3i]:
 
 
 func globalpos_to_grid(pos: Vector3) -> Vector3i:
-	print(walk_points["WALKABLE"])
-	print(pos, " - ", local_to_map(to_local(pos)))
 	return local_to_map(to_local(pos))
 
 func grid_to_globalpos(grid: Vector3i) -> Vector3:

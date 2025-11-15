@@ -1,10 +1,10 @@
 extends CharacterBody3D
 class_name Character
 
-
-var character_stats: CharacterStats
-var character_animation: CharacterAnimation
 var character_grid_movement: CharacterGridMovement
+var character_stats: CharacterStats
+var character_attack: CharacterAttack
+var character_animation: CharacterAnimation
 
 var velocity_mod: Vector3
 var dead: bool
@@ -17,6 +17,7 @@ func _ready() -> void:
 	character_animation = %CharacterAnimation
 	character_stats = %CharacterStats
 	character_grid_movement = %GridMovement
+	character_attack = %CharacterAttack
 	
 	character_grid_movement.setup(self)
 	character_stats.DEAD.connect(death)
@@ -46,7 +47,6 @@ func death() -> void:
 
 func knockback(direction: Vector3, strength: float) -> void:
 	velocity_mod += direction * strength * 20
-	print(velocity_mod)
 
 func character_dead() -> void:
 	dead = true

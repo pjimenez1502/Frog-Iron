@@ -3,12 +3,14 @@ class_name PlayerInput
 
 @onready var grid_movement: CharacterGridMovement = %GridMovement
 var movement_directions: Array[Vector2i] = [Vector2(0,-1), Vector2(-1,0), Vector2(0,1), Vector2(1,0)]
+var is_player_turn: bool
 
 func _ready() -> void:
 	SignalBus.UpdateCameraRotation.connect(update_camera_rotation)
+	SignalBus.PlayerTurn.connect(set_player_turn)
 
 func _input(event: InputEvent) -> void:
-	if grid_movement.in_turn_cooldown:
+	if !is_player_turn:
 		return
 	if event.is_action_pressed("UP"):
 		grid_movement.action(get_direction_vector(0))
@@ -27,3 +29,6 @@ func update_camera_rotation(_rotation) -> void:
 
 func get_direction_vector(direction: int) -> Vector2i:
 	return movement_directions[(direction + north_offset)%4]
+
+func set_player_turn(value) -> void:
+	is_player_turn = value

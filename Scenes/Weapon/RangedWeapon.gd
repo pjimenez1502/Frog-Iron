@@ -13,9 +13,7 @@ var character_animation: CharacterAnimation
 var target_layer: Util.CollisionLayer
 @export_group("Damage")
 var base_damage: int = 0
-@export var STR_mod: float = .0
-@export var DEX_mod: float = .5
-@export var INT_mod: float = .0
+var damage_scaling: Dictionary
 var knockback: int = 0
 
 
@@ -23,8 +21,8 @@ func _ready() -> void:
 	if !charged:
 		attack_timer.wait_time = cooldown
 
-func _physics_process(delta: float) -> void:
-	character_animation.bow_draw(charge)
+#func _physics_process(_delta: float) -> void:
+	#character_animation.bow_draw(charge)
 
 func setup(item_data: EquipableResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
@@ -32,7 +30,7 @@ func setup(item_data: EquipableResource, _character_stats: CharacterStats, _char
 	charge_time = item_data.weapon_stats["DELAY"]
 	character_stats = _character_stats
 	character_animation = _character_animation
-	character_animation.torso_state(item_data.torso_state)
+	#character_animation.torso_state(item_data.torso_state)
 	set_target_layer()
 
 func pressed(_delta: float) -> void:
@@ -77,14 +75,19 @@ func release_charged_shot() -> void:
 
 func shoot(strength: float=1) -> void:
 	var calculated_stats = character_stats.calculate_stats()
-	var calc_damage: int = base_damage + (STR_mod * calculated_stats["STR"]) + (DEX_mod * calculated_stats["DEX"]) + (INT_mod * calculated_stats["INT"])
+	var calc_damage: int = (base_damage + 
+	(damage_scaling["STR"] * calculated_stats["STR"]) + 
+	(damage_scaling["DEX"] * calculated_stats["DEX"]) + 
+	(damage_scaling["INT"] * calculated_stats["INT"]) +
+	(damage_scaling["WIS"] * calculated_stats["WIS"]) +
+	(damage_scaling["CON"] * calculated_stats["CON"]))
 	var calc_knockback: int = knockback
 	spawn_projectile(calc_damage, calc_knockback, strength)
 
-
-var target_rotation : float
-func rotate_weapon(target_pos: Vector3, delta:float) -> void:
-	global_transform = global_transform.interpolate_with(global_transform.looking_at(target_pos), delta * aim_speed)
+#
+#var target_rotation : float
+#func rotate_weapon(target_pos: Vector3, delta:float) -> void:
+	#global_transform = global_transform.interpolate_with(global_transform.looking_at(target_pos), delta * aim_speed)
 
 func spawn_projectile(damage: int, calc_knockback: int, strength: float) -> void:
 	var projectile_instance : Projectile = projectile_prefab.instantiate()
@@ -92,9 +95,9 @@ func spawn_projectile(damage: int, calc_knockback: int, strength: float) -> void
 	projectile_instance.global_transform.basis = global_transform.basis
 	projectile_instance.global_position = global_position 
 	projectile_instance.setup_projectile(damage, calc_knockback, strength, target_layer)
-
-func _on_attack_timer_timeout() -> void:
-	attack_ready = true
+#
+#func _on_attack_timer_timeout() -> void:
+	#attack_ready = true
 
 func set_target_layer() -> void:
 	match character_stats.character_tag:

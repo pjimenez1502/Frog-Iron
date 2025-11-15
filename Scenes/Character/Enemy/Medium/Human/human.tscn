@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_h4q5l"]
 [ext_resource type="Texture2D" uid="uid://cix14bby6cf76" path="res://Scenes/Character/Enemy/Medium/Human/human.png" id="2_8vurq"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_ci687"]
-[ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/Enemy/EnemyAttack.gd" id="4_30x3r"]
+[ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="4_30x3r"]
 [ext_resource type="Script" uid="uid://ddjgxp2c8n7uj" path="res://Scenes/Weapon/MeleeWeapon.gd" id="5_65gb3"]
 [ext_resource type="PackedScene" uid="uid://dlweiwdwse41w" path="res://Scenes/Weapon/_Hits/slash.tscn" id="6_lq7hj"]
 [ext_resource type="Script" path="res://Scenes/Weapon/WeaponStats.gd" id="7_4f1yr"]

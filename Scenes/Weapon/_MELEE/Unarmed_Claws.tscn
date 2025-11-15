@@ -6,8 +6,6 @@
 [node name="Small Claws" type="Node3D"]
 script = ExtResource("1_evkrl")
 attack_hit = ExtResource("2_byfxr")
-base_damage = 1
-STR_mod = 0.25
 metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
 
 [node name="Hits" type="Node" parent="."]

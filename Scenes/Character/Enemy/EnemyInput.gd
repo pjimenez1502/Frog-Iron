@@ -1,6 +1,7 @@
 extends Node
 class_name EnemyInput
 
+@onready var grid_movement: CharacterGridMovement = %GridMovement
 @onready var collision_shape_3d: CollisionShape3D = $"../../Detection/FarDetection/CollisionShape3D"
 @onready var los_raycast: RayCast3D = %LOS_Raycast
 
@@ -12,6 +13,8 @@ var far_target: Node3D
 var target: Node3D
 
 func _ready() -> void:
+	SignalBus.EnemyTurn.connect(play_turn)
+	
 	close_detection.body_entered.connect(add_close_target)
 	close_detection.body_exited.connect(remove_close_target)
 	far_detection.body_entered.connect(add_far_target)
@@ -20,7 +23,7 @@ func _ready() -> void:
 
 
 func play_turn() -> void:
-	print("close target: %s - far target: %s - target: %s" % [close_target, far_target, target])
+	#print("close target: %s - far target: %s - target: %s" % [close_target, far_target, target])
 	if !far_target and !close_target:
 		return
 		
@@ -39,8 +42,12 @@ func move_towards_target() -> void:
 	var origin_point: int = GameDirector.level_gridmap.find_pointid_at_pos("WALKABLE" ,GameDirector.level_gridmap.globalpos_to_grid(get_parent().global_position))
 	var target_point: int = GameDirector.level_gridmap.find_pointid_at_pos("WALKABLE" ,GameDirector.level_gridmap.globalpos_to_grid(target.global_position))
 	
+	var next_point: Vector3i = GameDirector.level_gridmap.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)[1]
+	var direction = next_point - GameDirector.level_gridmap.globalpos_to_grid(get_parent().global_position)
 	print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
-	GameDirector.level_gridmap.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)
+	print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
+	
+	grid_movement.action(Vector2(direction.x, direction.z))
 
 func find_target() -> Node3D:
 	if far_target && check_lineofsight():

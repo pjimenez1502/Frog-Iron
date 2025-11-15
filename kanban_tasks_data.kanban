@@ -50,6 +50,7 @@
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
+				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
@@ -64,8 +65,7 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
-				"fe3852b7-5d87-4faf-8523-7772a78c9bf4"
+				"1dd85e61-eb06-4218-b089-d0b55ccfa6f7"
 			]
 		},
 		{
@@ -282,10 +282,10 @@
 			"steps": []
 		},
 		{
-			"uuid": "fe3852b7-5d87-4faf-8523-7772a78c9bf4",
-			"title": "Change to build only from Floor and Walls",
-			"description": "AStar implementation depends on distinction from floor to build the walkable_dictionary",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"uuid": "1dd85e61-eb06-4218-b089-d0b55ccfa6f7",
+			"title": "Set default unarmed weapon data",
+			"description": "melee weapon gets filled with this data if nothing equipped",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

@@ -11,9 +11,6 @@ var target_layer: Util.CollisionLayer
 @export_group("Damage")
 var base_damage: int = 0
 var damage_scaling: Dictionary
-#@export var STR_mod: float = .5
-#@export var DEX_mod: float = .0
-#@export var INT_mod: float = .0
 var knockback: int = 0
 var attack_delay: float = 1
 
@@ -25,8 +22,7 @@ func setup(item_data: EquipableResource, _character_stats: CharacterStats, _char
 	damage_scaling = item_data.damage_scaling
 	character_stats = _character_stats
 	character_animation = _character_animation
-	character_animation.torso_state(item_data.torso_state)
-	get_parent().set_attack_delay(attack_delay)
+	#character_animation.torso_state(item_data.torso_state)
 	set_target_layer()
 
 func attack(direction:Vector3) -> void:

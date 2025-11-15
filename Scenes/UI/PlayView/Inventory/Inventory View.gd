@@ -5,7 +5,7 @@ const INVENTORT_ITEM_ENTRY = preload("uid://ttylk70icqys")
 @onready var coin_value: RichTextLabel = %"Coin Value"
 @onready var inventory_content: VBoxContainer = %Inventory_content
 
-@onready var weapon_slot: FoldableContainer = %Weapon
+@onready var weapon_slot: VBoxContainer = %Weapon
 @onready var head_slot: FoldableContainer = %Head
 @onready var torso_slot: FoldableContainer = %Torso
 @onready var arms_slot: FoldableContainer = %Arms
@@ -35,7 +35,9 @@ func update_equipment(equipment: Dictionary) -> void:
 			continue
 		var equipment_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
 		match slot_key:
-			"WEAPON":
+			"MELEE_WEAPON":
+				weapon_slot.add_child(equipment_entry)
+			"RANGED_WEAPON":
 				weapon_slot.add_child(equipment_entry)
 			"HEAD":
 				head_slot.add_child(equipment_entry)

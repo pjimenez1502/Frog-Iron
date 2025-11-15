@@ -1,0 +1,49 @@
+extends Node
+class_name CharacterAttack
+
+@onready var character: Character = $".."
+
+@export var weapon_attatchment: WeaponAttachment
+@export var melee_weapon_data: EquipableResource
+@export var ranged_weapon_data: EquipableResource
+
+var melee_weapon: MeleeWeapon
+var ranged_weapon: RangedWeapon
+
+var attack_target: Character
+var attack_available: bool = true
+
+func _ready() -> void:
+	setup_weapons()
+
+func setup_weapons() -> void:
+	if melee_weapon_data:
+		var melee: MeleeWeapon = melee_weapon_data.scene.instantiate()
+		weapon_attatchment.add_child(melee)
+		melee_weapon = melee
+		melee.setup(melee_weapon_data, %CharacterStats, %CharacterAnimation)
+	else:
+		melee_weapon_data = null
+		if melee_weapon:
+			melee_weapon.queue_free()
+		
+	if ranged_weapon_data:
+		var ranged: RangedWeapon = ranged_weapon_data.scene.instantiate()
+		ranged_weapon = ranged
+		weapon_attatchment.add_child(ranged)
+		ranged.setup(ranged_weapon_data, %CharacterStats, %CharacterAnimation)
+	else:
+		ranged_weapon_data = null
+		if ranged_weapon:
+			ranged_weapon.queue_free()
+
+func melee_attack(target: Character) -> void:
+	melee_weapon.attack(dir_to_target(target))
+
+func ranged_attack(target: Character) -> void:
+	ranged_weapon.attack(dir_to_target(target))
+
+
+
+func dir_to_target(target: Character) -> Vector3:
+	return (target.global_position - character.global_position).normalized()
