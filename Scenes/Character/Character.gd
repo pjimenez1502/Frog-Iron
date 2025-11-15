@@ -23,17 +23,17 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
-	move(delta)
-
-func move(_delta: float) -> void:
-	if dead:
-		return
-	
-	velocity += velocity_mod
-	velocity_mod.x = move_toward(velocity_mod.x, 0, 100)
-	velocity_mod.z = move_toward(velocity_mod.z, 0, 100)
-	
-	move_and_slide()
+	#move(delta)
+#
+#func move(_delta: float) -> void:
+	#if dead:
+		#return
+	#
+	#velocity += velocity_mod
+	#velocity_mod.x = move_toward(velocity_mod.x, 0, 100)
+	#velocity_mod.z = move_toward(velocity_mod.z, 0, 100)
+	#
+	#move_and_slide()
 
 func gravity(delta: float) -> void:
 	velocity.y = -300 * delta

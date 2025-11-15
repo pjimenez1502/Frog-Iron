@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Scenes/Terrain/Dungeon_1/Dungeon1_mat.tres",
+"use_external/fallback_path": "res://Assets/Material/Dungeon1/Dungeon1.tres",
 "use_external/path": "uid://dxw8753d2eof4"
 }
 }

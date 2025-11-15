@@ -64,7 +64,8 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41"
+				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
+				"fe3852b7-5d87-4faf-8523-7772a78c9bf4"
 			]
 		},
 		{
@@ -278,6 +279,13 @@
 			"title": "Fix Knockback",
 			"description": "\nCharacter movement overrides knockback too easily",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "fe3852b7-5d87-4faf-8523-7772a78c9bf4",
+			"title": "Change to build only from Floor and Walls",
+			"description": "AStar implementation depends on distinction from floor to build the walkable_dictionary",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		}
 	],

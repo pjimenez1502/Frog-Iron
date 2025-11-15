@@ -1,16 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvrf4yfda2yvk"]
+[gd_scene load_steps=3 format=3 uid="uid://bvrf4yfda2yvk"]
 
 [ext_resource type="PackedScene" uid="uid://c0lpi6lge3kni" path="res://Scenes/Terrain/Dungeon_1/Tiles/Floor.glb" id="1_1rayh"]
 [ext_resource type="PackedScene" uid="uid://b4p1ptyuwlvcq" path="res://Scenes/Terrain/Dungeon_1/Tiles/Wall.glb" id="2_wyy61"]
-[ext_resource type="PackedScene" uid="uid://cj01dr3epdxau" path="res://Scenes/Terrain/Dungeon_1/Tiles/Wall_corner.glb" id="3_yf75a"]
-[ext_resource type="PackedScene" uid="uid://danh4weg6i0b2" path="res://Scenes/Terrain/Dungeon_1/Tiles/Wall_corridor.glb" id="4_wyy61"]
 
 [node name="Tiles" type="Node3D"]
 
 [node name="Floor" parent="." instance=ExtResource("1_1rayh")]
 
 [node name="Wall" parent="." instance=ExtResource("2_wyy61")]
-
-[node name="Wall_corner" parent="." instance=ExtResource("3_yf75a")]
-
-[node name="Wall_corridor" parent="." instance=ExtResource("4_wyy61")]

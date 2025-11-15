@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://chenbcu36627c"]
+[gd_scene load_steps=18 format=3 uid="uid://chenbcu36627c"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_ghg1f"]
-[ext_resource type="Texture2D" uid="uid://dkry738lk1ete" path="res://Scenes/Character/Enemy/Medium/Rat_Med/Rat.png" id="2_lq07w"]
 [ext_resource type="PackedScene" uid="uid://cle0m3o5ilqoj" path="res://Scenes/Character/Enemy/Medium/Rat_Med/Rat.glb" id="3_lq07w"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_uhhdc"]
 [ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="4_lu8p1"]
@@ -9,17 +8,7 @@
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="6_5bbps"]
 [ext_resource type="Script" uid="uid://d3w7anlgskstc" path="res://Scenes/Character/GridMovement.gd" id="6_g5da4"]
 [ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="7_5bbps"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wee41"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_lq07w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" uid="uid://dn77g08dss0ng" path="res://Scenes/Character/Enemy/EnemyInput.gd" id="8_mejtj"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lq07w"]
 animation = &"Idle"
@@ -61,16 +50,6 @@ script = ExtResource("1_ghg1f")
 
 [node name="View" type="Node3D" parent="."]
 
-[node name="Sprite" type="AnimatedSprite3D" parent="View"]
-unique_name_in_owner = true
-transform = Transform3D(0.9908228, 0.13516717, 0.00010331717, -0.09566624, 0.7007263, 0.70698655, 0.09548903, -0.7005083, 0.7072265, 0, 0.89673185, 0)
-visible = false
-pixel_size = 0.05
-shaded = true
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_wee41")
-autoplay = "default"
-
 [node name="3D" parent="View" instance=ExtResource("3_lq07w")]
 unique_name_in_owner = true
 
@@ -78,8 +57,8 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(0.047181617, 0.99401426, -0.09842679, -0.004671858)
-bones/2/rotation = Quaternion(-0.7519397, 0.02263849, 0.025857303, 0.6583355)
+bones/1/rotation = Quaternion(0.035318445, 0.99450636, -0.098475546, -0.0034971733)
+bones/2/rotation = Quaternion(-0.7521353, 0.016941005, 0.019349732, 0.65850675)
 
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -123,6 +102,9 @@ target_position = Vector3(0, -4, 0)
 transform = Transform3D(-4.371138e-08, -1, 8.742277e-08, -1, 4.371138e-08, -2.179342e-15, 0, -8.742277e-08, -1, 4.3711385e-08, 1, 0)
 target_position = Vector3(0, -4, 0)
 
+[node name="EnemyInput" type="Node" parent="GridMovement"]
+script = ExtResource("8_mejtj")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_i5men")
@@ -147,6 +129,7 @@ shape = SubResource("CylinderShape3D_lxplw")
 
 [node name="LOS_Raycast" type="RayCast3D" parent="Detection"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Attack" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -170,10 +153,6 @@ unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
 
-[connection signal="body_entered" from="Detection/CloseDetection" to="." method="_on_close_detection_body_entered"]
-[connection signal="body_exited" from="Detection/CloseDetection" to="." method="_on_close_detection_body_exited"]
-[connection signal="body_entered" from="Detection/FarDetection" to="." method="_on_far_detection_body_entered"]
-[connection signal="body_exited" from="Detection/FarDetection" to="." method="_on_far_detection_body_exited"]
 [connection signal="body_entered" from="Attack/CloseDetection" to="Attack" method="_on_close_detection_body_entered"]
 [connection signal="body_exited" from="Attack/CloseDetection" to="Attack" method="_on_close_detection_body_exited"]
 [connection signal="timeout" from="Attack/AttackTimer" to="Attack" method="_on_attack_timer_timeout"]

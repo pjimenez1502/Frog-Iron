@@ -13,24 +13,17 @@ func _ready() -> void:
 	SignalBus.PlayerStatsUpdate.emit(character_stats.base_stats, character_stats.calculate_stats())
 	SignalBus.AvailableStatUP.emit(available_statup)
 	SignalBus.PlayerEquipmentUpdate.connect(equipment_update)
+	
+	GameDirector.set_player(self)
 
-func move(_delta: float) -> void:
-	var input_dir: Vector2 = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
-	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	
-	#real_time_movement(direction, _delta)
-	
-	super.move(_delta)
-
-func real_time_movement(direction: Vector3, delta: float) -> void:
-	if direction:
-		velocity.x = direction.x * character_stats.speed
-		velocity.z = direction.z * character_stats.speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, character_stats.speed)
-		velocity.z = move_toward(velocity.z, 0, character_stats.speed)
-	character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, delta)
+#func real_time_movement(direction: Vector3, delta: float) -> void:
+	#if direction:
+		#velocity.x = direction.x * character_stats.speed
+		#velocity.z = direction.z * character_stats.speed
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, character_stats.speed)
+		#velocity.z = move_toward(velocity.z, 0, character_stats.speed)
+	#character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, delta)
 
 
 func increase_stat(stat:String, count:int) -> void:
@@ -65,8 +58,7 @@ func check_level_up(_xp: int) -> void:
 	if _xp >= get_level_treshold(level):
 		level += 1
 		level_up()
-	
-	print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
+	#print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
 
 var available_statup: int
 func level_up() -> void:
@@ -76,6 +68,8 @@ func level_up() -> void:
 
 func get_level_treshold(_level: int) -> int:
 	return (_level * _level * 10 * Global.LEVEL_GROWTH_MULT)
+
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("_debug addxp"):

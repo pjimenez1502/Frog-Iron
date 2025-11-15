@@ -25,7 +25,8 @@ signal UpdateEmergentInv
 signal UpdateCameraRotation
 
 #Game Signals
-signal TurnFinished
+signal PlayerTurnFinished
+signal EnemyTurn
 
 signal LaunchDemoScene
 signal NavmeshBakeRequest
