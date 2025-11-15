@@ -1,6 +1,7 @@
 extends Node
 class_name CharacterAttack
 
+const UNARMED = preload("uid://bdntcukq7he2r")
 @onready var character: Character = $".."
 
 @export var weapon_attatchment: WeaponAttachment
@@ -17,15 +18,19 @@ func _ready() -> void:
 	setup_weapons()
 
 func setup_weapons() -> void:
+	if melee_weapon:
+		melee_weapon.queue_free()
+	if ranged_weapon:
+		ranged_weapon.queue_free()
+	
 	if melee_weapon_data:
 		var melee: MeleeWeapon = melee_weapon_data.scene.instantiate()
 		weapon_attatchment.add_child(melee)
 		melee_weapon = melee
 		melee.setup(melee_weapon_data, %CharacterStats, %CharacterAnimation)
 	else:
-		melee_weapon_data = null
-		if melee_weapon:
-			melee_weapon.queue_free()
+		melee_weapon_data = UNARMED
+		setup_weapons()
 		
 	if ranged_weapon_data:
 		var ranged: RangedWeapon = ranged_weapon_data.scene.instantiate()
@@ -34,8 +39,6 @@ func setup_weapons() -> void:
 		ranged.setup(ranged_weapon_data, %CharacterStats, %CharacterAnimation)
 	else:
 		ranged_weapon_data = null
-		if ranged_weapon:
-			ranged_weapon.queue_free()
 
 func melee_attack(target: Character) -> void:
 	melee_weapon.attack(dir_to_target(target))

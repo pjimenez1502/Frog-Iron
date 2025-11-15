@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="4_xa7qo"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="6_5bbps"]
 [ext_resource type="Script" uid="uid://d3w7anlgskstc" path="res://Scenes/Character/GridMovement.gd" id="6_g5da4"]
-[ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Claws.tres" id="8_ijsel"]
+[ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Unarmed.tres" id="8_ijsel"]
 [ext_resource type="Script" uid="uid://dn77g08dss0ng" path="res://Scenes/Character/Enemy/EnemyInput.gd" id="8_mejtj"]
 [ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="10_mejtj"]
 
@@ -53,11 +53,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(0.005314423, 0.99511915, -0.098536216, -0.0005261876)
-bones/2/rotation = Quaternion(-0.7523785, 0.0025499263, 0.0029124825, 0.6587198)
+bones/1/rotation = Quaternion(-0.02082249, 0.9949155, -0.098516054, 0.002061877)
+bones/2/rotation = Quaternion(-0.75229764, -0.009990006, -0.011410415, 0.65864897)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.999943, -0.010473268, 0.002094565, -8.754432e-08, -0.19611609, -0.9805808, 0.010680665, 0.9805245, -0.19610496, 0, 0.030000001, 0.08)
+transform = Transform3D(0.9991243, 0.041026965, -0.008205485, -8.754432e-08, -0.19611609, -0.98058057, -0.041839484, 0.9797218, -0.19594441, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 

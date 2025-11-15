@@ -35,7 +35,7 @@ func action(direction: Vector2) -> void:
 	#print(character, [character.is_in_group("Player"), collided is Enemy, character.is_in_group("Enemy"), collided is Player])
 	if !collided:
 		move(direction)
-	elif (character.is_in_group("Player") and collided is Enemy) or (character.is_in_group("Enemy") and collided is Player):
+	elif (character.is_in_group("Player") and collided.is_in_group("Enemy")) or (character.is_in_group("Enemy") and collided.is_in_group("Player")):
 		attack(collided)
 	elif collided is InteractableObject:
 		interact(collided)
@@ -51,7 +51,7 @@ func move(direction: Vector2) -> void:
 
 func attack(target: Character) -> void:
 	character.character_attack.melee_attack(target)
-	print("Attacking: %s" % target)
+	#print("Attacking: %s" % target)
 	
 
 func interact(target: InteractableObject) -> void:

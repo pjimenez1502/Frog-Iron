@@ -44,8 +44,8 @@ func move_towards_target() -> void:
 	
 	var next_point: Vector3i = GameDirector.level_gridmap.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)[1]
 	var direction = next_point - GameDirector.level_gridmap.globalpos_to_grid(get_parent().global_position)
-	print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
-	print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
+	#print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
+	#print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
 	
 	grid_movement.action(Vector2(direction.x, direction.z))
 
