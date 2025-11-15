@@ -22,6 +22,8 @@ signal OpenEmergentInv
 signal CloseEmergentInv
 signal UpdateEmergentInv
 
+signal UpdateCameraRotation
+
 #Game Signals
 signal TurnFinished
 

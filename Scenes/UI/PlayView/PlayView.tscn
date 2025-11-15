@@ -52,8 +52,6 @@ handle_input_locally = false
 size = Vector2i(576, 324)
 render_target_update_mode = 4
 
-[node name="Dungeon_1" parent="Game SubViewport/SubViewport" instance=ExtResource("2_oklkm")]
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
