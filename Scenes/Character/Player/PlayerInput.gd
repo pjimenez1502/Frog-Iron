@@ -20,8 +20,13 @@ func _input(event: InputEvent) -> void:
 		grid_movement.action(get_direction_vector(1))
 	if event.is_action_pressed("RIGHT"):
 		grid_movement.action(get_direction_vector(3))
-	if event.is_action_pressed("INTERACT"):
+	
+	if event.is_action_pressed("INTERACT"):## Action in mouse dir
 		grid_movement.action(Util.round_direction(Util.get_mouse_direction(grid_movement)))
+	
+	if event.is_action_pressed("MELEE"):
+		grid_movement
+	
 
 var north_offset: int
 func update_camera_rotation(_rotation) -> void:

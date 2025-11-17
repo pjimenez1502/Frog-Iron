@@ -40,8 +40,8 @@ func setup_weapons() -> void:
 	else:
 		ranged_weapon_data = null
 
-func melee_attack(target: Character) -> void:
-	melee_weapon.attack(dir_to_target(target))
+func melee_attack(direction: Vector2i) -> void:
+	melee_weapon.attack(direction)
 
 func ranged_attack(target: Character) -> void:
 	ranged_weapon.attack(dir_to_target(target))

@@ -1,15 +1,13 @@
 extends Node3D
 class_name CharacterGridMovement
 
+const GRID_DISTANCE: int = 4
+signal CharacterActed
+
 var character: Character
 @onready var raycasts: Dictionary[String, RayCast3D] = {"NORTH": $North, "SOUTH": $Shouth, "WEST": $West, "EAST": $East}
-
-const GRID_DISTANCE: int = 4
 var move_tween: Tween
-
-var grid_position: Vector3
-
-signal CharacterActed
+var grid_position: Vector3i
 
 func _ready() -> void:
 	grid_position = GameDirector.level_gridmap.globalpos_to_grid(global_position)
@@ -17,40 +15,33 @@ func _ready() -> void:
 func setup(_character: Character) -> void:
 	character = _character
 
-func set_at_position(_grid_position: Vector3) -> void:
+func set_at_grid_position(_grid_position: Vector3i) -> void:
+	global_position = GameDirector.level_gridmap.grid_to_globalpos(grid_position)
 	grid_position = _grid_position
 
-func action(direction: Vector2) -> void:
-	var collided: Object
-	match direction:
-		Vector2(0,-1):
-			collided = raycasts["NORTH"].get_collider()
-		Vector2(0,1):
-			collided = raycasts["SOUTH"].get_collider()
-		Vector2(-1,0):
-			collided = raycasts["WEST"].get_collider()
-		Vector2(1,0):
-			collided = raycasts["EAST"].get_collider()
+func action(direction: Vector2i) -> void:
+	print(get_ray_by_direction(direction))
+	var collided: Object = get_ray_by_direction(direction).get_collider()
 	
 	#print(character, [character.is_in_group("Player"), collided is Enemy, character.is_in_group("Enemy"), collided is Player])
 	if !collided:
 		move(direction)
 	elif (character.is_in_group("Player") and collided.is_in_group("Enemy")) or (character.is_in_group("Enemy") and collided.is_in_group("Player")):
-		attack(collided)
+		attack(direction)
 	elif collided is InteractableObject:
 		interact(collided)
 	else:
 		wall(collided)
 	CharacterActed.emit()
 
-func move(direction: Vector2) -> void:
-	grid_position += Vector3(direction.x, 0, direction.y)
-	var target_position = grid_position * GRID_DISTANCE + Vector3(2, 0, 2)
+func move(direction: Vector2i) -> void:
+	grid_position += Vector3i(direction.x, 0, direction.y)
+	var target_position = grid_position * GRID_DISTANCE + Vector3i(2, 0, 2)
 	move_tween = get_tree().create_tween()
-	await move_tween.tween_property(character, "global_position", target_position, Global.PLAYER_TURN_DURATION).finished
+	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
 
-func attack(target: Character) -> void:
-	character.character_attack.melee_attack(target)
+func attack(direction: Vector2i) -> void:
+	character.character_attack.melee_attack(direction)
 	#print("Attacking: %s" % target)
 	
 
@@ -61,3 +52,15 @@ func interact(target: InteractableObject) -> void:
 func wall(_collided: Node3D) -> void:
 	#print("Moving into wall: %s" % collided)
 	pass
+
+func get_ray_by_direction(direction: Vector2i) -> RayCast3D:
+	match direction:
+		Vector2i(0,-1):
+			return raycasts["NORTH"]
+		Vector2i(0,1):
+			return raycasts["SOUTH"]
+		Vector2i(-1,0):
+			return raycasts["WEST"]
+		Vector2i(1,0):
+			return raycasts["EAST"]
+	return null

@@ -25,7 +25,7 @@ func setup(item_data: EquipableResource, _character_stats: CharacterStats, _char
 	#character_animation.torso_state(item_data.torso_state)
 	set_target_layer()
 
-func attack(direction:Vector3) -> void:
+func attack(direction: Vector2i) -> void:
 	var new_hit: MeleeWeaponHit = attack_hit.instantiate()
 	hits.add_child(new_hit) 
 	var calculated_stats = character_stats.calculate_stats()
@@ -38,8 +38,9 @@ func attack(direction:Vector3) -> void:
 	var calc_knockback: int = knockback
 	
 	new_hit.set_weapon_data(calc_damage, calc_knockback, target_layer)
-	new_hit.global_position = GameDirector.level_gridmap.grid_to_globalpos(GameDirector.level_gridmap.globalpos_to_grid(global_position + direction * 4))
-	new_hit.look_at(new_hit.global_position + direction, Vector3.UP)
+	var target_gridpos: Vector3i = GameDirector.level_gridmap.globalpos_to_grid(global_position)
+	new_hit.global_position = GameDirector.level_gridmap.grid_to_globalpos(target_gridpos + Vector3i(direction.x, 0, direction.y))
+	#new_hit.look_at(new_hit.global_position + direction, Vector3.UP)
 
 func set_target_layer() -> void:
 	match character_stats.character_tag:
