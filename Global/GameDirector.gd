@@ -2,6 +2,7 @@ extends Node
 
 var enemy_list: Array[Enemy]
 var player: Player
+var current_camera: Camera3D
 var turn_wait_timer: Timer
 var level_gridmap: LevelGridMap
 
@@ -23,11 +24,10 @@ func update_navmap() -> void:
 
 func after_player_action() -> void:
 	SignalBus.PlayerTurn.emit(false)
-	turn_wait_timer.start(0.1)
-	turn_wait_timer.start(Global.ENEMY_TURN_DURATION)
+	turn_wait_timer.start(0.2)
 	await turn_wait_timer.timeout
 	SignalBus.EnemyTurn.emit()
 	
-	turn_wait_timer.start(Global.PLAYER_TURN_DURATION)
+	turn_wait_timer.start(0.25)
 	await turn_wait_timer.timeout
 	SignalBus.PlayerTurn.emit(true)

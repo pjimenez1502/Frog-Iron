@@ -10,6 +10,8 @@ signal PlayerStatIncrease
 signal AvailableStatUP
 signal PlayerDead
 
+signal UpdateCameraRotation
+
 ## Player UI Update
 signal PlayerXPUpdate
 signal PlayerHPUpdate
@@ -18,13 +20,13 @@ signal PlayerStatsUpdate
 
 signal ItemUsed
 
+## EmergentInv
 signal OpenEmergentInv
 signal CloseEmergentInv
 signal UpdateEmergentInv
 
-signal UpdateCameraRotation
 
-#Game Signals
+##Game Signals
 signal PlayerTurn
 signal EnemyTurn
 
@@ -33,6 +35,8 @@ signal NavmeshBakeRequest
 
 signal ShowPopupText
 signal ShowTooltip
+
+signal DamageText
 
 signal PauseGame
 signal TimeScaleChange

@@ -10,6 +10,8 @@ class_name CameraPivot
 @export var close_rotation: Vector3 = Vector3(0, 0, 0)
 
 func _ready() -> void:
+	GameDirector.current_camera = camera
+	
 	zoom_value = 0
 	pos_target = far_position
 	rot_target = far_rotation

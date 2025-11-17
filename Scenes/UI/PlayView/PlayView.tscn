@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=21 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
 [ext_resource type="PackedScene" uid="uid://w31voexjaly" path="res://Scenes/Terrain/Dungeon_1/MAP_Dungeon_Test.tscn" id="2_oklkm"]
 [ext_resource type="Script" uid="uid://d0qhm3bot5pxa" path="res://Scenes/UI/HUD/HUD.gd" id="3_ch5r3"]
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="4_3p3yu"]
+[ext_resource type="Script" uid="uid://b8fopek7mrwoy" path="res://Scenes/UI/PlayView/DamageTextOverlay.gd" id="4_7ut3y"]
 [ext_resource type="Script" uid="uid://fq6v5jfy7nau" path="res://Scenes/UI/PlayView/PopupText.gd" id="4_ch5r3"]
 [ext_resource type="Texture2D" uid="uid://d4djiikmkfebp" path="res://Scenes/UI/HUD/Interaction/F_Key.png" id="5_3p3yu"]
 [ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="5_povyt"]
@@ -51,6 +52,15 @@ unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(576, 324)
 render_target_update_mode = 4
+
+[node name="DamageNumberOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7ut3y")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 1

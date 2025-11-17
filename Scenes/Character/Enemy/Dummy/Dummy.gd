@@ -8,4 +8,5 @@ func move(_delta: float) -> void:
 	pass
 
 func damage(_damage: int) -> void:
-	print("Dummy damaged: ", _damage)
+	#print("Dummy damaged: ", _damage)
+	SignalBus.DamageText.emit(str(_damage), self, DamageTextOverlay.TYPE.DAMAGE)

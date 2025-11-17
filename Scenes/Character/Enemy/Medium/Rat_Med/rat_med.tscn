@@ -29,7 +29,8 @@ nodes/WalkBlend/node = SubResource("AnimationNodeBlendSpace1D_nyt8s")
 nodes/WalkBlend/position = Vector2(240, 0)
 node_connections = [&"output", 0, &"WalkBlend"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5men"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mejtj"]
+size = Vector3(1.8, 1.8, 1.8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_58y3j"]
 height = 1.0
@@ -53,11 +54,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(-0.0013313697, 0.99513245, -0.098537534, 0.00013187467)
-bones/2/rotation = Quaternion(-0.75238377, -0.00063881703, -0.0007296461, 0.65872437)
+bones/1/rotation = Quaternion(-0.0035399497, 0.995127, -0.098536976, 0.0003505674)
+bones/2/rotation = Quaternion(-0.7523817, -0.0016974927, -0.0019388482, 0.6587225)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.99999654, 0.0026237885, -0.0005248453, -8.571078e-08, -0.1961161, -0.9805808, -0.0026757678, 0.98057693, -0.19611543, 0, 0.030000001, 0.08)
+transform = Transform3D(0.99997485, 0.00697631, -0.0013953502, -8.626375e-08, -0.19611609, -0.9805808, -0.0071144877, 0.98055565, -0.19611116, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 
@@ -118,7 +119,7 @@ parameters/WalkBlend/blend_position = -0.0053476095
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_i5men")
+shape = SubResource("BoxShape3D_mejtj")
 
 [node name="Detection" type="Node3D" parent="."]
 

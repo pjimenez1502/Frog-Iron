@@ -5,6 +5,9 @@ enum CollisionLayer {Terrain = 0b1, Player = 0b10, Enemy = 0b100}
 func first_closer(origin:Vector3, a: Vector3, b:Vector3) -> bool:
 	return origin.distance_squared_to(a) <= origin.distance_squared_to(b)
 
+func worldpos_to_screenpos(origin: Vector3) -> Vector2:
+	return GameDirector.current_camera.unproject_position(origin)
+
 func get_mouse_direction(origin: Node3D) -> Vector3:
 	return ((get_mouse_pos(origin) - origin.global_position) * Vector3(1,0,1)).normalized()
 

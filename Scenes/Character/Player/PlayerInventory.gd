@@ -126,6 +126,7 @@ func equip_armor(item_data: EquipableResource) -> void:
 	equipment[slotname] = item_data
 	
 	inventory.erase(item_data)
+	update_inventory_call()
 
 func unequip_armor(item_data: EquipableResource) -> void:
 	var slotname: String
@@ -141,6 +142,7 @@ func unequip_armor(item_data: EquipableResource) -> void:
 	equipment[slotname] = null
 	
 	inventory.append(item_data)
+	update_inventory_call()
 
 func check_already_equipped(item_data: EquipableResource) -> bool:
 	for slot_key in equipment.keys():

@@ -91,14 +91,15 @@ func calculate_hp() -> void:
 func heal(_value: int) -> void:
 	current_HP = clamp(current_HP + _value, 0, max_HP)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
-	print("healed: ", _value)
+	SignalBus.DamageText.emit(str(_value), get_parent(), DamageTextOverlay.TYPE.HEAL)
 
 func damage(_damage: int) -> void:
 	if invulnerable:
-		return
+		return 
 	current_HP -= _damage
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 	damage_invulnerability()
+	SignalBus.DamageText.emit(str(_damage), get_parent(), DamageTextOverlay.TYPE.DAMAGE)
 	
 	if current_HP <= 0:
 		death()
