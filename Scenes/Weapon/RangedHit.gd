@@ -12,6 +12,6 @@ func _on_body_hit(body: Node3D) -> void:
 	
 	if body is not Character:
 		return
-	body.damage(projectile.damage)
-	var direction: Vector3 = ((body.global_position - global_position) * Vector3(1,0,1)).normalized()
-	body.knockback(direction, projectile.knockback)
+	body.damage(projectile.damage, projectile.hitchance)
+	#var direction: Vector3 = ((body.global_position - global_position) * Vector3(1,0,1)).normalized()
+	#body.knockback(direction, projectile.knockback)

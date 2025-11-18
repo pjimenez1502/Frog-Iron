@@ -8,34 +8,25 @@ var character_animation: CharacterAnimation
 @export var attack_hit: PackedScene
 
 var target_layer: Util.CollisionLayer
-@export_group("Damage")
-var base_damage: int = 0
-var damage_scaling: Dictionary
+var weapon_data: WeaponResource
+
 var knockback: int = 0
 
-
-func setup(item_data: EquipableResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
-	base_damage = item_data.weapon_stats["DAMAGE"]
-	knockback = item_data.weapon_stats["KNOCKBACK"]
-	damage_scaling = item_data.damage_scaling
+func setup(_weapon_data: WeaponResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
+	weapon_data = _weapon_data
 	character_stats = _character_stats
 	character_animation = _character_animation
-	#character_animation.torso_state(item_data.torso_state)
 	set_target_layer()
 
 func attack(direction: Vector2i) -> void:
 	var new_hit: MeleeWeaponHit = attack_hit.instantiate()
 	hits.add_child(new_hit) 
-	var calculated_stats = character_stats.calculate_stats()
-	var calc_damage: int = (base_damage + 
-	(damage_scaling["STR"] * calculated_stats["STR"]) + 
-	(damage_scaling["DEX"] * calculated_stats["DEX"]) + 
-	(damage_scaling["INT"] * calculated_stats["INT"]) +
-	(damage_scaling["WIS"] * calculated_stats["WIS"]) +
-	(damage_scaling["CON"] * calculated_stats["CON"]))
+	
+	var calc_damage: int = weapon_data.calculate_damage(character_stats)
+	var calc_hitchance: int = weapon_data.calculate_hitchance(character_stats)
 	var calc_knockback: int = knockback
 	
-	new_hit.set_weapon_data(calc_damage, calc_knockback, target_layer)
+	new_hit.set_weapon_data(calc_damage, calc_hitchance, calc_knockback, target_layer)
 	var target_gridpos: Vector3i = GameDirector.level_gridmap.globalpos_to_grid(global_position)
 	new_hit.global_position = GameDirector.level_gridmap.grid_to_globalpos(target_gridpos + Vector3i(direction.x, 0, direction.y))
 	#new_hit.look_at(new_hit.global_position + direction, Vector3.UP)

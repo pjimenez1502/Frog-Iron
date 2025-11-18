@@ -1,32 +1,38 @@
-[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://b8kxy76mrfb1d"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://b8kxy76mrfb1d"]
 
 [ext_resource type="PackedScene" uid="uid://ceg26cvdi6v60" path="res://Scenes/Weapon/_MELEE/GreatAxe.tscn" id="1_s06rb"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_lgv7a"]
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="1_wb5t0"]
 
 [resource]
-script = ExtResource("2_lgv7a")
-equip_slot = 1
-bonus_stats_weights = {
-"CON": 0,
-"DEX": 0,
-"INT": 0,
-"STR": 4,
-"WIS": 1
-}
+script = ExtResource("1_wb5t0")
 weapon_stats = {
 "DAMAGE": 4,
-"DELAY": 1.0,
-"KNOCKBACK": 4
+"HITCHANCE": 50,
+"KNOCKBACK": 0
 }
 damage_scaling = {
-"CON": 0.2,
+"CON": 0.25,
 "DEX": 0.0,
 "INT": 0.0,
 "STR": 1.0,
 "WIS": 0.0
 }
-torso_state = 3
+hitchance_scaling = {
+"CON": 2,
+"DEX": 0,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+equip_slot = 1
+bonus_stats_weights = {
+"CON": 1,
+"DEX": 0,
+"INT": 0,
+"STR": 4,
+"WIS": 0
+}
 scene = ExtResource("1_s06rb")
-name = "Greataxe"
-desc = "A slow but fierce weapon."
-metadata/_custom_type_script = "uid://cclko7w6ctl7a"
+name = "GreatAxe"
+desc = "Unwieldy but fierce"
+metadata/_custom_type_script = "uid://cf3j6hhshqwfm"

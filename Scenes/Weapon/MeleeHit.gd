@@ -5,6 +5,7 @@ class_name MeleeWeaponHit
 @export var duration: float = 0.2
 
 var damage: int
+var hitchance: int
 var knockback: int
 
 func _ready() -> void:
@@ -17,12 +18,13 @@ func _ready() -> void:
 func _on_body_hit(body: Node3D) -> void:
 	if body is not Character:
 		return
-	body.damage(damage)
+	body.damage(damage, hitchance)
 	
 	var direction: Vector3 = ((body.global_position - global_position) * Vector3(1,0,1)).normalized()
 	body.knockback(direction, knockback)
 
-func set_weapon_data(_damage: int, _knockback: int, target_layer: Util.CollisionLayer) -> void:
+func set_weapon_data(_damage: int, _hitchance: int, _knockback: int, target_layer: Util.CollisionLayer) -> void:
 	damage = _damage
+	hitchance = _hitchance
 	knockback = _knockback
 	set_collision_mask(target_layer)

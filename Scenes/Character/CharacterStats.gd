@@ -32,7 +32,6 @@ var bonus_stats: Dictionary = {
 var calculated_stats : Dictionary
 
 func _ready() -> void:
-	invul_timer_setup()
 	calculate_stats()
 	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
 	calculate_speed()
@@ -93,13 +92,14 @@ func heal(_value: int) -> void:
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 	SignalBus.DamageText.emit(str(_value), get_parent(), DamageTextOverlay.TYPE.HEAL)
 
-func damage(_damage: int) -> void:
-	if invulnerable:
-		return 
-	current_HP -= _damage
+func damage(_damage: int, _hitchance: int) -> void:
+	current_HP -= calc_hit_camage(_damage, _hitchance)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
-	damage_invulnerability()
-	SignalBus.DamageText.emit(str(_damage), get_parent(), DamageTextOverlay.TYPE.DAMAGE)
+	
+	if _damage > 0:
+		SignalBus.DamageText.emit(str(_damage), get_parent(), DamageTextOverlay.TYPE.DAMAGE)
+	else:
+		SignalBus.DamageText.emit("MISS", get_parent(), DamageTextOverlay.TYPE.MESSAGE)
 	
 	if current_HP <= 0:
 		death()
@@ -109,15 +109,19 @@ func damage(_damage: int) -> void:
 func death() -> void:
 	DEAD.emit()
 
-var invulnerable: bool
-var invul_timer: Timer
-func damage_invulnerability() -> void:
-	invulnerable = true
-	invul_timer.start()
-	await invul_timer.timeout
-	invulnerable = false
 
-func invul_timer_setup() -> void:
-	invul_timer = Timer.new()
-	invul_timer.wait_time = Global.INVUL_DURATION
-	add_child(invul_timer)
+func calc_hit_camage(damage: int, hitchance: int) -> int:
+	var finished: bool
+	var final_damage: int = 0
+	var curr_hitchance: int = hitchance
+	while(!finished):
+		if curr_hitchance >= 100:
+			final_damage += damage
+			curr_hitchance -= 100
+		else:
+			var rand: int = randi_range(1,50) + calculated_stats["DEX"]
+			print(curr_hitchance, " - ", rand)
+			if curr_hitchance > rand:
+				final_damage += damage
+			finished = true
+	return final_damage

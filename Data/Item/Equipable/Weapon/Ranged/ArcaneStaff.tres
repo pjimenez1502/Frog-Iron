@@ -1,10 +1,24 @@
-[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://bitfctryl7ro8"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://bitfctryl7ro8"]
 
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="1_bej8h"]
 [ext_resource type="PackedScene" uid="uid://c8nuwrjr6in87" path="res://Scenes/Weapon/_RANGED/Mage_Staff.tscn" id="1_i0bom"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_6t7r1"]
 
 [resource]
-script = ExtResource("2_6t7r1")
+script = ExtResource("1_bej8h")
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.0,
+"INT": 1.0,
+"STR": 0.0,
+"WIS": 0.5
+}
+hitchance_scaling = {
+"CON": 0,
+"DEX": 0,
+"INT": 5,
+"STR": 0,
+"WIS": 5
+}
 bonus_stats = {
 "CON": 0,
 "DEX": 0,
@@ -19,19 +33,7 @@ bonus_stats_weights = {
 "STR": 0,
 "WIS": 1
 }
-weapon_stats = {
-"DAMAGE": 3,
-"DELAY": 1.2,
-"KNOCKBACK": 2
-}
-damage_scaling = {
-"CON": 0.0,
-"DEX": 0.0,
-"INT": 1.0,
-"STR": 0.0,
-"WIS": 0.5
-}
 scene = ExtResource("1_i0bom")
 name = "Arcane Staff"
-desc = "Any mage's best companion"
-metadata/_custom_type_script = "uid://cclko7w6ctl7a"
+desc = "A mage's best companion"
+metadata/_custom_type_script = "uid://cf3j6hhshqwfm"

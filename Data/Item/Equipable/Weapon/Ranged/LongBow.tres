@@ -1,15 +1,27 @@
-[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://bpmp7adf5vwl"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://bpmp7adf5vwl"]
 
 [ext_resource type="PackedScene" uid="uid://cyp037ydl2u1g" path="res://Scenes/Weapon/_RANGED/LongBow.tscn" id="1_0ngyf"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_lcu6a"]
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="1_itkul"]
 
 [resource]
-script = ExtResource("2_lcu6a")
-bonus_stats = {
+script = ExtResource("1_itkul")
+weapon_stats = {
+"DAMAGE": 3,
+"HITCHANCE": 60,
+"KNOCKBACK": 0
+}
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.0,
+"INT": 0.0,
+"STR": 0.5,
+"WIS": 0.0
+}
+hitchance_scaling = {
 "CON": 0,
-"DEX": 0,
+"DEX": 5,
 "INT": 0,
-"STR": 1,
+"STR": 0,
 "WIS": 0
 }
 bonus_stats_weights = {
@@ -19,20 +31,7 @@ bonus_stats_weights = {
 "STR": 4,
 "WIS": 0
 }
-weapon_stats = {
-"DAMAGE": 4,
-"DELAY": 1.6,
-"KNOCKBACK": 2
-}
-damage_scaling = {
-"CON": 0.0,
-"DEX": 0.5,
-"INT": 0.0,
-"STR": 0.5,
-"WIS": 0.0
-}
-torso_state = 1
 scene = ExtResource("1_0ngyf")
 name = "Longbow"
-desc = "A powerful but harder to draw bow"
-metadata/_custom_type_script = "uid://cclko7w6ctl7a"
+desc = "A heavy but powerful bow"
+metadata/_custom_type_script = "uid://cf3j6hhshqwfm"

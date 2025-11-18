@@ -1,22 +1,14 @@
-[gd_resource type="Resource" script_class="EquipableResource" load_steps=3 format=3 uid="uid://c05ednb6nnd4l"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://c05ednb6nnd4l"]
 
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="1_qmkwj"]
 [ext_resource type="PackedScene" uid="uid://brim6mv0ypf07" path="res://Scenes/Weapon/_MELEE/LongSword.tscn" id="1_vo2re"]
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="2_0e2xc"]
 
 [resource]
-script = ExtResource("2_0e2xc")
-equip_slot = 1
-bonus_stats_weights = {
-"CON": 0,
-"DEX": 1,
-"INT": 0,
-"STR": 4,
-"WIS": 0
-}
+script = ExtResource("1_qmkwj")
 weapon_stats = {
 "DAMAGE": 3,
-"DELAY": 0.65,
-"KNOCKBACK": 3
+"HITCHANCE": 60,
+"KNOCKBACK": 0
 }
 damage_scaling = {
 "CON": 0.0,
@@ -25,8 +17,22 @@ damage_scaling = {
 "STR": 0.5,
 "WIS": 0.0
 }
-torso_state = 2
+hitchance_scaling = {
+"CON": 0,
+"DEX": 4,
+"INT": 0,
+"STR": 1,
+"WIS": 0
+}
+equip_slot = 1
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 1,
+"INT": 0,
+"STR": 4,
+"WIS": 0
+}
 scene = ExtResource("1_vo2re")
 name = "Longsword"
-desc = "A staple in any arsenal."
-metadata/_custom_type_script = "uid://cclko7w6ctl7a"
+desc = "A staple in any arsenal"
+metadata/_custom_type_script = "uid://cf3j6hhshqwfm"

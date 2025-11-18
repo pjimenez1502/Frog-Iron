@@ -11,12 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://dut5hauwt2iwl" path="res://Scenes/Character/Enemy/Dummy/archery_target.tscn" id="9_pvoku"]
 [ext_resource type="PackedScene" uid="uid://dmgk0o744xmbo" path="res://Scenes/Object/Chest/Chest.tscn" id="10_kw3t7"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="11_vrenn"]
+[ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/ShortSword.tscn" id="13_n6r2f"]
 [ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Ranged/Bow.tres" id="13_plwq1"]
-[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="14_0yevh"]
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="14_k5y61"]
 [ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="15_26rif"]
 [ext_resource type="PackedScene" uid="uid://chenbcu36627c" path="res://Scenes/Character/Enemy/Medium/Rat_Med/rat_med.tscn" id="16_ek1jc"]
-[ext_resource type="Resource" uid="uid://b8kxy76mrfb1d" path="res://Data/Item/Equipable/Weapon/Melee/GreatAxe.tres" id="16_k5y61"]
-[ext_resource type="Resource" uid="uid://cusdadd4b8psh" path="res://Data/Item/Coin.tres" id="16_n6r2f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0h72o"]
 geometry_parsed_geometry_type = 1
@@ -33,12 +32,41 @@ glow_enabled = true
 glow_normalized = true
 glow_hdr_threshold = 2.0
 
-[sub_resource type="Resource" id="Resource_n6r2f"]
+[sub_resource type="Resource" id="Resource_ek1jc"]
+script = ExtResource("14_k5y61")
+damage_scaling = {
+"CON": 0.0,
+"DEX": 0.25,
+"INT": 0.25,
+"STR": 0.0,
+"WIS": 0.0
+}
+hitchance_scaling = {
+"CON": 0,
+"DEX": 5,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+equip_slot = 1
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 4,
+"INT": 0,
+"STR": 1,
+"WIS": 0
+}
+scene = ExtResource("13_n6r2f")
+name = "Shortsword"
+desc = "Simple and lightweight"
+metadata/_custom_type_script = "uid://cf3j6hhshqwfm"
+
+[sub_resource type="Resource" id="Resource_7jsxk"]
 script = ExtResource("15_26rif")
 equip_slot = 3
 bonus_stats = {
-"CON": 100,
-"DEX": 0,
+"CON": 20,
+"DEX": 100,
 "INT": 0,
 "STR": 0,
 "WIS": 0
@@ -52,6 +80,7 @@ bonus_stats_weights = {
 }
 name = "Chestplate"
 desc = "Solid protection"
+rarity = 3
 metadata/_custom_type_script = "uid://cclko7w6ctl7a"
 
 [node name="Dungeon_1" type="Node3D"]
@@ -114,7 +143,7 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 
 [node name="Chest" parent="." instance=ExtResource("10_kw3t7")]
 transform = Transform3D(-0.4999999, 0, 0.8660255, 0, 1, 0, -0.86602545, 0, -0.49999994, -2, 0, 6)
-inventory = Array[ExtResource("11_vrenn")]([ExtResource("13_plwq1"), ExtResource("14_0yevh"), ExtResource("16_n6r2f"), SubResource("Resource_n6r2f"), ExtResource("16_k5y61")])
+inventory = Array[ExtResource("11_vrenn")]([ExtResource("13_plwq1"), SubResource("Resource_ek1jc"), SubResource("Resource_7jsxk")])
 
 [node name="Chest3" parent="." instance=ExtResource("10_kw3t7")]
 transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 33.712814, 0, 22)
