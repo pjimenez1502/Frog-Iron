@@ -11,3 +11,4 @@ func _ready() -> void:
 func death() -> void:
 	character_dead()
 	loot.drop_loot()
+	SignalBus.EnemyTurn.disconnect(enemy_input.play_turn)

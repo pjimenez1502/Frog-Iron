@@ -25,7 +25,9 @@ func _input(event: InputEvent) -> void:
 		grid_movement.action(Util.round_direction(Util.get_mouse_direction(grid_movement)))
 	
 	if event.is_action_pressed("MELEE"):
-		grid_movement
+		grid_movement.attack(Util.round_direction(Util.get_mouse_direction(grid_movement)))
+	if event.is_action_pressed("RANGED"):
+		grid_movement.ranged_attack(Util.get_mouse_direction(grid_movement))
 	
 
 var north_offset: int

@@ -64,7 +64,8 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"ec8cfbf4-20c0-4153-9710-f40c9f8f0362"
+				"ec8cfbf4-20c0-4153-9710-f40c9f8f0362",
+				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
 			]
 		},
 		{
@@ -286,6 +287,13 @@
 			"title": "Set default unarmed weapon data",
 			"description": "melee weapon gets filled with this data if nothing equipped",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
+			"title": "Remove Unarmed attack from appearing in loot",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		}
 	],

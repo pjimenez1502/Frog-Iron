@@ -20,7 +20,6 @@ func set_at_grid_position(_grid_position: Vector3i) -> void:
 	grid_position = _grid_position
 
 func action(direction: Vector2i) -> void:
-	print(get_ray_by_direction(direction))
 	var collided: Object = get_ray_by_direction(direction).get_collider()
 	
 	#print(character, [character.is_in_group("Player"), collided is Enemy, character.is_in_group("Enemy"), collided is Player])
@@ -32,26 +31,31 @@ func action(direction: Vector2i) -> void:
 		interact(collided)
 	else:
 		wall(collided)
-	CharacterActed.emit()
 
 func move(direction: Vector2i) -> void:
 	grid_position += Vector3i(direction.x, 0, direction.y)
 	var target_position = grid_position * GRID_DISTANCE + Vector3i(2, 0, 2)
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
+	CharacterActed.emit()
 
 func attack(direction: Vector2i) -> void:
 	character.character_attack.melee_attack(direction)
 	#print("Attacking: %s" % target)
-	
+	CharacterActed.emit()
+
+func ranged_attack(direction: Vector3) -> void:
+	character.character_attack.ranged_attack(direction)
+	CharacterActed.emit()
 
 func interact(target: InteractableObject) -> void:
 	#print("Interacting: %s" % target)
 	target.interact()
+	CharacterActed.emit()
 
 func wall(_collided: Node3D) -> void:
 	#print("Moving into wall: %s" % collided)
-	pass
+	CharacterActed.emit()
 
 func get_ray_by_direction(direction: Vector2i) -> RayCast3D:
 	match direction:

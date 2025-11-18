@@ -12,13 +12,11 @@ var target_layer: Util.CollisionLayer
 var base_damage: int = 0
 var damage_scaling: Dictionary
 var knockback: int = 0
-var attack_delay: float = 1
 
 
 func setup(item_data: EquipableResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
-	attack_delay = item_data.weapon_stats["DELAY"]
 	damage_scaling = item_data.damage_scaling
 	character_stats = _character_stats
 	character_animation = _character_animation
@@ -41,6 +39,7 @@ func attack(direction: Vector2i) -> void:
 	var target_gridpos: Vector3i = GameDirector.level_gridmap.globalpos_to_grid(global_position)
 	new_hit.global_position = GameDirector.level_gridmap.grid_to_globalpos(target_gridpos + Vector3i(direction.x, 0, direction.y))
 	#new_hit.look_at(new_hit.global_position + direction, Vector3.UP)
+
 
 func set_target_layer() -> void:
 	match character_stats.character_tag:

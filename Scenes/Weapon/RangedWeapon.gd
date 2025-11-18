@@ -17,63 +17,16 @@ var damage_scaling: Dictionary
 var knockback: int = 0
 
 
-func _ready() -> void:
-	if !charged:
-		attack_timer.wait_time = cooldown
-
-#func _physics_process(_delta: float) -> void:
-	#character_animation.bow_draw(charge)
-
 func setup(item_data: EquipableResource, _character_stats: CharacterStats, _character_animation: CharacterAnimation) -> void:
 	base_damage = item_data.weapon_stats["DAMAGE"]
 	knockback = item_data.weapon_stats["KNOCKBACK"]
-	charge_time = item_data.weapon_stats["DELAY"]
+	damage_scaling = item_data.damage_scaling
 	character_stats = _character_stats
 	character_animation = _character_animation
 	#character_animation.torso_state(item_data.torso_state)
 	set_target_layer()
 
-func pressed(_delta: float) -> void:
-	if !charged:
-		direct_shot()
-		return
-	charge_shot(_delta)
-func released() -> void:
-	if charged:
-		release_charged_shot()
-
-
-## DIRECT
-@export_group("Direct")
-@onready var attack_timer: Timer = %AttackTimer
-@export var cooldown: float = 0.6
-var attack_ready: bool = true
-
-func direct_shot() -> void:
-	if !attack_ready:
-		return
-	attack_ready = false
-	attack_timer.start()
-	shoot()
-
-## CHARGED
-@export_group("Charged")
-var charge_time: float = 1
-@export var min_charge: float = 0.4
-var current_charge_time: float
-var charge: float
-func charge_shot(_delta: float)->void:
-	current_charge_time = snapped(clampf(current_charge_time+_delta, 0, charge_time), 0.01)
-	charge = current_charge_time / charge_time
-
-func release_charged_shot() -> void:
-	current_charge_time = 0
-	if charge < min_charge:
-		return
-	shoot(charge)
-	charge = 0
-
-func shoot(strength: float=1) -> void:
+func attack(direction: Vector3) -> void:
 	var calculated_stats = character_stats.calculate_stats()
 	var calc_damage: int = (base_damage + 
 	(damage_scaling["STR"] * calculated_stats["STR"]) + 
@@ -81,23 +34,18 @@ func shoot(strength: float=1) -> void:
 	(damage_scaling["INT"] * calculated_stats["INT"]) +
 	(damage_scaling["WIS"] * calculated_stats["WIS"]) +
 	(damage_scaling["CON"] * calculated_stats["CON"]))
+	
 	var calc_knockback: int = knockback
-	spawn_projectile(calc_damage, calc_knockback, strength)
+	spawn_projectile(calc_damage, calc_knockback, direction)
 
-#
-#var target_rotation : float
-#func rotate_weapon(target_pos: Vector3, delta:float) -> void:
-	#global_transform = global_transform.interpolate_with(global_transform.looking_at(target_pos), delta * aim_speed)
 
-func spawn_projectile(damage: int, calc_knockback: int, strength: float) -> void:
+func spawn_projectile(damage: int, calc_knockback: int, direction: Vector3) -> void:
 	var projectile_instance : Projectile = projectile_prefab.instantiate()
 	projectile_container.add_child(projectile_instance)
 	projectile_instance.global_transform.basis = global_transform.basis
-	projectile_instance.global_position = global_position 
-	projectile_instance.setup_projectile(damage, calc_knockback, strength, target_layer)
-#
-#func _on_attack_timer_timeout() -> void:
-	#attack_ready = true
+	projectile_instance.global_position = global_position
+	projectile_instance.look_at(global_position - direction)
+	projectile_instance.setup_projectile(damage, calc_knockback, target_layer)
 
 func set_target_layer() -> void:
 	match character_stats.character_tag:
