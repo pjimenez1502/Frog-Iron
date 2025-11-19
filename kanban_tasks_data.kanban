@@ -40,9 +40,10 @@
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"4de87959-b07e-4826-a150-8efaf0887e59",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
-				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
-				"033c5afc-3a7a-4774-a24a-23395fb68aa1"
+				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
+				"80b7d3e5-a001-42e5-bfa1-740c2563917e",
+				"eeaada73-88c3-4954-9a3c-64c7c2f9230b"
 			]
 		},
 		{
@@ -50,7 +51,6 @@
 			"title": "ToDo",
 			"tasks": [
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
-				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
@@ -64,7 +64,11 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
+				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
+				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
+				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
+				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
+				"09511888-ea4e-40c0-94dd-d1263bbbf160"
 			]
 		},
 		{
@@ -125,7 +129,7 @@
 		},
 		{
 			"uuid": "eeaada73-88c3-4954-9a3c-64c7c2f9230b",
-			"title": "ingame UI",
+			"title": "Skills Menu",
 			"description": "\nSTATS\nINVENTORY\nSKILLS",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
@@ -310,6 +314,34 @@
 			"title": "Hitchance, crit, and dodge",
 			"description": "\nDex gives dodge chance\n\nWeapons' hitchance stat scales usually scaling from a different stat than damage\n(ex: swords: Dex, Greatweapons: Con)\nRanged weapon hitchance reduces projectile random deviation",
 			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"steps": []
+		},
+		{
+			"uuid": "e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
+			"title": "Speed up time during enemy turns instead of having 2 different turn times",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "80b7d3e5-a001-42e5-bfa1-740c2563917e",
+			"title": "Options Menu",
+			"description": "\nSTATS\nINVENTORY\nSKILLS",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "ce990c58-9668-4fd0-a0bc-668d6de54d24",
+			"title": "Fix both equipped weapons showing always",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "09511888-ea4e-40c0-94dd-d1263bbbf160",
+			"title": "Attack animations",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		}
 	],

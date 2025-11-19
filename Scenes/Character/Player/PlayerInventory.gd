@@ -5,7 +5,9 @@ class_name PlayerInventory
 
 var coin: int = 0
 @export var inventory: Array[ItemResource]
-var equipment: Dictionary = {
+@export var starting_equipment: Array[ItemResource]
+
+var equipment: Dictionary[String, EquipableResource] = {
 	"MELEE_WEAPON": null,
 	"RANGED_WEAPON": null,
 	"HEAD": null,
@@ -18,9 +20,9 @@ func _ready() -> void:
 	SignalBus.AddPlayerCoin.connect(add_coin)
 	SignalBus.PlayerCoinUpdate.emit(coin)
 	SignalBus.AddPlayerItem.connect(add_item)
-	SignalBus.PlayerInventoryUpdate.emit(inventory)
-	
 	SignalBus.ItemUsed.connect(use_item)
+	
+	equip_starting_equipment.call_deferred()
 
 ## COIN
 func add_coin(value: int) -> void:
@@ -37,7 +39,7 @@ func pay_with_coin(value: int) -> bool:
 func add_item(item_data: ItemResource) -> void:
 	#print("Received Item: %s" % item_data.name)
 	inventory.append(item_data)
-	SignalBus.PlayerInventoryUpdate.emit(inventory)
+	update_inventory_call()
 
 func use_item(item_data: ItemResource) -> void:
 	if item_data is ConsumableResource:
@@ -48,7 +50,7 @@ func use_item(item_data: ItemResource) -> void:
 func consume_item(item_data: ConsumableResource) -> void:
 	item_data.consumable_effect(get_parent())
 	inventory.erase(item_data)
-	SignalBus.PlayerInventoryUpdate.emit(inventory)
+	update_inventory_call()
 
 ## EQUIPMENT
 
@@ -151,3 +153,8 @@ func check_already_equipped(item_data: EquipableResource) -> bool:
 		if equipment[slot_key] == item_data:
 			return true
 	return false
+
+func equip_starting_equipment() -> void:
+	for item: EquipableResource in starting_equipment:
+		equip_item(item)
+	update_inventory_call()

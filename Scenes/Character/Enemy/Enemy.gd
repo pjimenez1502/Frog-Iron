@@ -9,6 +9,7 @@ func _ready() -> void:
 	GameDirector.enemy_list.append(self)
 
 func death() -> void:
+	print("death")
 	character_dead()
 	loot.drop_loot()
 	SignalBus.EnemyTurn.disconnect(enemy_input.play_turn)

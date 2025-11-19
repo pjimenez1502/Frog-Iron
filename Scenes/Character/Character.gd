@@ -39,7 +39,5 @@ func knockback(direction: Vector3, strength: float) -> void:
 	velocity_mod += direction * strength * 20
 
 func character_dead() -> void:
-	dead = true
-	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.2).timeout
 	queue_free()

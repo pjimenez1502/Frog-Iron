@@ -38,6 +38,7 @@ func move(direction: Vector2i) -> void:
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
 	CharacterActed.emit()
+	character.character_animation.walk(Global.PLAYER_TURN_DURATION)
 
 func attack(direction: Vector2i) -> void:
 	character.character_attack.melee_attack(direction)
