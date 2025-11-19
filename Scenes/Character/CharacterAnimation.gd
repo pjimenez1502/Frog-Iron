@@ -7,7 +7,14 @@ class_name CharacterAnimation
 enum TorsoState {Idle, Bow, Sword, GreatAxe}
 #func _ready() -> void:
 	#torso_state(TorsoState.Idle)
-#
+
+var last_direction: Vector3
+func look_towards(direction: Vector3) -> void:
+	var tween: Tween = get_tree().create_tween()
+	
+	var theta = wrapf(atan2(direction.x, direction.z), -TAU, TAU)
+	tween.tween_property(_3D_VIEW, "rotation:y", theta, 0.2)
+
 #func movement_animation(_velocity: Vector3, direction: Vector3, _delta:float) -> void:
 	#animation_tree.set("parameters/WalkBlend/blend_position", _velocity.length())
 	#if !direction:

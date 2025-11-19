@@ -20,9 +20,9 @@ func set_at_grid_position(_grid_position: Vector3i) -> void:
 	grid_position = _grid_position
 
 func action(direction: Vector2i) -> void:
-	var collided: Object = get_ray_by_direction(direction).get_collider()
+	character.character_animation.look_towards(Vector3(direction.x, 0, direction.y))
 	
-	#print(character, [character.is_in_group("Player"), collided is Enemy, character.is_in_group("Enemy"), collided is Player])
+	var collided: Object = get_ray_by_direction(direction).get_collider()
 	if !collided:
 		move(direction)
 	elif (character.is_in_group("Player") and collided.is_in_group("Enemy")) or (character.is_in_group("Enemy") and collided.is_in_group("Player")):
