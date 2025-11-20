@@ -9,7 +9,7 @@ var SELLABLE_POOL: Array[ItemResource]
 
 var category_weights: Array = [1,0,1,3,0,0]		##{ POTION, GRENADE, WEAPON, ARMOR, JEWELRY, LOOT }
 var rarity_weights: Array = [16,8,4,2,1]		##{ COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, LOOT }
-@onready var rng = RandomNumberGenerator.new()
+@onready var RNG = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	initialize_pools()
@@ -17,10 +17,10 @@ func _ready() -> void:
 func generate_chest_loot(budget: int) -> Array[ItemResource]:
 	var loot: Array[ItemResource]
 	while budget > 0:
-		var cost:int = rng.rand_weighted(rarity_weights)+1
+		var cost:int = RNG.rand_weighted(rarity_weights)+1
 		if cost > budget:
 			continue
-		match rng.rand_weighted(category_weights):
+		match RNG.rand_weighted(category_weights):
 			Global.ItemCategory.POTION:
 				loot.append(generate_potion(cost))
 			Global.ItemCategory.GRENADE:
@@ -52,7 +52,7 @@ func generate_weapon(cost: int) -> ItemResource:
 	
 	var stat_weights = selected.bonus_stats_weights.values()
 	for i: int in selected.rarity:	## add statboosts depending on rarity
-		var stat: String = selected.bonus_stats.keys()[rng.rand_weighted(stat_weights)]
+		var stat: String = selected.bonus_stats.keys()[RNG.rand_weighted(stat_weights)]
 		selected.bonus_stats[stat] += 1
 	selected.weapon_stats["DAMAGE"] += selected.rarity
 	return selected
@@ -64,7 +64,7 @@ func generate_armor(cost: int) -> ItemResource:
 	
 	var stat_weights = selected.bonus_stats_weights.values()
 	for i: int in selected.rarity:	## add statboosts depending on rarity
-		var stat: String = selected.bonus_stats.keys()[rng.rand_weighted(stat_weights)]
+		var stat: String = selected.bonus_stats.keys()[RNG.rand_weighted(stat_weights)]
 		selected.bonus_stats[stat] += 1
 	return selected
 

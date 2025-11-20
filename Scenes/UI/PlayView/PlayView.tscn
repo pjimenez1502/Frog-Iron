@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=22 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="4_3p3yu"]
 [ext_resource type="Script" uid="uid://b8fopek7mrwoy" path="res://Scenes/UI/PlayView/DamageTextOverlay.gd" id="4_7ut3y"]
 [ext_resource type="Script" uid="uid://fq6v5jfy7nau" path="res://Scenes/UI/PlayView/PopupText.gd" id="4_ch5r3"]
+[ext_resource type="PackedScene" uid="uid://ccw7mbaf4h10s" path="res://Scenes/Terrain/Generation/Generated_Dungeon.tscn" id="4_enbyk"]
 [ext_resource type="Texture2D" uid="uid://d4djiikmkfebp" path="res://Scenes/UI/HUD/Interaction/F_Key.png" id="5_3p3yu"]
 [ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="5_povyt"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="6_ufkdj"]
@@ -36,6 +37,7 @@ grow_vertical = 2
 theme = ExtResource("1_oklkm")
 script = ExtResource("1_j5275")
 DEMO_DUNGEON = ExtResource("2_oklkm")
+GENERATED_DUNGEON = ExtResource("4_enbyk")
 
 [node name="Game SubViewport" type="SubViewportContainer" parent="."]
 layout_mode = 1

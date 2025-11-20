@@ -12,10 +12,10 @@ func focus_first_button() -> void:
 
 
 func new_game() -> void:
-	SignalBus.LaunchDemoScene.emit()
+	SignalBus.LaunchDungeonScene.emit()
 
-func load_game() -> void:
-	pass
+func tutorial() -> void:
+	SignalBus.LaunchDemoScene.emit()
 
 func open_settings() -> void:
 	pass

@@ -31,6 +31,7 @@ signal PlayerTurn
 signal EnemyTurn
 
 signal LaunchDemoScene
+signal LaunchDungeonScene
 signal NavmeshBakeRequest
 
 signal ShowPopupText

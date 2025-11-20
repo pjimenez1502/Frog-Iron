@@ -7,6 +7,8 @@ const PLAY_VIEW = preload("uid://cj5nus31jyaxt")
 func _ready() -> void:
 	open_main_menu()
 	SignalBus.LaunchDemoScene.connect(open_demo)
+	SignalBus.LaunchDungeonScene.connect(open_dungeon)
+	
 	SignalBus.PauseGame.connect(pause_game)
 	SignalBus.TimeScaleChange.connect(timescale_change)
 
@@ -23,8 +25,12 @@ func open_main_menu() -> void:
 	set_view(START_MENU)
 
 func open_demo() -> void:
-	var game_view = set_view(PLAY_VIEW)
+	var game_view: PlayView = set_view(PLAY_VIEW)
 	game_view.launch_demo_scene()
+
+func open_dungeon() -> void:
+	var game_view: PlayView = set_view(PLAY_VIEW)
+	game_view.launch_dungeon_scene()
 
 
 ## TIME

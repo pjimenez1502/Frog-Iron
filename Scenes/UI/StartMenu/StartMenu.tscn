@@ -90,10 +90,9 @@ alignment = 1
 layout_mode = 2
 text = "Start"
 
-[node name="Continue" type="Button" parent="Control/Buttons"]
+[node name="Tutorial" type="Button" parent="Control/Buttons"]
 layout_mode = 2
-disabled = true
-text = "Continue"
+text = "Tutorial"
 
 [node name="Settings" type="Button" parent="Control/Buttons"]
 layout_mode = 2
@@ -104,6 +103,6 @@ layout_mode = 2
 text = "Exit"
 
 [connection signal="pressed" from="Control/Buttons/Start" to="." method="new_game"]
-[connection signal="pressed" from="Control/Buttons/Continue" to="." method="load_game"]
+[connection signal="pressed" from="Control/Buttons/Tutorial" to="." method="tutorial"]
 [connection signal="pressed" from="Control/Buttons/Settings" to="." method="open_settings"]
 [connection signal="pressed" from="Control/Buttons/Exit" to="." method="exit"]
