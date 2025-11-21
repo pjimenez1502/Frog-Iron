@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj75lfanmqkls"]
+
+[ext_resource type="PackedScene" uid="uid://c0lpi6lge3kni" path="res://Scenes/Terrain/Dungeon_1/Model/Floor.glb" id="1_dklst"]
+
+[node name="Floor_Tile" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_dklst")]

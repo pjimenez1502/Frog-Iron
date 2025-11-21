@@ -1,11 +1,27 @@
 extends Node
 class_name RoomBuilder
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var map: Node3D = %MAP
 
+@export var TILE_DICTIONARY: Dictionary[String, PackedScene] = {
+	"FLOOR_1": null,
+	"WALL": null
+}
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func build(room_list: Array) -> void:
+	for x: int in room_list.size():
+		for y: int in room_list[0].size():
+			match room_list[x][y]:
+				0: ## WALL
+					place_tile("WALL", Vector2i(x,y))
+				-1: ## CORRIDORS
+					place_tile("FLOOR_1", Vector2i(x,y))
+				_:
+					place_tile("FLOOR_1", Vector2i(x,y))
+			
+			
+
+func place_tile(tile_id: String, pos: Vector2i) -> void:
+	var tile: Node3D =TILE_DICTIONARY[tile_id].instantiate()
+	map.add_child(tile)
+	tile.position = Vector3(pos.x, 0, pos.y) * Global.TILE_SIZE

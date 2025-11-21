@@ -1,6 +1,7 @@
 extends Node
 class_name RoomListGen
 
+
 var gen_settings: Dictionary = {
 	"ROOM_TRIES": 10, ## times room is tried to be placed before skipping to next
 	"ROOM_MIN_RAD": 1, ## MIN and MAX room size on each axis
@@ -8,6 +9,8 @@ var gen_settings: Dictionary = {
 	#"BIAS": 5 ## 0 to 10, how much of the room square should be filled
 	
 }
+var GenAstar: AStar2D = AStar2D.new()
+var GenAstarDictionary: Dictionary
 var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
 var map: Array
 var room_centers: Array
@@ -16,14 +19,28 @@ func generate_list(parameters: Dictionary) -> Array:
 	RNG.seed = hash(parameters["SEED"])
 	init_map(parameters)
 	place_rooms(parameters)
+	place_corridors()
 	print_room_list(parameters)
 	return map
 
 func init_map(parameters: Dictionary) -> void:
+	var astarid: int = 0
 	for row: int in parameters["SIZE"].y:
 		map.append([])
 		for col: int in parameters["SIZE"].x:
 			map[row].append(0)
+			GenAstar.add_point(astarid, Vector2i(row,col), 6)
+			GenAstarDictionary[astarid] = Vector2i(row,col)
+			astarid+=1
+	
+	
+	for point_id in GenAstarDictionary.keys():
+		for surrounding: Vector2i in get_surrounding_points(GenAstarDictionary[point_id], parameters["SIZE"]):
+			if !GenAstarDictionary.find_key(surrounding):
+				print(surrounding)
+				continue
+			GenAstar.connect_points(point_id, GenAstarDictionary.find_key(surrounding))
+	
 
 func place_rooms(parameters:Dictionary) -> void:
 	var prev_pos: Vector2i = Vector2i(RNG.randi_range(2,parameters["SIZE"].x-2), RNG.randi_range(2,parameters["SIZE"].y-2))
@@ -40,6 +57,8 @@ func place_rooms(parameters:Dictionary) -> void:
 				var room_tiles: Array = get_room_tiles(room_pos, room_radius)
 				current_room += 1
 				generate_room(room_tiles, current_room)
+				place_weights(room_pos, room_radius)
+				room_centers.append(room_pos)
 				break
 
 func generate_room(room_tiles: Array, room_id: int) -> void:
@@ -48,19 +67,37 @@ func generate_room(room_tiles: Array, room_id: int) -> void:
 		map[tile.x][tile.y] = room_id
 
 
+## Corridors
+var corrs_per_room: int = 1
+func place_corridors() -> void:
+	for center: Vector2i in room_centers:
+		for i:int in corrs_per_room:
+			var random_target_center: Vector2i = room_centers[RNG.randi_range(0,room_centers.size()-1)]
+			var path:Array = GenAstar.get_point_path(GenAstarDictionary.find_key(center), GenAstarDictionary.find_key(random_target_center))
+			for tile: Vector2i in path:
+				if map[tile.x][tile.y] == 0:
+					GenAstar.set_point_weight_scale(GenAstarDictionary.find_key(Vector2i(tile.x, tile.y)), 1)
+					map[tile.x][tile.y] = -1
+
 
 
 ## CHECK
 func check_room_legal(parameters: Dictionary, room_pos: Vector2i, room_radius: Vector2i) -> bool:
 	for tile: Vector2i in get_room_tiles(room_pos, room_radius): ## CHECK OUT OF BOUNDS TILES
-		if tile.x < 0 or tile.x > parameters["SIZE"].x-1 or tile.y < 0 or tile.y > parameters["SIZE"].x-1:
+		if tile.x < 0 or tile.x > parameters["SIZE"].x-1 or tile.y < 0 or tile.y > parameters["SIZE"].y-1:
 			return false
 	for tile: Vector2i in get_room_tiles(room_pos, room_radius + Vector2i(1,1)): ## CHECK OCCUPIED OR TOUCHING TILES
-		if tile.x < 0 or tile.x > parameters["SIZE"].x-1 or tile.y < 0 or tile.y > parameters["SIZE"].x-1:
+		if tile.x < 0 or tile.x > parameters["SIZE"].x-1 or tile.y < 0 or tile.y > parameters["SIZE"].y-1:
 			continue
 		if map[tile.x][tile.y] != 0: 
 			return false
 	return true
+
+func place_weights(room_pos: Vector2i, room_radius: Vector2i) -> void:
+	for tile: Vector2i in get_room_tiles(room_pos, room_radius + Vector2i.ONE): ## Heavy weight around rooms to ensure walls
+		if GenAstarDictionary.find_key(tile):
+			GenAstar.set_point_weight_scale(GenAstarDictionary.find_key(tile), 10)
+	pass
 
 ## UTIL
 func get_room_tiles(center:Vector2i, room_radius:Vector2i) -> Array:
@@ -90,3 +127,15 @@ func print_room_list(parameters: Dictionary) -> void:
 				_:
 					line += ("[%2d]" % map[row][col])
 		print_rich(line)
+
+func get_surrounding_points(grid_pos: Vector2i, map_size: Vector2i) -> Array:
+	var surrounding: Array
+	surrounding.append(grid_pos + Vector2i(-1,0))
+	surrounding.append(grid_pos + Vector2i(1,0))
+	surrounding.append(grid_pos + Vector2i(0,-1))
+	surrounding.append(grid_pos + Vector2i(0,1))
+	
+	for tile:Vector2i in surrounding:
+		if tile.x < 0 or tile.x > map_size.x-1 or tile.y < 0 or tile.y > map_size.y-1:
+			surrounding.erase(tile)
+	return surrounding

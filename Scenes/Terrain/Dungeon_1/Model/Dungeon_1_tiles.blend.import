@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djyjjvij4n1m7"
-path="res://.godot/imported/Dungeon_1_tiles.blend-55117bb8d8831f0520ac0df7bf7cf3c1.scn"
+path="res://.godot/imported/Dungeon_1_tiles.blend-173edf070057abca3768b57ddfa2db3f.scn"
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Dungeon_1_tiles.blend"
-dest_files=["res://.godot/imported/Dungeon_1_tiles.blend-55117bb8d8831f0520ac0df7bf7cf3c1.scn"]
+source_file="res://Scenes/Terrain/Dungeon_1/Model/Dungeon_1_tiles.blend"
+dest_files=["res://.godot/imported/Dungeon_1_tiles.blend-173edf070057abca3768b57ddfa2db3f.scn"]
 
 [params]
 

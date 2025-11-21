@@ -14,12 +14,15 @@ enum EquipSlot { RANGEDWEAPON, MELEEWEAPON, HEAD, TORSO, ARMS, LEGS }
 
 
 ## PLAYER LEVEL
-var LEVEL_STATUP_REWARD: int = 2
-var LEVEL_GROWTH_MULT: float = 0.3
+const LEVEL_STATUP_REWARD: int = 2
+const LEVEL_GROWTH_MULT: float = 0.3
 
-var INVUL_DURATION: float = 0.4
+const INVUL_DURATION: float = 0.4
 
-var CHEST_BUDGET: int = 4
+const CHEST_BUDGET: int = 4
 
-var PLAYER_TURN_DURATION: float = 0.2
-var ENEMY_TURN_DURATION: float = 0.1
+const PLAYER_TURN_DURATION: float = 0.2
+const ENEMY_TURN_DURATION: float = 0.1
+
+## DUNGEON
+const TILE_SIZE: int = 4

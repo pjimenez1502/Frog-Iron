@@ -10,13 +10,13 @@ var move_tween: Tween
 var grid_position: Vector3i
 
 func _ready() -> void:
-	grid_position = GameDirector.level_gridmap.globalpos_to_grid(global_position)
+	pass
 
 func setup(_character: Character) -> void:
 	character = _character
 
 func set_at_grid_position(_grid_position: Vector3i) -> void:
-	global_position = GameDirector.level_gridmap.grid_to_globalpos(grid_position)
+	character.global_position = GameDirector.level_map.grid_to_globalpos(_grid_position)
 	grid_position = _grid_position
 
 func action(direction: Vector2i) -> void:
@@ -34,7 +34,7 @@ func action(direction: Vector2i) -> void:
 
 func move(direction: Vector2i) -> void:
 	grid_position += Vector3i(direction.x, 0, direction.y)
-	var target_position = grid_position * GRID_DISTANCE + Vector3i(2, 0, 2)
+	var target_position = GameDirector.level_map.grid_to_globalpos(grid_position)
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
 	CharacterActed.emit()

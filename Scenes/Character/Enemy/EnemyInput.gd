@@ -39,11 +39,11 @@ func play_turn() -> void:
 
 
 func move_towards_target() -> void:
-	var origin_point: int = GameDirector.level_gridmap.find_pointid_at_pos("WALKABLE" ,GameDirector.level_gridmap.globalpos_to_grid(get_parent().global_position))
-	var target_point: int = GameDirector.level_gridmap.find_pointid_at_pos("WALKABLE" ,GameDirector.level_gridmap.globalpos_to_grid(target.global_position))
+	var origin_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE" ,GameDirector.level_map.globalpos_to_grid(get_parent().global_position))
+	var target_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE" ,GameDirector.level_map.globalpos_to_grid(target.global_position))
 	
-	var next_point: Vector3i = GameDirector.level_gridmap.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)[1]
-	var direction = next_point - GameDirector.level_gridmap.globalpos_to_grid(get_parent().global_position)
+	var next_point: Vector3i = GameDirector.level_map.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)[1]
+	var direction = next_point - GameDirector.level_map.globalpos_to_grid(get_parent().global_position)
 	#print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
 	#print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
 	

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c0lpi6lge3kni"
-path="res://.godot/imported/Floor.glb-52d2f681bdd0e9b719688fe7e7fd6fcc.scn"
+path="res://.godot/imported/Floor.glb-bc6bb02fade9d937006758fce6937562.scn"
 
 [deps]
 
-source_file="res://Scenes/Terrain/Dungeon_1/Tiles/Floor.glb"
-dest_files=["res://.godot/imported/Floor.glb-52d2f681bdd0e9b719688fe7e7fd6fcc.scn"]
+source_file="res://Scenes/Terrain/Dungeon_1/Model/Floor.glb"
+dest_files=["res://.godot/imported/Floor.glb-bc6bb02fade9d937006758fce6937562.scn"]
 
 [params]
 
@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Scenes/Terrain/Dungeon_1/Dungeon1_mat.tres",
+"use_external/fallback_path": "res://Assets/Material/Dungeon1/Dungeon1.tres",
 "use_external/path": "uid://dxw8753d2eof4"
 }
 }

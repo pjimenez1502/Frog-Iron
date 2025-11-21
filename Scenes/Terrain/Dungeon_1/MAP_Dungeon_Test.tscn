@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://crvptphshx3l7" path="res://Scenes/Character/Player/Player.tscn" id="1_0h72o"]
 [ext_resource type="Script" uid="uid://bouwtyhvldfxb" path="res://Scenes/Terrain/NavRegion.gd" id="2_65vxh"]
-[ext_resource type="MeshLibrary" uid="uid://b2d08ab6dhlb6" path="res://Scenes/Terrain/Dungeon_1/Tiles/Dungeon_1_Meshlibrary.tres" id="2_tl0hd"]
+[ext_resource type="MeshLibrary" uid="uid://b2d08ab6dhlb6" path="res://Scenes/Terrain/Dungeon_1/Model/Dungeon_1_Meshlibrary.tres" id="2_tl0hd"]
 [ext_resource type="PackedScene" uid="uid://dbrvim0p68m4k" path="res://Scenes/Object/Door/wooden_door.tscn" id="4_fokxn"]
 [ext_resource type="Script" uid="uid://qj40kl8scs3v" path="res://Scenes/Terrain/LevelGridmap.gd" id="4_k5y61"]
 [ext_resource type="PackedScene" uid="uid://bpqcq56fmgsv2" path="res://Scenes/Object/Button/lever.tscn" id="5_j68b2"]

@@ -64,6 +64,7 @@
 			"title": "Doing",
 			"tasks": [
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
+				"c63e9a3b-2071-45c7-a30b-c7735293b563",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"13e2431d-82c2-4644-86b5-a9b31551f4d7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
@@ -348,6 +349,13 @@
 		{
 			"uuid": "13e2431d-82c2-4644-86b5-a9b31551f4d7",
 			"title": "Avoid diagonal movement",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "c63e9a3b-2071-45c7-a30b-c7735293b563",
+			"title": "Replace gridmap functions",
 			"description": "",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []

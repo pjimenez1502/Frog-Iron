@@ -4,7 +4,7 @@ var enemy_list: Array[Enemy]
 var player: Player
 var current_camera: Camera3D
 var turn_wait_timer: Timer
-var level_gridmap: LevelGridMap
+var level_map: LevelMap
 
 func _ready() -> void:
 	turn_wait_timer = Timer.new()
@@ -15,12 +15,12 @@ func set_player(_player: Player) -> void:
 	player.character_grid_movement.CharacterActed.connect(after_player_action)
 	SignalBus.PlayerTurn.emit(true)
 
-func set_level_gridmap(level: LevelGridMap) -> void:
-	level_gridmap = level
+func set_level_map(level: LevelMap) -> void:
+	level_map = level
 	update_navmap()
 
 func update_navmap() -> void:
-	level_gridmap.update_AStar()
+	level_map.update_AStar()
 
 func after_player_action() -> void:
 	SignalBus.PlayerTurn.emit(false)

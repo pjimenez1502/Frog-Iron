@@ -27,6 +27,7 @@ GameDirector="*res://Global/GameDirector.gd"
 [debug]
 
 gdscript/warnings/unused_signal=0
+gdscript/warnings/untyped_declaration=1
 gdscript/warnings/narrowing_conversion=0
 gdscript/warnings/enum_variable_without_default=0
 
