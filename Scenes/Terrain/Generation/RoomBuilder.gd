@@ -5,7 +5,9 @@ class_name RoomBuilder
 
 @export var TILE_DICTIONARY: Dictionary[String, PackedScene] = {
 	"FLOOR_1": null,
-	"WALL": null
+	"WALL": null,
+	"ENTRANCE": null,
+	"EXIT": null,
 }
 
 func build(room_list: Array) -> void:
@@ -16,6 +18,10 @@ func build(room_list: Array) -> void:
 					place_tile("WALL", Vector2i(x,y))
 				-1: ## CORRIDORS
 					place_tile("FLOOR_1", Vector2i(x,y))
+				-2: ## ENTRANCE
+					place_tile("ENTRANCE", Vector2i(x,y))
+				-3: ## EXIT
+					place_tile("EXIT", Vector2i(x,y))
 				_:
 					place_tile("FLOOR_1", Vector2i(x,y))
 			

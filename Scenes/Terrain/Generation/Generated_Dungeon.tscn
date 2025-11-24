@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccw7mbaf4h10s"]
+[gd_scene load_steps=11 format=3 uid="uid://ccw7mbaf4h10s"]
 
 [ext_resource type="Script" uid="uid://bo7t1gqffnlx2" path="res://Scenes/Terrain/Generation/Generated_Dungeon.gd" id="1_bxfei"]
 [ext_resource type="Script" uid="uid://d11pmxvgi634x" path="res://Scenes/Terrain/Generation/RoomlistGeneration.gd" id="1_fdcp4"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cj75lfanmqkls" path="res://Scenes/Terrain/Dungeon_1/Tiles/floor_tile.tscn" id="4_w06wr"]
 [ext_resource type="PackedScene" uid="uid://btty8j3vqh0re" path="res://Scenes/Terrain/Dungeon_1/Tiles/wall_tile.tscn" id="5_x4fud"]
 [ext_resource type="Script" uid="uid://5wyp4mb8rgai" path="res://Scenes/Terrain/Generation/Room_Populator.gd" id="6_lbs47"]
+[ext_resource type="PackedScene" uid="uid://c2ecwdlxym4nj" path="res://Scenes/Terrain/Dungeon_1/Tiles/Entrance_tile.tscn" id="7_8njjh"]
+[ext_resource type="PackedScene" uid="uid://0oc6e0iocjrk" path="res://Scenes/Terrain/Dungeon_1/Tiles/Exit_tile.tscn" id="8_g74v0"]
 
 [node name="GeneratedDungeon" type="Node3D"]
 script = ExtResource("1_bxfei")
@@ -26,6 +28,8 @@ script = ExtResource("1_fdcp4")
 unique_name_in_owner = true
 script = ExtResource("3_fqjfj")
 TILE_DICTIONARY = Dictionary[String, PackedScene]({
+"ENTRANCE": ExtResource("7_8njjh"),
+"EXIT": ExtResource("8_g74v0"),
 "FLOOR_1": ExtResource("4_w06wr"),
 "WALL": ExtResource("5_x4fud")
 })

@@ -20,6 +20,6 @@ func generate_dungeon(level: int) -> void:
 	
 	room_list = room_list_gen.generate_list(dungeon_params)
 	room_builder.build(room_list)
-	room_populator.populate(room_list, room_list_gen.room_centers)
+	room_populator.populate(room_list, room_list_gen.room_centers, dungeon_params)
 	
 	map.set_room_list(room_list)

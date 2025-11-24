@@ -20,6 +20,7 @@ func generate_list(parameters: Dictionary) -> Array:
 	init_map(parameters)
 	place_rooms(parameters)
 	place_corridors()
+	place_entrance_exit()
 	print_room_list(parameters)
 	return map
 
@@ -49,7 +50,7 @@ func place_rooms(parameters:Dictionary) -> void:
 	generate_room(get_room_tiles(prev_pos, Vector2i(1,1)), current_room) ## SPAWN ROOM
 	room_centers.append(prev_pos)
 	
-	for room_count: int in parameters["TARGET_ROOM_COUNT"]-1:
+	for room_count: int in parameters["TARGET_ROOM_COUNT"]:
 		var room_radius = Vector2i(RNG.randi_range(gen_settings["ROOM_MIN_RAD"],gen_settings["ROOM_MAX_RAD"]), RNG.randi_range(gen_settings["ROOM_MIN_RAD"],gen_settings["ROOM_MAX_RAD"]))
 		for try: int in gen_settings["ROOM_TRIES"]:
 			var room_pos: Vector2i = random_map_pos(parameters)
@@ -67,7 +68,7 @@ func generate_room(room_tiles: Array, room_id: int) -> void:
 		map[tile.x][tile.y] = room_id
 
 
-## Corridors
+## CORRIDORS
 var corrs_per_room: int = 1
 func place_corridors() -> void:
 	for center: Vector2i in room_centers:
@@ -79,7 +80,12 @@ func place_corridors() -> void:
 					GenAstar.set_point_weight_scale(GenAstarDictionary.find_key(Vector2i(tile.x, tile.y)), 1)
 					map[tile.x][tile.y] = -1
 
-
+## ENTRANCE AND EXIT
+func place_entrance_exit() -> void:
+	map[room_centers[0].x][room_centers[0].y] = -2
+	
+	var exit_room: int = RNG.randi_range(1, room_centers.size())
+	map[room_centers[exit_room].x][room_centers[exit_room].y] = -3
 
 ## CHECK
 func check_room_legal(parameters: Dictionary, room_pos: Vector2i, room_radius: Vector2i) -> bool:
@@ -117,15 +123,15 @@ func print_room_list(parameters: Dictionary) -> void:
 	for row: int in parameters["SIZE"].y:
 		var line: String = ""
 		for col: int in parameters["SIZE"].x:
-			match map[row][col]:
+			match map[col][row]:
 				0:
-					line += ("[color=black][%2d][/color]" % map[row][col])
+					line += ("[color=black][%2d][/color]" % map[col][row])
 				1:
-					line += ("[color=green][%2d][/color]" % map[row][col])
+					line += ("[color=green][%2d][/color]" % map[col][row])
 				-1:
-					line += ("[color=red][%2d][/color]" % map[row][col])
+					line += ("[color=red][%2d][/color]" % map[col][row])
 				_:
-					line += ("[%2d]" % map[row][col])
+					line += ("[%2d]" % map[col][row])
 		print_rich(line)
 
 func get_surrounding_points(grid_pos: Vector2i, map_size: Vector2i) -> Array:
