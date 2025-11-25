@@ -18,6 +18,12 @@ script = ExtResource("1_bxfei")
 unique_name_in_owner = true
 script = ExtResource("2_x2x65")
 
+[node name="OBJECT" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="ENEMY" type="Node3D" parent="."]
+unique_name_in_owner = true
+
 [node name="Generator" type="Node" parent="."]
 
 [node name="RoomListGen" type="Node" parent="Generator"]

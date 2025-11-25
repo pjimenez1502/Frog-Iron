@@ -6,6 +6,8 @@ class_name GeneratedDungeon
 @onready var room_builder: RoomBuilder = %RoomBuilder
 @onready var room_populator: RoomPopulator = %RoomPopulator
 
+var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
+
 var room_list: Array
 
 var dungeon_params: Dictionary = {
@@ -17,9 +19,10 @@ var dungeon_params: Dictionary = {
 
 func generate_dungeon(level: int) -> void:
 	dungeon_params["LEVEL"] = level
+	RNG.seed = hash(dungeon_params["SEED"])
 	
-	room_list = room_list_gen.generate_list(dungeon_params)
+	room_list = room_list_gen.generate_list(dungeon_params, RNG)
 	room_builder.build(room_list)
-	room_populator.populate(room_list, room_list_gen.room_centers, dungeon_params)
+	room_populator.populate(room_list, room_list_gen.room_centers, dungeon_params, RNG)
 	
 	map.set_room_list(room_list)

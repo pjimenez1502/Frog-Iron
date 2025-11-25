@@ -1,30 +1,85 @@
 extends Node
 class_name RoomPopulator
 
-@onready var map: Node3D = %MAP
+
 @export var player_scene: PackedScene
 
-func populate(room_list: Array, room_centers: Array, parameters: Dictionary) -> void:
-	for room_id in parameters["TARGET_ROOM_COUNT"]:
+@onready var MAP: LevelMap = %MAP
+@onready var OBJECT: Node3D = %OBJECT
+
+var RNG: RandomNumberGenerator
+
+
+func populate(room_list: Array, room_centers: Array, parameters: Dictionary, _rng: RandomNumberGenerator) -> void:
+	RNG = _rng
+	for room_id: int  in parameters["TARGET_ROOM_COUNT"]:
 		pass
 	
+	place_doors(room_list)
+	place_treasure(room_list, parameters)
 	
 	place_player(room_centers[0])
 
-
-func place_doors() -> void:
+## DOORS
+func place_doors(room_list: Array) -> void:
 	## loop through all corridors and check if the have a room tile adjacent and is surrounded by wall in the other axis.
 	## randomize between normal, locked and barred doors
-	pass
+	for x: int in room_list.size():
+		for y: int in room_list[0].size():
+			if room_list[x][y] == -1:
+				check_door_placement(room_list, Vector2i(x, y))
 
-func place_treasure() -> void:
-	pass
+func check_door_placement(room_list: Array, pos: Vector2i) -> void:
+	if room_list[pos.x+1][pos.y] != 0 and room_list[pos.x+1][pos.y] != -1 or room_list[pos.x-1][pos.y] != 0 and room_list[pos.x-1][pos.y] != -1:
+		if room_list[pos.x][pos.y-1] == 0 and room_list[pos.x][pos.y+1] == 0:
+			place_door(pos, deg_to_rad(90))
+			return
+	
+	if room_list[pos.x][pos.y+1] != 0 and room_list[pos.x][pos.y+1] != -1 or room_list[pos.x][pos.y-1] != 0 and room_list[pos.x][pos.y-1] != -1:
+		if room_list[pos.x-1][pos.y] == 0 and room_list[pos.x+1][pos.y] == 0:
+			place_door(pos, deg_to_rad(0))
+			return
 
+const WOODEN_DOOR = preload("uid://dbrvim0p68m4k")
+func place_door(pos: Vector2i, rotation: float) -> void:
+	## TODO: CHANCE TO PLACE DIFFERENT TYPE OF DOORS
+	var wooden_door: InteractableObject = WOODEN_DOOR.instantiate()
+	OBJECT.add_child(wooden_door)
+	wooden_door.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
+	wooden_door.rotate_y(rotation)
+
+
+## LOOT
+func place_treasure(room_list: Array, params: Dictionary) -> void:
+	for room_id: int  in range(2, params["TARGET_ROOM_COUNT"]):
+		var room_treasure_target: int = RNG.randi_range(0,2)
+		var placed_treasure: int = 0
+		while placed_treasure != room_treasure_target:
+			var pos: Vector2i = Vector2i(RNG.randi_range(0, params["SIZE"].x-1), RNG.randi_range(0, params["SIZE"].y-1))
+			if room_list[pos.x][pos.y] == room_id:
+				if check_chest_position(room_list, pos):
+					place_chest(pos)
+					placed_treasure += 1
+
+func check_chest_position(room_list:Array, pos: Vector2i) -> bool:
+	if room_list[pos.x+1][pos.y] == -1 or room_list[pos.x-1][pos.y] == -1 or room_list[pos.x][pos.y+1] == -1 or room_list[pos.x][pos.y-1] == -1:
+		return false
+	
+	return true
+
+const CHEST = preload("uid://dmgk0o744xmbo")
+func place_chest(pos: Vector2i) -> void:
+	var chest: Chest = CHEST.instantiate()
+	OBJECT.add_child(chest)
+	chest.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
+
+
+## ENEMIES
 func place_enemies() -> void:
 	pass
 
 func place_player(spawn_pos: Vector2i) -> void:
 	var player:Player = player_scene.instantiate()
-	map.add_child(player)
+	MAP.add_child(player)
 	player.character_grid_movement.set_at_grid_position(Vector3i(spawn_pos.x, 0, spawn_pos.y))
 	player.character_grid_movement.move.call_deferred(Vector2i(0,1)) ## DO LATER SO ANIMATION IS VISIBLE

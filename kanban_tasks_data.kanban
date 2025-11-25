@@ -64,7 +64,6 @@
 			"title": "Doing",
 			"tasks": [
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
-				"c63e9a3b-2071-45c7-a30b-c7735293b563",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"13e2431d-82c2-4644-86b5-a9b31551f4d7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
@@ -77,6 +76,7 @@
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
+				"c63e9a3b-2071-45c7-a30b-c7735293b563",
 				"ef242db1-0b69-4b2a-b750-adccde50db3d",
 				"d781a931-a51b-4ed1-8d0c-1802ff67dec2",
 				"ec8cfbf4-20c0-4153-9710-f40c9f8f0362",
@@ -106,7 +106,52 @@
 			"title": "Dungeon Generation",
 			"description": "\nGroup in 5 levels\n- 1\n- 2 (share theme with 3)\n- 3 (miniboss?)\n- 4 (share theme with 5)\n- 5 (Boss)\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
-			"steps": []
+			"steps": [
+				{
+					"details": "Rooms",
+					"done": true
+				},
+				{
+					"details": "Corridors",
+					"done": true
+				},
+				{
+					"details": "Entrance / Exit",
+					"done": true
+				},
+				{
+					"details": "Basic Doors",
+					"done": true
+				},
+				{
+					"details": "Enemies",
+					"done": false
+				},
+				{
+					"details": "Loot",
+					"done": true
+				},
+				{
+					"details": "Traps",
+					"done": false
+				},
+				{
+					"details": "Locked / Barred doors",
+					"done": false
+				},
+				{
+					"details": "Puzzle / connected Interactions",
+					"done": false
+				},
+				{
+					"details": "Key tracking",
+					"done": false
+				},
+				{
+					"details": "Special Rooms",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "dbeeb071-035a-41fd-ae70-777918e76f4a",

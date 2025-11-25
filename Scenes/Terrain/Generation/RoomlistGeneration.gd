@@ -11,17 +11,19 @@ var gen_settings: Dictionary = {
 }
 var GenAstar: AStar2D = AStar2D.new()
 var GenAstarDictionary: Dictionary
-var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
+var RNG : RandomNumberGenerator
 var map: Array
 var room_centers: Array
 
-func generate_list(parameters: Dictionary) -> Array:
-	RNG.seed = hash(parameters["SEED"])
+func generate_list(parameters: Dictionary, _rng) -> Array:
+	RNG = _rng
+	
 	init_map(parameters)
 	place_rooms(parameters)
 	place_corridors()
 	place_entrance_exit()
-	print_room_list(parameters)
+	#print_room_list(parameters)
+	
 	return map
 
 func init_map(parameters: Dictionary) -> void:
@@ -35,10 +37,9 @@ func init_map(parameters: Dictionary) -> void:
 			astarid+=1
 	
 	
-	for point_id in GenAstarDictionary.keys():
+	for point_id: int in GenAstarDictionary.keys():
 		for surrounding: Vector2i in get_surrounding_points(GenAstarDictionary[point_id], parameters["SIZE"]):
 			if !GenAstarDictionary.find_key(surrounding):
-				print(surrounding)
 				continue
 			GenAstar.connect_points(point_id, GenAstarDictionary.find_key(surrounding))
 	
@@ -51,7 +52,7 @@ func place_rooms(parameters:Dictionary) -> void:
 	room_centers.append(prev_pos)
 	
 	for room_count: int in parameters["TARGET_ROOM_COUNT"]:
-		var room_radius = Vector2i(RNG.randi_range(gen_settings["ROOM_MIN_RAD"],gen_settings["ROOM_MAX_RAD"]), RNG.randi_range(gen_settings["ROOM_MIN_RAD"],gen_settings["ROOM_MAX_RAD"]))
+		var room_radius: Vector2i = Vector2i(RNG.randi_range(gen_settings["ROOM_MIN_RAD"],gen_settings["ROOM_MAX_RAD"]), RNG.randi_range(gen_settings["ROOM_MIN_RAD"],gen_settings["ROOM_MAX_RAD"]))
 		for try: int in gen_settings["ROOM_TRIES"]:
 			var room_pos: Vector2i = random_map_pos(parameters)
 			if check_room_legal(parameters, room_pos, room_radius):
@@ -63,7 +64,7 @@ func place_rooms(parameters:Dictionary) -> void:
 				break
 
 func generate_room(room_tiles: Array, room_id: int) -> void:
-	print("Placing room: %d" % room_id)
+	#print("Placing room: %d" % room_id)
 	for tile: Vector2i in room_tiles:
 		map[tile.x][tile.y] = room_id
 

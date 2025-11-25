@@ -13,6 +13,7 @@ radius = 4.352435
 
 [node name="Chest" type="StaticBody3D"]
 script = ExtResource("1_0gw11")
+random = true
 
 [node name="Interaction" type="Node" parent="."]
 unique_name_in_owner = true
