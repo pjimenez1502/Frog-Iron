@@ -25,3 +25,39 @@ func round_direction(direction: Vector3) -> Vector2:
 	print(abs(direction.x), " - ", abs(direction.z))
 	print("Direction: ", round_direction)
 	return _round_direction
+
+
+
+## ROOM LIST PRINT
+enum TILE_CODES {
+		CORRIDOR=-1, 
+		ENTRANCE=-2, 
+		EXIT=-3, 
+		DOOR=-4, 
+		CHEST=-5, 
+		ENEMY=-10
+	}
+func print_room_list(room_list: Array, parameters: Dictionary) -> void:
+	for row: int in parameters["SIZE"].y:
+		var line: String = ""
+		for col: int in parameters["SIZE"].x:
+			match room_list[col][row]:
+				0:
+					line += ("[color=black][%2d][/color]" % room_list[col][row])
+				1:
+					line += ("[color=green][%2d][/color]" % room_list[col][row])
+				TILE_CODES.CORRIDOR:
+					line += ("[color=red][  ][/color]")
+				TILE_CODES.ENTRANCE:
+					line += ("[color=green][IN][/color]")
+				TILE_CODES.EXIT:
+					line += ("[color=green][EX][/color]")
+				TILE_CODES.DOOR:
+					line += ("[color=blue][DD][/color]")
+				TILE_CODES.CHEST:
+					line += ("[color=gold][CH][/color]")
+				TILE_CODES.ENEMY:
+					line += ("[color=red][EN][/color]")
+				_:
+					line += ("[%2d]" % room_list[col][row])
+		print_rich(line)

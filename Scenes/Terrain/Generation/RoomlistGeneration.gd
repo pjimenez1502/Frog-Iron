@@ -23,7 +23,7 @@ func generate_list(parameters: Dictionary, _rng: RandomNumberGenerator) -> Array
 	place_corridors()
 	place_entrance_exit()
 	if verbose:
-		print_room_list(parameters)
+		Util.print_room_list(map, parameters)
 	
 	return map
 
@@ -128,20 +128,7 @@ func get_room_tiles(center:Vector2i, room_radius:Vector2i) -> Array:
 func random_map_pos(parameters: Dictionary) -> Vector2i:
 	return Vector2i(RNG.randi_range(2,parameters["SIZE"].x-2), RNG.randi_range(2,parameters["SIZE"].y-2))
 
-func print_room_list(parameters: Dictionary) -> void:
-	for row: int in parameters["SIZE"].y:
-		var line: String = ""
-		for col: int in parameters["SIZE"].x:
-			match map[col][row]:
-				0:
-					line += ("[color=black][%2d][/color]" % map[col][row])
-				1:
-					line += ("[color=green][%2d][/color]" % map[col][row])
-				-1:
-					line += ("[color=red][%2d][/color]" % map[col][row])
-				_:
-					line += ("[%2d]" % map[col][row])
-		print_rich(line)
+
 
 func get_surrounding_points(grid_pos: Vector2i, map_size: Vector2i) -> Array:
 	var surrounding: Array

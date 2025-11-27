@@ -1,7 +1,7 @@
 extends Node
 class_name RoomBuilder
 
-@onready var map: Node3D = %MAP
+@onready var MAP: Node3D = %MAP
 
 @export var TILE_DICTIONARY: Dictionary[String, PackedScene] = {
 	"FLOOR_1": null,
@@ -29,5 +29,5 @@ func build(room_list: Array) -> void:
 
 func place_tile(tile_id: String, pos: Vector2i) -> void:
 	var tile: Node3D =TILE_DICTIONARY[tile_id].instantiate()
-	map.add_child(tile)
+	MAP.add_child(tile)
 	tile.position = Vector3(pos.x, 0, pos.y) * Global.TILE_SIZE

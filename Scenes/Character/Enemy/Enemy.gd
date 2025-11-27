@@ -4,6 +4,8 @@ class_name Enemy
 @onready var loot: Loot = %Loot
 @onready var enemy_input: EnemyInput = $GridMovement/EnemyInput
 
+@export var spawn_cost: int = 1
+
 func _ready() -> void:
 	super._ready()
 	GameDirector.enemy_list.append(self)

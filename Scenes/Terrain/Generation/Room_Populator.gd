@@ -17,6 +17,8 @@ func populate(room_list: Array, room_centers: Array, parameters: Dictionary, _rn
 	place_treasure(room_list, parameters)
 	
 	place_player(room_centers[0])
+	
+	Util.print_room_list(room_list, parameters)
 
 ## DOORS
 func place_doors(room_list: Array) -> void:
@@ -31,6 +33,7 @@ func check_door_placement(room_list: Array, pos: Vector2i) -> void:
 	if room_list[pos.x+1][pos.y] != 0 and room_list[pos.x+1][pos.y] != -1 or room_list[pos.x-1][pos.y] != 0 and room_list[pos.x-1][pos.y] != -1:
 		if room_list[pos.x][pos.y-1] == 0 and room_list[pos.x][pos.y+1] == 0:
 			place_door(pos, deg_to_rad(90))
+			room_list[pos.x][pos.y] = Util.TILE_CODES.DOOR
 			return
 	
 	if room_list[pos.x][pos.y+1] != 0 and room_list[pos.x][pos.y+1] != -1 or room_list[pos.x][pos.y-1] != 0 and room_list[pos.x][pos.y-1] != -1:
@@ -50,7 +53,8 @@ func place_door(pos: Vector2i, rotation: float) -> void:
 ## LOOT
 func place_treasure(room_list: Array, params: Dictionary) -> void:
 	for room_id: int  in range(2, params["TARGET_ROOM_COUNT"]):
-		var room_treasure_target: int = RNG.randi_range(0,2)
+		var treasure_count_weight = [4,8,1]
+		var room_treasure_target: int = RNG.rand_weighted(treasure_count_weight)
 		var placed_treasure: int = 0
 		var treasure_tries: int = 0
 		while placed_treasure != room_treasure_target or treasure_tries == 10:
@@ -58,6 +62,7 @@ func place_treasure(room_list: Array, params: Dictionary) -> void:
 			if room_list[pos.x][pos.y] == room_id:
 				if check_chest_position(room_list, pos):
 					place_chest(pos)
+					room_list[pos.x][pos.y] = Util.TILE_CODES.CHEST
 					placed_treasure += 1
 				else:
 					treasure_tries += 1
