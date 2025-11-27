@@ -110,18 +110,18 @@ func death() -> void:
 	DEAD.emit()
 
 
-func calc_hit_camage(damage: int, hitchance: int) -> int:
+func calc_hit_camage(_damage: int, hitchance: int) -> int:
 	var finished: bool
 	var final_damage: int = 0
 	var curr_hitchance: int = hitchance
 	while(!finished):
 		if curr_hitchance >= 100:
-			final_damage += damage
+			final_damage += _damage
 			curr_hitchance -= 100
 		else:
 			var rand: int = randi_range(1,50) + calculated_stats["DEX"]
 			print(curr_hitchance, " - ", rand)
 			if curr_hitchance > rand:
-				final_damage += damage
+				final_damage += _damage
 			finished = true
 	return final_damage

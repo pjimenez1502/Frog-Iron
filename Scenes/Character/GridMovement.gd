@@ -34,7 +34,7 @@ func action(direction: Vector2i) -> void:
 
 func move(direction: Vector2i) -> void:
 	grid_position += Vector3i(direction.x, 0, direction.y)
-	var target_position = GameDirector.level_map.grid_to_globalpos(grid_position)
+	var target_position: Vector3 = GameDirector.level_map.grid_to_globalpos(grid_position)
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
 	CharacterActed.emit()

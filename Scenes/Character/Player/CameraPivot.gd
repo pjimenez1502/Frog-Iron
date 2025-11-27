@@ -41,7 +41,7 @@ func move_target(direction: int, delta: float) -> void:
 	pos_target = lerp(far_position, close_position, zoom_value)
 	rot_target = lerp(far_rotation, close_rotation, zoom_value)
 
-func move_camera(delta) -> void:
+func move_camera(delta: float) -> void:
 	camera.position = lerp(camera.position, pos_target, delta * cam_speed)
 	camera.rotation.x = lerp_angle(camera.rotation.x, deg_to_rad(rot_target.x), delta * cam_speed)
 

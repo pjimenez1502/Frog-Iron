@@ -30,7 +30,7 @@ func update_equipment(equipment: Dictionary) -> void:
 	clear_equipment_slot(torso_slot)
 	clear_equipment_slot(arms_slot)
 	clear_equipment_slot(legs_slot)
-	for slot_key in equipment.keys():
+	for slot_key: String in equipment.keys():
 		if !equipment[slot_key]:
 			continue
 		var equipment_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()

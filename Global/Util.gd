@@ -12,10 +12,10 @@ func get_mouse_direction(origin: Node3D) -> Vector3:
 	return ((get_mouse_pos(origin) - origin.global_position) * Vector3(1,0,1)).normalized()
 
 func get_mouse_pos(origin: Node3D) -> Vector3:
-	var camera = origin.get_viewport().get_camera_3d()
-	var position2D = origin.get_viewport().get_mouse_position()
-	var dropPlane  = Plane(Vector3(0, 1, 0), 1)
-	var position3D = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
+	var camera: Camera3D = origin.get_viewport().get_camera_3d()
+	var position2D: Vector2 = origin.get_viewport().get_mouse_position()
+	var dropPlane: Plane  = Plane(Vector3(0, 1, 0), 1)
+	var position3D: Vector3 = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
 	if !position3D:
 		return Vector3.ZERO
 	return position3D

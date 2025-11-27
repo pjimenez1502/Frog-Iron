@@ -19,10 +19,15 @@ func set_scene(scene: PackedScene) -> Node3D:
 func launch_demo_scene() -> void:
 	set_scene(DEMO_DUNGEON)
 
-func launch_dungeon_scene() -> void:
+func launch_dungeon_scene(_seed: int = -1) -> void:
 	var generated_dungeon: GeneratedDungeon = set_scene(GENERATED_DUNGEON)
-	generated_dungeon.generate_dungeon(1)
 	
+	var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
+	if _seed != -1:
+		RNG.seed = _seed
+	var DUNGEON_SEED: int = RNG.randi()
+	generated_dungeon.generate_dungeon(1, DUNGEON_SEED)
+
 
 func on_player_death() -> void:
 	SignalBus.TimeScaleChange.emit(0.01, 0.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccw7mbaf4h10s"]
+[gd_scene load_steps=12 format=3 uid="uid://ccw7mbaf4h10s"]
 
 [ext_resource type="Script" uid="uid://bo7t1gqffnlx2" path="res://Scenes/Terrain/Generation/Generated_Dungeon.gd" id="1_bxfei"]
 [ext_resource type="Script" uid="uid://d11pmxvgi634x" path="res://Scenes/Terrain/Generation/RoomlistGeneration.gd" id="1_fdcp4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://5wyp4mb8rgai" path="res://Scenes/Terrain/Generation/Room_Populator.gd" id="6_lbs47"]
 [ext_resource type="PackedScene" uid="uid://c2ecwdlxym4nj" path="res://Scenes/Terrain/Dungeon_1/Tiles/Entrance_tile.tscn" id="7_8njjh"]
 [ext_resource type="PackedScene" uid="uid://0oc6e0iocjrk" path="res://Scenes/Terrain/Dungeon_1/Tiles/Exit_tile.tscn" id="8_g74v0"]
+[ext_resource type="Script" uid="uid://jk7lmxyp5bsu" path="res://Scenes/Terrain/Generation/EnemySpawner.gd" id="11_g74v0"]
 
 [node name="GeneratedDungeon" type="Node3D"]
 script = ExtResource("1_bxfei")
@@ -44,3 +45,7 @@ TILE_DICTIONARY = Dictionary[String, PackedScene]({
 unique_name_in_owner = true
 script = ExtResource("6_lbs47")
 player_scene = ExtResource("2_x4fud")
+
+[node name="EnemySpawner" type="Node" parent="Generator"]
+unique_name_in_owner = true
+script = ExtResource("11_g74v0")

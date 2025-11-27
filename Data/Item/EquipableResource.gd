@@ -26,7 +26,7 @@ func get_tooltip_content() -> String:
 	var tooltip: String
 	tooltip = "[color=#%s]%s[/color]" % [Global.rarity_colors[rarity].to_html() ,name]
 	tooltip += "\n[color=#888]%s[/color]" % desc
-	for stat in bonus_stats:
+	for stat: String in bonus_stats:
 		if bonus_stats[stat] != 0:
 			tooltip += "\n -%s: +%d" % [stat, bonus_stats[stat]]
 	return tooltip

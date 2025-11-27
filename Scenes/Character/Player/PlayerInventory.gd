@@ -147,7 +147,7 @@ func unequip_armor(item_data: EquipableResource) -> void:
 	update_inventory_call()
 
 func check_already_equipped(item_data: EquipableResource) -> bool:
-	for slot_key in equipment.keys():
+	for slot_key: String in equipment.keys():
 		if !equipment[slot_key]:
 			continue
 		if equipment[slot_key] == item_data:

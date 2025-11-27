@@ -43,7 +43,7 @@ func move_towards_target() -> void:
 	var target_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE" ,GameDirector.level_map.globalpos_to_grid(target.global_position))
 	
 	var next_point: Vector3i = GameDirector.level_map.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)[1]
-	var direction = next_point - GameDirector.level_map.globalpos_to_grid(get_parent().global_position)
+	var direction: Vector3 = next_point - GameDirector.level_map.globalpos_to_grid(get_parent().global_position) ## THIS WILL FAIL
 	#print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
 	#print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
 	

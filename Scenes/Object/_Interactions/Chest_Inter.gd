@@ -21,7 +21,7 @@ func open_chest(value: bool) -> void:
 		if SignalBus.UpdateEmergentInv.is_connected(chest.update_inventory):
 			SignalBus.UpdateEmergentInv.disconnect(chest.update_inventory)
 
-func interact():
+func interact() -> void:
 	interact_valued(!open)
 
 func interact_valued(value: bool) -> void:

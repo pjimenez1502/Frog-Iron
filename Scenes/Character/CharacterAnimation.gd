@@ -12,7 +12,7 @@ func _ready() -> void:
 func look_towards(direction: Vector3) -> void:
 	var tween: Tween = get_tree().create_tween()
 	
-	var theta = wrapf(atan2(direction.x, direction.z), -TAU, TAU)
+	var theta: float = wrapf(atan2(direction.x, direction.z), -TAU, TAU)
 	tween.tween_property(_3D_VIEW, "rotation:y", theta, 0.2)
 
 #func movement_animation(_velocity: Vector3, direction: Vector3, _delta:float) -> void:
@@ -23,7 +23,7 @@ func look_towards(direction: Vector3) -> void:
 
 
 func walk(time: float) -> void:
-	var walktimer = get_tree().create_timer(time)
+	var walktimer: SceneTreeTimer = get_tree().create_timer(time)
 	animation_tree.set("parameters/WalkBlend/blend_position", 1)
 	await walktimer.timeout
 	animation_tree.set("parameters/WalkBlend/blend_position", 0)

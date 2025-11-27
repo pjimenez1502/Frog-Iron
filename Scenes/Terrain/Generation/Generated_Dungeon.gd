@@ -5,6 +5,7 @@ class_name GeneratedDungeon
 @onready var room_list_gen: RoomListGen = %RoomListGen
 @onready var room_builder: RoomBuilder = %RoomBuilder
 @onready var room_populator: RoomPopulator = %RoomPopulator
+@onready var enemy_spawner: EnemySpawner = %EnemySpawner
 
 var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -12,17 +13,18 @@ var room_list: Array
 
 var dungeon_params: Dictionary = {
 	"LEVEL": 1,
-	"SIZE": Vector2(40,40),
-	"TARGET_ROOM_COUNT": 20,
+	"SIZE": Vector2(32,32),
+	"TARGET_ROOM_COUNT": 16,
 	"SEED": "test",
 }
 
-func generate_dungeon(level: int) -> void:
+func generate_dungeon(level: int, level_seed: int) -> void:
 	dungeon_params["LEVEL"] = level
-	RNG.seed = hash(dungeon_params["SEED"])
+	RNG.seed = level_seed
 	
 	room_list = room_list_gen.generate_list(dungeon_params, RNG)
 	room_builder.build(room_list)
 	room_populator.populate(room_list, room_list_gen.room_centers, dungeon_params, RNG)
+	enemy_spawner.spawn_enemies(room_list, dungeon_params, RNG)
 	
 	map.set_room_list(room_list)

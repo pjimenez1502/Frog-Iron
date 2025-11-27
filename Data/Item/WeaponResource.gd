@@ -27,13 +27,13 @@ func get_tooltip_content() -> String:
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	tooltip += "\n Damage: %d" % calculate_damage(GameDirector.player.character_stats)
 	tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)
-	for stat in bonus_stats:
+	for stat: String in bonus_stats:
 		if bonus_stats[stat] != 0:
 			tooltip += "\n -%s: +%d" % [stat, bonus_stats[stat]]
 	return tooltip
 
 func calculate_damage(character_stats: CharacterStats) -> int:
-	var calculated_stats = character_stats.calculate_stats()
+	var calculated_stats: Dictionary = character_stats.calculate_stats()
 	return (weapon_stats["DAMAGE"] + 
 	(damage_scaling["STR"] * calculated_stats["STR"]) + 
 	(damage_scaling["DEX"] * calculated_stats["DEX"]) + 
@@ -42,7 +42,7 @@ func calculate_damage(character_stats: CharacterStats) -> int:
 	(damage_scaling["CON"] * calculated_stats["CON"]))
 
 func calculate_hitchance(character_stats: CharacterStats) -> int:
-	var calculated_stats = character_stats.calculate_stats()
+	var calculated_stats: Dictionary = character_stats.calculate_stats()
 	return (weapon_stats["HITCHANCE"] + 
 	(hitchance_scaling["STR"] * calculated_stats["STR"]) + 
 	(hitchance_scaling["DEX"] * calculated_stats["DEX"]) + 

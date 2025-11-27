@@ -21,19 +21,19 @@ func door_interaction(value: bool) -> void:
 		DoorType.SlideSide:
 			slide_door_side(value)
 		
-func swing_door(value) -> void:
+func swing_door(value: bool) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(hinge, "rotation_degrees", Vector3(0, target_opening if value else 0, 0), opening_time).set_trans(Tween.TRANS_QUART)
 	await tween.finished
 	SignalBus.NavmeshBakeRequest.emit()
 
-func slide_door_down(value) -> void:
+func slide_door_down(value: bool) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(hinge, "position", Vector3(0, -target_opening if value else 0, 0), opening_time).set_trans(Tween.TRANS_ELASTIC)
 	await tween.finished
 	SignalBus.NavmeshBakeRequest.emit()
 
-func slide_door_side(value) -> void:
+func slide_door_side(value: bool) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(hinge, "position", Vector3(target_opening if value else 0, 0, 0), opening_time).set_trans(Tween.TRANS_ELASTIC)
 	await tween.finished

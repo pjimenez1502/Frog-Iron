@@ -9,7 +9,7 @@ var SELLABLE_POOL: Array[ItemResource]
 
 var category_weights: Array = [1,0,1,3,0,0]		##{ POTION, GRENADE, WEAPON, ARMOR, JEWELRY, LOOT }
 var rarity_weights: Array = [16,8,4,2,1]		##{ COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, LOOT }
-@onready var RNG = RandomNumberGenerator.new()
+@onready var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	initialize_pools()
@@ -50,7 +50,7 @@ func generate_weapon(cost: int) -> ItemResource:
 	selected.rarity = cost -1 as Global.Rarity	## select rarity depending on budget
 	#print("%s: %s, %d" % [selected.name, Global.Rarity.keys()[selected.rarity], selected.rarity])
 	
-	var stat_weights = selected.bonus_stats_weights.values()
+	var stat_weights: Array = selected.bonus_stats_weights.values()
 	for i: int in selected.rarity:	## add statboosts depending on rarity
 		var stat: String = selected.bonus_stats.keys()[RNG.rand_weighted(stat_weights)]
 		selected.bonus_stats[stat] += 1
@@ -62,7 +62,7 @@ func generate_armor(cost: int) -> ItemResource:
 	selected.rarity = cost -1 as Global.Rarity	## select rarity depending on budget
 	#print("%s: %s, %d" % [selected.name, Global.Rarity.keys()[selected.rarity], selected.rarity])
 	
-	var stat_weights = selected.bonus_stats_weights.values()
+	var stat_weights: Array = selected.bonus_stats_weights.values()
 	for i: int in selected.rarity:	## add statboosts depending on rarity
 		var stat: String = selected.bonus_stats.keys()[RNG.rand_weighted(stat_weights)]
 		selected.bonus_stats[stat] += 1
@@ -83,7 +83,7 @@ func initialize_pools() -> void:
 func initialize_consumables() -> void:
 	var potion_dir: String = "res://Data/Item/Consumable/"
 	for resource: String in ResourceLoader.list_directory(potion_dir):
-		var res = ResourceLoader.load(potion_dir + resource)
+		var res: Resource = ResourceLoader.load(potion_dir + resource)
 		if !(res is ConsumableResource):
 			printerr("NOT CONSUMABLE RESOURCE: %s" % resource)
 			continue
@@ -93,7 +93,7 @@ func initialize_weapons() -> void:
 	var weapon_dirs: Array[String] = ["res://Data/Item/Equipable/Weapon/Melee/", "res://Data/Item/Equipable/Weapon/Ranged/"]
 	for dir: String in weapon_dirs:
 		for resource: String in ResourceLoader.list_directory(dir):
-			var res = ResourceLoader.load(dir + resource)
+			var res: Resource = ResourceLoader.load(dir + resource)
 			if !(res is EquipableResource):
 				printerr("NOT WEAPON RESOURCE: %s" % resource)
 				continue
@@ -102,7 +102,7 @@ func initialize_weapons() -> void:
 func initialize_armors() -> void:
 	var armor_dir: String = "res://Data/Item/Equipable/Armor/"
 	for resource: String in ResourceLoader.list_directory(armor_dir):
-		var res = ResourceLoader.load(armor_dir + resource)
+		var res: Resource = ResourceLoader.load(armor_dir + resource)
 		if !(res is EquipableResource):
 			printerr("NOT ARMOR RESOURCE: %s" % resource)
 			continue

@@ -1,14 +1,12 @@
 extends Node
 class_name RoomPopulator
 
-
 @export var player_scene: PackedScene
 
 @onready var MAP: LevelMap = %MAP
 @onready var OBJECT: Node3D = %OBJECT
 
 var RNG: RandomNumberGenerator
-
 
 func populate(room_list: Array, room_centers: Array, parameters: Dictionary, _rng: RandomNumberGenerator) -> void:
 	RNG = _rng
@@ -54,17 +52,22 @@ func place_treasure(room_list: Array, params: Dictionary) -> void:
 	for room_id: int  in range(2, params["TARGET_ROOM_COUNT"]):
 		var room_treasure_target: int = RNG.randi_range(0,2)
 		var placed_treasure: int = 0
-		while placed_treasure != room_treasure_target:
+		var treasure_tries: int = 0
+		while placed_treasure != room_treasure_target or treasure_tries == 10:
 			var pos: Vector2i = Vector2i(RNG.randi_range(0, params["SIZE"].x-1), RNG.randi_range(0, params["SIZE"].y-1))
 			if room_list[pos.x][pos.y] == room_id:
 				if check_chest_position(room_list, pos):
 					place_chest(pos)
 					placed_treasure += 1
+				else:
+					treasure_tries += 1
 
 func check_chest_position(room_list:Array, pos: Vector2i) -> bool:
-	if room_list[pos.x+1][pos.y] == -1 or room_list[pos.x-1][pos.y] == -1 or room_list[pos.x][pos.y+1] == -1 or room_list[pos.x][pos.y-1] == -1:
+	if pos.x == room_list.size()-1 or pos.y == room_list[0].size()-1 or pos.x == 0 or pos.y == 0:
 		return false
 	
+	if room_list[pos.x+1][pos.y] == -1 or room_list[pos.x-1][pos.y] == -1 or room_list[pos.x][pos.y+1] == -1 or room_list[pos.x][pos.y-1] == -1:
+		return false
 	return true
 
 const CHEST = preload("uid://dmgk0o744xmbo")
@@ -74,9 +77,6 @@ func place_chest(pos: Vector2i) -> void:
 	chest.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
 
 
-## ENEMIES
-func place_enemies() -> void:
-	pass
 
 func place_player(spawn_pos: Vector2i) -> void:
 	var player:Player = player_scene.instantiate()

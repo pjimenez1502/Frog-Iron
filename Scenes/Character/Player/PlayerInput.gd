@@ -43,11 +43,11 @@ func _input(event: InputEvent) -> void:
 	
 
 var north_offset: int
-func update_camera_rotation(_rotation) -> void:
+func update_camera_rotation(_rotation: int) -> void:
 	north_offset = _rotation
 
 func get_direction_vector(direction: int) -> Vector2i:
 	return movement_directions[(direction + north_offset)%4]
 
-func set_player_turn(value) -> void:
+func set_player_turn(value: bool) -> void:
 	is_player_turn = value
