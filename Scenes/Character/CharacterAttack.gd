@@ -44,7 +44,7 @@ func melee_attack(direction: Vector2i) -> void:
 	if !melee_weapon:
 		print("NO MELEE WEAPON EQUIPPED")
 		return
-	melee_weapon.attack(direction)
+	melee_weapon.attack(character.character_grid_movement.grid_position + Vector3i(direction.x, 0, direction.y))
 
 func ranged_attack(direction: Vector3) -> void:
 	if !ranged_weapon:
