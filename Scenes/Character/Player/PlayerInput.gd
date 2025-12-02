@@ -35,6 +35,8 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("INTERACT"):## Action in mouse dir
 		grid_movement.action(Util.round_direction(Util.get_mouse_direction(grid_movement)))
+	if event.is_action_pressed("WAIT"):
+		grid_movement.wait()
 	
 	if event.is_action_pressed("MELEE"):
 		grid_movement.attack(Util.round_direction(Util.get_mouse_direction(grid_movement)))

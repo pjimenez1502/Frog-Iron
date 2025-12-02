@@ -54,9 +54,14 @@ func interact(target: InteractableObject) -> void:
 	target.interact()
 	CharacterActed.emit()
 
+func wait() -> void:
+	SignalBus.DamageText.emit("...", self, DamageTextOverlay.TYPE.MESSAGE)
+	CharacterActed.emit()
+
 func wall(_collided: Node3D) -> void:
 	#print("Moving into wall: %s" % collided)
-	CharacterActed.emit()
+	wait()
+	
 
 func get_ray_by_direction(direction: Vector2i) -> RayCast3D:
 	match direction:

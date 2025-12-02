@@ -32,8 +32,8 @@ func display_text(value: String, parent: Node3D, type: TYPE = TYPE.MESSAGE) -> v
 	
 	var tween: Tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(popup_text, "position:y", popup_text.position.y + 2, 0.25).set_ease(Tween.EASE_OUT)
-	tween.tween_property(popup_text, "position:y", popup_text.position.y, 0.5).set_ease(Tween.EASE_IN).set_delay(0.25)
+	tween.tween_property(popup_text, "position:y", popup_text.position.y+0.5 + 1, 0.25).set_ease(Tween.EASE_OUT)
+	tween.tween_property(popup_text, "position:y", popup_text.position.y+0.5, 0.5).set_ease(Tween.EASE_IN).set_delay(0.25)
 	tween.tween_property(popup_text, "scale", Vector3.ZERO, 0.25).set_ease(Tween.EASE_IN).set_delay(0.5)
 	await tween.finished
 	if popup_text:
