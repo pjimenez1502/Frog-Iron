@@ -38,7 +38,7 @@ radius = 8.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lxplw"]
 height = 1.0
-radius = 14.0
+radius = 16.0
 
 [node name="Rat" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
@@ -54,11 +54,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(-0.03746455, 0.9944279, -0.09846779, 0.003709766)
-bones/2/rotation = Quaternion(-0.7521041, -0.01797099, -0.020526163, 0.65847945)
+bones/1/rotation = Quaternion(-0.033579156, 0.99456674, -0.09848151, 0.0033250353)
+bones/2/rotation = Quaternion(-0.7521591, -0.016110383, -0.018401008, 0.6585276)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.9971653, 0.07378098, -0.014756291, -8.6613e-08, -0.19611613, -0.9805807, -0.07524216, 0.9778008, -0.19556025, 0, 0.030000001, 0.08)
+transform = Transform3D(0.99772274, 0.06613848, -0.013227789, -8.707866e-08, -0.19611609, -0.98058057, -0.06744831, 0.9783474, -0.19566952, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 

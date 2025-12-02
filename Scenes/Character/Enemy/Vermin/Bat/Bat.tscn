@@ -34,7 +34,7 @@ size = Vector3(1.8, 1.8, 1.8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_58y3j"]
 height = 1.0
-radius = 6.0
+radius = 14.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lxplw"]
 height = 1.0
@@ -44,6 +44,7 @@ radius = 18.0
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_c4gba")
+spawn_cost = 2
 
 [node name="View" type="Node3D" parent="."]
 
@@ -84,6 +85,13 @@ script = ExtResource("4_7mb21")
 [node name="CharacterStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_32uyh")
+base_stats = {
+"CON": 2,
+"DEX": 8,
+"INT": 2,
+"STR": 2,
+"WIS": 2
+}
 
 [node name="Loot" type="Node" parent="."]
 unique_name_in_owner = true

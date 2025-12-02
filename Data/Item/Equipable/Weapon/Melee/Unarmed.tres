@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_j105c")
 weapon_stats = {
-"DAMAGE": 1,
+"DAMAGE": 0,
 "HITCHANCE": 60,
 "KNOCKBACK": 0
 }

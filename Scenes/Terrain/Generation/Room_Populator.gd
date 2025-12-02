@@ -18,7 +18,7 @@ func populate(room_list: Array, room_centers: Array, parameters: Dictionary, _rn
 	
 	place_player(room_centers[0])
 	
-	Util.print_room_list(room_list, parameters)
+	#Util.print_room_list(room_list, parameters)
 
 ## DOORS
 func place_doors(room_list: Array) -> void:

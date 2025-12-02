@@ -3,10 +3,13 @@ class_name CameraPivot
 
 @onready var camera: Camera3D = %Camera
 
-@export var far_position: Vector3 = Vector3(0, 7, 7)
-@export var far_rotation: Vector3 = Vector3(-38, 0, 0)
+@export var far_position: Vector3 = Vector3(0, 12, 10)
+@export var far_rotation: Vector3 = Vector3(-50, 0, 0)
 
-@export var close_position: Vector3 = Vector3(0, 1.5, 3.8)
+var mid_position: Vector3 = Vector3(0, 7, 7)
+var mid_rotation: Vector3 = Vector3(-38, 0, 0)
+
+@export var close_position: Vector3 = Vector3(0, 1.5, 5)
 @export var close_rotation: Vector3 = Vector3(0, 0, 0)
 
 func _ready() -> void:

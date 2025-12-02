@@ -155,7 +155,7 @@
 		{
 			"uuid": "dbeeb071-035a-41fd-ae70-777918e76f4a",
 			"title": "Enemy Expansion",
-			"description": "\nLvl and stat system at spawn\n\nMore melee attacks?\nRanged attacks\nPreference to stay at range?\n",
+			"description": "\nLvl and stat system at spawn\n\nMore melee attacks?\nRanged attacks\nPreference to stay at range?\n\n\n\n\nEnemies:\n\nRat\t\t\t-\tBasic\nBat\t\t\t-\tHigh close detection range (Dex)\nSlime\t\t-\n\n\nSkeleton\n\nNaga",
 			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"steps": []
 		},
@@ -393,7 +393,7 @@
 		{
 			"uuid": "85fa8b4f-e579-4701-9fd4-8271597b4529",
 			"title": "Drop / Remove Items from inventory",
-			"description": "",
+			"description": "\nPress X while hovering over an item:\n\n\t- Generate a item bundle object on current tile (like a chest, but small and without collision) if none previously exists\n\t- Add dropped item to bundle",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}

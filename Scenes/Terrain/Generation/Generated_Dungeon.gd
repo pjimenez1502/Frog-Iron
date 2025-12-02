@@ -25,6 +25,8 @@ func generate_dungeon(level: int, level_seed: int) -> void:
 	room_list = room_list_gen.generate_list(dungeon_params, RNG)
 	room_builder.build(room_list)
 	room_populator.populate(room_list, room_list_gen.room_centers, dungeon_params, RNG)
-	enemy_spawner.spawn_enemies(room_list, dungeon_params, RNG)
 	
 	map.set_room_list(room_list)
+	enemy_spawner.spawn_enemies(room_list, dungeon_params, RNG)
+	
+	Util.print_room_list(room_list, dungeon_params)
