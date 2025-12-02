@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://b235ocj8pmmsh"]
+
+[ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_c4gba"]
+[ext_resource type="PackedScene" uid="uid://bl8i65qg1jmdg" path="res://Scenes/Character/Enemy/Vermin/Bat/Bat.glb" id="2_a6dhk"]
+[ext_resource type="Script" uid="uid://d3w7anlgskstc" path="res://Scenes/Character/GridMovement.gd" id="3_vh70q"]
+[ext_resource type="Script" uid="uid://dn77g08dss0ng" path="res://Scenes/Character/Enemy/EnemyInput.gd" id="4_7mb21"]
+[ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="5_32uyh"]
+[ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="6_clcb0"]
+[ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="7_l3mli"]
+[ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Unarmed.tres" id="8_segp2"]
+[ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_6euxv"]
+[ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="10_r5b01"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lq07w"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5bbps"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nyt8s"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lq07w")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_5bbps")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g5da4"]
+nodes/output/position = Vector2(560, 60)
+nodes/WalkBlend/node = SubResource("AnimationNodeBlendSpace1D_nyt8s")
+nodes/WalkBlend/position = Vector2(240, 0)
+node_connections = [&"output", 0, &"WalkBlend"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mejtj"]
+size = Vector3(1.8, 1.8, 1.8)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_58y3j"]
+height = 1.0
+radius = 6.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lxplw"]
+height = 1.0
+radius = 18.0
+
+[node name="Bat" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_c4gba")
+
+[node name="View" type="Node3D" parent="."]
+
+[node name="3D" type="Node3D" parent="View"]
+unique_name_in_owner = true
+
+[node name="Bat2" parent="View/3D" instance=ExtResource("2_a6dhk")]
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="View/3D/Bat2/Bat" index="0"]
+
+[node name="GridMovement" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_vh70q")
+
+[node name="North" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.3711385e-08, -4.371139e-08, -1, -1, 0, 4.371139e-08, 0, 1, -4.371139e-08, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+collision_mask = 7
+
+[node name="Shouth" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.3711385e-08, 1.3113416e-07, 1, -1, -7.642741e-15, -4.371138e-08, 0, -1, 1.3113416e-07, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+collision_mask = 7
+
+[node name="West" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.371138e-08, 1, -1.7484555e-07, -1, -4.371138e-08, 9.284769e-15, 0, 1.7484555e-07, 1, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+collision_mask = 7
+
+[node name="East" type="RayCast3D" parent="GridMovement"]
+transform = Transform3D(-4.371138e-08, -1, 8.742277e-08, -1, 4.371138e-08, -2.179342e-15, 0, -8.742277e-08, -1, 4.3711385e-08, 1, 0)
+target_position = Vector3(0, -4, 0)
+collision_mask = 7
+
+[node name="EnemyInput" type="Node" parent="GridMovement"]
+script = ExtResource("4_7mb21")
+
+[node name="CharacterStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_32uyh")
+
+[node name="Loot" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_clcb0")
+xp = 2
+coin = 4
+
+[node name="CharacterAttack" type="Node" parent="." node_paths=PackedStringArray("weapon_attatchment")]
+unique_name_in_owner = true
+script = ExtResource("7_l3mli")
+weapon_attatchment = NodePath("../WeaponAttachment")
+melee_weapon_data = ExtResource("8_segp2")
+
+[node name="CharacterAnimation" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_6euxv")
+metadata/_custom_type_script = "uid://ucehgts20fne"
+
+[node name="AnimationTree" type="AnimationTree" parent="CharacterAnimation"]
+unique_name_in_owner = true
+tree_root = SubResource("AnimationNodeBlendTree_g5da4")
+parameters/WalkBlend/blend_position = -0.0053476095
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_mejtj")
+
+[node name="Detection" type="Node3D" parent="."]
+
+[node name="CloseDetection" type="Area3D" parent="Detection"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/CloseDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_58y3j")
+
+[node name="FarDetection" type="Area3D" parent="Detection"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/FarDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_lxplw")
+
+[node name="LOS_Raycast" type="RayCast3D" parent="Detection"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("10_r5b01")
+hand = NodePath("../View/3D/Bat2/Bat/BoneAttachment3D")
+
+[editable path="View/3D/Bat2"]

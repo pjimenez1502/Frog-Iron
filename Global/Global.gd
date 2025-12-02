@@ -21,7 +21,7 @@ const LEVEL_GROWTH_MULT: float = 0.3
 
 ## BUDGETS
 const CHEST_BUDGET: int = 4
-const ENEMY_BUDGET_BASE: int = 10
+const ENEMY_BUDGET_BASE: int = 20
 
 const PLAYER_TURN_DURATION: float = 0.2
 const ENEMY_TURN_DURATION: float = 0.1

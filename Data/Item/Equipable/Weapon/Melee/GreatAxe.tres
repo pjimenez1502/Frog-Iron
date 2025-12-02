@@ -7,7 +7,7 @@
 script = ExtResource("1_wb5t0")
 weapon_stats = {
 "DAMAGE": 4,
-"HITCHANCE": 50,
+"HITCHANCE": 40,
 "KNOCKBACK": 0
 }
 damage_scaling = {

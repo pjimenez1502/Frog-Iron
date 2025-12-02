@@ -8,9 +8,9 @@ class_name EnemyInput
 @onready var close_detection: Area3D = $"../../Detection/CloseDetection"
 @onready var far_detection: Area3D = $"../../Detection/FarDetection"
 
-var close_target: Node3D
-var far_target: Node3D
-var target: Node3D
+var close_target: Character
+var far_target: Character
+var target: Character
 
 func _ready() -> void:
 	SignalBus.EnemyTurn.connect(play_turn)
@@ -39,11 +39,17 @@ func play_turn() -> void:
 
 
 func move_towards_target() -> void:
-	var origin_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE" ,GameDirector.level_map.globalpos_to_grid(get_parent().global_position))
-	var target_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE" ,GameDirector.level_map.globalpos_to_grid(target.global_position))
+	var origin_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE", grid_movement.grid_position)
+	var target_point: int = GameDirector.level_map.find_pointid_at_pos("WALKABLE", target.character_grid_movement.grid_position)
 	
-	var next_point: Vector3i = GameDirector.level_map.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)[1]
-	var direction: Vector3 = next_point - GameDirector.level_map.globalpos_to_grid(get_parent().global_position) ## THIS WILL FAIL
+	#print("Movement points: origin= %s, target= %s" % [origin_point, target_point])
+	var point_path: Array = GameDirector.level_map.AStar["WALKABLE"].get_point_path(origin_point, target_point, true)
+	if point_path.size() < 2:
+		print("Movement points: origin= %s, target= %s" % [origin_point, target_point])
+		print("NO PATH")
+		return
+	var next_point: Vector3i = point_path[1]
+	var direction: Vector3 = next_point - grid_movement.grid_position
 	#print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
 	#print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
 	

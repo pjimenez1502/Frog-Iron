@@ -24,10 +24,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
-	
 
 func gravity(delta: float) -> void:
-	velocity.y = -300 * delta
+	velocity.y = -600 * delta
 
 func damage(_damage: int, _hitchance: int) -> void:
 	character_stats.damage(_damage, _hitchance)

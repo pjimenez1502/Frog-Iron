@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccw7mbaf4h10s"]
+[gd_scene load_steps=14 format=3 uid="uid://ccw7mbaf4h10s"]
 
 [ext_resource type="Script" uid="uid://bo7t1gqffnlx2" path="res://Scenes/Terrain/Generation/Generated_Dungeon.gd" id="1_bxfei"]
 [ext_resource type="Script" uid="uid://d11pmxvgi634x" path="res://Scenes/Terrain/Generation/RoomlistGeneration.gd" id="1_fdcp4"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c2ecwdlxym4nj" path="res://Scenes/Terrain/Dungeon_1/Tiles/Entrance_tile.tscn" id="7_8njjh"]
 [ext_resource type="PackedScene" uid="uid://0oc6e0iocjrk" path="res://Scenes/Terrain/Dungeon_1/Tiles/Exit_tile.tscn" id="8_g74v0"]
 [ext_resource type="Script" uid="uid://jk7lmxyp5bsu" path="res://Scenes/Terrain/Generation/EnemySpawner.gd" id="11_g74v0"]
-[ext_resource type="PackedScene" uid="uid://chenbcu36627c" path="res://Scenes/Character/Enemy/Medium/Rat_Med/rat_med.tscn" id="12_w648x"]
+[ext_resource type="PackedScene" uid="uid://chenbcu36627c" path="res://Scenes/Character/Enemy/Vermin/Rat/Rat.tscn" id="12_w648x"]
+[ext_resource type="PackedScene" uid="uid://b235ocj8pmmsh" path="res://Scenes/Character/Enemy/Vermin/Bat/Bat.tscn" id="13_8rsnu"]
 
 [node name="GeneratedDungeon" type="Node3D"]
 script = ExtResource("1_bxfei")
@@ -50,4 +51,4 @@ player_scene = ExtResource("2_x4fud")
 [node name="EnemySpawner" type="Node" parent="Generator"]
 unique_name_in_owner = true
 script = ExtResource("11_g74v0")
-enemy_pool = Array[PackedScene]([ExtResource("12_w648x")])
+enemy_pool = Array[PackedScene]([ExtResource("12_w648x"), ExtResource("13_8rsnu")])

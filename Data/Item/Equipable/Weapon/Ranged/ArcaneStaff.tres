@@ -5,10 +5,15 @@
 
 [resource]
 script = ExtResource("1_bej8h")
+weapon_stats = {
+"DAMAGE": 1,
+"HITCHANCE": 60,
+"KNOCKBACK": 0
+}
 damage_scaling = {
 "CON": 0.0,
 "DEX": 0.0,
-"INT": 1.0,
+"INT": 0.5,
 "STR": 0.0,
 "WIS": 0.5
 }

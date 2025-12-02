@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Ranged/Bow.tres" id="13_plwq1"]
 [ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="14_k5y61"]
 [ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="15_26rif"]
-[ext_resource type="PackedScene" uid="uid://chenbcu36627c" path="res://Scenes/Character/Enemy/Medium/Rat_Med/rat_med.tscn" id="16_ek1jc"]
+[ext_resource type="PackedScene" uid="uid://chenbcu36627c" path="res://Scenes/Character/Enemy/Vermin/Rat/Rat.tscn" id="16_ek1jc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0h72o"]
 geometry_parsed_geometry_type = 1

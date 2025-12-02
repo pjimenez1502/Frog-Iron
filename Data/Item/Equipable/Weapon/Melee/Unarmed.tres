@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_j105c")
 weapon_stats = {
-"DAMAGE": 0,
+"DAMAGE": 1,
 "HITCHANCE": 60,
 "KNOCKBACK": 0
 }
@@ -14,7 +14,7 @@ damage_scaling = {
 "CON": 0.0,
 "DEX": 0.0,
 "INT": 0.0,
-"STR": 0.25,
+"STR": 0.5,
 "WIS": 0.0
 }
 hitchance_scaling = {

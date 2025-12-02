@@ -120,7 +120,7 @@ func calc_hit_camage(_damage: int, hitchance: int) -> int:
 			curr_hitchance -= 100
 		else:
 			var rand: int = randi_range(1,50) + calculated_stats["DEX"]
-			print(curr_hitchance, " - ", rand)
+			#print(curr_hitchance, " - ", rand)
 			if curr_hitchance > rand:
 				final_damage += _damage
 			finished = true

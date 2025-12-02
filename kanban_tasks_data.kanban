@@ -39,10 +39,10 @@
 				"dbeeb071-035a-41fd-ae70-777918e76f4a",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"4de87959-b07e-4826-a150-8efaf0887e59",
-				"73d2c789-8b03-4250-bea9-c3830459548b",
-				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
 				"80b7d3e5-a001-42e5-bfa1-740c2563917e",
-				"eeaada73-88c3-4954-9a3c-64c7c2f9230b"
+				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
+				"73d2c789-8b03-4250-bea9-c3830459548b",
+				"033c5afc-3a7a-4774-a24a-23395fb68aa1"
 			]
 		},
 		{
@@ -51,12 +51,11 @@
 			"tasks": [
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
-				"2eac660f-a0b0-4c49-865a-6a88de5cad47",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
-				"c52ce17b-65e5-41c6-a482-0deb9a8f7526",
 				"3013a1f6-56cb-4b0a-9f18-a394c0970e17",
-				"d18d8189-a08b-45cb-84b3-a5348b879ad9"
+				"d18d8189-a08b-45cb-84b3-a5348b879ad9",
+				"c52ce17b-65e5-41c6-a482-0deb9a8f7526"
 			]
 		},
 		{
@@ -69,7 +68,7 @@
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
-				"09511888-ea4e-40c0-94dd-d1263bbbf160"
+				"85fa8b4f-e579-4701-9fd4-8271597b4529"
 			]
 		},
 		{
@@ -213,13 +212,6 @@
 			"uuid": "95d12487-7eb5-4a68-a65d-ec22a5252160",
 			"title": "Objects",
 			"description": "\n== Stash:\nSliding Fake Wall\nChest\nEnemyTrackingTrigger (object checks for x enemies to die before triggering)\nItemCage (surrounds an interactable object and blocks it until it is released)\n\n== Done:\nBarDoor\nDoor\nLever\nArcheryDummy",
-			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
-			"steps": []
-		},
-		{
-			"uuid": "2eac660f-a0b0-4c49-865a-6a88de5cad47",
-			"title": "Tiles",
-			"description": "\nStairs\n",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		},
@@ -385,13 +377,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "09511888-ea4e-40c0-94dd-d1263bbbf160",
-			"title": "Attack animations",
-			"description": "",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
-			"steps": []
-		},
-		{
 			"uuid": "13e2431d-82c2-4644-86b5-a9b31551f4d7",
 			"title": "Avoid diagonal movement",
 			"description": "",
@@ -403,6 +388,13 @@
 			"title": "Replace gridmap functions",
 			"description": "",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "85fa8b4f-e579-4701-9fd4-8271597b4529",
+			"title": "Drop / Remove Items from inventory",
+			"description": "",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

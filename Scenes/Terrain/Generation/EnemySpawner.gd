@@ -18,7 +18,7 @@ func spawn_enemies(room_list: Array, parameters: Dictionary, _rng: RandomNumberG
 		
 		var enemy: Enemy = enemy_pool[_rng.randi_range(0, enemy_pool.size()-1)].instantiate()
 		ENEMY_CONTAINER.add_child(enemy)
-		enemy.global_position = MAP.grid_to_globalpos(found_pos)
+		enemy.character_grid_movement.set_at_grid_position(found_pos)
 		budget -= enemy.spawn_cost
 
 func find_enemy_spawnpos(room_list: Array, parameters: Dictionary) -> Vector3i:
