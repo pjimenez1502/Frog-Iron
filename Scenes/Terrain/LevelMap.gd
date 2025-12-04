@@ -35,13 +35,13 @@ func find_pointid_at_pos(dictionary: String, _position: Vector3i) -> int:
 			return id
 	return -1
 
-var walkable_special_tiles: Array = [-4]
+var walkable_special_tiles: Array = [-1, -4]
 func generate_walkablemap_from_room_map(room_list: Array) -> void:
 	for x: int in room_list.size():
 		for y: int in room_list[0].size():
 			if room_list[x][y] > 0 or walkable_special_tiles.has(room_list[x][y]):
 				walkable_tiles.append(Vector3i(x, 0, y))
-
+	
 
 
 func set_room_list(room_list: Array) -> void:

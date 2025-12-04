@@ -9,6 +9,8 @@ var character: Character
 var move_tween: Tween
 var grid_position: Vector3i
 
+@export var verbose: bool
+
 func _ready() -> void:
 	pass
 
@@ -39,6 +41,9 @@ func move(direction: Vector2i) -> void:
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
 	CharacterActed.emit()
 	character.character_animation.walk(Global.PLAYER_TURN_DURATION)
+	
+	if verbose:
+		print("Moved to: %s" % grid_position)
 
 func attack(direction: Vector2i) -> void:
 	character.character_attack.melee_attack(direction)
