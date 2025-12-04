@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b235ocj8pmmsh"]
+[gd_scene load_steps=23 format=3 uid="uid://b235ocj8pmmsh"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_c4gba"]
 [ext_resource type="PackedScene" uid="uid://bl8i65qg1jmdg" path="res://Scenes/Character/Enemy/Vermin/Bat/Bat.glb" id="2_a6dhk"]
@@ -10,6 +10,10 @@
 [ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Unarmed.tres" id="8_segp2"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_6euxv"]
 [ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="10_r5b01"]
+[ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="11_t8c2a"]
+[ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="12_y63vs"]
+[ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="13_3jcda"]
+[ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="14_u5mnw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lq07w"]
 animation = &"Idle"
@@ -39,6 +43,9 @@ radius = 14.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lxplw"]
 height = 1.0
 radius = 18.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t8c2a"]
+viewport_path = NodePath("HealthBar/SubViewport")
 
 [node name="Bat" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
@@ -144,5 +151,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("10_r5b01")
 hand = NodePath("../View/3D/Bat2/Bat/BoneAttachment3D")
+
+[node name="HealthBar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+pixel_size = 0.001
+billboard = 1
+fixed_size = true
+texture_filter = 0
+texture = SubResource("ViewportTexture_t8c2a")
+script = ExtResource("11_t8c2a")
+hide_when_full = true
+
+[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+size = Vector2i(160, 16)
+
+[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 16)
+offset_right = 160.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 40.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("12_y63vs")
+texture_progress = ExtResource("13_3jcda")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("14_u5mnw")
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="View/3D/Bat2"]

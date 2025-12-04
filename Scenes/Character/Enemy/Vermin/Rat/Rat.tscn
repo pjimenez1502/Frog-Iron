@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chenbcu36627c"]
+[gd_scene load_steps=23 format=3 uid="uid://chenbcu36627c"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_ghg1f"]
 [ext_resource type="PackedScene" uid="uid://cle0m3o5ilqoj" path="res://Scenes/Character/Enemy/Vermin/Rat/Rat.glb" id="3_lq07w"]
@@ -10,6 +10,10 @@
 [ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Unarmed.tres" id="8_ijsel"]
 [ext_resource type="Script" uid="uid://dn77g08dss0ng" path="res://Scenes/Character/Enemy/EnemyInput.gd" id="8_mejtj"]
 [ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="10_mejtj"]
+[ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="11_5gvrg"]
+[ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="11_cq6uo"]
+[ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="12_5gvrg"]
+[ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="13_fotdw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lq07w"]
 animation = &"Idle"
@@ -40,6 +44,9 @@ radius = 8.0
 height = 1.0
 radius = 16.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_cq6uo"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
 [node name="Rat" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 7
@@ -54,11 +61,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(-0.033579156, 0.99456674, -0.09848151, 0.0033250353)
-bones/2/rotation = Quaternion(-0.7521591, -0.016110383, -0.018401008, 0.6585276)
+bones/1/rotation = Quaternion(-0.05274696, 0.9937344, -0.09839911, 0.005223025)
+bones/2/rotation = Quaternion(-0.75182873, -0.025309747, -0.028908368, 0.6582382)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.99772274, 0.06613848, -0.013227789, -8.707866e-08, -0.19611609, -0.98058057, -0.06744831, 0.9783474, -0.19566952, 0, 0.030000001, 0.08)
+transform = Transform3D(0.99438095, 0.103805035, -0.020761106, -9.2200935e-08, -0.19611612, -0.9805807, -0.10586082, 0.97507054, -0.19501416, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 
@@ -146,5 +153,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("10_mejtj")
 hand = NodePath("../View/3D/Rat/Skeleton3D/Head")
+
+[node name="HealthBar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+pixel_size = 0.001
+billboard = 1
+fixed_size = true
+texture_filter = 0
+texture = SubResource("ViewportTexture_cq6uo")
+script = ExtResource("11_5gvrg")
+hide_when_full = true
+
+[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+size = Vector2i(160, 16)
+
+[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 16)
+offset_right = 160.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 40.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("11_cq6uo")
+texture_progress = ExtResource("12_5gvrg")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_fotdw")
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="View/3D"]

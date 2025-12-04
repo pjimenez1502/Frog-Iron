@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=38 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
@@ -16,7 +16,11 @@
 [ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="9_v7n4c"]
 [ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Ranged/Bow.tres" id="10_ypnta"]
 [ext_resource type="Resource" uid="uid://sh4mi7xnrmlt" path="res://Data/Item/Equipable/Armor/Chestplate.tres" id="11_ypnta"]
+[ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="18_unv75"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="18_ypnta"]
+[ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="19_pwth1"]
+[ext_resource type="Texture2D" uid="uid://cu28ka6qhmp2" path="res://Scenes/UI/HUD/Healthbar_progress_texture.png" id="20_5vafk"]
+[ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="21_3jo1j"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_oedxj"]
 filter_enabled = true
@@ -113,6 +117,9 @@ size = Vector2(2, 2)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7qy38"]
 radius = 3.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_er2ma"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 7
@@ -129,23 +136,23 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 [node name="Skeleton3D" parent="View/3D/ZhenTest/Zhen_Armature" index="0"]
 bones/0/position = Vector3(4.4904656e-11, 1.5137316, -0.0982818)
 bones/0/rotation = Quaternion(0.024500405, 3.5752038e-07, 8.762021e-09, 0.99969983)
-bones/1/position = Vector3(0.27915013, 0.9960436, 0.002966373)
-bones/1/rotation = Quaternion(0.80397457, 0.10845996, 0.23365286, 0.5359735)
+bones/1/position = Vector3(0.2791414, 0.98631185, -0.00076308416)
+bones/1/rotation = Quaternion(0.8039632, 0.10845822, 0.2336231, 0.5360042)
 bones/2/position = Vector3(0.38606954, 1.248754, -0.3638394)
-bones/3/position = Vector3(0.14133722, 0.02626649, -0.17044415)
-bones/3/rotation = Quaternion(0.7525457, 0.08100143, -0.0691555, 0.6498702)
-bones/4/position = Vector3(-0.1413212, 0.026277859, -0.17074119)
-bones/4/rotation = Quaternion(0.75265723, -0.081005245, 0.0691351, 0.6497427)
-bones/5/position = Vector3(0.21719137, 0.41369152, 0.36030638)
-bones/6/position = Vector3(-0.21717437, 0.41369322, 0.36030638)
-bones/7/position = Vector3(-5.075912e-10, 0.78400993, -0.12408479)
-bones/7/rotation = Quaternion(1.2710295e-12, -1.8670256e-05, 1.9858898e-13, 1)
+bones/3/position = Vector3(0.14132424, 0.026250234, -0.17053251)
+bones/3/rotation = Quaternion(0.7526134, 0.08099077, -0.06915337, 0.6497933)
+bones/4/position = Vector3(-0.14131838, 0.026333217, -0.17065519)
+bones/4/rotation = Quaternion(0.7527506, -0.081011765, 0.069116116, 0.6496359)
+bones/5/position = Vector3(0.21719193, 0.41369146, 0.36030638)
+bones/6/position = Vector3(-0.2171738, 0.41369328, 0.36030638)
+bones/7/position = Vector3(1.2376554e-09, 0.7787501, -0.12211891)
+bones/7/rotation = Quaternion(2.0310754e-12, -5.204148e-06, 3.1734655e-13, 1)
 bones/8/rotation = Quaternion(0.03813282, -2.3824515e-07, 3.4563227e-16, 0.9992727)
-bones/10/rotation = Quaternion(-0.052283056, -4.760967e-07, 1.0786645e-08, 0.9986323)
-bones/11/rotation = Quaternion(0.05159263, 7.142137e-07, 1.6785445e-09, 0.99866825)
-bones/12/rotation = Quaternion(0.2661598, 0.22730081, -0.9327127, 0.08683647)
-bones/13/rotation = Quaternion(0.6583136, -0.0005875343, 0.37711036, 0.65146816)
-bones/14/rotation = Quaternion(0.056551665, 0.98712057, -0.026774216, 0.14723517)
+bones/10/rotation = Quaternion(-0.057244208, -4.7630934e-07, 1.846411e-08, 0.9983602)
+bones/11/rotation = Quaternion(0.056553952, 7.143683e-07, -4.815867e-09, 0.99839956)
+bones/12/rotation = Quaternion(0.26738966, 0.23422016, -0.9308886, 0.08420295)
+bones/13/rotation = Quaternion(0.65612125, -0.00059016794, 0.3758545, 0.6543989)
+bones/14/rotation = Quaternion(0.049330894, 0.9878952, -0.016521005, 0.14613971)
 bones/16/rotation = Quaternion(-0.00016776544, -3.8552047e-05, 0.17600669, 0.98438895)
 bones/17/rotation = Quaternion(-0.0043018223, 0.0011193079, 0.2810608, 0.9596797)
 bones/18/rotation = Quaternion(0.0072901715, -0.50917834, 0.21216004, 0.8340699)
@@ -156,9 +163,9 @@ bones/24/rotation = Quaternion(0.0021350225, 0.00042791123, 0.22402568, 0.974580
 bones/25/rotation = Quaternion(0.0005632263, 0.0020762186, 0.14453487, 0.98949736)
 bones/27/rotation = Quaternion(0.002503032, 0.00087492506, 0.2239908, 0.97458774)
 bones/28/rotation = Quaternion(0.001067338, 0.0032438133, 0.09088084, 0.995856)
-bones/30/rotation = Quaternion(0.26615965, -0.22730081, 0.93271273, 0.08683645)
-bones/31/rotation = Quaternion(0.6583138, 0.00058751204, -0.37711033, 0.65146804)
-bones/32/rotation = Quaternion(-0.05655163, 0.98712057, -0.026774319, -0.14723513)
+bones/30/rotation = Quaternion(0.26738948, -0.23422018, 0.93088865, 0.084202945)
+bones/31/rotation = Quaternion(0.6561215, 0.00059012324, -0.37585455, 0.65439874)
+bones/32/rotation = Quaternion(-0.049330845, 0.9878952, -0.016521057, -0.14613973)
 bones/33/position = Vector3(0.006892301, 0.09610113, -0.039179962)
 bones/33/rotation = Quaternion(0.029071549, -0.057875697, -0.016717091, 0.9977605)
 bones/34/rotation = Quaternion(-0.00016771196, 3.8554663e-05, -0.17600669, 0.98438895)
@@ -177,18 +184,18 @@ bones/44/position = Vector3(-0.00027615568, 0.08587518, 0.052762207)
 bones/44/rotation = Quaternion(0.0782537, 0.028679907, -0.01570689, 0.9963971)
 bones/45/rotation = Quaternion(0.0025030298, -0.00087494624, -0.22399078, 0.97458774)
 bones/46/rotation = Quaternion(0.0010673574, -0.0032438347, -0.09088087, 0.995856)
-bones/48/rotation = Quaternion(0.9376886, 0.09579593, -0.1498941, 0.29848787)
-bones/49/rotation = Quaternion(0.49449947, 0.066314705, 0.10174641, 0.8606511)
-bones/50/rotation = Quaternion(-0.8160094, 0.020735169, -0.054116417, 0.5751263)
-bones/51/rotation = Quaternion(0.9368509, -0.09734546, 0.15524444, 0.29788175)
-bones/52/rotation = Quaternion(0.49449244, -0.06631505, -0.10174492, 0.86065537)
-bones/53/rotation = Quaternion(-0.81583863, -0.025698988, 0.051292382, 0.5754268)
-bones/54/rotation = Quaternion(-0.9301454, 0.030161913, 0.06310443, 0.36046863)
+bones/48/rotation = Quaternion(0.936159, 0.09776459, -0.14964812, 0.302744)
+bones/49/rotation = Quaternion(0.50453717, 0.065847896, 0.10381175, 0.85459316)
+bones/50/rotation = Quaternion(-0.819241, 0.021655807, -0.054425705, 0.57045)
+bones/51/rotation = Quaternion(0.93525904, -0.09937401, 0.1550077, 0.30230442)
+bones/52/rotation = Quaternion(0.5046429, -0.06584294, -0.10383344, 0.8545285)
+bones/53/rotation = Quaternion(-0.8190082, -0.026621442, 0.05165751, 0.5708314)
+bones/54/rotation = Quaternion(-0.9268237, 0.047204763, 0.09878121, 0.35918242)
 bones/55/rotation = Quaternion(0.18382323, 1.6967785e-08, 1.047745e-08, 0.98295933)
-bones/56/rotation = Quaternion(0.0880594, -3.4946215e-06, 3.2043397e-05, 0.99611527)
+bones/56/rotation = Quaternion(0.08805948, -9.917948e-07, 9.070601e-06, 0.99611527)
 bones/57/rotation = Quaternion(0.09548163, -3.1789193e-10, 6.780137e-10, 0.9954312)
-bones/58/position = Vector3(-0.27914822, 0.996043, 0.0029788374)
-bones/58/rotation = Quaternion(0.80397207, -0.10845947, -0.23364638, 0.5359802)
+bones/58/position = Vector3(-0.27915686, 0.9863166, -0.00086460065)
+bones/58/rotation = Quaternion(0.80398387, -0.1084622, -0.2336758, 0.5359494)
 bones/59/position = Vector3(-0.3860372, 1.2486491, -0.3638333)
 
 [node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="View/3D/ZhenTest/Zhen_Armature/Skeleton3D" index="10"]
@@ -215,7 +222,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="HAND_R" type="BoneAttachment3D" parent="View/3D/ZhenTest/Zhen_Armature/Skeleton3D" index="11"]
-transform = Transform3D(0.82979196, 0.5420196, 0.13289092, -0.4499151, 0.7906172, -0.4153318, -0.33018377, 0.28484926, 0.899911, -0.26055562, 0.9058632, 0.07678728)
+transform = Transform3D(0.82969654, 0.54210407, 0.1331437, -0.45070946, 0.79129475, -0.4131751, -0.3293397, 0.2828007, 0.90086603, -0.26049668, 0.89718807, 0.07353752)
 bone_name = "HandGrab.R"
 bone_idx = 47
 
@@ -345,6 +352,55 @@ texture = ExtResource("8_f0b02")
 [node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("5_2e4qg")
 hand = NodePath("../View/3D/ZhenTest/Zhen_Armature/Skeleton3D/HAND_R")
+
+[node name="HealthBar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+pixel_size = 0.001
+billboard = 1
+fixed_size = true
+texture_filter = 0
+texture = SubResource("ViewportTexture_er2ma")
+script = ExtResource("18_unv75")
+hide_when_full = true
+
+[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+size = Vector2i(160, 16)
+
+[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 16)
+offset_right = 160.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 40.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("19_pwth1")
+texture_progress = ExtResource("20_5vafk")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("21_3jo1j")
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
