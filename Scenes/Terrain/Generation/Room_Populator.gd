@@ -71,7 +71,7 @@ func check_chest_position(room_list:Array, pos: Vector2i) -> bool:
 	if pos.x == room_list.size()-1 or pos.y == room_list[0].size()-1 or pos.x == 0 or pos.y == 0:
 		return false
 	
-	if room_list[pos.x+1][pos.y] == -1 or room_list[pos.x-1][pos.y] == -1 or room_list[pos.x][pos.y+1] == -1 or room_list[pos.x][pos.y-1] == -1:
+	if room_list[pos.x+1][pos.y] < 0 or room_list[pos.x-1][pos.y] < 0 or room_list[pos.x][pos.y+1] < 0 or room_list[pos.x][pos.y-1] < 0:
 		return false
 	return true
 

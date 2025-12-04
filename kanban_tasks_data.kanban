@@ -36,6 +36,7 @@
 			"uuid": "6ab65983-ee93-4cc0-90e6-92dd8f712bb5",
 			"title": "STASH",
 			"tasks": [
+				"96f4ef18-d49b-4659-80c1-9fd8bb8b0176",
 				"dbeeb071-035a-41fd-ae70-777918e76f4a",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"4de87959-b07e-4826-a150-8efaf0887e59",
@@ -55,7 +56,10 @@
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
 				"3013a1f6-56cb-4b0a-9f18-a394c0970e17",
 				"d18d8189-a08b-45cb-84b3-a5348b879ad9",
-				"c52ce17b-65e5-41c6-a482-0deb9a8f7526"
+				"c52ce17b-65e5-41c6-a482-0deb9a8f7526",
+				"1a75be70-390a-4048-9724-26bddff601e4",
+				"666b7031-4a8c-4a84-bb93-06965fcf7043",
+				"1754bde2-d3e5-49f4-bb7a-16456265641d"
 			]
 		},
 		{
@@ -63,18 +67,20 @@
 			"title": "Doing",
 			"tasks": [
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
+				"1a271107-4114-48a7-a520-c1a975352cf9",
+				"fd648077-b8d7-4da8-a47f-d2381be01c38",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
-				"13e2431d-82c2-4644-86b5-a9b31551f4d7",
-				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
-				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
+				"85fa8b4f-e579-4701-9fd4-8271597b4529",
 				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
-				"85fa8b4f-e579-4701-9fd4-8271597b4529"
+				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
+				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
 			]
 		},
 		{
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
+				"13e2431d-82c2-4644-86b5-a9b31551f4d7",
 				"c63e9a3b-2071-45c7-a30b-c7735293b563",
 				"ef242db1-0b69-4b2a-b750-adccde50db3d",
 				"d781a931-a51b-4ed1-8d0c-1802ff67dec2",
@@ -124,7 +130,7 @@
 				},
 				{
 					"details": "Enemies",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Loot",
@@ -394,6 +400,48 @@
 			"uuid": "85fa8b4f-e579-4701-9fd4-8271597b4529",
 			"title": "Drop / Remove Items from inventory",
 			"description": "\nPress X while hovering over an item:\n\n\t- Generate a item bundle object on current tile (like a chest, but small and without collision) if none previously exists\n\t- Add dropped item to bundle",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "fd648077-b8d7-4da8-a47f-d2381be01c38",
+			"title": "HP Bars",
+			"description": "",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "1a271107-4114-48a7-a520-c1a975352cf9",
+			"title": "Show crit on damage numbers",
+			"description": "",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "1a75be70-390a-4048-9724-26bddff601e4",
+			"title": "Cursed Items",
+			"description": "",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "666b7031-4a8c-4a84-bb93-06965fcf7043",
+			"title": "Jewelry Items",
+			"description": "",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "96f4ef18-d49b-4659-80c1-9fd8bb8b0176",
+			"title": "STATUS EFFECTS",
+			"description": "\nPoisoned\t- damage per turn, reduced healing\nbleeding - damage per turn\n\n\n",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "1754bde2-d3e5-49f4-bb7a-16456265641d",
+			"title": "Room dictionary",
+			"description": "Record rooms to a dictionary on generation, to be able to later iterate over them and assign them themes and populate and decorate them accordingly",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}

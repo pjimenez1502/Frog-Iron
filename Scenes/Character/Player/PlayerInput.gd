@@ -14,12 +14,16 @@ func _physics_process(_delta: float) -> void:
 		return
 	if Input.is_action_pressed("UP"):
 		grid_movement.action(get_direction_vector(0))
+		return
 	if Input.is_action_pressed("DOWN"):
 		grid_movement.action(get_direction_vector(2))
+		return
 	if Input.is_action_pressed("LEFT"):
 		grid_movement.action(get_direction_vector(1))
+		return
 	if Input.is_action_pressed("RIGHT"):
 		grid_movement.action(get_direction_vector(3))
+		return
 
 func _input(event: InputEvent) -> void:
 	if !is_player_turn:
