@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://dvrf7aqyb3fb0"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_n8rwn"]
+
+[resource]
+script = ExtResource("1_n8rwn")
+equip_slot = 4
+bonus_stats = {
+"CON": 0,
+"DEX": 1,
+"INT": 0,
+"STR": 0,
+"WIS": 0
+}
+bonus_stats_weights = {
+"CON": 1,
+"DEX": 4,
+"INT": 0,
+"STR": 0,
+"WIS": 1
+}
+material = 1
+name = "Gloves"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

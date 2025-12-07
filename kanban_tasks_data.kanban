@@ -43,23 +43,25 @@
 				"80b7d3e5-a001-42e5-bfa1-740c2563917e",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
-				"033c5afc-3a7a-4774-a24a-23395fb68aa1"
+				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
+				"3ff24d5d-1153-48fc-9364-93982688c09f"
 			]
 		},
 		{
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
+				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
 				"3013a1f6-56cb-4b0a-9f18-a394c0970e17",
-				"d18d8189-a08b-45cb-84b3-a5348b879ad9",
 				"c52ce17b-65e5-41c6-a482-0deb9a8f7526",
 				"1a75be70-390a-4048-9724-26bddff601e4",
 				"666b7031-4a8c-4a84-bb93-06965fcf7043",
-				"1754bde2-d3e5-49f4-bb7a-16456265641d"
+				"1754bde2-d3e5-49f4-bb7a-16456265641d",
+				"d18d8189-a08b-45cb-84b3-a5348b879ad9"
 			]
 		},
 		{
@@ -68,10 +70,8 @@
 			"tasks": [
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
-				"fd648077-b8d7-4da8-a47f-d2381be01c38",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"85fa8b4f-e579-4701-9fd4-8271597b4529",
-				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
 			]
@@ -80,6 +80,7 @@
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
+				"fd648077-b8d7-4da8-a47f-d2381be01c38",
 				"13e2431d-82c2-4644-86b5-a9b31551f4d7",
 				"c63e9a3b-2071-45c7-a30b-c7735293b563",
 				"ef242db1-0b69-4b2a-b750-adccde50db3d",
@@ -329,7 +330,7 @@
 		{
 			"uuid": "d18d8189-a08b-45cb-84b3-a5348b879ad9",
 			"title": "Fix Knockback",
-			"description": "\nCharacter movement overrides knockback too easily",
+			"description": "\nKnockback pushes enemies back one or multiple tiles?",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
@@ -443,6 +444,13 @@
 			"title": "Room dictionary",
 			"description": "Record rooms to a dictionary on generation, to be able to later iterate over them and assign them themes and populate and decorate them accordingly",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "3ff24d5d-1153-48fc-9364-93982688c09f",
+			"title": "EQUIPMENT PASSIVES",
+			"description": "\nItem passive effects",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}
 	],

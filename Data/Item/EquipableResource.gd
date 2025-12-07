@@ -18,13 +18,15 @@ class_name EquipableResource
 }
 
 @export var scene: PackedScene
-
+enum MATERIAL {METAL, LEATHER, CLOTH, JEWELRY}
+@export var material: MATERIAL
 func on_use() -> void:
 	print("Used Equipable")
 
 func get_tooltip_content() -> String:
 	var tooltip: String
-	tooltip = "[color=#%s]%s[/color]" % [Global.rarity_colors[rarity].to_html() ,name]
+	var item_material: String = Global.rarity_prefixes[MATERIAL.keys()[material]][rarity]
+	tooltip = "[color=#%s]%s %s[/color]" % [Global.rarity_colors[rarity].to_html(), item_material, name]
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	for stat: String in bonus_stats:
 		if bonus_stats[stat] != 0:

@@ -11,6 +11,17 @@
         "visibility": 0.0
       }
     },
+    "res://Data/Item/Equipable/Armor/": {
+      "metadata/_custom_type_script": {
+        "visibility": 0.0
+      },
+      "resource_local_to_scene": {
+        "visibility": 0.0
+      },
+      "resource_name": {
+        "visibility": 0.0
+      }
+    },
     "res://Data/Item/Equipable/Weapon/": {
       "metadata/_custom_type_script": {
         "visibility": 0.0
@@ -35,8 +46,8 @@
     }
   },
   "recent_paths": [
-    "res://Data/Item/Equipable/Weapon/Melee/",
-    "res://Data/Item/Equipable/Weapon/"
+    "res://Data/Item/Equipable/Weapon/",
+    "res://Data/Item/Equipable/Armor/"
   ],
   "table_functions": {
     "filter": [

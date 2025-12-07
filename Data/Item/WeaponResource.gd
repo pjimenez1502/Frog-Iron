@@ -23,7 +23,8 @@ class_name WeaponResource
 
 func get_tooltip_content() -> String:
 	var tooltip: String
-	tooltip = "[color=#%s]%s[/color]" % [Global.rarity_colors[rarity].to_html() ,name]
+	var item_material: String = Global.rarity_prefixes[MATERIAL.keys()[material]][rarity]
+	tooltip = "[color=#%s]%s %s[/color]" % [Global.rarity_colors[rarity].to_html(), item_material, name]
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	tooltip += "\n Damage: %d" % calculate_damage(GameDirector.player.character_stats)
 	tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)

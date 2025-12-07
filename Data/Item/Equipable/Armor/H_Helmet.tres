@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://clyy05uhfnac6"]
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://dmth3q1jl5p7m"]
 
-[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_hqflw"]
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_48tpe"]
 
 [resource]
-script = ExtResource("1_hqflw")
+script = ExtResource("1_48tpe")
 equip_slot = 2
 bonus_stats = {
 "CON": 1,

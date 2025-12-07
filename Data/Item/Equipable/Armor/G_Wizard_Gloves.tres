@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://dyn6mhveepxfd"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_0agcf"]
+
+[resource]
+script = ExtResource("1_0agcf")
+equip_slot = 4
+bonus_stats = {
+"CON": 0,
+"DEX": 0,
+"INT": 1,
+"STR": -1,
+"WIS": 0
+}
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 0,
+"INT": 4,
+"STR": 0,
+"WIS": 2
+}
+name = "Wizard Gloves"
+desc = "For a perfect conection between wizard and staff"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"

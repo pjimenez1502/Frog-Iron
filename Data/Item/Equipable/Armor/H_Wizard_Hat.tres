@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EquipableResource" load_steps=2 format=3 uid="uid://dapottynpll7n"]
+
+[ext_resource type="Script" uid="uid://cclko7w6ctl7a" path="res://Data/Item/EquipableResource.gd" id="1_0l6kq"]
+
+[resource]
+script = ExtResource("1_0l6kq")
+equip_slot = 2
+bonus_stats = {
+"CON": 0,
+"DEX": 0,
+"INT": 1,
+"STR": 0,
+"WIS": 0
+}
+bonus_stats_weights = {
+"CON": 0,
+"DEX": 0,
+"INT": 4,
+"STR": 0,
+"WIS": 2
+}
+material = 2
+name = "Wizard Hat"
+desc = "Pointy Hat that focuses an user's sorcery"
+metadata/_custom_type_script = "uid://cclko7w6ctl7a"
