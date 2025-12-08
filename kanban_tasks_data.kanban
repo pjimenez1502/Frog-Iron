@@ -44,7 +44,8 @@
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
 				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
-				"3ff24d5d-1153-48fc-9364-93982688c09f"
+				"3ff24d5d-1153-48fc-9364-93982688c09f",
+				"99ea47de-eba6-4ee1-89b0-6762aae1cfdd"
 			]
 		},
 		{
@@ -61,6 +62,7 @@
 				"1a75be70-390a-4048-9724-26bddff601e4",
 				"666b7031-4a8c-4a84-bb93-06965fcf7043",
 				"1754bde2-d3e5-49f4-bb7a-16456265641d",
+				"6c7e96ea-79ff-4b09-8bcc-7294302778e1",
 				"d18d8189-a08b-45cb-84b3-a5348b879ad9"
 			]
 		},
@@ -329,7 +331,7 @@
 		},
 		{
 			"uuid": "d18d8189-a08b-45cb-84b3-a5348b879ad9",
-			"title": "Fix Knockback",
+			"title": "Knockback",
 			"description": "\nKnockback pushes enemies back one or multiple tiles?",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
@@ -421,7 +423,7 @@
 		{
 			"uuid": "1a75be70-390a-4048-9724-26bddff601e4",
 			"title": "Cursed Items",
-			"description": "",
+			"description": "\nImplement inventory slot locking (if cursed item equipped, if bodypart not compatible...)\n\nUnable to be removed\nHeavily penalizing stat, but also strong positive\n\t(ex: huge -con, but very high damage weapon)\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -450,6 +452,20 @@
 			"uuid": "3ff24d5d-1153-48fc-9364-93982688c09f",
 			"title": "EQUIPMENT PASSIVES",
 			"description": "\nItem passive effects",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "99ea47de-eba6-4ee1-89b0-6762aae1cfdd",
+			"title": "Passive regen?",
+			"description": "",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "6c7e96ea-79ff-4b09-8bcc-7294302778e1",
+			"title": "Special Objects on each level",
+			"description": "\n\t= MULTIPLE =\nChests (multiple)\n\n\n\t = ONE PER LEVEL =\nPurifying Altar\t\t(interact to cleanse a cursed item)\nCurse Altar\t\t\t\t(interact to curse an item)\n\nArtifact stand\t(holds a powerful item, gain it on interact, but can spawn multiple enemies)\n\nShop\n\nBonfire (one single use)\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}

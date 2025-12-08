@@ -6,6 +6,7 @@ class_name Player
 func _ready() -> void:
 	super._ready()
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
+	character_stats.SANITY_UPDATE.connect(player_update_sanity)
 	set_xp(0)
 	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
@@ -40,6 +41,9 @@ func equipment_update(equipment: Dictionary) -> void:
 
 func player_update_hp(max_hp: int, current_hp:int) -> void:
 	SignalBus.PlayerHPUpdate.emit(max_hp, current_hp)
+
+func player_update_sanity(max_sanity: int, current_sanity: int) -> void:
+	SignalBus.PlayerSanityUpdate.emit(max_sanity, current_sanity)
 
 func death() -> void:
 	SignalBus.PlayerDead.emit()

@@ -35,3 +35,8 @@ const ENEMY_TURN_DURATION: float = 0.1
 
 ## DUNGEON
 const TILE_SIZE: int = 4
+
+
+## STATS
+const con_health_mult: int = 1
+const wis_sanity_mult: int = 2

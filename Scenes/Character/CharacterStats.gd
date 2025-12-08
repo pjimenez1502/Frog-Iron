@@ -2,17 +2,22 @@ extends Node
 class_name CharacterStats
 
 signal HEALTH_UPDATE
+signal SANITY_UPDATE
 signal DAMAGED
 signal DEAD
 
 enum CHAR_TAG {ENEMY, PLAYER}
 @export var character_tag : CHAR_TAG
 
-@export var base_speed: int = 5
-var speed: float
+#@export var base_speed: int = 5
+#var speed: float
 @export var base_HP: int = 4
 var max_HP: int
 var current_HP: int
+
+@export var base_sanity: int = 10
+var max_sanity: int
+var current_sanity: int
 
 @export_category("CharStats")
 @export var base_stats: Dictionary = {
@@ -34,7 +39,8 @@ var calculated_stats : Dictionary
 func _ready() -> void:
 	calculate_stats()
 	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
-	calculate_speed()
+	init_sanity.call_deferred()
+	#calculate_speed()
 
 func increase_stat(stat: String, count: int) -> void:
 	match stat:
@@ -70,44 +76,70 @@ func calculate_stats() -> Dictionary:
 
 func recalculate_stats() -> void:
 	calculate_hp()
-	calculate_speed()
+	calculate_sanity()
+	#calculate_speed()
 
-func calculate_speed() -> void:
-	speed = base_speed + calculated_stats["DEX"] * 0.5
+#func calculate_speed() -> void:
+	#speed = base_speed + calculated_stats["DEX"] * 0.5
 
+## HP
 func init_hp() -> void:
-	max_HP = base_HP + calculated_stats["CON"]
+	max_HP = base_HP + calculated_stats["CON"] * Global.con_health_mult
 	current_HP = max_HP
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 
 func calculate_hp() -> void:
 	var prev_max_hp: int = max_HP
-	
-	max_HP = base_HP + calculated_stats["CON"]
+	max_HP = base_HP + calculated_stats["CON"] * Global.con_health_mult
 	current_HP = roundi(float(current_HP) / float(prev_max_hp)  * max_HP)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 
 func heal(_value: int) -> void:
-	current_HP = clamp(current_HP + _value, 0, max_HP)
+	current_HP = clampi(current_HP + _value, 0, max_HP)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 	SignalBus.DamageText.emit(str(_value), get_parent(), DamageTextOverlay.TYPE.HEAL)
 
 func damage(_damage: int, _hitchance: int) -> void:
 	current_HP -= calc_hit_camage(_damage, _hitchance)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
-	
 	if _damage > 0:
 		SignalBus.DamageText.emit(str(_damage), get_parent(), DamageTextOverlay.TYPE.DAMAGE)
 	else:
 		SignalBus.DamageText.emit("MISS", get_parent(), DamageTextOverlay.TYPE.MESSAGE)
 	
 	if current_HP <= 0:
-		death()
+		defeat(DEFEAT_TYPE.HEALTH)
 		return
 	DAMAGED.emit()
 
-func death() -> void:
-	DEAD.emit()
+## SANITY
+func init_sanity() -> void:
+	max_sanity = base_sanity + calculated_stats["WIS"] * Global.wis_sanity_mult
+	current_sanity = max_sanity
+	SANITY_UPDATE.emit(max_sanity, current_sanity)
+
+func calculate_sanity() -> void:
+	var prev_max_sanity: int = max_sanity
+	max_sanity = base_sanity + calculated_stats["WIS"] * Global.wis_sanity_mult
+	current_sanity = roundi(float(current_sanity) / float(prev_max_sanity)  * max_sanity)
+	SANITY_UPDATE.emit(max_sanity, current_sanity)
+
+func change_sanity(_value: int) -> void:
+	current_sanity = clampi(current_sanity + _value, 0, max_sanity)
+	SANITY_UPDATE.emit(max_sanity, current_sanity)
+	if current_sanity == 0:
+		defeat(DEFEAT_TYPE.SANITY)
+
+
+
+enum DEFEAT_TYPE { HEALTH, SANITY }
+func defeat(defeat_reason: DEFEAT_TYPE) -> void:
+	match defeat_reason:
+		DEFEAT_TYPE.HEALTH:
+			DEAD.emit()
+		DEFEAT_TYPE.SANITY:
+			print("defeated sanity")
+
 
 
 func calc_hit_camage(_damage: int, hitchance: int) -> int:
