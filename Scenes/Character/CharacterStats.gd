@@ -2,6 +2,7 @@ extends Node
 class_name CharacterStats
 
 signal HEALTH_UPDATE
+signal STAMINA_UPDATE
 signal SANITY_UPDATE
 signal DAMAGED
 signal DEAD
@@ -14,6 +15,10 @@ enum CHAR_TAG {ENEMY, PLAYER}
 @export var base_HP: int = 4
 var max_HP: int
 var current_HP: int
+
+@export var base_stamina: int = 8
+var max_stamina: int
+var current_stamina: int
 
 @export var base_sanity: int = 10
 var max_sanity: int
@@ -38,9 +43,13 @@ var calculated_stats : Dictionary
 
 func _ready() -> void:
 	calculate_stats()
-	init_hp.call_deferred() ## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
-	init_sanity.call_deferred()
+	init_stats.call_deferred()## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
 	#calculate_speed()
+
+func init_stats() -> void:
+	init_hp()
+	init_stamina()
+	init_sanity()
 
 func increase_stat(stat: String, count: int) -> void:
 	match stat:
@@ -76,6 +85,7 @@ func calculate_stats() -> Dictionary:
 
 func recalculate_stats() -> void:
 	calculate_hp()
+	calculate_stamina()
 	calculate_sanity()
 	#calculate_speed()
 
@@ -111,6 +121,26 @@ func damage(_damage: int, _hitchance: int) -> void:
 		defeat(DEFEAT_TYPE.HEALTH)
 		return
 	DAMAGED.emit()
+
+
+## STAMINA
+func init_stamina() -> void:
+	max_stamina = base_stamina + calculated_stats["DEX"] * Global.dex_stamina_mult
+	current_stamina = max_stamina
+	STAMINA_UPDATE.emit(max_stamina, current_stamina)
+	
+func calculate_stamina() -> void:
+	var prev_max_stamina: int = max_stamina
+	max_stamina = base_stamina + calculated_stats["DEX"] * Global.dex_stamina_mult
+	current_stamina = roundi(float(current_stamina) / float(prev_max_stamina) * max_stamina)
+	STAMINA_UPDATE.emit(max_stamina, current_stamina)
+
+func change_stamina(_value: int) -> void:
+	current_stamina = clampi(current_stamina + _value, 0, max_stamina)
+	STAMINA_UPDATE.emit(max_stamina, current_stamina)
+
+func stamina_regen() -> void:
+	pass
 
 ## SANITY
 func init_sanity() -> void:

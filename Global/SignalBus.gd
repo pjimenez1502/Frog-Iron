@@ -15,6 +15,7 @@ signal UpdateCameraRotation
 ## Player UI Update
 signal PlayerXPUpdate
 signal PlayerHPUpdate
+signal PlayerStaminaUpdate
 signal PlayerSanityUpdate
 signal PlayerCoinUpdate
 signal PlayerStatsUpdate

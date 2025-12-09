@@ -8,7 +8,8 @@ enum TYPE { MESSAGE, DAMAGE, HEAL, POISON }
 var text_colors : Dictionary = {
 	"MESSAGE": Color(1.0, 1.0, 1.0, 1.0),
 	"DAMAGE": Color(0.784, 0.0, 0.0, 1.0),
-	"HEAL": Color(0.0, 0.784, 0.0, 1.0)
+	"HEAL": Color(0.0, 0.784, 0.0, 1.0),
+	"SANITY": Color(0.599, 0.0, 0.648, 1.0)
 }
 
 func _ready() -> void:

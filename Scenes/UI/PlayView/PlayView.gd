@@ -16,9 +16,6 @@ func set_scene(scene: PackedScene) -> Node3D:
 	sub_viewport.add_child(instance)
 	return instance
 
-func launch_demo_scene() -> void:
-	set_scene(DEMO_DUNGEON)
-
 func launch_dungeon_scene(_seed: int = -1) -> void:
 	var generated_dungeon: GeneratedDungeon = set_scene(GENERATED_DUNGEON)
 	
@@ -27,6 +24,10 @@ func launch_dungeon_scene(_seed: int = -1) -> void:
 		RNG.seed = _seed
 	var DUNGEON_SEED: int = RNG.randi()
 	generated_dungeon.generate_dungeon(1, DUNGEON_SEED)
+
+
+func launch_demo_scene() -> void:
+	set_scene(DEMO_DUNGEON)
 
 
 func on_player_death() -> void:

@@ -15,7 +15,6 @@ var dungeon_params: Dictionary = {
 	"LEVEL": 1,
 	"SIZE": Vector2(32,32),
 	"TARGET_ROOM_COUNT": 16,
-	"SEED": "test",
 }
 
 func generate_dungeon(level: int, level_seed: int) -> void:

@@ -30,7 +30,7 @@ func open_demo() -> void:
 
 func open_dungeon() -> void:
 	var game_view: PlayView = set_view(PLAY_VIEW)
-	game_view.launch_dungeon_scene(111) ## test seed
+	game_view.launch_dungeon_scene(randi()) ## test seed
 
 
 ## TIME
