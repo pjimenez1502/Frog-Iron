@@ -128,7 +128,8 @@ func init_stamina() -> void:
 	max_stamina = base_stamina + calculated_stats["DEX"] * Global.dex_stamina_mult
 	current_stamina = max_stamina
 	STAMINA_UPDATE.emit(max_stamina, current_stamina)
-	
+	SignalBus.TurnEnded.connect(stamina_regen)
+
 func calculate_stamina() -> void:
 	var prev_max_stamina: int = max_stamina
 	max_stamina = base_stamina + calculated_stats["DEX"] * Global.dex_stamina_mult
@@ -139,8 +140,13 @@ func change_stamina(_value: int) -> void:
 	current_stamina = clampi(current_stamina + _value, 0, max_stamina)
 	STAMINA_UPDATE.emit(max_stamina, current_stamina)
 
+var stamina_regen_turns: int = 4
+var stamina_regen_counter: int = 0
 func stamina_regen() -> void:
-	pass
+	stamina_regen_counter += 1
+	if stamina_regen_counter >= stamina_regen_turns:
+		stamina_regen_counter = 0
+		change_stamina(1)
 
 ## SANITY
 func init_sanity() -> void:

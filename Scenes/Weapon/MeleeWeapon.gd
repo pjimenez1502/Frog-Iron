@@ -25,6 +25,7 @@ func attack(hit_position: Vector3i) -> void:
 	var calc_damage: int = weapon_data.calculate_damage(character_stats)
 	var calc_hitchance: int = weapon_data.calculate_hitchance(character_stats)
 	var calc_knockback: int = knockback
+	character_stats.change_stamina(-weapon_data.stamina_cost)
 	
 	new_hit.set_weapon_data(calc_damage, calc_hitchance, calc_knockback, target_layer)
 	new_hit.global_position = GameDirector.level_map.grid_to_globalpos(hit_position)

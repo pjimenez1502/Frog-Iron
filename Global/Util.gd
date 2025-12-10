@@ -22,8 +22,8 @@ func get_mouse_pos(origin: Node3D) -> Vector3:
 
 func round_direction(direction: Vector3) -> Vector2:
 	var _round_direction: Vector2 = (Vector2(1,0) if abs(direction.x) > abs(direction.z) else Vector2(0,1)) * Vector2(sign(direction.x), sign(direction.z))
-	print(abs(direction.x), " - ", abs(direction.z))
-	print("Direction: ", round_direction)
+	#print(abs(direction.x), " - ", abs(direction.z))
+	#print("Direction: ", round_direction)
 	return _round_direction
 
 

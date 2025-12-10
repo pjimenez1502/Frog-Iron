@@ -24,6 +24,7 @@ hitchance_scaling = {
 "STR": 0,
 "WIS": 0
 }
+stamina_cost = 4
 bonus_stats_weights = {
 "CON": 0,
 "DEX": 1,

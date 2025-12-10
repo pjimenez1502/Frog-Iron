@@ -23,6 +23,7 @@ func attack(direction: Vector3) -> void:
 	var calc_damage: int = weapon_data.calculate_damage(character_stats)
 	var calc_hitchance: int = weapon_data.calculate_hitchance(character_stats)
 	var calc_knockback: int = knockback
+	character_stats.change_stamina(-weapon_data.stamina_cost)
 	
 	spawn_projectile(calc_damage, calc_hitchance, calc_knockback, direction)
 

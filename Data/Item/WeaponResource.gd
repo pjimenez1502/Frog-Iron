@@ -20,6 +20,7 @@ class_name WeaponResource
 	"WIS": 0,
 	"CON": 0,
 }
+@export var stamina_cost: int = 1
 
 func get_tooltip_content() -> String:
 	var tooltip: String
@@ -28,6 +29,7 @@ func get_tooltip_content() -> String:
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	tooltip += "\n Damage: %d" % calculate_damage(GameDirector.player.character_stats)
 	tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)
+	#tooltip += "\n Stamina Cost: %d" % stamina_cost
 	for stat: String in bonus_stats:
 		if bonus_stats[stat] != 0:
 			tooltip += "\n -%s: +%d" % [stat, bonus_stats[stat]]
