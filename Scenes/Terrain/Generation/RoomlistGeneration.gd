@@ -91,7 +91,7 @@ func place_corridors() -> void:
 func place_entrance_exit() -> void:
 	map[room_centers[0].x][room_centers[0].y] = -2
 	
-	var exit_room: int = RNG.randi_range(1, room_centers.size())
+	var exit_room: int = RNG.randi_range(1, room_centers.size()-1)
 	map[room_centers[exit_room].x][room_centers[exit_room].y] = -3
 
 

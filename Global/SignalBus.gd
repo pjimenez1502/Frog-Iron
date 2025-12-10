@@ -29,7 +29,7 @@ signal UpdateEmergentInv
 
 
 ##Game Signals
-signal PlayerTurn
+signal TurnEnded
 signal EnemyTurn
 
 signal LaunchDemoScene

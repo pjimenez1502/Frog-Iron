@@ -27,6 +27,7 @@ glow_hdr_threshold = 2.0
 
 [node name="GeneratedDungeon" type="Node3D"]
 script = ExtResource("1_bxfei")
+verbose = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_66gi2")

@@ -13,7 +13,7 @@ func _ready() -> void:
 func set_player(_player: Player) -> void:
 	player = _player
 	player.character_grid_movement.CharacterActed.connect(after_player_action)
-	SignalBus.PlayerTurn.emit(true)
+	SignalBus.TurnEnded.emit()
 
 func set_level_map(level: LevelMap) -> void:
 	level_map = level
@@ -23,11 +23,10 @@ func update_navmap() -> void:
 	level_map.update_AStar()
 
 func after_player_action() -> void:
-	SignalBus.PlayerTurn.emit(false)
 	turn_wait_timer.start(0.2)
 	await turn_wait_timer.timeout
 	SignalBus.EnemyTurn.emit()
 	
 	turn_wait_timer.start(0.25)
 	await turn_wait_timer.timeout
-	SignalBus.PlayerTurn.emit(true)
+	SignalBus.TurnEnded.emit()

@@ -53,7 +53,7 @@ func place_door(pos: Vector2i, rotation: float) -> void:
 ## LOOT
 func place_treasure(room_list: Array, params: Dictionary) -> void:
 	for room_id: int  in range(2, params["TARGET_ROOM_COUNT"]):
-		var treasure_count_weight = [4,8,1]
+		var treasure_count_weight: Array = [4,8,1]
 		var room_treasure_target: int = RNG.rand_weighted(treasure_count_weight)
 		var placed_treasure: int = 0
 		var treasure_tries: int = 0

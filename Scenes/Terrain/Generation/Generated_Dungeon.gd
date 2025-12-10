@@ -8,8 +8,9 @@ class_name GeneratedDungeon
 @onready var enemy_spawner: EnemySpawner = %EnemySpawner
 
 var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
-
 var room_list: Array
+
+@export var verbose: bool
 
 var dungeon_params: Dictionary = {
 	"LEVEL": 1,
@@ -22,10 +23,18 @@ func generate_dungeon(level: int, level_seed: int) -> void:
 	RNG.seed = level_seed
 	
 	room_list = room_list_gen.generate_list(dungeon_params, RNG)
+	if verbose:
+		print("GENERATION: Room list generated")
 	room_builder.build(room_list)
+	if verbose:
+		print("GENERATION: Room building done")
 	room_populator.populate(room_list, room_list_gen.room_centers, dungeon_params, RNG)
+	if verbose:
+		print("GENERATION: Room population done")
 	
 	map.set_room_list(room_list)
 	enemy_spawner.spawn_enemies(room_list, dungeon_params, RNG)
+	if verbose:
+		print("GENERATION: enemies spawned")
 	
 	Util.print_room_list(room_list, dungeon_params)

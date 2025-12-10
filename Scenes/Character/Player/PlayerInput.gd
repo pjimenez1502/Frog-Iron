@@ -7,7 +7,8 @@ var is_player_turn: bool
 
 func _ready() -> void:
 	SignalBus.UpdateCameraRotation.connect(update_camera_rotation)
-	SignalBus.PlayerTurn.connect(set_player_turn)
+	grid_movement.CharacterActed.connect(set_player_turn.bind(false))
+	SignalBus.TurnEnded.connect(set_player_turn.bind(true))
 
 func _physics_process(_delta: float) -> void:
 	if !is_player_turn:
