@@ -14,7 +14,7 @@ var room_list: Array
 
 var dungeon_params: Dictionary = {
 	"LEVEL": 1,
-	"SIZE": Vector2(32,32),
+	"SIZE": Vector2(48,24),
 	"TARGET_ROOM_COUNT": 16,
 }
 
@@ -32,9 +32,11 @@ func generate_dungeon(level: int, level_seed: int) -> void:
 	if verbose:
 		print("GENERATION: Room population done")
 	
+	map.map_size = dungeon_params["SIZE"]
 	map.set_room_list(room_list)
 	enemy_spawner.spawn_enemies(room_list, dungeon_params, RNG)
 	if verbose:
 		print("GENERATION: enemies spawned")
 	
-	Util.print_room_list(room_list, dungeon_params)
+	if verbose:
+		Util.print_room_list(room_list, dungeon_params)

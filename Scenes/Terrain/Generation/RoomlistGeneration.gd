@@ -29,12 +29,12 @@ func generate_list(parameters: Dictionary, _rng: RandomNumberGenerator) -> Array
 
 func init_map(parameters: Dictionary) -> void:
 	var astarid: int = 0
-	for row: int in parameters["SIZE"].y:
+	for col: int in parameters["SIZE"].x:
 		map.append([])
-		for col: int in parameters["SIZE"].x:
-			map[row].append(0)
-			GenAstar.add_point(astarid, Vector2i(row,col), 6)
-			GenAstarDictionary[astarid] = Vector2i(row,col)
+		for row: int in parameters["SIZE"].y:
+			map[col].append(0)
+			GenAstar.add_point(astarid, Vector2i(col,row), 6)
+			GenAstarDictionary[astarid] = Vector2i(col,row)
 			astarid+=1
 	
 	

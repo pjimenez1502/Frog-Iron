@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=23 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b218jse6ii6kd" path="res://Scenes/UI/PlayView/EmergentInventory/emergent_inventory.tscn" id="16_m0chj"]
 [ext_resource type="PackedScene" uid="uid://bb85h5bl4ip1t" path="res://Scenes/UI/PlayView/Inventory/InventoryView.tscn" id="17_5me5s"]
 [ext_resource type="Script" uid="uid://bmdr78ylnhag2" path="res://Scenes/UI/PlayView/Inventory/ItemTooltip.gd" id="17_7ut3y"]
+[ext_resource type="PackedScene" uid="uid://45j0mp5qvy6g" path="res://Scenes/UI/PlayView/MapMenu.tscn" id="18_rkhqr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
 shader = ExtResource("8_ufkdj")
@@ -342,11 +343,12 @@ clip_tabs = false
 close_with_middle_mouse = false
 scrolling_enabled = false
 scroll_to_selected = false
-tab_count = 4
+tab_count = 5
 tab_0/title = "Character"
 tab_1/title = "Inventory"
 tab_2/title = "Skills"
-tab_3/title = "Options"
+tab_3/title = "Map"
+tab_4/title = "Options"
 
 [node name="Close" type="TextureButton" parent="UI/PlayMenu/VBoxContainer/MenuTop"]
 custom_minimum_size = Vector2(42, 42)
@@ -395,6 +397,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MapMenu" parent="UI/PlayMenu/VBoxContainer/Content" instance=ExtResource("18_rkhqr")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="OptionsMenu" type="Panel" parent="UI/PlayMenu/VBoxContainer/Content"]
 unique_name_in_owner = true

@@ -29,7 +29,7 @@ func spawn_enemies(room_list: Array, parameters: Dictionary, _rng: RandomNumberG
 
 func find_enemy_spawnpos(room_list: Array, parameters: Dictionary) -> Vector3i:
 	for try: int in 10:
-		var pos: Vector2i = Vector2i(RNG.randi_range(0, parameters["SIZE"].x-1), RNG.randi_range(0, parameters["SIZE"].x-1))
+		var pos: Vector2i = Vector2i(RNG.randi_range(0, parameters["SIZE"].x-1), RNG.randi_range(0, parameters["SIZE"].y-1))
 		if room_list[pos.x][pos.y] > 1:
 			return Vector3i(pos.x, 0, pos.y)
 	return -Vector3.ONE

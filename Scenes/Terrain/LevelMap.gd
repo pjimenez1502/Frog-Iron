@@ -1,6 +1,12 @@
 extends Node3D
 class_name LevelMap
 
+var map_size: Vector2i
+var room_list: Array
+
+enum VISIBILITY { UNSEEN, SEEN, VISIBLE }
+var tile_dictionary: Dictionary
+var tile_visibility: Dictionary
 var walkable_tiles: Array[Vector3i]
 
 var AStar: Dictionary = {
@@ -44,9 +50,12 @@ func generate_walkablemap_from_room_map(room_list: Array) -> void:
 	
 
 
-func set_room_list(room_list: Array) -> void:
-	generate_walkablemap_from_room_map(room_list)
+func set_room_list(_room_list: Array) -> void:
+	room_list = _room_list
+	generate_walkablemap_from_room_map(_room_list)
 	update_AStar()
+	
+	SignalBus.MapUpdate.emit(show_map())
 
 
 #func globalpos_to_grid(pos: Vector3) -> Vector3i:
@@ -54,3 +63,25 @@ func set_room_list(room_list: Array) -> void:
 
 func grid_to_globalpos(grid_pos: Vector3i) -> Vector3:
 	return Vector3(grid_pos.x * Global.TILE_SIZE, 0, grid_pos.z * Global.TILE_SIZE)
+
+func show_map() -> String:
+	var map_text: String
+	for row: int in map_size.y:
+		var line: String = ""
+		for col: int in map_size.x:
+			if GameDirector.player.character_grid_movement.grid_position == Vector3i(col, 0, row):
+				line += ("[color=red][X][/color]")
+				continue
+			match room_list[col][row]:
+				0:
+					line += ("[color=black][ ][/color]")
+				Util.TILE_CODES.ENTRANCE:
+					line += ("[color=green][I][/color]")
+				Util.TILE_CODES.EXIT:
+					line += ("[color=green][O][/color]")
+				Util.TILE_CODES.CHEST:
+					line += ("[color=gold][C][/color]")
+				_:
+					line += ("[color=gray][ ][/color]")
+		map_text += (line+"\n")
+	return map_text

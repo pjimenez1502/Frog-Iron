@@ -27,6 +27,7 @@ signal OpenEmergentInv
 signal CloseEmergentInv
 signal UpdateEmergentInv
 
+signal MapUpdate
 
 ##Game Signals
 signal TurnEnded

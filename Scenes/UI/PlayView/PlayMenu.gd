@@ -3,9 +3,9 @@ class_name PlayMenuView
 
 @onready var menu_tabs: TabBar = %MenuTabs
 
-@onready var menu_views : Array = [ %CharacterMenu, %InventoryMenu, %SkillsMenu, %OptionsMenu ]
+@onready var menu_views : Array = [ %CharacterMenu, %InventoryMenu, %SkillsMenu, %MapMenu, %OptionsMenu ]
 
-enum PlayMenu {CHARACTER, INVENTORY, SKILLS, PAUSE, NONE}
+enum PlayMenu {CHARACTER, INVENTORY, SKILLS, MAP, PAUSE, NONE}
 var current_menu: PlayMenu = PlayMenu.NONE
 
 func _ready() -> void:
@@ -51,6 +51,12 @@ func open_pause() -> void:
 	else:
 		close_menu()
 
+func open_map() -> void:
+	if current_menu == PlayMenu.NONE:
+		match_menu(PlayMenu.MAP)
+	else:
+		close_menu()
+
 func _tab_changed(tab: int) -> void:
 	match_menu(tab)
 
@@ -61,3 +67,5 @@ func _input(event: InputEvent) -> void:
 		open_character()
 	if event.is_action_pressed("MENU_INVENTORY"):
 		open_inventory()
+	if event.is_action_pressed("MENU_MAP"):
+		open_map()

@@ -61,7 +61,6 @@ TILE_DICTIONARY = Dictionary[String, PackedScene]({
 [node name="RoomPopulator" type="Node" parent="Generator"]
 unique_name_in_owner = true
 script = ExtResource("6_lbs47")
-verbose = true
 player_scene = ExtResource("2_x4fud")
 
 [node name="EnemySpawner" type="Node" parent="Generator"]
