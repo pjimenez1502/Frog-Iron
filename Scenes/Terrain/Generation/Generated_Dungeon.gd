@@ -1,6 +1,8 @@
 extends Node3D
 class_name GeneratedDungeon
 
+@export var verbose: bool
+
 @onready var map: LevelMap = %MAP
 @onready var room_list_gen: RoomListGen = %RoomListGen
 @onready var room_builder: RoomBuilder = %RoomBuilder
@@ -9,8 +11,6 @@ class_name GeneratedDungeon
 
 var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
 var room_list: Array
-
-@export var verbose: bool
 
 var dungeon_params: Dictionary = {
 	"LEVEL": 1,
