@@ -8,7 +8,9 @@ signal PlayerInventoryUpdate
 signal PlayerEquipmentUpdate
 signal PlayerStatIncrease
 signal AvailableStatUP
+
 signal PlayerDead
+signal PlayerMoved
 
 signal UpdateCameraRotation
 

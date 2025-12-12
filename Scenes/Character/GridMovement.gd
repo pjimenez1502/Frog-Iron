@@ -3,6 +3,7 @@ class_name CharacterGridMovement
 
 const GRID_DISTANCE: int = 4
 signal CharacterActed
+signal CharacterMoved
 
 var character: Character
 @onready var raycasts: Dictionary[String, RayCast3D] = {"NORTH": $North, "SOUTH": $Shouth, "WEST": $West, "EAST": $East}
@@ -20,10 +21,10 @@ func setup(_character: Character) -> void:
 func set_at_grid_position(_grid_position: Vector3i) -> void:
 	character.global_position = GameDirector.level_map.grid_to_globalpos(_grid_position)
 	grid_position = _grid_position
+	CharacterMoved.emit(grid_position)
 
 func action(direction: Vector2i) -> void:
 	character.character_animation.look_towards(Vector3(direction.x, 0, direction.y))
-	
 	var collided: Object = get_ray_by_direction(direction).get_collider()
 	if !collided:
 		move(direction)
@@ -39,8 +40,10 @@ func move(direction: Vector2i) -> void:
 	var target_position: Vector3 = GameDirector.level_map.grid_to_globalpos(grid_position)
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
-	CharacterActed.emit()
+	
 	character.character_animation.walk(Global.PLAYER_TURN_DURATION)
+	CharacterActed.emit()
+	CharacterMoved.emit(grid_position)
 	
 	if verbose:
 		print("Moved to: %s" % grid_position)

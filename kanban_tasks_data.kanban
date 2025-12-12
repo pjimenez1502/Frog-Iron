@@ -70,9 +70,9 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
+				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
-				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"85fa8b4f-e579-4701-9fd4-8271597b4529",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
@@ -206,9 +206,22 @@
 		{
 			"uuid": "606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 			"title": "Fog of War",
-			"description": "\nRaycast towards enemies when near to see if visible\nTiles start hidden by default\nRaycast / area around player. If they hit a Tile, reveal it.\n",
+			"description": "\n",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
-			"steps": []
+			"steps": [
+				{
+					"details": "Shadowcasting",
+					"done": true
+				},
+				{
+					"details": "Hide Enemies",
+					"done": false
+				},
+				{
+					"details": "Update Map View",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "a11dc16a-f20e-48be-b636-1005ab2d25dc",

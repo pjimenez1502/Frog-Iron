@@ -1,6 +1,7 @@
 extends Character
 class_name Player
 
+signal PlayerMoved
 @onready var player_inventory: PlayerInventory = %PlayerInventory
 
 func _ready() -> void:
@@ -8,6 +9,8 @@ func _ready() -> void:
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
 	character_stats.STAMINA_UPDATE.connect(player_update_stamina)
 	character_stats.SANITY_UPDATE.connect(player_update_sanity)
+	character_grid_movement.CharacterMoved.connect(SignalBus.PlayerMoved.emit)
+	
 	set_xp(0)
 	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
@@ -17,15 +20,6 @@ func _ready() -> void:
 	SignalBus.PlayerEquipmentUpdate.connect(equipment_update)
 	
 	GameDirector.set_player(self)
-
-#func real_time_movement(direction: Vector3, delta: float) -> void:
-	#if direction:
-		#velocity.x = direction.x * character_stats.speed
-		#velocity.z = direction.z * character_stats.speed
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, character_stats.speed)
-		#velocity.z = move_toward(velocity.z, 0, character_stats.speed)
-	#character_animation.movement_animation(Vector3(velocity.x, 0, velocity.z), direction, delta)
 
 
 func increase_stat(stat:String, count:int) -> void:

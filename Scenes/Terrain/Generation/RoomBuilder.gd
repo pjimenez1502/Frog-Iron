@@ -26,8 +26,8 @@ func build(room_list: Array) -> void:
 					place_tile("FLOOR_1", Vector2i(x,y))
 
 func place_tile(tile_id: String, pos: Vector2i) -> void:
-	var tile: Node3D =TILE_DICTIONARY[tile_id].instantiate()
+	var tile: MapTile = TILE_DICTIONARY[tile_id].instantiate()
 	MAP.tile_dictionary[pos] = tile
 	MAP.tile_visibility[pos] = MAP.VISIBILITY.UNSEEN
-	MAP.add_child(tile)
+	MAP.add_tile(tile, pos)
 	tile.position = Vector3(pos.x, 0, pos.y) * Global.TILE_SIZE

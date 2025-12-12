@@ -49,7 +49,8 @@ const WOODEN_DOOR = preload("uid://dbrvim0p68m4k")
 func place_door(pos: Vector2i, rotation: float) -> void:
 	## TODO: CHANCE TO PLACE DIFFERENT TYPE OF DOORS
 	var wooden_door: InteractableObject = WOODEN_DOOR.instantiate()
-	OBJECT.add_child(wooden_door)
+	MAP.add_to_tile(wooden_door, pos)
+	#OBJECT.add_child(wooden_door)
 	wooden_door.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
 	wooden_door.rotate_y(rotation)
 
@@ -91,7 +92,8 @@ func check_chest_position(room_list:Array, pos: Vector2i) -> bool:
 const CHEST = preload("uid://dmgk0o744xmbo")
 func place_chest(pos: Vector2i) -> void:
 	var chest: Chest = CHEST.instantiate()
-	OBJECT.add_child(chest)
+	MAP.add_to_tile(chest, pos)
+	#OBJECT.add_child(chest)
 	chest.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
 
 

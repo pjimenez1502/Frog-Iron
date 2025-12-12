@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://0oc6e0iocjrk"]
+[gd_scene load_steps=10 format=3 uid="uid://0oc6e0iocjrk"]
 
 [ext_resource type="Script" uid="uid://d4csp0bp15e66" path="res://Scenes/Object/InteractableObject.gd" id="1_bpv3d"]
+[ext_resource type="Script" uid="uid://cscihegvayptj" path="res://Scenes/Terrain/MapTile.gd" id="1_dmy61"]
 [ext_resource type="Script" uid="uid://b8m2mkggp2vud" path="res://Scenes/Object/_Interactions/Ladder_Inter.gd" id="2_dmy61"]
 [ext_resource type="PackedScene" uid="uid://dvt3ra3pocmmp" path="res://Scenes/Terrain/Dungeon_1/Model/Exit.glb" id="3_bpv3d"]
 
@@ -8,16 +9,44 @@
 height = 4.0
 radius = 2.0
 
-[node name="Entrance_tile" type="StaticBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmy61"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.3529412)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fwchj"]
+material = SubResource("StandardMaterial3D_dmy61")
+size = Vector3(4.01, 8.01, 4.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoqbq"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.70980394)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k8e2y"]
+material = SubResource("StandardMaterial3D_eoqbq")
+size = Vector3(4.01, 8.01, 4.01)
+
+[node name="Exit_Tile" type="Node3D"]
+script = ExtResource("1_dmy61")
+
+[node name="Exit" parent="." instance=ExtResource("3_bpv3d")]
+
+[node name="InteractionObject" type="StaticBody3D" parent="."]
 script = ExtResource("1_bpv3d")
 
-[node name="Interaction" type="Node" parent="."]
+[node name="Interaction" type="Node" parent="InteractionObject"]
 unique_name_in_owner = true
 script = ExtResource("2_dmy61")
 direction = 1
 
-[node name="Exit2" parent="." instance=ExtResource("3_bpv3d")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_2bj0k")
+
+[node name="Unseen" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_fwchj")
+
+[node name="Seen" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_k8e2y")

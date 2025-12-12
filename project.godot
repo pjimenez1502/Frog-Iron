@@ -215,6 +215,7 @@ WAIT={
 3d_physics/layer_3="Enemy"
 3d_physics/layer_6="Interactable"
 3d_physics/layer_8="Weapon"
+3d_physics/layer_16="Vision"
 
 [rendering]
 
