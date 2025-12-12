@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj75lfanmqkls"]
+
+[ext_resource type="Script" uid="uid://cscihegvayptj" path="res://Scenes/Terrain/MapTile.gd" id="1_vfiyh"]
+[ext_resource type="PackedScene" uid="uid://c0lpi6lge3kni" path="res://Scenes/Terrain/Dungeon_1/Model/Floor.glb" id="2_wfqfw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfiyh"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.3529412)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfiyh"]
+material = SubResource("StandardMaterial3D_vfiyh")
+size = Vector3(4.01, 8.01, 4.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfqfw"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.70980394)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8knu6"]
+material = SubResource("StandardMaterial3D_wfqfw")
+size = Vector3(4.01, 8.01, 4.01)
+
+[node name="Floor_Tile" type="Node3D"]
+script = ExtResource("1_vfiyh")
+
+[node name="Floor" parent="." instance=ExtResource("2_wfqfw")]
+
+[node name="Unseen" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_vfiyh")
+
+[node name="Seen" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_8knu6")
