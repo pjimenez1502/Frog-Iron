@@ -35,14 +35,19 @@ func place_doors(room_list: Array) -> void:
 
 func check_door_placement(room_list: Array, pos: Vector2i) -> void:
 	if (room_list[pos.x+1][pos.y] != 0 and room_list[pos.x+1][pos.y] != -1) or (room_list[pos.x-1][pos.y] != 0 and room_list[pos.x-1][pos.y] != -1):
+		if  room_list[pos.x+1][pos.y] == -4 or room_list[pos.x-1][pos.y] == -4:
+			return ## Door already next to this
 		if room_list[pos.x][pos.y-1] == 0 and room_list[pos.x][pos.y+1] == 0:
 			place_door(pos, deg_to_rad(90))
 			room_list[pos.x][pos.y] = Util.TILE_CODES.DOOR
 			return
 	
 	if (room_list[pos.x][pos.y+1] != 0 and room_list[pos.x][pos.y+1] != -1) or (room_list[pos.x][pos.y-1] != 0 and room_list[pos.x][pos.y-1] != -1):
+		if  room_list[pos.x][pos.y+1] == -4 or  room_list[pos.x][pos.y-1] == -4:
+			return ## Door already next to this
 		if room_list[pos.x-1][pos.y] == 0 and room_list[pos.x+1][pos.y] == 0:
 			place_door(pos, deg_to_rad(0))
+			room_list[pos.x][pos.y] = Util.TILE_CODES.DOOR
 			return
 
 const WOODEN_DOOR = preload("uid://dbrvim0p68m4k")
