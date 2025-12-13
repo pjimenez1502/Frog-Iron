@@ -3,7 +3,7 @@ render_mode diffuse_toon, specular_toon;
 
 uniform sampler2D filter_on : filter_linear;
 
-uniform vec4 tint : source_color;
+instance uniform vec4 tint : source_color = vec4(1);
 uniform sampler2D albedo_texture : source_color, filter_nearest;
 uniform float metallic : hint_range(0.0, 1.0) = 0.0;
 uniform sampler2D normal_map : source_color, filter_nearest;
