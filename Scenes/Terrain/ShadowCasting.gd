@@ -4,17 +4,18 @@ class_name ShadowCasting
 var TILE_DICTIONARY: Dictionary
 var map_size: Vector2i
 
-var seen_tiles: Array
+var seen_tiles: Dictionary
 const MAX_VISION_DISTANCE: int = 6
 
 func init_shadowcasting(tile_dictionary: Dictionary, _map_size: Vector2i) -> void:
 	TILE_DICTIONARY = tile_dictionary
 	map_size = _map_size
 
-func update_fov(player_pos: Vector2i) -> void:
+func update_fov(player_pos: Vector2i) -> Dictionary:
 	##  --- Reset all visible tiles to seen
 	shadow_seen_tiles()
 	compute_fov(player_pos)
+	return seen_tiles
 
 func compute_fov(origin: Vector2i) -> void:
 	mark_visible(origin)
@@ -28,13 +29,13 @@ func reveal(tile : Vector2, quadrant : Quadrant) -> void:
 	mark_visible(result)
 
 func mark_visible(tile: Vector2i) -> void:
-	seen_tiles.append(tile)
 	var map_tile: MapTile = get_tile(tile)
 	if !map_tile: return
+	seen_tiles[tile] = true
 	map_tile.update_visibility(LevelMap.VISIBILITY.VISIBLE)
 
 func shadow_seen_tiles() -> void:
-	for tile: Vector2i in seen_tiles:
+	for tile: Vector2i in seen_tiles.keys():
 		var map_tile: MapTile = get_tile(tile)
 		if !map_tile: return
 		map_tile.update_visibility(LevelMap.VISIBILITY.SEEN)

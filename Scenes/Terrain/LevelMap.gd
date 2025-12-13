@@ -28,7 +28,6 @@ func set_room_list(_room_list: Array) -> void:
 	room_list = _room_list
 	generate_walkablemap_from_room_map()
 	update_AStar()
-	SignalBus.MapUpdate.emit(show_map())
 	shadow_casting.init_shadowcasting(tile_dictionary, map_size)
 
 func add_tile(tile: MapTile, pos: Vector2i) -> void:
@@ -73,17 +72,21 @@ func generate_walkablemap_from_room_map() -> void:
 func grid_to_globalpos(grid_pos: Vector3i) -> Vector3:
 	return Vector3(grid_pos.x * Global.TILE_SIZE, 0, grid_pos.z * Global.TILE_SIZE)
 
-func show_map() -> String:
+func show_map(visible_tiles: Dictionary) -> String:
 	var map_text: String = ""
 	for row: int in map_size.y:
 		var line: String = ""
 		for col: int in map_size.x:
+			if !visible_tiles.has(Vector2i(col,row)):
+				line += ("   ")
+				continue
+			
 			if GameDirector.player.character_grid_movement.grid_position == Vector3i(col, 0, row):
 				line += ("[color=red][X][/color]")
 				continue
 			match room_list[col][row]:
 				0:
-					line += ("[color=black][ ][/color]")
+					line += ("[color=#222][#][/color]")
 				Util.TILE_CODES.ENTRANCE:
 					line += ("[color=green][I][/color]")
 				Util.TILE_CODES.EXIT:
@@ -91,10 +94,11 @@ func show_map() -> String:
 				Util.TILE_CODES.CHEST:
 					line += ("[color=gold][C][/color]")
 				_:
-					line += ("[color=gray][ ][/color]")
+					line += ("[color=#888][ ][/color]")
 		map_text += (line+"\n")
 	return map_text
 
 ## VISION
 func update_player_vision(player_pos: Vector3i) -> void:
-	shadow_casting.update_fov(Vector2i(player_pos.x, player_pos.z))
+	var visible_tiles: Dictionary = shadow_casting.update_fov(Vector2i(player_pos.x, player_pos.z))
+	SignalBus.MapUpdate.emit(show_map(visible_tiles))

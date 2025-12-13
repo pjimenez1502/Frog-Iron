@@ -17,7 +17,6 @@ func populate(room_list: Array, room_centers: Array, parameters: Dictionary, _rn
 	
 	place_doors(room_list)
 	place_treasure(room_list, parameters)
-	
 	place_player(room_centers[0])
 	
 	#Util.print_room_list(room_list, parameters)
@@ -34,6 +33,9 @@ func place_doors(room_list: Array) -> void:
 		print("RoomPopulation: Place Doors Finished")
 
 func check_door_placement(room_list: Array, pos: Vector2i) -> void:
+	if pos.x+1 >= room_list.size() or pos.y+1 >= room_list[0].size():
+		return
+	
 	if (room_list[pos.x+1][pos.y] != 0 and room_list[pos.x+1][pos.y] != -1) or (room_list[pos.x-1][pos.y] != 0 and room_list[pos.x-1][pos.y] != -1):
 		if  room_list[pos.x+1][pos.y] == -4 or room_list[pos.x-1][pos.y] == -4:
 			return ## Door already next to this

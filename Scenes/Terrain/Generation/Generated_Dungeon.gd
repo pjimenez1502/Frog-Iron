@@ -14,7 +14,7 @@ var room_list: Array
 
 var dungeon_params: Dictionary = {
 	"LEVEL": 1,
-	"SIZE": Vector2(48,24),
+	"SIZE": Vector2(38,32),
 	"TARGET_ROOM_COUNT": 16,
 }
 

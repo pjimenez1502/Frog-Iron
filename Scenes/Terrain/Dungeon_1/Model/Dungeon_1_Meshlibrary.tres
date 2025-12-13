@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=12 format=4 uid="uid://b2d08ab6dhlb6"]
 
-[ext_resource type="Material" uid="uid://dxw8753d2eof4" path="res://Assets/Material/Dungeon1/Dungeon1.tres" id="1_j2ldw"]
+[ext_resource type="Material" uid="uid://dxw8753d2eof4" path="res://Assets/Material/Dungeon/Visible_Tiles.tres" id="1_j2ldw"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eb6l3"]
 _surfaces = [{

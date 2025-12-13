@@ -1,35 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://btty8j3vqh0re"]
+[gd_scene load_steps=3 format=3 uid="uid://btty8j3vqh0re"]
 
 [ext_resource type="Script" uid="uid://cscihegvayptj" path="res://Scenes/Terrain/MapTile.gd" id="1_joec7"]
 [ext_resource type="PackedScene" uid="uid://b4p1ptyuwlvcq" path="res://Scenes/Terrain/Dungeon_1/Model/Wall.glb" id="2_ff00n"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfiyh"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 0.3529412)
-
-[sub_resource type="BoxMesh" id="BoxMesh_joec7"]
-material = SubResource("StandardMaterial3D_vfiyh")
-size = Vector3(4.01, 8.01, 4.01)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfqfw"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 0.70980394)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ff00n"]
-material = SubResource("StandardMaterial3D_wfqfw")
-size = Vector3(4.01, 8.01, 4.01)
-
-[node name="Wall_Tile" type="Node3D"]
+[node name="Wall_Tile" type="Node3D" node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_joec7")
 blocks_vision = true
+meshes = [NodePath("Wall/Wall ")]
 
 [node name="Wall" parent="." instance=ExtResource("2_ff00n")]
 
-[node name="Unseen" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-mesh = SubResource("BoxMesh_joec7")
-
-[node name="Seen" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-mesh = SubResource("BoxMesh_ff00n")
+[editable path="Wall"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2ecwdlxym4nj"]
+[gd_scene load_steps=6 format=3 uid="uid://c2ecwdlxym4nj"]
 
 [ext_resource type="PackedScene" uid="uid://0l2ypiy2wxhf" path="res://Scenes/Terrain/Dungeon_1/Model/Entrance.glb" id="1_2bj0k"]
 [ext_resource type="Script" uid="uid://d4csp0bp15e66" path="res://Scenes/Object/InteractableObject.gd" id="1_3dhsc"]
@@ -9,25 +9,9 @@
 height = 4.0
 radius = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ti6o"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 0.3529412)
-
-[sub_resource type="BoxMesh" id="BoxMesh_l5ehj"]
-material = SubResource("StandardMaterial3D_3ti6o")
-size = Vector3(4.01, 8.01, 4.01)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v4bh"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 0.70980394)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vxiiu"]
-material = SubResource("StandardMaterial3D_4v4bh")
-size = Vector3(4.01, 8.01, 4.01)
-
-[node name="Entrance_Tile" type="Node3D"]
+[node name="Entrance_Tile" type="Node3D" node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_3ti6o")
+meshes = [NodePath("Entrance/Entrance")]
 
 [node name="Entrance" parent="." instance=ExtResource("1_2bj0k")]
 
@@ -42,10 +26,4 @@ script = ExtResource("2_oyaov")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_2bj0k")
 
-[node name="Unseen" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-mesh = SubResource("BoxMesh_l5ehj")
-
-[node name="Seen" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-mesh = SubResource("BoxMesh_vxiiu")
+[editable path="Entrance"]
