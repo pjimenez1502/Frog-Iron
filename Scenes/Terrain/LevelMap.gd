@@ -30,11 +30,13 @@ func set_room_list(_room_list: Array) -> void:
 	update_AStar()
 	shadow_casting.init_shadowcasting(tile_dictionary, map_size)
 
-func add_tile(tile: MapTile, pos: Vector2i) -> void:
+func add_tile(tile: , pos: Vector2i) -> void:
 	add_child(tile)
 	tile_dictionary[pos] = tile
-func add_to_tile(object: Node3D, pos: Vector2i) -> void:
+func add_to_tile(object: DungeonObject, pos: Vector2i) -> void:
 	tile_dictionary[pos].add_child(object)
+	for object_mesh: MeshInstance3D in object.mesh_instances:
+		tile_dictionary[pos].meshes.append(object_mesh)
 
 
 ## Pathing

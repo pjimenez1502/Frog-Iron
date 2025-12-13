@@ -1,4 +1,4 @@
-extends Node3D
+extends DungeonObject
 class_name InteractableObject
 
 @export var locked: bool

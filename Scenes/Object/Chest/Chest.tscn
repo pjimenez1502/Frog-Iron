@@ -11,9 +11,10 @@ radius = 1.4
 [sub_resource type="SphereShape3D" id="SphereShape3D_r7jxm"]
 radius = 4.352435
 
-[node name="Chest" type="StaticBody3D"]
+[node name="Chest" type="StaticBody3D" node_paths=PackedStringArray("mesh_instances")]
 script = ExtResource("1_0gw11")
 random = true
+mesh_instances = [NodePath("Chest/Chest_Base/Chest Base "), NodePath("Chest/Chest_Base/Hinge/Chest_Lid/Chest Lid")]
 
 [node name="Interaction" type="Node" parent="."]
 unique_name_in_owner = true
@@ -44,3 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.7)
 
 [connection signal="body_entered" from="AutoInteractableArea" to="Interaction" method="on_enter"]
 [connection signal="body_exited" from="AutoInteractableArea" to="Interaction" method="on_exit"]
+
+[editable path="Chest/Chest_Base"]
+[editable path="Chest/Chest_Base/Hinge/Chest_Lid"]

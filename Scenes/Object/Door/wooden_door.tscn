@@ -8,8 +8,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y0hmi"]
 radius = 1.0
 
-[node name="WoodenDoor" type="StaticBody3D"]
+[node name="WoodenDoor" type="StaticBody3D" node_paths=PackedStringArray("mesh_instances")]
 script = ExtResource("1_4goc2")
+mesh_instances = [NodePath("Door_Frame/Hinge/Door/Door "), NodePath("Door_Frame/Door_Frame ")]
 
 [node name="Interaction" type="Node" parent="."]
 unique_name_in_owner = true
@@ -31,4 +32,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
 [node name="CollisionShape3D" parent="Door_Frame/Hinge/Door/Door /StaticBody3D" index="0"]
 disabled = true
 
+[editable path="Door_Frame"]
 [editable path="Door_Frame/Hinge/Door"]
