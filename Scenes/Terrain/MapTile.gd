@@ -5,6 +5,7 @@ var current_visiblity: LevelMap.VISIBILITY
 
 @export var blocks_vision: bool
 @export var meshes: Array[MeshInstance3D]
+@export var interactable: InteractableObject
 
 var visible_material: Material = preload("uid://dxw8753d2eof4")
 var seen_material: Material = preload("uid://cvh2d6w7tu0xm")

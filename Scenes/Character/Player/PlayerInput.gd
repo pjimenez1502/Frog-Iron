@@ -39,7 +39,8 @@ func _input(event: InputEvent) -> void:
 		grid_movement.action(get_direction_vector(3))
 	
 	if event.is_action_pressed("INTERACT"):## Action in mouse dir
-		grid_movement.action(Util.round_direction(Util.get_mouse_direction(grid_movement)))
+		grid_movement.interact(Util.round_direction(Util.get_mouse_direction(grid_movement)))
+		#grid_movement.action(Util.round_direction(Util.get_mouse_direction(grid_movement)))
 	if event.is_action_pressed("WAIT"):
 		grid_movement.wait()
 	

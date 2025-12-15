@@ -31,7 +31,7 @@ func action(direction: Vector2i) -> void:
 	elif (character.is_in_group("Player") and collided.is_in_group("Enemy")) or (character.is_in_group("Enemy") and collided.is_in_group("Player")):
 		attack(direction)
 	elif collided is InteractableObject:
-		interact(collided)
+		interact(direction)
 	else:
 		wall(collided)
 
@@ -57,9 +57,11 @@ func ranged_attack(direction: Vector3) -> void:
 	character.character_attack.ranged_attack(direction)
 	CharacterActed.emit()
 
-func interact(target: InteractableObject) -> void:
-	#print("Interacting: %s" % target)
-	target.interact()
+func interact(direction: Vector2i) -> void:
+	var interactable: InteractableObject = GameDirector.level_map.tile_dictionary[Util.vec3i_to_vec2i(grid_position) + direction].interactable
+	if !interactable:
+		return
+	interactable.interact()
 	CharacterActed.emit()
 
 func wait() -> void:

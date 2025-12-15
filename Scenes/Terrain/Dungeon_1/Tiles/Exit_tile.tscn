@@ -9,9 +9,10 @@
 height = 4.0
 radius = 2.0
 
-[node name="Exit_Tile" type="Node3D" node_paths=PackedStringArray("meshes")]
+[node name="Exit_Tile" type="Node3D" node_paths=PackedStringArray("meshes", "interactable")]
 script = ExtResource("1_dmy61")
 meshes = [NodePath("Exit/Exit")]
+interactable = NodePath("InteractionObject")
 
 [node name="Exit" parent="." instance=ExtResource("3_bpv3d")]
 

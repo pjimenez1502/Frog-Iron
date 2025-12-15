@@ -34,12 +34,19 @@ func set_room_list(_room_list: Array) -> void:
 func add_tile(tile: MapTile, pos: Vector2i) -> void:
 	add_child(tile)
 	tile_dictionary[pos] = tile
-func add_to_tile(object: DungeonObject, pos: Vector2i) -> void:
+func add_to_tile(object: DungeonObject, pos: Vector2i) -> bool:
+	if object is InteractableObject:
+		if tile_dictionary[pos].interactable:
+			printerr("TILE ALREADY CONTAINS INTERACTABLE")
+			return false
+		tile_dictionary[pos].interactable = object
+	
 	tile_dictionary[pos].add_child(object)
 	object.tile = tile_dictionary[pos]
 	for object_mesh: MeshInstance3D in object.mesh_instances:
 		tile_dictionary[pos].meshes.append(object_mesh)
 	object.init_dungeon_object()
+	return true
 
 
 ## Pathing

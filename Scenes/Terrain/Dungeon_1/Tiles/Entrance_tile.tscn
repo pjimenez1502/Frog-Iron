@@ -9,9 +9,10 @@
 height = 4.0
 radius = 2.0
 
-[node name="Entrance_Tile" type="Node3D" node_paths=PackedStringArray("meshes")]
+[node name="Entrance_Tile" type="Node3D" node_paths=PackedStringArray("meshes", "interactable")]
 script = ExtResource("1_3ti6o")
 meshes = [NodePath("Entrance/Entrance")]
+interactable = NodePath("InteractionObject")
 
 [node name="Entrance" parent="." instance=ExtResource("1_2bj0k")]
 

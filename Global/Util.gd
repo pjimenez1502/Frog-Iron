@@ -61,3 +61,8 @@ func print_room_list(room_list: Array, parameters: Dictionary) -> void:
 				_:
 					line += ("[%2d]" % room_list[col][row])
 		print_rich(line)
+
+func vec3i_to_vec2i(vector: Vector3i) -> Vector2i:
+	return Vector2i(vector.x, vector.z)
+func vec2i_to_vec3i(vector: Vector2i) -> Vector3i:
+	return Vector3i(vector.x, 0, vector.y)
