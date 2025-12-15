@@ -70,11 +70,12 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
+				"81c01f1c-be11-4b86-a429-28fca81aedb3",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
-				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
-				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
-				"1a271107-4114-48a7-a520-c1a975352cf9",
 				"85fa8b4f-e579-4701-9fd4-8271597b4529",
+				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
+				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
+				"1a271107-4114-48a7-a520-c1a975352cf9",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
 			]
@@ -215,12 +216,20 @@
 					"done": true
 				},
 				{
-					"details": "Hide Enemies",
+					"details": "Update Map View",
+					"done": true
+				},
+				{
+					"details": "Objects in tile Shadow",
+					"done": true
+				},
+				{
+					"details": "Doors alternate vision blocking",
 					"done": false
 				},
 				{
-					"details": "Update Map View",
-					"done": true
+					"details": "Hide Enemies",
+					"done": false
 				}
 			]
 		},
@@ -488,6 +497,13 @@
 			"title": "Attack Fixes",
 			"description": "\nCheck hitchance is working (not missing)\nFix player can attack / shoot with not enough stamina",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "81c01f1c-be11-4b86-a429-28fca81aedb3",
+			"title": "Interact with F",
+			"description": "",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

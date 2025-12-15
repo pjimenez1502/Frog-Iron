@@ -10,7 +10,7 @@ signal PlayerStatIncrease
 signal AvailableStatUP
 
 signal PlayerDead
-signal PlayerMoved
+signal UpdatePlayerVision
 
 signal UpdateCameraRotation
 
@@ -30,6 +30,7 @@ signal CloseEmergentInv
 signal UpdateEmergentInv
 
 signal MapUpdate
+signal VisionBlockUpdate
 
 ##Game Signals
 signal TurnEnded

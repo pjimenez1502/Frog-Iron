@@ -1,7 +1,6 @@
 extends Character
 class_name Player
 
-signal PlayerMoved
 @onready var player_inventory: PlayerInventory = %PlayerInventory
 
 func _ready() -> void:
@@ -9,7 +8,7 @@ func _ready() -> void:
 	character_stats.HEALTH_UPDATE.connect(player_update_hp)
 	character_stats.STAMINA_UPDATE.connect(player_update_stamina)
 	character_stats.SANITY_UPDATE.connect(player_update_sanity)
-	character_grid_movement.CharacterMoved.connect(SignalBus.PlayerMoved.emit)
+	character_grid_movement.CharacterMoved.connect(SignalBus.UpdatePlayerVision.emit)
 	
 	set_xp(0)
 	SignalBus.AddPlayerXP.connect(update_xp)
@@ -70,7 +69,6 @@ func level_up() -> void:
 
 func get_level_treshold(_level: int) -> int:
 	return (_level * _level * 10 * Global.LEVEL_GROWTH_MULT)
-
 
 
 func _unhandled_input(event: InputEvent) -> void:

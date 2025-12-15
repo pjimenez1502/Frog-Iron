@@ -22,7 +22,8 @@ var walk_points: Dictionary = {
 
 func _ready() -> void:
 	GameDirector.set_level_map(self)
-	SignalBus.PlayerMoved.connect(update_player_vision)
+	SignalBus.UpdatePlayerVision.connect(update_player_vision)
+	SignalBus.VisionBlockUpdate.connect(update_vision_blocker)
 
 func set_room_list(_room_list: Array) -> void:
 	room_list = _room_list
@@ -30,13 +31,15 @@ func set_room_list(_room_list: Array) -> void:
 	update_AStar()
 	shadow_casting.init_shadowcasting(tile_dictionary, map_size)
 
-func add_tile(tile: , pos: Vector2i) -> void:
+func add_tile(tile: MapTile, pos: Vector2i) -> void:
 	add_child(tile)
 	tile_dictionary[pos] = tile
 func add_to_tile(object: DungeonObject, pos: Vector2i) -> void:
 	tile_dictionary[pos].add_child(object)
+	object.tile = tile_dictionary[pos]
 	for object_mesh: MeshInstance3D in object.mesh_instances:
 		tile_dictionary[pos].meshes.append(object_mesh)
+	object.init_dungeon_object()
 
 
 ## Pathing
@@ -104,3 +107,7 @@ func show_map(visible_tiles: Dictionary) -> String:
 func update_player_vision(player_pos: Vector3i) -> void:
 	var visible_tiles: Dictionary = shadow_casting.update_fov(Vector2i(player_pos.x, player_pos.z))
 	SignalBus.MapUpdate.emit(show_map(visible_tiles))
+
+func update_vision_blocker(tile: Vector2i, blocks_vision: bool) -> void:
+	tile_dictionary[tile].blocks_vision = blocks_vision
+	update_player_vision(GameDirector.player.character_grid_movement.grid_position)

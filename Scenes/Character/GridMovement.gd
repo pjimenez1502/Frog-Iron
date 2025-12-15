@@ -69,7 +69,6 @@ func wait() -> void:
 func wall(_collided: Node3D) -> void:
 	#print("Moving into wall: %s" % collided)
 	wait()
-	
 
 func get_ray_by_direction(direction: Vector2i) -> RayCast3D:
 	match direction:

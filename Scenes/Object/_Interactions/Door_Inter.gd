@@ -12,6 +12,9 @@ enum DoorType {Hinge, SlideDown, SlideSide}
 
 var open: bool
 
+func _ready() -> void:
+	pass
+
 func door_interaction(value: bool) -> void:
 	match door_type:
 		DoorType.Hinge:
@@ -20,7 +23,8 @@ func door_interaction(value: bool) -> void:
 			slide_door_down(value)
 		DoorType.SlideSide:
 			slide_door_side(value)
-		
+	get_parent().update_is_vision_blocker(!value)
+
 func swing_door(value: bool) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(hinge, "rotation_degrees", Vector3(0, target_opening if value else 0, 0), opening_time).set_trans(Tween.TRANS_QUART)

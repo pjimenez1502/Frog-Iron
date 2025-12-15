@@ -57,7 +57,6 @@ func place_door(pos: Vector2i, rotation: float) -> void:
 	## TODO: CHANCE TO PLACE DIFFERENT TYPE OF DOORS
 	var wooden_door: InteractableObject = WOODEN_DOOR.instantiate()
 	MAP.add_to_tile(wooden_door, pos)
-	#OBJECT.add_child(wooden_door)
 	wooden_door.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
 	wooden_door.rotate_y(rotation)
 

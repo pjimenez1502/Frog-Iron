@@ -30,3 +30,6 @@ func after_player_action() -> void:
 	turn_wait_timer.start(0.25)
 	await turn_wait_timer.timeout
 	SignalBus.TurnEnded.emit()
+
+func request_vision_update() -> void:
+	SignalBus.UpdatePlayerVision.emit(player.character_grid_movement.grid_position)

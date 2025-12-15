@@ -33,6 +33,9 @@ func update_visibility(visibility: LevelMap.VISIBILITY) -> void:
 
 func smooth_tint(mesh_instance: MeshInstance3D, color: Color) -> void:
 	var tween: Tween = get_tree().create_tween()
+	if !mesh_instance.get_instance_shader_parameter("tint"):
+		mesh_instance.set_instance_shader_parameter("tint", Color())
+	
 	tween.tween_method(set_instance_tint.bind(mesh_instance), mesh_instance.get_instance_shader_parameter("tint"), color, 0.5)
 
 func set_instance_tint(color: Color, mesh_instance: MeshInstance3D) -> void:
