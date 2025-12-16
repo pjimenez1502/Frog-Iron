@@ -4,13 +4,21 @@ class_name GameView
 const START_MENU = preload("uid://doa3ilpvhjo38")
 const PLAY_VIEW = preload("uid://cj5nus31jyaxt")
 
+enum VIEW_FOCUS { GAME, CHARACTER, INVENTORY, SKILLS, MAP, PAUSE, MENU }
+var current_view_focus: VIEW_FOCUS
+
 func _ready() -> void:
+	InputBus.game_view = self
+	
 	open_main_menu()
 	SignalBus.LaunchDemoScene.connect(open_demo)
 	SignalBus.LaunchDungeonScene.connect(open_dungeon)
 	
 	SignalBus.PauseGame.connect(pause_game)
 	SignalBus.TimeScaleChange.connect(timescale_change)
+	
+	SignalBus.ViewFocusChange.connect(view_focus_update)
+	view_focus_update(VIEW_FOCUS.MENU)
 
 
 ## VIEWS
@@ -46,6 +54,6 @@ func timescale_change(target: float, transition: float) -> void:
 
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("_debug Reset"):
-		open_demo()
+func view_focus_update(view_focus: VIEW_FOCUS) -> void:
+	current_view_focus = view_focus
+	print("CURRENT VIEW: %s" % VIEW_FOCUS.keys()[current_view_focus])

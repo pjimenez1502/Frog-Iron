@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=35 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
@@ -8,8 +8,6 @@
 [ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="5_2e4qg"]
 [ext_resource type="Script" uid="uid://b5eq8lyfdnua5" path="res://Scenes/Character/Player/PlayerInput.gd" id="5_v7n4c"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="6_uwo8e"]
-[ext_resource type="Script" uid="uid://diatversdlecu" path="res://Scenes/Character/Player/PlayerInteraction.gd" id="7_3gn43"]
-[ext_resource type="Texture2D" uid="uid://lk6xa04s1mm8" path="res://Scenes/UI/HUD/Interaction/E_Key.png" id="8_f0b02"]
 [ext_resource type="Script" uid="uid://cvdsrijlqpqta" path="res://Scenes/Character/Player/CameraPivot.gd" id="8_yty6f"]
 [ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/outline.gdshader" id="9_nyt8s"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_oedxj"]
@@ -114,9 +112,6 @@ material = SubResource("ShaderMaterial_yty6f")
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_7qy38"]
-radius = 3.0
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_er2ma"]
 viewport_path = NodePath("HealthBar/SubViewport")
 
@@ -136,23 +131,23 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 [node name="Skeleton3D" parent="View/3D/ZhenTest/Zhen_Armature" index="0"]
 bones/0/position = Vector3(4.4904656e-11, 1.5137316, -0.0982818)
 bones/0/rotation = Quaternion(0.024500405, 3.5752038e-07, 8.762021e-09, 0.99969983)
-bones/1/position = Vector3(0.27914134, 0.99126565, 0.0011638659)
-bones/1/rotation = Quaternion(0.80396307, 0.10845821, 0.23362285, 0.5360044)
+bones/1/position = Vector3(0.2791494, 1.0121099, 0.009218879)
+bones/1/rotation = Quaternion(0.80397373, 0.10845978, 0.23365048, 0.53597605)
 bones/2/position = Vector3(0.38606954, 1.248754, -0.3638394)
-bones/3/position = Vector3(0.14132383, 0.026250502, -0.17053568)
-bones/3/rotation = Quaternion(0.7526154, 0.08099063, -0.06915326, 0.6497912)
-bones/4/position = Vector3(-0.14131843, 0.026333915, -0.170652)
-bones/4/rotation = Quaternion(0.7527515, -0.081011735, 0.06911593, 0.64963466)
-bones/5/position = Vector3(0.21719195, 0.41369146, 0.36030638)
-bones/6/position = Vector3(-0.21717378, 0.41369328, 0.36030638)
-bones/7/position = Vector3(2.5444016e-09, 0.7812245, -0.12304409)
-bones/7/rotation = Quaternion(1.9751997e-12, -4.756773e-06, 3.0861593e-13, 1)
+bones/3/position = Vector3(0.14132118, 0.026281018, -0.17074236)
+bones/3/rotation = Quaternion(0.752671, 0.081008516, -0.06913084, 0.64972675)
+bones/4/position = Vector3(-0.14133756, 0.026256764, -0.17044398)
+bones/4/rotation = Quaternion(0.75254196, -0.081001244, 0.069156215, 0.64987445)
+bones/5/position = Vector3(0.21717416, 0.41369325, 0.36030638)
+bones/6/position = Vector3(-0.21719158, 0.4136915, 0.36030638)
+bones/7/position = Vector3(1.4754483e-09, 0.7934437, -0.12761201)
+bones/7/rotation = Quaternion(2.3112454e-12, 1.8844503e-05, -3.6114427e-13, 1)
 bones/8/rotation = Quaternion(0.03813282, -2.3824515e-07, 3.4563227e-16, 0.9992727)
-bones/10/rotation = Quaternion(-0.055108275, -4.7654027e-07, 2.1248269e-08, 0.99848044)
-bones/11/rotation = Quaternion(0.05441792, 7.146293e-07, -8.109172e-09, 0.99851835)
-bones/12/rotation = Quaternion(0.26681924, 0.23099698, -0.93174434, 0.08544244)
-bones/13/rotation = Quaternion(0.65709364, -0.0005889761, 0.37641156, 0.6531019)
-bones/14/rotation = Quaternion(0.05300667, 0.98751867, -0.02176101, 0.14670995)
+bones/10/rotation = Quaternion(-0.041873306, -4.7668357e-07, 1.499755e-08, 0.999123)
+bones/11/rotation = Quaternion(0.041182525, 7.1491684e-07, -5.013981e-09, 0.9991517)
+bones/12/rotation = Quaternion(0.2637892, 0.21425362, -0.9360273, 0.09145301)
+bones/13/rotation = Quaternion(0.66203153, -0.0005830008, 0.37924013, 0.64644486)
+bones/14/rotation = Quaternion(0.068610184, 0.98552793, -0.043449048, 0.14879432)
 bones/16/rotation = Quaternion(-0.00016776544, -3.8552047e-05, 0.17600669, 0.98438895)
 bones/17/rotation = Quaternion(-0.0043018223, 0.0011193079, 0.2810608, 0.9596797)
 bones/18/rotation = Quaternion(0.0072901715, -0.50917834, 0.21216004, 0.8340699)
@@ -163,9 +158,9 @@ bones/24/rotation = Quaternion(0.0021350225, 0.00042791123, 0.22402568, 0.974580
 bones/25/rotation = Quaternion(0.0005632263, 0.0020762186, 0.14453487, 0.98949736)
 bones/27/rotation = Quaternion(0.002503032, 0.00087492506, 0.2239908, 0.97458774)
 bones/28/rotation = Quaternion(0.001067338, 0.0032438133, 0.09088084, 0.995856)
-bones/30/rotation = Quaternion(0.26681906, -0.23099707, 0.93174446, 0.085442394)
-bones/31/rotation = Quaternion(0.65709376, 0.00058895734, -0.3764114, 0.6531018)
-bones/32/rotation = Quaternion(-0.05300667, 0.98751867, -0.0217611, -0.14670995)
+bones/30/rotation = Quaternion(0.2637889, -0.2142536, 0.9360273, 0.09145295)
+bones/31/rotation = Quaternion(0.66202676, 0.0005829669, -0.37923726, 0.6464515)
+bones/32/rotation = Quaternion(-0.06861015, 0.98552793, -0.04344913, -0.1487943)
 bones/33/position = Vector3(0.006892301, 0.09610113, -0.039179962)
 bones/33/rotation = Quaternion(0.029071549, -0.057875697, -0.016717091, 0.9977605)
 bones/34/rotation = Quaternion(-0.00016771196, 3.8554663e-05, -0.17600669, 0.98438895)
@@ -184,18 +179,18 @@ bones/44/position = Vector3(-0.00027615568, 0.08587518, 0.052762207)
 bones/44/rotation = Quaternion(0.0782537, 0.028679907, -0.01570689, 0.9963971)
 bones/45/rotation = Quaternion(0.0025030298, -0.00087494624, -0.22399078, 0.97458774)
 bones/46/rotation = Quaternion(0.0010673574, -0.0032438347, -0.09088087, 0.995856)
-bones/48/rotation = Quaternion(0.93683684, 0.096901126, -0.14975287, 0.30086705)
-bones/49/rotation = Quaternion(0.49944046, 0.066086516, 0.10276309, 0.8576897)
-bones/50/rotation = Quaternion(-0.817716, 0.021230044, -0.05427864, 0.5726638)
-bones/51/rotation = Quaternion(0.9359356, -0.098493904, 0.15511881, 0.30043593)
-bones/52/rotation = Quaternion(0.4995474, -0.06608154, -0.10278501, 0.85762507)
-bones/53/rotation = Quaternion(-0.8174848, -0.026191693, 0.05150367, 0.5730446)
-bones/54/rotation = Quaternion(-0.9286987, 0.038527727, 0.08062312, 0.3599087)
+bones/48/rotation = Quaternion(0.94074965, 0.09194059, -0.15028277, 0.28974482)
+bones/49/rotation = Quaternion(0.47717434, 0.06709098, 0.098181665, 0.87072605)
+bones/50/rotation = Quaternion(-0.80996513, 0.019089045, -0.05347469, 0.58372307)
+bones/51/rotation = Quaternion(0.9397803, -0.0934358, 0.15577462, 0.28951174)
+bones/52/rotation = Quaternion(0.47716248, -0.06709152, -0.098179184, 0.87073284)
+bones/53/rotation = Quaternion(-0.8097953, -0.024021333, 0.05061149, 0.5840318)
+bones/54/rotation = Quaternion(-0.93242216, 0.0016443887, 0.0034567425, 0.3613506)
 bones/55/rotation = Quaternion(0.18382323, 1.6967785e-08, 1.047745e-08, 0.98295933)
-bones/56/rotation = Quaternion(0.08805948, -9.0866945e-07, 8.307616e-06, 0.99611527)
+bones/56/rotation = Quaternion(0.0880594, 3.4771917e-06, -3.1949057e-05, 0.9961153)
 bones/57/rotation = Quaternion(0.09548163, -3.1789193e-10, 6.780137e-10, 0.9954312)
-bones/58/position = Vector3(-0.27915695, 0.9912705, 0.0010613942)
-bones/58/rotation = Quaternion(0.80398387, -0.108462214, -0.23367603, 0.5359492)
+bones/58/position = Vector3(-0.27914894, 1.0121098, 0.009222056)
+bones/58/rotation = Quaternion(0.803973, -0.10845966, -0.23364882, 0.5359778)
 bones/59/position = Vector3(-0.3860372, 1.2486491, -0.3638333)
 
 [node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="View/3D/ZhenTest/Zhen_Armature/Skeleton3D" index="10"]
@@ -222,7 +217,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="HAND_R" type="BoneAttachment3D" parent="View/3D/ZhenTest/Zhen_Armature/Skeleton3D" index="11"]
-transform = Transform3D(0.8297827, 0.54202735, 0.13291578, -0.44991487, 0.7906171, -0.4153321, -0.33020672, 0.2848345, 0.8999074, -0.26054996, 0.9011095, 0.07493533)
+transform = Transform3D(0.82978547, 0.54201424, 0.1329542, -0.44989613, 0.7906359, -0.41531727, -0.33022615, 0.28480858, 0.8999085, -0.26053384, 0.9219311, 0.08309048)
 bone_name = "HandGrab.R"
 bone_idx = 47
 
@@ -321,35 +316,6 @@ shadow_caster_mask = 4294967293
 omni_range = 20.0
 omni_attenuation = 0.1
 
-[node name="InteractionArea" type="Area3D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 32
-script = ExtResource("7_3gn43")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_7qy38")
-
-[node name="Timer" type="Timer" parent="InteractionArea"]
-wait_time = 0.5
-autostart = true
-
-[node name="Node" type="Node" parent="InteractionArea"]
-
-[node name="InteractionUI" type="Node3D" parent="InteractionArea/Node"]
-unique_name_in_owner = true
-visible = false
-
-[node name="Sprite3D" type="Sprite3D" parent="InteractionArea/Node/InteractionUI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-pixel_size = 0.008
-billboard = 1
-no_depth_test = true
-fixed_size = true
-texture_filter = 0
-texture = ExtResource("8_f0b02")
-
 [node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("5_2e4qg")
 hand = NodePath("../View/3D/ZhenTest/Zhen_Armature/Skeleton3D/HAND_R")
@@ -402,9 +368,5 @@ theme_override_fonts/font = ExtResource("21_3jo1j")
 text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
-[connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
-[connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="find_closest_interactable"]
 
 [editable path="View/3D/ZhenTest"]

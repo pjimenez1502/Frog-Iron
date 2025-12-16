@@ -45,5 +45,7 @@ signal ShowTooltip
 
 signal DamageText
 
+signal ViewFocusChange
+
 signal PauseGame
 signal TimeScaleChange

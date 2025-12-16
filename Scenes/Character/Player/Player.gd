@@ -69,8 +69,3 @@ func level_up() -> void:
 
 func get_level_treshold(_level: int) -> int:
 	return (_level * _level * 10 * Global.LEVEL_GROWTH_MULT)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("_debug addxp"):
-		update_xp(10)

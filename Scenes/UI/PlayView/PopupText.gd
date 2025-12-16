@@ -5,6 +5,7 @@ class_name PopupText
 
 func _ready() -> void:
 	SignalBus.ShowPopupText.connect(show_popup)
+	InputBus.ui_INTERACT.connect(close_popup)
 	close_popup()
 
 func show_popup(text: String) -> void:
@@ -13,7 +14,3 @@ func show_popup(text: String) -> void:
 
 func close_popup() -> void:
 	visible = false
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("UI_INTERACT"):
-		close_popup()

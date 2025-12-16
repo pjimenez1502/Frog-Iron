@@ -20,27 +20,23 @@ func _ready() -> void:
 	rot_target = far_rotation
 	
 	SignalBus.UpdateCameraRotation.connect(rotate_camera)
+	setup_input()
+
+func setup_input() -> void:
+	InputBus.camera_ROTATE.connect(turn_camera)
+	InputBus.camera_ZOOM.connect(move_target)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("CAMERA_ROTATE_+"):
-		turn_camera(1)
-	if Input.is_action_just_pressed("CAMERA_ROTATE_-"):
-		turn_camera(-1)
-	
-	if Input.is_action_just_pressed("ZOOM_IN"):
-		move_target(1, delta)
-	if Input.is_action_just_pressed("ZOOM_OUT"):
-		move_target(-1, delta)
 	move_camera(delta)
 
-@export var zoom_mult: int = 10
+@export var zoom_mult: float = 0.05
 var zoom_value: float
 var pos_target: Vector3
 var rot_target: Vector3
 @export var cam_speed: int = 10
 
-func move_target(direction: int, delta: float) -> void:
-	zoom_value = clampf(zoom_value + direction*delta * zoom_mult, 0, 1)
+func move_target(direction: int) -> void:
+	zoom_value = clampf(zoom_value + direction * zoom_mult, 0, 1)
 	pos_target = lerp(far_position, close_position, zoom_value)
 	rot_target = lerp(far_rotation, close_rotation, zoom_value)
 

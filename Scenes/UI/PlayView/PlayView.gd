@@ -7,6 +7,7 @@ class_name PlayView
 
 func _ready() -> void:
 	SignalBus.PlayerDead.connect(on_player_death)
+	SignalBus.ViewFocusChange.emit(GameView.VIEW_FOCUS.GAME)
 
 func set_scene(scene: PackedScene) -> Node3D:
 	for child: Node3D in sub_viewport.get_children():
