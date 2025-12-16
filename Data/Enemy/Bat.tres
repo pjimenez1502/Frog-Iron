@@ -8,5 +8,12 @@ script = ExtResource("2_02shx")
 name = "Bat"
 spawn_cost = 2
 spawn_weight = 4
+base_stats = {
+"CON": 4,
+"DEX": 6,
+"INT": 2,
+"STR": 2,
+"WIS": 2
+}
 scene = ExtResource("1_0dvqo")
 metadata/_custom_type_script = "uid://q11j3bqan8np"

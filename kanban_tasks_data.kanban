@@ -45,7 +45,7 @@
 				"73d2c789-8b03-4250-bea9-c3830459548b",
 				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
 				"3ff24d5d-1153-48fc-9364-93982688c09f",
-				"99ea47de-eba6-4ee1-89b0-6762aae1cfdd"
+				"67385266-f8cb-4caa-ae21-d629515b3b87"
 			]
 		},
 		{
@@ -70,10 +70,11 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"81c01f1c-be11-4b86-a429-28fca81aedb3",
-				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"85fa8b4f-e579-4701-9fd4-8271597b4529",
+				"214a39bb-612b-489f-a9e1-092453f1d42e",
+				"09758cec-7594-4c7b-90ce-b7084245952e",
 				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
+				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
@@ -84,6 +85,8 @@
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
+				"81c01f1c-be11-4b86-a429-28fca81aedb3",
+				"99ea47de-eba6-4ee1-89b0-6762aae1cfdd",
 				"fd648077-b8d7-4da8-a47f-d2381be01c38",
 				"13e2431d-82c2-4644-86b5-a9b31551f4d7",
 				"c63e9a3b-2071-45c7-a30b-c7735293b563",
@@ -225,7 +228,7 @@
 				},
 				{
 					"details": "Doors alternate vision blocking",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Hide Enemies",
@@ -480,7 +483,7 @@
 		},
 		{
 			"uuid": "99ea47de-eba6-4ee1-89b0-6762aae1cfdd",
-			"title": "Passive regen?",
+			"title": "Passive regen",
 			"description": "",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
@@ -504,6 +507,27 @@
 			"title": "Interact with F",
 			"description": "",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "214a39bb-612b-489f-a9e1-092453f1d42e",
+			"title": "Change enemy pathing checks",
+			"description": "Enemies can walk into the same tile",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "09758cec-7594-4c7b-90ce-b7084245952e",
+			"title": "Hide equipped weapons for now",
+			"description": "",
+			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
+			"steps": []
+		},
+		{
+			"uuid": "67385266-f8cb-4caa-ae21-d629515b3b87",
+			"title": "CURSES",
+			"description": "To expedite player progression, character can contract curses that player needs to cleanse or control, having to progress and explore further.\n- Creates two ideal gameplays, one, where the uncursed character can rest between encounters and explore freely, and another, where the cursed character has to take risks in order to be able to progress and find a remedy for their curse.\n\n- Sources:\n\t- Cursed items (Instead of having plenty of cursed items, have only a few, but make them pivotal moments in the run)\n\t- Traps (probably minor, since it could feel unfair)\n\t- Voluntary trade for power (ex: Player prays at a shrine that gives them an item or power in exchange for bearing a curse)\n\n- Make them progress in effect\n\t- Start with a mild inconvenience and ramp up to a possible game over\n\n- Not always only negative\n\t- Some curses have positive effects or their negative effect can still have some use, in that case, players might be interested in keeping the curse, but appeasing it enough to avoid a game over or the harshest stages",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}
 	],

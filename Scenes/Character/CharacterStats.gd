@@ -12,25 +12,25 @@ enum CHAR_TAG {ENEMY, PLAYER}
 
 #@export var base_speed: int = 5
 #var speed: float
-@export var base_HP: int = 4
+@export var base_HP: int = 0
 var max_HP: int
 var current_HP: int
 
-@export var base_stamina: int = 8
+@export var base_stamina: int = 0
 var max_stamina: int
 var current_stamina: int
 
-@export var base_sanity: int = 10
+@export var base_sanity: int = 0
 var max_sanity: int
 var current_sanity: int
 
 @export_category("CharStats")
 @export var base_stats: Dictionary = {
-	"STR": 2,
-	"DEX": 2,
-	"INT": 2,
-	"WIS": 2,
-	"CON": 2,
+	"STR": 6,
+	"DEX": 6,
+	"INT": 6,
+	"WIS": 6,
+	"CON": 6,
 }
 var bonus_stats: Dictionary = {
 	"STR": 0,
@@ -45,6 +45,11 @@ func _ready() -> void:
 	calculate_stats()
 	init_stats.call_deferred()## let hud initialize before signal triggers. will probably not be necessary when proper initialization flows
 	#calculate_speed()
+
+func set_stats(stats: Dictionary) -> void:
+	base_stats = stats
+	#init_stats()
+	calculate_stats()
 
 func init_stats() -> void:
 	init_hp()
@@ -110,6 +115,7 @@ func heal(_value: int) -> void:
 	SignalBus.DamageText.emit(str(_value), get_parent(), DamageTextOverlay.TYPE.HEAL)
 
 func damage(_damage: int, _hitchance: int) -> void:
+	print(calculated_stats)
 	current_HP -= calc_hit_camage(_damage, _hitchance)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 	if _damage > 0:

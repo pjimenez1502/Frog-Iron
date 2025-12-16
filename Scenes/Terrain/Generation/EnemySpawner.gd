@@ -21,9 +21,10 @@ func spawn_enemies(room_list: Array, parameters: Dictionary, _rng: RandomNumberG
 		if found_pos == -Vector3i.ONE: ## NO FOUND POSITION
 			continue
 		room_list[found_pos.x][found_pos.z] = Util.TILE_CODES.ENEMY
-		
-		var enemy: Enemy = enemy_pool[_rng.rand_weighted(enemy_weights)].scene.instantiate()
+		var enemy_data: EnemyResource = enemy_pool[_rng.rand_weighted(enemy_weights)]
+		var enemy: Enemy = enemy_data.scene.instantiate()
 		ENEMY_CONTAINER.add_child(enemy)
+		enemy.setup(enemy_data)
 		enemy.character_grid_movement.set_at_grid_position(found_pos)
 		budget -= enemy.spawn_cost
 
