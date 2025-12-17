@@ -1,9 +1,10 @@
 extends Node
 
-var enemy_list: Array[Enemy]
 var player: Player
 var current_camera: Camera3D
 var turn_wait_timer: Timer
+
+var enemy_list: Array[Enemy]
 var level_map: LevelMap
 
 func _ready() -> void:
@@ -24,6 +25,7 @@ func update_navmap() -> void:
 	level_map.update_AStar()
 
 func after_player_action() -> void:
+	update_enemies_visible()
 	turn_wait_timer.start(0.2)
 	await turn_wait_timer.timeout
 	SignalBus.EnemyTurn.emit()
@@ -50,5 +52,12 @@ func drop_item_bundle(item_data: ItemResource, pos: Vector2i) -> bool:
 	return true
 
 func remove_object_from_tile(object: DungeonObject) -> void:
-	
 	object.queue_free()
+
+func update_enemies_visible() -> void:
+	for enemy: Enemy in enemy_list:
+		enemy.update_is_visible()
+
+func is_tile_visible(pos: Vector2i) -> bool:
+	if level_map.tile_dictionary[pos].current_visiblity == LevelMap.VISIBILITY.VISIBLE: return true
+	return false

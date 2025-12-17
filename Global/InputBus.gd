@@ -26,23 +26,29 @@ signal inv_DROP
 ## UI
 signal ui_INTERACT
 
+func _physics_process(_delta: float) -> void:
+	if game_view.current_view_focus == GameView.VIEW_FOCUS.GAME:
+		if Input.is_action_pressed("move_UP"):
+			input_MOVE.emit(0)
+		if Input.is_action_pressed("move_DOWN"):
+			input_MOVE.emit(2)
+		if Input.is_action_pressed("move_LEFT"):
+			input_MOVE.emit(1)
+		if Input.is_action_pressed("move_RIGHT"):
+			input_MOVE.emit(3)
+
 func _input(event: InputEvent) -> void:
 	## VIEW FOCUS LIMITED
 	match game_view.current_view_focus:
 		GameView.VIEW_FOCUS.GAME:
-			if event.is_action_pressed("move_UP"):
-				input_MOVE.emit(0)
-			if event.is_action_pressed("move_DOWN"):
-				input_MOVE.emit(2)
-			if event.is_action_pressed("move_LEFT"):
-				input_MOVE.emit(1)
-			if event.is_action_pressed("move_RIGHT"):
-				input_MOVE.emit(3)
-			
 			if event.is_action_pressed("move_WAIT"):
 				input_WAIT.emit()
 			if event.is_action_pressed("move_INTERACT"):
 				input_INTERACT.emit()
+			if event.is_action_pressed("move_MELEE"):
+				input_MELEE.emit()
+			if event.is_action_pressed("move_RANGED"):
+				input_RANGED.emit()
 			
 			if event.is_action_pressed("camera_ROTATE_LEFT"):
 				camera_ROTATE.emit(1)

@@ -9,6 +9,8 @@ class_name Enemy
 func _ready() -> void:
 	super._ready()
 	GameDirector.enemy_list.append(self)
+	
+	character_grid_movement.CharacterActed.connect(update_is_visible)
 
 func death() -> void:
 	print("death")
@@ -18,3 +20,10 @@ func death() -> void:
 
 func setup(enemy_data: EnemyResource) -> void:
 	character_stats.set_stats(enemy_data.base_stats)
+
+func character_dead() -> void:
+	GameDirector.enemy_list.erase(self)
+	super.character_dead()
+
+func update_is_visible() -> void:
+	visible = GameDirector.is_tile_visible(Util.vec3i_to_vec2i(character_grid_movement.grid_position))

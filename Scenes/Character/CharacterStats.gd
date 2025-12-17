@@ -115,7 +115,6 @@ func heal(_value: int) -> void:
 	SignalBus.DamageText.emit(str(_value), get_parent(), DamageTextOverlay.TYPE.HEAL)
 
 func damage(_damage: int, _hitchance: int) -> void:
-	print(calculated_stats)
 	current_HP -= calc_hit_camage(_damage, _hitchance)
 	HEALTH_UPDATE.emit(max_HP, current_HP)
 	if _damage > 0:

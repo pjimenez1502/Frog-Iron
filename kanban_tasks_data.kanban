@@ -23,12 +23,17 @@
 		{
 			"uuid": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"title": "Combat",
-			"color": "df0a00"
+			"color": "751637"
 		},
 		{
 			"uuid": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"title": "Asset",
 			"color": "00fff9"
+		},
+		{
+			"uuid": "1e765dae-f210-46a2-a7e1-1e39505f1028",
+			"title": "FIX",
+			"color": "cc0505"
 		}
 	],
 	"stages": [
@@ -73,6 +78,7 @@
 				"214a39bb-612b-489f-a9e1-092453f1d42e",
 				"09758cec-7594-4c7b-90ce-b7084245952e",
 				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
+				"2d111953-a982-48fb-9488-e87ed37e72bb",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
@@ -528,6 +534,13 @@
 			"title": "CURSES",
 			"description": "To expedite player progression, character can contract curses that player needs to cleanse or control, having to progress and explore further.\n- Creates two ideal gameplays, one, where the uncursed character can rest between encounters and explore freely, and another, where the cursed character has to take risks in order to be able to progress and find a remedy for their curse.\n\n- Sources:\n\t- Cursed items (Instead of having plenty of cursed items, have only a few, but make them pivotal moments in the run)\n\t- Traps (probably minor, since it could feel unfair)\n\t- Voluntary trade for power (ex: Player prays at a shrine that gives them an item or power in exchange for bearing a curse)\n\n- Make them progress in effect\n\t- Start with a mild inconvenience and ramp up to a possible game over\n\n- Not always only negative\n\t- Some curses have positive effects or their negative effect can still have some use, in that case, players might be interested in keeping the curse, but appeasing it enough to avoid a game over or the harshest stages",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "2d111953-a982-48fb-9488-e87ed37e72bb",
+			"title": "EmergentInventories get lost if another emergInv is opened before the previous one is closed",
+			"description": "",
+			"category": "1e765dae-f210-46a2-a7e1-1e39505f1028",
 			"steps": []
 		}
 	],

@@ -113,7 +113,7 @@ func show_map(visible_tiles: Dictionary) -> String:
 
 ## VISION
 func update_player_vision(player_pos: Vector3i) -> void:
-	var visible_tiles: Dictionary = shadow_casting.update_fov(Vector2i(player_pos.x, player_pos.z))
+	var visible_tiles: Dictionary = shadow_casting.update_fov(Util.vec3i_to_vec2i(player_pos))
 	SignalBus.MapUpdate.emit(show_map(visible_tiles))
 
 func update_vision_blocker(tile: Vector2i, blocks_vision: bool) -> void:
