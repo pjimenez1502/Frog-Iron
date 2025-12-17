@@ -39,6 +39,8 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("move_RIGHT"):
 				input_MOVE.emit(3)
 			
+			if event.is_action_pressed("move_WAIT"):
+				input_WAIT.emit()
 			if event.is_action_pressed("move_INTERACT"):
 				input_INTERACT.emit()
 			
