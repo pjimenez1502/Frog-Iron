@@ -9,6 +9,7 @@ var level_map: LevelMap
 func _ready() -> void:
 	turn_wait_timer = Timer.new()
 	add_child(turn_wait_timer)
+	SignalBus.DropItemBundle.connect(drop_item_bundle)
 
 func set_player(_player: Player) -> void:
 	player = _player
@@ -33,3 +34,21 @@ func after_player_action() -> void:
 
 func request_vision_update() -> void:
 	SignalBus.UpdatePlayerVision.emit(player.character_grid_movement.grid_position)
+
+func drop_item_bundle(item_data: ItemResource, pos: Vector2i) -> bool:
+	var target_tile_interactable: InteractableObject = level_map.tile_dictionary[pos].interactable if level_map.tile_dictionary[pos].interactable else null
+	var item_bundle: Chest
+	if target_tile_interactable:
+		if !target_tile_interactable is Chest:
+			return false
+		item_bundle = target_tile_interactable
+	else:
+		item_bundle = load("res://Scenes/Object/ItemBundle/ItemBundle.tscn").instantiate()
+		level_map.add_to_tile(item_bundle, pos)
+	item_bundle.inventory.append(item_data)
+	SignalBus.OpenEmergentInv.emit(item_bundle.inventory)
+	return true
+
+func remove_object_from_tile(object: DungeonObject) -> void:
+	
+	object.queue_free()

@@ -21,7 +21,7 @@ signal menu_MAP
 signal menu_PAUSE
 
 ## INVENTORY
-signal inventory_DROP
+signal inv_DROP
 
 ## UI
 signal ui_INTERACT
@@ -39,6 +39,9 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("move_RIGHT"):
 				input_MOVE.emit(3)
 			
+			if event.is_action_pressed("move_INTERACT"):
+				input_INTERACT.emit()
+			
 			if event.is_action_pressed("camera_ROTATE_LEFT"):
 				camera_ROTATE.emit(1)
 			if event.is_action_pressed("camera_ROTATE_RIGHT"):
@@ -47,6 +50,10 @@ func _input(event: InputEvent) -> void:
 				camera_ZOOM.emit(1)
 			if event.is_action_pressed("camera_ZOOM_OUT"):
 				camera_ZOOM.emit(-1)
+		
+		GameView.VIEW_FOCUS.INVENTORY:
+			if event.is_action_pressed("inv_DROP"):
+				inv_DROP.emit()
 	
 	if game_view.current_view_focus != GameView.VIEW_FOCUS.MENU:
 		if event.is_action_pressed("menu_CHARACTER"):

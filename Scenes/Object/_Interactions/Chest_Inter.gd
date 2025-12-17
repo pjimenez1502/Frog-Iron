@@ -2,10 +2,11 @@ extends Interaction
 class_name ChestInteraction
 
 @onready var chest: Chest = $".."
-
 @onready var hinge: Node3D = %Hinge
+
 @export var target_opening: int = 90
 @export var opening_time: float = 0.5
+@export var remove_if_empty: bool =  false
 var open: bool = false
 
 func open_chest(value: bool) -> void:
@@ -28,10 +29,8 @@ func interact_valued(value: bool) -> void:
 	open_chest(value)
 
 func on_enter(_body: Node3D) -> void:
-	#open_chest(true)
-	#SignalBus.OpenEmergentInv.emit(chest.inventory)
-	#SignalBus.UpdateEmergentInv.connect(chest.update_inventory)
 	pass
-
 func on_exit(_body: Node3D) -> void:
 	open_chest(false)
+	if remove_if_empty and chest.inventory.size() == 0:
+		GameDirector.remove_object_from_tile(chest)

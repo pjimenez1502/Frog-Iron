@@ -1,6 +1,7 @@
 extends Node3D
 class_name DungeonObject
 
+var tile_position: Vector2i
 @export var mesh_instances: Array[MeshInstance3D]
 @export var is_vision_blocker: bool
 var tile: MapTile

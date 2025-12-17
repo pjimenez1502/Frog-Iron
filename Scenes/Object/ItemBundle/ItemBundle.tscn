@@ -1,33 +1,40 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw7m0u772k3vs"]
 
 [ext_resource type="Script" uid="uid://c2spiiw2lrrr7" path="res://Scenes/Object/Chest/Chest.gd" id="1_a8yea"]
-[ext_resource type="Script" uid="uid://ik27op68ulgs" path="res://Scenes/Object/_Interactions/Chest_Inter.gd" id="2_0brj5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_0brj5"]
-size = Vector3(0.4, 0.4, 0.4)
+[ext_resource type="Script" uid="uid://dgvraunfr54" path="res://Scenes/Object/_Interactions/ItemBundle_Inter.gd" id="2_0brj5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0brj5"]
 radius = 0.9
 
+[sub_resource type="BoxMesh" id="BoxMesh_0brj5"]
+size = Vector3(0.4, 0.4, 0.4)
+
 [node name="ItemBundle" type="Node3D"]
 script = ExtResource("1_a8yea")
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.70710677, -0.70710677, 0, 0.579228, 0.579228, -0.57357645, 0.4055798, 0.4055798, 0.81915206, 0, 0.3, 0)
-mesh = SubResource("BoxMesh_0brj5")
-skeleton = NodePath("../..")
 
 [node name="Interaction" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_0brj5")
-target_opening = -130
+remove_if_empty = true
 
 [node name="AutoInteractableArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AutoInteractableArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("SphereShape3D_0brj5")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Hinge" type="Node3D" parent="Node3D"]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Hinge"]
+transform = Transform3D(0.5792279, 0.57922804, -0.57357645, -0.70710677, 0.70710677, 2.5071824e-08, 0.4055798, 0.4055798, 0.81915206, 0.5, 0, 0)
+mesh = SubResource("BoxMesh_0brj5")
+skeleton = NodePath("../../..")
+
+[connection signal="body_entered" from="AutoInteractableArea" to="Interaction" method="on_enter"]
+[connection signal="body_exited" from="AutoInteractableArea" to="Interaction" method="on_exit"]

@@ -6,6 +6,7 @@ signal AddPlayerCoin
 signal AddPlayerItem
 signal PlayerInventoryUpdate
 signal PlayerEquipmentUpdate
+signal PlayerInventoryDrop
 signal PlayerStatIncrease
 signal AvailableStatUP
 
@@ -28,6 +29,8 @@ signal ItemUsed
 signal OpenEmergentInv
 signal CloseEmergentInv
 signal UpdateEmergentInv
+
+signal DropItemBundle
 
 signal MapUpdate
 signal VisionBlockUpdate

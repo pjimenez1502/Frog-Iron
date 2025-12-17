@@ -45,6 +45,7 @@ func add_to_tile(object: DungeonObject, pos: Vector2i) -> bool:
 	object.tile = tile_dictionary[pos]
 	for object_mesh: MeshInstance3D in object.mesh_instances:
 		tile_dictionary[pos].meshes.append(object_mesh)
+	object.tile_position = pos
 	object.init_dungeon_object()
 	return true
 

@@ -21,7 +21,7 @@ func _ready() -> void:
 	SignalBus.PlayerCoinUpdate.emit(coin)
 	SignalBus.AddPlayerItem.connect(add_item)
 	SignalBus.ItemUsed.connect(use_item)
-	
+	SignalBus.PlayerInventoryDrop.connect(drop_from_inventory)
 	equip_starting_equipment.call_deferred()
 
 ## COIN
@@ -110,6 +110,11 @@ func unequip_ranged_weapon(item_data: EquipableResource) -> void:
 func update_inventory_call() -> void:
 	SignalBus.PlayerInventoryUpdate.emit(inventory)
 	SignalBus.PlayerEquipmentUpdate.emit(equipment)
+
+func drop_from_inventory(item_data: ItemResource) -> void:
+	if GameDirector.drop_item_bundle(item_data, Util.vec3i_to_vec2i(player.character_grid_movement.grid_position)):
+		inventory.erase(item_data)
+		SignalBus.PlayerInventoryUpdate.emit(inventory)
 
 func equip_armor(item_data: EquipableResource) -> void:
 	var slotname: String

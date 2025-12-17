@@ -2,9 +2,10 @@ extends Panel
 class_name ItemDataEntry
 
 @onready var button: Button = %Button
-
 @onready var item_name: RichTextLabel = %Name
 @onready var item_icon: TextureRect = %Icon
+var hovered: bool
+
 var icon_dictionary: Dictionary = {
 	"COIN": load("res://Data/Item/_Icon/Coin.png"),
 	"CONSUMABLE": load("res://Data/Item/_Icon/potion.png"),
@@ -46,4 +47,5 @@ func get_icon() -> Texture2D:
 	return null
 
 func show_tooltip(value: bool) -> void:
+	hovered = value
 	SignalBus.ShowTooltip.emit(value, item_data.get_tooltip_content())

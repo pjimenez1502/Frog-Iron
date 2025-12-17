@@ -15,6 +15,8 @@ func _ready() -> void:
 	SignalBus.PlayerCoinUpdate.connect(update_coin)
 	SignalBus.PlayerInventoryUpdate.connect(update_inventory)
 	SignalBus.PlayerEquipmentUpdate.connect(update_equipment)
+	
+	InputBus.inv_DROP.connect(drop_item)
 
 func update_inventory(inventory: Array[ItemResource]) -> void:
 	clear_inventory()
@@ -23,6 +25,11 @@ func update_inventory(inventory: Array[ItemResource]) -> void:
 		inventory_content.add_child(inventory_entry)
 		inventory_entry.populate(item)
 		inventory_entry.button.pressed.connect(use_item.bind(inventory_entry.item_data))
+
+func drop_item() -> void:
+	for inv_item: ItemDataEntry in inventory_content.get_children():
+		if inv_item.hovered:
+			SignalBus.PlayerInventoryDrop.emit(inv_item.item_data)
 
 func update_equipment(equipment: Dictionary) -> void:
 	clear_equipment_slot(weapon_slot)
