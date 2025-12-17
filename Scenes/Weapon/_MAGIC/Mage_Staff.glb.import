@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://da6tp83t1rm12"
-path="res://.godot/imported/Mage_Staff.glb-a177fdd33af522a3def8dc6d51d8eda3.scn"
+path="res://.godot/imported/Mage_Staff.glb-ffd36d7ad04964078f3f54ee9c66eac2.scn"
 
 [deps]
 
-source_file="res://Scenes/Weapon/_RANGED/Mage_Staff.glb"
-dest_files=["res://.godot/imported/Mage_Staff.glb-a177fdd33af522a3def8dc6d51d8eda3.scn"]
+source_file="res://Scenes/Weapon/_MAGIC/Mage_Staff.glb"
+dest_files=["res://.godot/imported/Mage_Staff.glb-ffd36d7ad04964078f3f54ee9c66eac2.scn"]
 
 [params]
 

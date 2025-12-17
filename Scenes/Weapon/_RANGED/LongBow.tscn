@@ -7,7 +7,6 @@
 [node name="LongBow" type="Node3D"]
 script = ExtResource("1_72k23")
 projectile_prefab = ExtResource("2_4yp6n")
-charged = true
 
 [node name="ProjectileContainer" type="Node" parent="."]
 
@@ -16,5 +15,6 @@ unique_name_in_owner = true
 
 [node name="Bow2" parent="." instance=ExtResource("3_v2wkl")]
 transform = Transform3D(-1.3113417e-07, 0, -3, 0, 2.9999998, 0, 3.0000002, 0, -1.3113416e-07, 0, 0, 0)
+visible = false
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

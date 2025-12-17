@@ -14,3 +14,4 @@ metadata/_custom_type_script = "uid://ddjgxp2c8n7uj"
 
 [node name="Shortsword" parent="." instance=ExtResource("3_6ywxr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
