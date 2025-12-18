@@ -218,9 +218,8 @@ shadow_caster_mask = 4294967293
 omni_range = 20.0
 omni_attenuation = 0.1
 
-[node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
+[node name="WeaponAttachment" type="Node3D" parent="."]
 script = ExtResource("5_2e4qg")
-hand = NodePath("")
 
 [node name="HealthBar" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

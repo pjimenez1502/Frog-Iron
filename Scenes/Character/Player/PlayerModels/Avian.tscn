@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b84gbg7ka8wea"]
+[gd_scene load_steps=3 format=3 uid="uid://b84gbg7ka8wea"]
 
 [ext_resource type="PackedScene" uid="uid://cpaotv14cg4cy" path="res://Scenes/Character/Player/PlayerModels/Avian.glb" id="1_n31dl"]
+[ext_resource type="Script" uid="uid://b6uapog25qecv" path="res://Scenes/Character/Player/PlayerModels/CharacterModel.gd" id="2_hjhjx"]
 
-[node name="Avian" instance=ExtResource("1_n31dl")]
+[node name="Avian" node_paths=PackedStringArray("HAND_R") instance=ExtResource("1_n31dl")]
+script = ExtResource("2_hjhjx")
+HAND_R = NodePath("Zhen_Armature/Skeleton3D/HAND_R")
 
 [node name="Skeleton3D" parent="Zhen_Armature" index="0"]
 bones/0/position = Vector3(3.554121e-15, 1.5137863, -0.09834197)

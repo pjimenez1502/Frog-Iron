@@ -2,6 +2,8 @@ extends Character
 class_name Player
 
 @onready var player_inventory: PlayerInventory = %PlayerInventory
+var player_name: String
+var player_model: CharacterModel
 
 func _ready() -> void:
 	super._ready()
@@ -22,10 +24,13 @@ func _ready() -> void:
 	
 	GameDirector.set_player(self)
 
-func setup_player(player_data: Dictionary, player_model: Node3D, player_name: String) -> void:
+
+func setup_player(player_data: Dictionary, player_model: CharacterModel, player_name: String) -> void:
 	CharacterView.add_child(player_model)
 	character_stats.base_stats = player_data["stats"]
-	print("LOADED: ",player_name)
+	self.player_model = player_model
+	self.player_name = player_name
+	setup_attachments()
 
 func increase_stat(stat:String, count:int) -> void:
 	if !available_statup > 0:
@@ -76,3 +81,6 @@ func level_up() -> void:
 
 func get_level_treshold(_level: int) -> int:
 	return (_level * _level * 10 * Global.LEVEL_GROWTH_MULT)
+
+func setup_attachments() -> void:
+	$WeaponAttachment.setup(player_model.HAND_R)

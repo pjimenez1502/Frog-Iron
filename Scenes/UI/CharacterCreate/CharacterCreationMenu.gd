@@ -6,7 +6,7 @@ class_name CharacterCreationMenu
 @onready var character_preview: Node3D = %CharacterPreview
 @onready var name_edit: LineEdit = %NameEdit
 
-var preview_model: Node3D
+var preview_model: CharacterModel
 
 enum SPECIES { HUMAN, DRAKE, AVIAN, BOVINE }
 var species_data: Dictionary = {
@@ -14,11 +14,11 @@ var species_data: Dictionary = {
 		"name": "Human",
 		"description": "",
 		"stats": {
-			"STR": 2,
-			"DEX": 2,
-			"INT": 2,
-			"WIS": 2,
-			"CON": 2,
+			"STR": 4,
+			"DEX": 4,
+			"INT": 4,
+			"WIS": 4,
+			"CON": 4,
 			},
 		"scene": "res://Scenes/Character/Player/PlayerModels/Drake.tscn"
 		},
@@ -26,11 +26,11 @@ var species_data: Dictionary = {
 		"name": "Drake",
 		"description": "",
 		"stats": {
-			"STR": 2,
-			"DEX": 2,
-			"INT": 1,
-			"WIS": 4,
-			"CON": 2,
+			"STR": 4,
+			"DEX": 4,
+			"INT": 3,
+			"WIS": 6,
+			"CON": 4,
 			},
 		"scene": "res://Scenes/Character/Player/PlayerModels/Drake.tscn"
 		},
@@ -38,11 +38,11 @@ var species_data: Dictionary = {
 		"name": "Avian",
 		"description": "",
 		"stats": {
-			"STR": 0,
-			"DEX": 4,
-			"INT": 2,
-			"WIS": 3,
-			"CON": 1,
+			"STR": 2,
+			"DEX": 8,
+			"INT": 4,
+			"WIS": 6,
+			"CON": 2,
 		},
 		"scene": "res://Scenes/Character/Player/PlayerModels/Avian.tscn"
 		},
@@ -50,11 +50,11 @@ var species_data: Dictionary = {
 		"name": "Bovine",
 		"description": "",
 		"stats": {
-			"STR": 4,
-			"DEX": 0,
-			"INT": 0,
-			"WIS": 2,
-			"CON": 4,
+			"STR": 6,
+			"DEX": 2,
+			"INT": 2,
+			"WIS": 4,
+			"CON": 6,
 		},
 		"scene": "res://Scenes/Character/Player/PlayerModels/Bovine.tscn"
 		},
