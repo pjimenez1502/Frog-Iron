@@ -10,13 +10,14 @@ func _ready() -> void:
 	character_stats.SANITY_UPDATE.connect(player_update_sanity)
 	character_grid_movement.CharacterMoved.connect(SignalBus.UpdatePlayerVision.emit)
 	
-	SignalBus.SetStartPlayerData.connect(setup_player)
+	SignalBus.UpdatePlayerData.connect(setup_player)
 	set_xp(0)
 	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
 	
 	SignalBus.PlayerStatsUpdate.emit(character_stats.base_stats, character_stats.calculate_stats())
 	SignalBus.AvailableStatUP.emit(available_statup)
+	SignalBus.PlayerLevelUpdate.emit(1)
 	SignalBus.PlayerEquipmentUpdate.connect(equipment_update)
 	
 	GameDirector.set_player(self)
@@ -62,14 +63,15 @@ func update_xp(value: int) -> void:
 
 func check_level_up(_xp: int) -> void:
 	if _xp >= get_level_treshold(level):
-		level += 1
 		level_up()
 	#print("level: %d, xp: %d, threshold: %d" % [level, xp, get_level_treshold(level)])
 
 var available_statup: int
 func level_up() -> void:
-	#print("levelup: ", level)
+	level += 1
+	
 	available_statup += Global.LEVEL_STATUP_REWARD
+	SignalBus.PlayerLevelUpdate.emit(level)
 	SignalBus.AvailableStatUP.emit(available_statup)
 
 func get_level_treshold(_level: int) -> int:

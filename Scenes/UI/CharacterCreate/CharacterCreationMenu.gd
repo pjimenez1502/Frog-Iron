@@ -4,6 +4,7 @@ class_name CharacterCreationMenu
 @onready var species_title: RichTextLabel = %SpeciesTitle
 @onready var species_desc: RichTextLabel = %SpeciesDesc
 @onready var character_preview: Node3D = %CharacterPreview
+@onready var name_edit: LineEdit = %NameEdit
 
 var preview_model: Node3D
 
@@ -90,5 +91,5 @@ func change_species_button(value: int) -> void:
 
 func start() -> void:
 	character_preview.remove_child(preview_model)
-	SignalBus.SetStartPlayerData.emit.call_deferred(species_data[selected_species], preview_model, "PlayerName")
+	SignalBus.UpdatePlayerData.emit.call_deferred(species_data[selected_species], preview_model, name_edit.text)
 	SignalBus.LaunchDungeonScene.emit()

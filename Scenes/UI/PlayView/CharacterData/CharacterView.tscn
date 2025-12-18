@@ -44,6 +44,52 @@ grow_vertical = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
+[node name="Status" type="Panel" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats/Status/MarginContainer"]
+layout_mode = 2
+
+[node name="CharName" type="RichTextLabel" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats/Status/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 38
+text = "CharacterName"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="CharSpecies" type="RichTextLabel" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats/Status/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Species"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="CharLevel" type="RichTextLabel" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats/Status/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Level: 2"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
 [node name="STATS" type="Panel" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
@@ -238,10 +284,6 @@ layout_mode = 2
 texture_normal = ExtResource("2_f4rtk")
 texture_disabled = ExtResource("3_w35rc")
 stretch_mode = 0
-
-[node name="Status" type="Panel" parent="MarginContainer/CharacterMenu/HBoxContainer/Stats"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [connection signal="pressed" from="MarginContainer/CharacterMenu/HBoxContainer/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Strength_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["STR"]]
 [connection signal="pressed" from="MarginContainer/CharacterMenu/HBoxContainer/Stats/STATS/MarginContainer/VBoxContainer/StatBox/VBoxContainer3/Dexterity_button" to="MarginContainer/CharacterMenu" method="increase_stat" binds= ["DEX"]]

@@ -2,6 +2,7 @@ extends Node
 
 ## Player Signals
 signal SetStartPlayerData
+signal UpdatePlayerData
 
 signal AddPlayerXP
 signal AddPlayerCoin
@@ -11,6 +12,7 @@ signal PlayerEquipmentUpdate
 signal PlayerInventoryDrop
 signal PlayerStatIncrease
 signal AvailableStatUP
+signal PlayerLevelUpdate
 
 signal PlayerDead
 signal UpdatePlayerVision

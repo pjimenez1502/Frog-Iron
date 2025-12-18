@@ -7,6 +7,9 @@ class_name CharacterMenu
 @onready var wisdom_button: TextureButton = %Wisdom_button
 @onready var constitution_button: TextureButton = %Constitution_button
 
+@onready var char_name: RichTextLabel = %CharName
+@onready var char_species: RichTextLabel = %CharSpecies
+@onready var char_level: RichTextLabel = %CharLevel
 
 @onready var strength_value: RichTextLabel = %Strength_value
 @onready var dexterity_value: RichTextLabel = %Dexterity_value
@@ -20,12 +23,17 @@ class_name CharacterMenu
 @onready var wisdom_value_calc: RichTextLabel = %Wisdom_value_calc
 @onready var constitution_value_calc: RichTextLabel = %Constitution_value_calc
 
-
 @onready var available_increase: RichTextLabel = %AvailableIncrease
 
 func _ready() -> void:
 	SignalBus.PlayerStatsUpdate.connect(update_stats)
 	SignalBus.AvailableStatUP.connect(update_availableUP)
+	SignalBus.PlayerLevelUpdate.connect(update_level)
+	SignalBus.UpdatePlayerData.connect(update_player_data)
+
+func update_player_data(species_data: Dictionary, _player_model: Node3D, player_name: String) -> void:
+	char_name.text = player_name
+	char_species.text = species_data["name"]
 
 func update_stats(base_stats: Dictionary, calculated_stats: Dictionary) -> void:
 	strength_value.text = str(base_stats["STR"])
@@ -39,6 +47,9 @@ func update_stats(base_stats: Dictionary, calculated_stats: Dictionary) -> void:
 	intelligence_value_calc.text = str(calculated_stats["INT"])
 	wisdom_value_calc.text = str(calculated_stats["WIS"])
 	constitution_value_calc.text = str(calculated_stats["CON"])
+
+func update_level(level: int) -> void:
+	char_level.text = "Level: %d" % level
 
 func update_availableUP(value: int) -> void:
 	available_increase.text = "Available: (%d)" % value
