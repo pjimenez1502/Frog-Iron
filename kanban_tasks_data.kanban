@@ -76,14 +76,13 @@
 			"title": "Doing",
 			"tasks": [
 				"214a39bb-612b-489f-a9e1-092453f1d42e",
-				"09758cec-7594-4c7b-90ce-b7084245952e",
 				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
 				"2d111953-a982-48fb-9488-e87ed37e72bb",
-				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
-				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
+				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
+				"606f8f84-268b-49f5-91f7-a7c0892a5cb5"
 			]
 		},
 		{
@@ -196,7 +195,7 @@
 		{
 			"uuid": "eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 			"title": "Skills Menu",
-			"description": "\nSTATS\nINVENTORY\nSKILLS",
+			"description": "",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		},
@@ -238,7 +237,7 @@
 				},
 				{
 					"details": "Hide Enemies",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -252,7 +251,7 @@
 		{
 			"uuid": "95d12487-7eb5-4a68-a65d-ec22a5252160",
 			"title": "Objects",
-			"description": "\n== Stash:\nSliding Fake Wall\nChest\nEnemyTrackingTrigger (object checks for x enemies to die before triggering)\nItemCage (surrounds an interactable object and blocks it until it is released)\n\n== Done:\nBarDoor\nDoor\nLever\nArcheryDummy",
+			"description": "\n== Stash:\nSliding Fake Wall\nEnemyTrackingTrigger (object checks for x enemies to die before triggering)\nItemCage (surrounds an interactable object and blocks it until it is released)\n\n== Done:\nBarDoor\nDoor\nLever\nArcheryDummy\nChest",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		},
@@ -337,13 +336,13 @@
 			"uuid": "c52ce17b-65e5-41c6-a482-0deb9a8f7526",
 			"title": "3D Player",
 			"description": "\nSelect species when starting run\nspecies can change ingame\ncolor customization??\n\n\nEquipables show in model\nweapon animations",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		},
 		{
 			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
 			"title": "Character Creation",
-			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\n\n\nShow:\n\t- character preview?\n\t- color selection?\n\t- species selection\n\t\t- Small Description\n\t\t- Stat changes\n\t- character name",
+			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \t\nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\n\n\nShow:\n\t- character preview?\n\t- color selection?\n\t- species selection\n\t\t- Small Description\n\t\t- Stat changes\n\t- character name",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -406,7 +405,7 @@
 		{
 			"uuid": "80b7d3e5-a001-42e5-bfa1-740c2563917e",
 			"title": "Options Menu",
-			"description": "\nSTATS\nINVENTORY\nSKILLS",
+			"description": "\nSound\nControls",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		},
@@ -462,7 +461,7 @@
 		{
 			"uuid": "666b7031-4a8c-4a84-bb93-06965fcf7043",
 			"title": "Jewelry Items",
-			"description": "",
+			"description": "Equipables that grant passives more than stats\n\nPlayer has a Attunment count, that dictates how many jewelry items can be equipped.\nAttunment capacity increases with wisdom? or other sources\n\nJewelry dont have a specific slot (ex: head, torso, etc) so multiple similar items (ex: multiple rings/ multiple piercings etc) can be equipped at the same time\n\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -497,7 +496,7 @@
 		{
 			"uuid": "6c7e96ea-79ff-4b09-8bcc-7294302778e1",
 			"title": "Special Objects on each level",
-			"description": "\n\t= MULTIPLE =\nChests (multiple)\n\n\n\t = ONE PER LEVEL =\nPurifying Altar\t\t(interact to cleanse a cursed item)\nCurse Altar\t\t\t\t(interact to curse an item)\n\nArtifact stand\t(holds a powerful item, gain it on interact, but can spawn multiple enemies)\n\nShop\n\nBonfire (one single use)\n\n",
+			"description": "\n\t= MULTIPLE =\nChests (multiple)\n\n\n\t = ONE PER LEVEL? =\nPurifying Altar\t\t(interact to cleanse a cursed item)\nCurse Altar\t\t\t\t(interact to curse an item)\n\nArtifact stand\t(holds a powerful item, gain it on interact, but can spawn multiple enemies)\n\nShop\n\nBonfire (one single use)\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -519,13 +518,6 @@
 			"uuid": "214a39bb-612b-489f-a9e1-092453f1d42e",
 			"title": "Change enemy pathing checks",
 			"description": "Enemies can walk into the same tile",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
-			"steps": []
-		},
-		{
-			"uuid": "09758cec-7594-4c7b-90ce-b7084245952e",
-			"title": "Hide equipped weapons for now",
-			"description": "",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		},

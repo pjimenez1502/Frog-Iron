@@ -10,6 +10,7 @@ func _ready() -> void:
 	character_stats.SANITY_UPDATE.connect(player_update_sanity)
 	character_grid_movement.CharacterMoved.connect(SignalBus.UpdatePlayerVision.emit)
 	
+	SignalBus.SetStartPlayerData.connect(setup_player)
 	set_xp(0)
 	SignalBus.AddPlayerXP.connect(update_xp)
 	SignalBus.PlayerStatIncrease.connect(increase_stat)
@@ -20,6 +21,10 @@ func _ready() -> void:
 	
 	GameDirector.set_player(self)
 
+func setup_player(player_data: Dictionary, player_model: Node3D, player_name: String) -> void:
+	CharacterView.add_child(player_model)
+	character_stats.base_stats = player_data["stats"]
+	print("LOADED: ",player_name)
 
 func increase_stat(stat:String, count:int) -> void:
 	if !available_statup > 0:

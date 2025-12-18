@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Character
 
+@onready var CharacterView: Node3D = %"3D"
+
 var character_grid_movement: CharacterGridMovement
 var character_stats: CharacterStats
 var character_attack: CharacterAttack

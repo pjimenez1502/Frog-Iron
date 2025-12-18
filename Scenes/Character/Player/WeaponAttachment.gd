@@ -7,6 +7,6 @@ class_name WeaponAttachment
 
 func _ready() -> void:
 	get_parent().remove_child.call_deferred(self)
-	hand.add_child.call_deferred(self)
+	#hand.add_child.call_deferred(self)	TODO: CALL THIS AFTER PLAYER MODEL IS LOADED
 	position = _position
 	rotation = _rotation

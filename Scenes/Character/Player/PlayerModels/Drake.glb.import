@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cq7v2m8irhut3"
-path="res://.godot/imported/ZhenTest.glb-43f0fce2eb829c22f8c1f018cc388044.scn"
+path="res://.godot/imported/Drake.glb-f755b2003663d314c2979dd62fe42a66.scn"
 
 [deps]
 
-source_file="res://Scenes/Character/Player/Asset/ZhenTest.glb"
-dest_files=["res://.godot/imported/ZhenTest.glb-43f0fce2eb829c22f8c1f018cc388044.scn"]
+source_file="res://Scenes/Character/Player/PlayerModels/Drake.glb"
+dest_files=["res://.godot/imported/Drake.glb-f755b2003663d314c2979dd62fe42a66.scn"]
 
 [params]
 

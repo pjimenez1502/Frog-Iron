@@ -3,6 +3,7 @@ class_name GameView
 
 const START_MENU = preload("uid://doa3ilpvhjo38")
 const PLAY_VIEW = preload("uid://cj5nus31jyaxt")
+const CREATION_VIEW = preload("uid://bq2ka0lnsoxmk")
 
 enum VIEW_FOCUS { GAME, CHARACTER, INVENTORY, SKILLS, MAP, PAUSE, MENU }
 var current_view_focus: VIEW_FOCUS
@@ -13,6 +14,7 @@ func _ready() -> void:
 	open_main_menu()
 	SignalBus.LaunchDemoScene.connect(open_demo)
 	SignalBus.LaunchDungeonScene.connect(open_dungeon)
+	SignalBus.LaunchCharCreationScene.connect(open_character_creation)
 	
 	SignalBus.PauseGame.connect(pause_game)
 	SignalBus.TimeScaleChange.connect(timescale_change)
@@ -40,6 +42,8 @@ func open_dungeon() -> void:
 	var game_view: PlayView = set_view(PLAY_VIEW)
 	game_view.launch_dungeon_scene(randi()) ## test seed
 
+func open_character_creation() -> void:
+	var creation_view: ViewScene = set_view(CREATION_VIEW)
 
 ## TIME
 var paused: bool

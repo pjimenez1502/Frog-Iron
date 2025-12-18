@@ -12,7 +12,7 @@ func focus_first_button() -> void:
 
 
 func new_game() -> void:
-	SignalBus.LaunchDungeonScene.emit()
+	SignalBus.LaunchCharCreationScene.emit()
 
 func tutorial() -> void:
 	SignalBus.LaunchDemoScene.emit()

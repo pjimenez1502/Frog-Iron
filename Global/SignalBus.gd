@@ -1,6 +1,8 @@
 extends Node
 
 ## Player Signals
+signal SetStartPlayerData
+
 signal AddPlayerXP
 signal AddPlayerCoin
 signal AddPlayerItem
@@ -41,6 +43,7 @@ signal EnemyTurn
 
 signal LaunchDemoScene
 signal LaunchDungeonScene
+signal LaunchCharCreationScene
 signal NavmeshBakeRequest
 
 signal ShowPopupText

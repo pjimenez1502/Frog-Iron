@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://quyp3hv3edt"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://quyp3hv3edt"]
 
 [ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Asset/BorderSquare.png" id="1_ta5cs"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="2_tcwhh"]
@@ -15,6 +15,10 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j7d1"]
 bg_color = Color(1, 1, 1, 0.47058824)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jh8l4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqe2k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tcwhh"]
 texture = ExtResource("1_ta5cs")
@@ -61,6 +65,10 @@ Button/styles/normal = SubResource("StyleBoxFlat_uqe2k")
 Button/styles/pressed = SubResource("StyleBoxFlat_0j7d1")
 FoldableContainer/font_sizes/font_size = 32
 FoldableContainer/fonts/font = ExtResource("2_tcwhh")
+LineEdit/font_sizes/font_size = 32
+LineEdit/fonts/font = ExtResource("2_tcwhh")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_jh8l4")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_uqe2k")
 MarginContainer/constants/margin_bottom = 8
 MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8
