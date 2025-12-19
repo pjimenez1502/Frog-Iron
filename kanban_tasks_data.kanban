@@ -503,9 +503,18 @@
 		{
 			"uuid": "bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
 			"title": "Attack Fixes",
-			"description": "\nCheck hitchance is working (not missing)\nFix player can attack / shoot with not enough stamina",
+			"description": "",
 			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
-			"steps": []
+			"steps": [
+				{
+					"details": "Attack without enough stamina",
+					"done": false
+				},
+				{
+					"details": "Hitchance / Crit is working?",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "81c01f1c-be11-4b86-a429-28fca81aedb3",

@@ -115,10 +115,12 @@ func heal(_value: int) -> void:
 	SignalBus.DamageText.emit(str(_value), get_parent(), DamageTextOverlay.TYPE.HEAL)
 
 func damage(_damage: int, _hitchance: int) -> void:
-	current_HP -= calc_hit_camage(_damage, _hitchance)
+	var hit_data: Dictionary = calc_hit_camage(_damage, _hitchance)
+	current_HP -= hit_data["damage"]
 	HEALTH_UPDATE.emit(max_HP, current_HP)
-	if _damage > 0:
-		SignalBus.DamageText.emit(str(_damage), get_parent(), DamageTextOverlay.TYPE.DAMAGE)
+	if hit_data["damage"] > 0:
+		var hit_text: String = str(hit_data["damage"]) + ("*" if hit_data["is_crit"] else "")
+		SignalBus.DamageText.emit(hit_text, get_parent(), DamageTextOverlay.TYPE.DAMAGE)
 	else:
 		SignalBus.DamageText.emit("MISS", get_parent(), DamageTextOverlay.TYPE.MESSAGE)
 	
@@ -183,18 +185,20 @@ func defeat(defeat_reason: DEFEAT_TYPE) -> void:
 
 
 
-func calc_hit_camage(_damage: int, hitchance: int) -> int:
+func calc_hit_camage(_damage: int, hitchance: int) -> Dictionary:
 	var finished: bool
 	var final_damage: int = 0
+	var is_crit: bool
 	var curr_hitchance: int = hitchance
 	while(!finished):
 		if curr_hitchance >= 100:
 			final_damage += _damage
 			curr_hitchance -= 100
+			is_crit = true
 		else:
 			var rand: int = randi_range(1,50) + calculated_stats["DEX"]
-			#print(curr_hitchance, " - ", rand)
+			#print("hit: %d - dodge: %d" % [curr_hitchance, rand])
 			if curr_hitchance > rand:
 				final_damage += _damage
 			finished = true
-	return final_damage
+	return {"damage": final_damage, "is_crit": is_crit}
