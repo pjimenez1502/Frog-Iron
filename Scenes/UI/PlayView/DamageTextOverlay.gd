@@ -4,6 +4,7 @@ class_name DamageTextOverlay
 var text_size: int = 8
 var offset: Vector3
 var text_font: FontFile = preload("res://Assets/Font/m5x7.ttf")
+enum SIZE { SMALL, MID, LARGE }
 enum TYPE { MESSAGE, DAMAGE, HEAL, POISON }
 var text_colors : Dictionary = {
 	"MESSAGE": Color(1.0, 1.0, 1.0, 1.0),
@@ -15,13 +16,17 @@ var text_colors : Dictionary = {
 func _ready() -> void:
 	SignalBus.DamageText.connect(display_text)
 
-func display_text(value: String, parent: Node3D, type: TYPE = TYPE.MESSAGE) -> void:
+func display_text(value: String, parent: Node3D, type: TYPE = TYPE.MESSAGE, size: SIZE = SIZE.MID) -> void:
 	var popup_text : Label3D = Label3D.new()
 	
 	popup_text.text = str(value)
 	popup_text.modulate = text_colors[TYPE.keys()[type]]
 	
-	popup_text.pixel_size = 0.005
+	match size:
+		SIZE.SMALL: popup_text.pixel_size = 0.0025
+		SIZE.MID: popup_text.pixel_size = 0.005
+		SIZE.LARGE: popup_text.pixel_size = 0.01
+	
 	popup_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	popup_text.no_depth_test = true
 	popup_text.fixed_size = true

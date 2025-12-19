@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cyul6afbr3los" path="res://Assets/Material/Creature/ZHEN_REF_16x8.png" id="1_2m4bc"]
 
 [resource]
+cull_mode = 2
 shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
 albedo_texture = ExtResource("1_2m4bc")
 texture_filter = 0

@@ -38,6 +38,6 @@ const TILE_SIZE: int = 4
 
 
 ## STATS
-const con_health_mult: int = 5
+const con_health_mult: int = 2
 const dex_stamina_mult: int = 2
 const wis_sanity_mult: int = 2
