@@ -26,4 +26,4 @@ func character_dead() -> void:
 	super.character_dead()
 
 func update_is_visible() -> void:
-	visible = GameDirector.is_tile_visible(Util.vec3i_to_vec2i(character_grid_movement.grid_position))
+	visible = GameDirector.is_tile_visible(character_grid_movement.grid_position)

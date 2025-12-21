@@ -112,7 +112,7 @@ func update_inventory_call() -> void:
 	SignalBus.PlayerEquipmentUpdate.emit(equipment)
 
 func drop_from_inventory(item_data: ItemResource) -> void:
-	if GameDirector.drop_item_bundle(item_data, Util.vec3i_to_vec2i(player.character_grid_movement.grid_position)):
+	if GameDirector.drop_item_bundle(item_data, player.character_grid_movement.grid_position):
 		inventory.erase(item_data)
 		SignalBus.PlayerInventoryUpdate.emit(inventory)
 

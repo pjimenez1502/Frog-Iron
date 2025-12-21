@@ -9,11 +9,13 @@ var room_list: Array
 enum VISIBILITY { UNSEEN, SEEN, VISIBLE }
 var tile_dictionary: Dictionary
 var tile_visibility: Dictionary
-var walkable_tiles: Array[Vector3i]
+var walkable_tiles: Array[Vector2i]
+
+var entity_map: Dictionary
 
 var AStar: Dictionary = {
-	"WALKABLE": AStar3D.new(),
-	"FLYABLE": AStar3D.new(),
+	"WALKABLE": AStar2D.new(),
+	"FLYABLE": AStar2D.new(),
 }
 var walk_points: Dictionary = {
 	"WALKABLE": {},
@@ -24,11 +26,13 @@ func _ready() -> void:
 	GameDirector.set_level_map(self)
 	SignalBus.UpdatePlayerVision.connect(update_player_vision)
 	SignalBus.VisionBlockUpdate.connect(update_vision_blocker)
+	SignalBus.EntityMapPointUpdate.connect(set_entity_at_pos)
 
 func set_room_list(_room_list: Array) -> void:
 	room_list = _room_list
 	generate_walkablemap_from_room_map()
 	update_AStar()
+	init_entitymap()
 	shadow_casting.init_shadowcasting(tile_dictionary, map_size)
 
 func add_tile(tile: MapTile, pos: Vector2i) -> void:
@@ -47,11 +51,13 @@ func add_to_tile(object: DungeonObject, pos: Vector2i) -> bool:
 		tile_dictionary[pos].meshes.append(object_mesh)
 	object.tile_position = pos
 	object.init_dungeon_object()
+	
+	add_entity_to_entitymap(pos, ENTITY_TYPE.OBJECT)
 	return true
 
 
 ## Pathing
-var connection_offsets: Array[Vector3i] = [Vector3i(1, 0,0),Vector3i(-1, 0,0),Vector3i(0, 0,1),Vector3i(0, 0,-1)]
+var connection_offsets: Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1)]
 func update_AStar() -> void:
 	## WALKABLE
 	for i: int in walkable_tiles.size(): ## Add points to Astarmap and create walkables dictionary
@@ -59,13 +65,13 @@ func update_AStar() -> void:
 		walk_points["WALKABLE"][i] = walkable_tiles[i]
 	
 	for id: int in walk_points["WALKABLE"].keys(): ## Check for other walkables around each walkable and Astar connect them
-		for offset: Vector3i in connection_offsets:
+		for offset: Vector2i in connection_offsets:
 			var found: int = find_pointid_at_pos("WALKABLE", walk_points["WALKABLE"][id]+offset)
 			if found == -1:
 				continue
 			AStar["WALKABLE"].connect_points(id, found)
 
-func find_pointid_at_pos(dictionary: String, _position: Vector3i) -> int:
+func find_pointid_at_pos(dictionary: String, _position: Vector2i) -> int:
 	for id: int in walk_points[dictionary]:
 		if walk_points[dictionary][id] == _position:
 			return id
@@ -76,14 +82,41 @@ func generate_walkablemap_from_room_map() -> void:
 	for x: int in room_list.size():
 		for y: int in room_list[0].size():
 			if room_list[x][y] > 0 or walkable_special_tiles.has(room_list[x][y]):
-				walkable_tiles.append(Vector3i(x, 0, y))
+				walkable_tiles.append(Vector2i(x, y))
+
+
+## ENTITY_MAP
+enum ENTITY_TYPE { EMPTY, WALL, OBJECT, PLAYER, ENEMY }
+func init_entitymap() -> void:
+	for x: int in room_list.size():
+		for y: int in room_list[0].size():
+			if entity_map.has(Vector2i(x,y)):
+				continue
+			if room_list[x][y] == 0:
+				entity_map[Vector2i(x,y)] = ENTITY_TYPE.WALL
+				continue
+			entity_map[Vector2i(x,y)] = ENTITY_TYPE.EMPTY
+
+func set_entity_at_pos(pos: Vector2i, type: ENTITY_TYPE) -> void:
+	entity_map[pos] = type
+
+func get_entity_at_pos(pos: Vector2i) -> ENTITY_TYPE:
+	if !entity_map.has(pos): return ENTITY_TYPE.EMPTY
+	return entity_map[pos]
+
+func add_entity_to_entitymap(pos: Vector2i, type: ENTITY_TYPE) -> void:
+	entity_map[pos] = type
+
+func move_entity(origin: Vector2i, destination: Vector2i) -> void:
+	entity_map[destination] = entity_map[origin]
+	entity_map[origin] = ENTITY_TYPE.EMPTY
 
 
 ## UTIL
 #func globalpos_to_grid(pos: Vector3) -> Vector3i:
 	#return local_to_map(to_local(pos))
-func grid_to_globalpos(grid_pos: Vector3i) -> Vector3:
-	return Vector3(grid_pos.x * Global.TILE_SIZE, 0, grid_pos.z * Global.TILE_SIZE)
+func grid_to_globalpos(grid_pos: Vector2i) -> Vector3:
+	return Vector3(grid_pos.x * Global.TILE_SIZE, 0, grid_pos.y * Global.TILE_SIZE)
 
 func show_map(visible_tiles: Dictionary) -> String:
 	var map_text: String = ""
@@ -94,7 +127,7 @@ func show_map(visible_tiles: Dictionary) -> String:
 				line += ("   ")
 				continue
 			
-			if GameDirector.player.character_grid_movement.grid_position == Vector3i(col, 0, row):
+			if GameDirector.player.character_grid_movement.grid_position == Vector2i(col, row):
 				line += ("[color=red][X][/color]")
 				continue
 			match room_list[col][row]:
@@ -112,8 +145,8 @@ func show_map(visible_tiles: Dictionary) -> String:
 	return map_text
 
 ## VISION
-func update_player_vision(player_pos: Vector3i) -> void:
-	var visible_tiles: Dictionary = shadow_casting.update_fov(Util.vec3i_to_vec2i(player_pos))
+func update_player_vision(player_pos: Vector2i) -> void:
+	var visible_tiles: Dictionary = shadow_casting.update_fov(player_pos)
 	SignalBus.MapUpdate.emit(show_map(visible_tiles))
 
 func update_vision_blocker(tile: Vector2i, blocks_vision: bool) -> void:

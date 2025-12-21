@@ -48,12 +48,12 @@ func move_towards_target() -> void:
 		print("Movement points: origin= %s, target= %s" % [origin_point, target_point])
 		print("NO PATH")
 		return
-	var next_point: Vector3i = point_path[1]
-	var direction: Vector3 = next_point - grid_movement.grid_position
+	var next_point: Vector2i = point_path[1]
+	var direction: Vector2 = next_point - grid_movement.grid_position
 	#print("PATHFIND = origin: %d - target: %d" % [origin_point, target_point])
 	#print("POSITION: %s - NEXT: %s" % [grid_movement.grid_position, next_point])
 	
-	grid_movement.action(Vector2(direction.x, direction.z))
+	grid_movement.action(direction)
 
 func find_target() -> Node3D:
 	if far_target && check_lineofsight():

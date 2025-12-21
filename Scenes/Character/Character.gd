@@ -40,5 +40,6 @@ func knockback(direction: Vector3, strength: float) -> void:
 	velocity_mod += direction * strength * 20
 
 func character_dead() -> void:
+	SignalBus.EntityMapPointUpdate.emit(character_grid_movement.grid_position, LevelMap.ENTITY_TYPE.EMPTY)
 	await get_tree().create_timer(0.2).timeout
 	queue_free()

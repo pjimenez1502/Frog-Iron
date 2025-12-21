@@ -6,6 +6,8 @@ var turn_wait_timer: Timer
 
 var enemy_list: Array[Enemy]
 var level_map: LevelMap
+var entity_map: Dictionary
+
 
 func _ready() -> void:
 	turn_wait_timer = Timer.new()

@@ -17,20 +17,21 @@ func spawn_enemies(room_list: Array, parameters: Dictionary, _rng: RandomNumberG
 		enemy_weights.append(enemy_data.spawn_weight)
 	
 	while budget > 0:
-		var found_pos: Vector3i = find_enemy_spawnpos(room_list, parameters)
-		if found_pos == -Vector3i.ONE: ## NO FOUND POSITION
+		var found_pos: Vector2i = find_enemy_spawnpos(room_list, parameters)
+		if found_pos == -Vector2i.ONE: ## NO FOUND POSITION
 			continue
-		room_list[found_pos.x][found_pos.z] = Util.TILE_CODES.ENEMY
+		room_list[found_pos.x][found_pos.y] = Util.TILE_CODES.ENEMY
 		var enemy_data: EnemyResource = enemy_pool[_rng.rand_weighted(enemy_weights)]
 		var enemy: Enemy = enemy_data.scene.instantiate()
 		ENEMY_CONTAINER.add_child(enemy)
 		enemy.setup(enemy_data)
 		enemy.character_grid_movement.set_at_grid_position(found_pos)
 		budget -= enemy.spawn_cost
+		MAP.add_entity_to_entitymap(found_pos, LevelMap.ENTITY_TYPE.ENEMY)
 
-func find_enemy_spawnpos(room_list: Array, parameters: Dictionary) -> Vector3i:
+func find_enemy_spawnpos(room_list: Array, parameters: Dictionary) -> Vector2i:
 	for try: int in 10:
 		var pos: Vector2i = Vector2i(RNG.randi_range(0, parameters["SIZE"].x-1), RNG.randi_range(0, parameters["SIZE"].y-1))
 		if room_list[pos.x][pos.y] > 1:
-			return Vector3i(pos.x, 0, pos.y)
-	return -Vector3.ONE
+			return Vector2i(pos.x, pos.y)
+	return -Vector2.ONE

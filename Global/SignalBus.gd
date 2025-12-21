@@ -38,6 +38,7 @@ signal DropItemBundle
 
 signal MapUpdate
 signal VisionBlockUpdate
+signal EntityMapPointUpdate
 
 ##Game Signals
 signal TurnEnded

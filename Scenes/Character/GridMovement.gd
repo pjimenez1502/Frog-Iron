@@ -8,7 +8,7 @@ signal CharacterMoved
 var character: Character
 @onready var raycasts: Dictionary[String, RayCast3D] = {"NORTH": $North, "SOUTH": $Shouth, "WEST": $West, "EAST": $East}
 var move_tween: Tween
-var grid_position: Vector3i
+var grid_position: Vector2i
 
 @export var verbose: bool
 
@@ -18,25 +18,39 @@ func _ready() -> void:
 func setup(_character: Character) -> void:
 	character = _character
 
-func set_at_grid_position(_grid_position: Vector3i) -> void:
+func set_at_grid_position(_grid_position: Vector2i) -> void:
 	character.global_position = GameDirector.level_map.grid_to_globalpos(_grid_position)
 	grid_position = _grid_position
 	CharacterMoved.emit(grid_position)
 
 func action(direction: Vector2i) -> void:
 	character.character_animation.look_towards(Vector3(direction.x, 0, direction.y))
-	var collided: Object = get_ray_by_direction(direction).get_collider()
-	if !collided:
-		move(direction)
-	elif (character.is_in_group("Player") and collided.is_in_group("Enemy")) or (character.is_in_group("Enemy") and collided.is_in_group("Player")):
-		attack(direction)
-	elif collided is InteractableObject:
-		interact(direction)
-	else:
-		wall(collided)
+	#var collided: Object = get_ray_by_direction(direction).get_collider()
+	
+	var entity_in_position: LevelMap.ENTITY_TYPE = GameDirector.level_map.get_entity_at_pos(grid_position + direction)
+	#print("moving towards: ", LevelMap.ENTITY_TYPE.keys()[entity_in_position])
+	match entity_in_position:
+		LevelMap.ENTITY_TYPE.EMPTY:
+			move(direction)
+		LevelMap.ENTITY_TYPE.WALL:
+			wall()
+		LevelMap.ENTITY_TYPE.OBJECT:
+			interact(direction)
+		LevelMap.ENTITY_TYPE.PLAYER:
+			if character.is_in_group("Enemy"):
+				attack(direction)
+			else:
+				wall()
+		LevelMap.ENTITY_TYPE.ENEMY:
+			if character.is_in_group("Player"):
+				attack(direction)
+			else:
+				wall()
+		
 
 func move(direction: Vector2i) -> void:
-	grid_position += Vector3i(direction.x, 0, direction.y)
+	GameDirector.level_map.move_entity(grid_position, grid_position+direction)
+	grid_position += direction
 	var target_position: Vector3 = GameDirector.level_map.grid_to_globalpos(grid_position)
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
@@ -58,7 +72,7 @@ func ranged_attack(direction: Vector3) -> void:
 	CharacterActed.emit()
 
 func interact(direction: Vector2i) -> void:
-	var interactable: InteractableObject = GameDirector.level_map.tile_dictionary[Util.vec3i_to_vec2i(grid_position) + direction].interactable
+	var interactable: InteractableObject = GameDirector.level_map.tile_dictionary[grid_position + direction].interactable
 	if !interactable:
 		return
 	interactable.interact()
@@ -68,7 +82,7 @@ func wait() -> void:
 	SignalBus.DamageText.emit("...", self, DamageTextOverlay.TYPE.MESSAGE)
 	CharacterActed.emit()
 
-func wall(_collided: Node3D) -> void:
+func wall() -> void:
 	#print("Moving into wall: %s" % collided)
 	wait()
 

@@ -57,7 +57,7 @@ func place_door(pos: Vector2i, rotation: float) -> void:
 	## TODO: CHANCE TO PLACE DIFFERENT TYPE OF DOORS
 	var wooden_door: InteractableObject = WOODEN_DOOR.instantiate()
 	MAP.add_to_tile(wooden_door, pos)
-	wooden_door.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
+	wooden_door.global_position = MAP.grid_to_globalpos(pos)
 	wooden_door.rotate_y(rotation)
 
 
@@ -100,14 +100,15 @@ func place_chest(pos: Vector2i) -> void:
 	var chest: Chest = CHEST.instantiate()
 	MAP.add_to_tile(chest, pos)
 	#OBJECT.add_child(chest)
-	chest.global_position = MAP.grid_to_globalpos(Vector3i(pos.x, 0, pos.y))
+	chest.global_position = MAP.grid_to_globalpos(pos)
 
 
 
 func place_player(spawn_pos: Vector2i) -> void:
 	var player:Player = player_scene.instantiate()
 	MAP.add_child(player)
-	player.character_grid_movement.set_at_grid_position(Vector3i(spawn_pos.x, 0, spawn_pos.y))
+	player.character_grid_movement.set_at_grid_position(spawn_pos)
 	player.character_grid_movement.move.call_deferred(Vector2i(0,1)) ## DO LATER SO ANIMATION IS VISIBLE
 	if verbose:
 		print("RoomPopulation: Place Player Finished")
+	MAP.add_entity_to_entitymap(spawn_pos, LevelMap.ENTITY_TYPE.PLAYER)

@@ -18,7 +18,7 @@ func setup(_weapon_data: WeaponResource, _character_stats: CharacterStats, _char
 	character_animation = _character_animation
 	set_target_layer()
 
-func attack(hit_position: Vector3i) -> void:
+func attack(hit_position: Vector2i) -> void:
 	var new_hit: MeleeWeaponHit = attack_hit.instantiate()
 	hits.add_child(new_hit) 
 	
