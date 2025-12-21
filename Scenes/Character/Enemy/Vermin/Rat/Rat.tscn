@@ -61,37 +61,17 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(0.048036367, 0.9939733, -0.09842274, -0.004756496)
-bones/2/rotation = Quaternion(-0.7519235, 0.023048805, 0.026325958, 0.65832126)
+bones/1/rotation = Quaternion(0.014809109, 0.9950232, -0.09852671, -0.0014663478)
+bones/2/rotation = Quaternion(-0.7523404, 0.007105109, 0.008115335, 0.6586863)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.99533963, -0.094557405, 0.018911399, -8.195639e-08, -0.19611606, -0.98058057, 0.09643001, 0.9760107, -0.19520216, 0, 0.030000001, 0.08)
+transform = Transform3D(0.99955714, -0.029181855, 0.0058362847, -8.5448846e-08, -0.19611609, -0.9805807, 0.02975976, 0.9801461, -0.19602926, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 
 [node name="GridMovement" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_g5da4")
-
-[node name="North" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.3711385e-08, -4.371139e-08, -1, -1, 0, 4.371139e-08, 0, 1, -4.371139e-08, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 7
-
-[node name="Shouth" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.3711385e-08, 1.3113416e-07, 1, -1, -7.642741e-15, -4.371138e-08, 0, -1, 1.3113416e-07, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 7
-
-[node name="West" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.371138e-08, 1, -1.7484555e-07, -1, -4.371138e-08, 9.284769e-15, 0, 1.7484555e-07, 1, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 7
-
-[node name="East" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.371138e-08, -1, 8.742277e-08, -1, 4.371138e-08, -2.179342e-15, 0, -8.742277e-08, -1, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 7
 
 [node name="EnemyInput" type="Node" parent="GridMovement"]
 script = ExtResource("8_mejtj")
@@ -150,9 +130,8 @@ shape = SubResource("CylinderShape3D_lxplw")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="WeaponAttachment" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
+[node name="WeaponAttachment" type="Node3D" parent="."]
 script = ExtResource("10_mejtj")
-hand = NodePath("../View/3D/Rat/Skeleton3D/Head")
 
 [node name="HealthBar" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

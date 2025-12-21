@@ -1,14 +1,13 @@
 extends Node3D
 class_name CharacterGridMovement
 
-const GRID_DISTANCE: int = 4
 signal CharacterActed
 signal CharacterMoved
 
 var character: Character
-@onready var raycasts: Dictionary[String, RayCast3D] = {"NORTH": $North, "SOUTH": $Shouth, "WEST": $West, "EAST": $East}
-var move_tween: Tween
 var grid_position: Vector2i
+
+var move_tween: Tween
 
 @export var verbose: bool
 
@@ -25,10 +24,8 @@ func set_at_grid_position(_grid_position: Vector2i) -> void:
 
 func action(direction: Vector2i) -> void:
 	character.character_animation.look_towards(Vector3(direction.x, 0, direction.y))
-	#var collided: Object = get_ray_by_direction(direction).get_collider()
-	
 	var entity_in_position: LevelMap.ENTITY_TYPE = GameDirector.level_map.get_entity_at_pos(grid_position + direction)
-	#print("moving towards: ", LevelMap.ENTITY_TYPE.keys()[entity_in_position])
+	
 	match entity_in_position:
 		LevelMap.ENTITY_TYPE.EMPTY:
 			move(direction)
@@ -46,7 +43,7 @@ func action(direction: Vector2i) -> void:
 				attack(direction)
 			else:
 				wall()
-		
+
 
 func move(direction: Vector2i) -> void:
 	GameDirector.level_map.move_entity(grid_position, grid_position+direction)
@@ -83,17 +80,4 @@ func wait() -> void:
 	CharacterActed.emit()
 
 func wall() -> void:
-	#print("Moving into wall: %s" % collided)
 	wait()
-
-func get_ray_by_direction(direction: Vector2i) -> RayCast3D:
-	match direction:
-		Vector2i(0,-1):
-			return raycasts["NORTH"]
-		Vector2i(0,1):
-			return raycasts["SOUTH"]
-		Vector2i(-1,0):
-			return raycasts["WEST"]
-		Vector2i(1,0):
-			return raycasts["EAST"]
-	return null

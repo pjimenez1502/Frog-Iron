@@ -129,30 +129,6 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 unique_name_in_owner = true
 script = ExtResource("4_oedxj")
 
-[node name="North" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.3711385e-08, -4.371139e-08, -1, -1, 0, 4.371139e-08, 0, 1, -4.371139e-08, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 37
-collide_with_areas = true
-
-[node name="Shouth" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.3711385e-08, 1.3113416e-07, 1, -1, -7.642741e-15, -4.371138e-08, 0, -1, 1.3113416e-07, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 37
-collide_with_areas = true
-
-[node name="West" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.371138e-08, 1, -1.7484555e-07, -1, -4.371138e-08, 9.284769e-15, 0, 1.7484555e-07, 1, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 37
-collide_with_areas = true
-
-[node name="East" type="RayCast3D" parent="GridMovement"]
-transform = Transform3D(-4.371138e-08, -1, 8.742277e-08, -1, 4.371138e-08, -2.179342e-15, 0, -8.742277e-08, -1, 4.3711385e-08, 1, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 37
-collide_with_areas = true
-
 [node name="PlayerInput" type="Node" parent="GridMovement"]
 script = ExtResource("5_v7n4c")
 
