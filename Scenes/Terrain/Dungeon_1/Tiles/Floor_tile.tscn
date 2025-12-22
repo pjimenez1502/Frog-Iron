@@ -5,7 +5,7 @@
 
 [node name="Floor_Tile" type="Node3D" node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_vfiyh")
-meshes = [NodePath("Floor/Floor_1 ")]
+meshes = [NodePath("Floor/Floor ")]
 
 [node name="Floor" parent="." instance=ExtResource("2_wfqfw")]
 
