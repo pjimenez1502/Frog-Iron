@@ -80,8 +80,8 @@
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
-				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
-				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e"
+				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
+				"1f38471e-df60-4583-a2c3-78f4361c9099"
 			]
 		},
 		{
@@ -89,6 +89,7 @@
 			"title": "Done",
 			"tasks": [
 				"214a39bb-612b-489f-a9e1-092453f1d42e",
+				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
 				"85fa8b4f-e579-4701-9fd4-8271597b4529",
 				"81c01f1c-be11-4b86-a429-28fca81aedb3",
@@ -189,8 +190,8 @@
 		{
 			"uuid": "c88cb1ca-ee09-4405-9a35-43db31db161e",
 			"title": "PERKS?",
-			"description": "\nEnemy give XP on kill depending on their difficulty modifiers\n\nOn Level Up:\n\tSelect Stat Increase\n\tGain perks?",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"description": "NO XP system\n\nProgression though equipment, temporal boosts and mutations",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
 		{
@@ -550,6 +551,13 @@
 			"title": "RETHEME TO SCIFI",
 			"description": "",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "1f38471e-df60-4583-a2c3-78f4361c9099",
+			"title": "Setup Shaders in layers",
+			"description": "convert screen reading shaders to texture shaders to control what they can see\n\nhttps://www.reddit.com/r/godot/comments/w33crg/hello_is_there_any_way_to_apply_a_canvas_item/\n",
+			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
 			"steps": []
 		}
 	],

@@ -8,6 +8,8 @@ const CREATION_VIEW = preload("uid://bq2ka0lnsoxmk")
 enum VIEW_FOCUS { GAME, CHARACTER, INVENTORY, SKILLS, MAP, PAUSE, MENU }
 var current_view_focus: VIEW_FOCUS
 
+@onready var content: Control = $Content
+
 func _ready() -> void:
 	InputBus.game_view = self
 	
@@ -25,10 +27,10 @@ func _ready() -> void:
 
 ## VIEWS
 func set_view(scene: PackedScene) -> ViewScene:
-	for child: Control in get_children():
+	for child: Control in content.get_children():
 		child.queue_free()
 	var view: ViewScene = scene.instantiate()
-	add_child(view)
+	content.add_child(view)
 	return view
 
 func open_main_menu() -> void:

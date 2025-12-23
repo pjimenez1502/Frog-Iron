@@ -5,6 +5,7 @@ uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
 uniform float closure : hint_range(1.0, 30.0) = 15.0;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+//uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
 float vignette(vec2 uv){
 	uv *= 1.0 - uv.xy;

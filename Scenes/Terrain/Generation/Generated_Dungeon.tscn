@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccw7mbaf4h10s"]
+[gd_scene load_steps=18 format=3 uid="uid://ccw7mbaf4h10s"]
 
 [ext_resource type="Script" uid="uid://bo7t1gqffnlx2" path="res://Scenes/Terrain/Generation/Generated_Dungeon.gd" id="1_bxfei"]
 [ext_resource type="Script" uid="uid://d11pmxvgi634x" path="res://Scenes/Terrain/Generation/RoomlistGeneration.gd" id="1_fdcp4"]
@@ -28,12 +28,16 @@ glow_normalized = true
 glow_hdr_threshold = 2.0
 adjustment_enabled = true
 
+[sub_resource type="Compositor" id="Compositor_8qbcg"]
+compositor_effects = Array[CompositorEffect]([null])
+
 [node name="GeneratedDungeon" type="Node3D"]
 script = ExtResource("1_bxfei")
 verbose = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_66gi2")
+compositor = SubResource("Compositor_8qbcg")
 
 [node name="MAP" type="Node3D" parent="."]
 unique_name_in_owner = true

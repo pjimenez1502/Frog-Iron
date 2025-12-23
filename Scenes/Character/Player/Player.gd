@@ -25,11 +25,11 @@ func _ready() -> void:
 	GameDirector.set_player(self)
 
 
-func setup_player(player_data: Dictionary, player_model: CharacterModel, player_name: String) -> void:
-	CharacterView.add_child(player_model)
+func setup_player(player_data: Dictionary, _player_model: CharacterModel, _player_name: String) -> void:
+	CharacterView.add_child(_player_model)
 	character_stats.base_stats = player_data["stats"]
-	self.player_model = player_model
-	self.player_name = player_name
+	player_model = _player_model
+	player_name = player_name
 	setup_attachments()
 
 func increase_stat(stat:String, count:int) -> void:

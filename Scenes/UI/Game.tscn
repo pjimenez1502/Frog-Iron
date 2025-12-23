@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck2jmuxclwn0d"]
+[gd_scene load_steps=4 format=3 uid="uid://ck2jmuxclwn0d"]
 
 [ext_resource type="Script" uid="uid://bjjxy6co1y1sn" path="res://Scenes/UI/Game.gd" id="1_momh4"]
+[ext_resource type="Shader" uid="uid://b3at28jliselb" path="res://Assets/Material/Shader/CHAberration_Vignette.gdshader" id="2_rw0po"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37imu"]
+shader = ExtResource("2_rw0po")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+shader_parameter/vignette_intensity = 1.0
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="GAME" type="Control"]
 layout_mode = 3
@@ -10,3 +20,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_momh4")
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PostProcess" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="PostProcess"]
+visible = false
+top_level = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_37imu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

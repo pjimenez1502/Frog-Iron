@@ -41,3 +41,9 @@ const TILE_SIZE: int = 4
 const con_health_mult: int = 2
 const dex_stamina_mult: int = 2
 const wis_sanity_mult: int = 2
+
+
+
+
+## SETTINGS
+var hud_color: Color = Color(1.0, 1.0, 1.0, 1.0)

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cvh2d6w7tu0xm"]
 
-[ext_resource type="Shader" uid="uid://b7lary20wfb3b" path="res://Assets/Material/Shader/new_shader.gdshader" id="1_q2a60"]
+[ext_resource type="Shader" uid="uid://b7lary20wfb3b" path="res://Assets/Material/Shader/Tile_Shader.gdshader" id="1_q2a60"]
 [ext_resource type="Texture2D" uid="uid://dv72agqi4wter" path="res://Assets/Material/Dungeon/texture/Station_1_tiles.png" id="2_q2a60"]
 
 [resource]

@@ -10,7 +10,6 @@ class_name HUD
 @onready var xp_bar: TextureProgressBar = %XP_Bar
 
 func _ready() -> void:
-	print("HUD READY")
 	SignalBus.PlayerHPUpdate.connect(update_hp)
 	SignalBus.PlayerStaminaUpdate.connect(update_stamina)
 	SignalBus.PlayerSanityUpdate.connect(update_sanity)
