@@ -5,7 +5,7 @@ var TILE_DICTIONARY: Dictionary
 var map_size: Vector2i
 
 var seen_tiles: Dictionary
-const MAX_VISION_DISTANCE: int = 6
+#const MAX_VISION_DISTANCE: int = 6
 
 func init_shadowcasting(tile_dictionary: Dictionary, _map_size: Vector2i) -> void:
 	TILE_DICTIONARY = tile_dictionary
@@ -74,7 +74,7 @@ func is_symmetric(row : Row, tile : Vector2) -> bool:
 	return col >= row.depth * row.start_slope and col <= row.depth * row.end_slope
 
 func scan(row: Row, quadrant: Quadrant) -> void:
-	if row.depth > MAX_VISION_DISTANCE:
+	if row.depth > GameDirector.player_vision_distance:
 		return
 	var prev_tile: Vector2i = Vector2i(-111,-111)
 	for tile: Vector2i in row.tiles():
@@ -132,7 +132,7 @@ class Row:
 		var min_col: float = round_ties_up(self.depth * self.start_slope)
 		var max_col: float = round_ties_down(self.depth * self.end_slope)
 		var result: Array = []
-		for i in range(min_col, min(max_col + 1, MAX_VISION_DISTANCE)):
+		for i in range(min_col, min(max_col + 1, GameDirector.player_vision_distance)):
 			result.append(Vector2i(self.depth, i))
 		return result
 

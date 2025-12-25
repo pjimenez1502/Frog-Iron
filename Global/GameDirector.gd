@@ -8,6 +8,7 @@ var enemy_list: Array[Enemy]
 var level_map: LevelMap
 var entity_map: Dictionary
 
+var player_vision_distance: int = 5
 
 func _ready() -> void:
 	turn_wait_timer = Timer.new()
@@ -36,6 +37,9 @@ func after_player_action() -> void:
 	await turn_wait_timer.timeout
 	SignalBus.TurnEnded.emit()
 
+func set_vision_distance(value: int) -> void:
+	player_vision_distance = value
+	request_vision_update()
 func request_vision_update() -> void:
 	SignalBus.UpdatePlayerVision.emit(player.character_grid_movement.grid_position)
 

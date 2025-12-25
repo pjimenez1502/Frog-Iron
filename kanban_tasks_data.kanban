@@ -57,6 +57,7 @@
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
+				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
 				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
@@ -75,19 +76,20 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
-				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
+				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 				"2d111953-a982-48fb-9488-e87ed37e72bb",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
-				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
-				"1f38471e-df60-4583-a2c3-78f4361c9099"
+				"1f38471e-df60-4583-a2c3-78f4361c9099",
+				"3b72980f-091c-429c-944d-0ebb3390835b"
 			]
 		},
 		{
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
+				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
 				"214a39bb-612b-489f-a9e1-092453f1d42e",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
 				"1a271107-4114-48a7-a520-c1a975352cf9",
@@ -343,8 +345,8 @@
 		},
 		{
 			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
-			"title": "Character Creation",
-			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \t\nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\n\n\nShow:\n\t- character preview?\n\t- color selection?\n\t- species selection\n\t\t- Small Description\n\t\t- Stat changes\n\t- character name",
+			"title": "SPECIES",
+			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \t\nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\nSPECIES IDEAS\n\n==== Drake ====\nStats:\n\t(Str: 5, Dex: 3, Int: 3, Wis: 4, Con: 5)\n\nAbility:\n\t> Re-evolve into a corrupt version of the ancestors, growing in size and stats, improve secondary weapon\n\nPassive:\n\t> Chemical resistance?\nDesc:\n\t- De-evolved from large flying beasts, %SPECIES% have lost their large size and ability to fly after millenia living underground, aftermath of a global chemical war that left their natal world's atmosphere unbreathable and it's surface inhospitable. %SPECIES% now use their long back appendages as crude weapons, remnants of their long ancestor's luscious wings.\n\n==== HUMAN  ====",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -510,11 +512,11 @@
 			"steps": [
 				{
 					"details": "Attack without enough stamina",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Hitchance / Crit is working?",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -558,6 +560,20 @@
 			"title": "Setup Shaders in layers",
 			"description": "convert screen reading shaders to texture shaders to control what they can see\n\nhttps://www.reddit.com/r/godot/comments/w33crg/hello_is_there_any_way_to_apply_a_canvas_item/\n",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
+			"steps": []
+		},
+		{
+			"uuid": "e2d84ace-5db2-46a9-870f-2d31eb5e7414",
+			"title": "Attack Crosshair",
+			"description": "On attack (ranged or melee), show a reticle and wait for a LClick to attack\nshow a circle with the effective range",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "3b72980f-091c-429c-944d-0ebb3390835b",
+			"title": "Show Equipped Weapons",
+			"description": "Right bottom corner\nShow melee and ranged weapon\n\nshow magazine and ammo",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		}
 	],
