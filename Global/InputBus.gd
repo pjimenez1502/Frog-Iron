@@ -9,6 +9,9 @@ signal input_MELEE
 signal input_RANGED
 signal input_INTERACT
 
+signal action_ACCEPT
+signal action_CANCEL
+
 ## CAMERA
 signal camera_ZOOM
 signal camera_ROTATE
@@ -49,6 +52,11 @@ func _input(event: InputEvent) -> void:
 				input_MELEE.emit()
 			if event.is_action_pressed("move_RANGED"):
 				input_RANGED.emit()
+			
+			if event.is_action_pressed("action_ACCEPT"):
+				action_ACCEPT.emit()
+			if event.is_action_pressed("action_CANCEL"):
+				action_CANCEL.emit()
 			
 			if event.is_action_pressed("camera_ROTATE_LEFT"):
 				camera_ROTATE.emit(1)

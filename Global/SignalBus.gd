@@ -27,6 +27,7 @@ signal PlayerSanityUpdate
 signal PlayerCoinUpdate
 signal PlayerStatsUpdate
 
+signal CursorUpdate
 signal ItemUsed
 
 ## EmergentInv
