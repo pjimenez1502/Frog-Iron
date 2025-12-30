@@ -3,11 +3,15 @@ class_name RoomBuilder
 
 @onready var MAP: Node3D = %MAP
 
-@export var TILE_DICTIONARY: Dictionary[String, PackedScene] = {
-	"FLOOR_1": null,
-	"WALL": null,
-	"ENTRANCE": null,
-	"EXIT": null,
+@export var TILE_DICTIONARY: Dictionary[String, Array] = {
+	"FLOOR": [
+		preload("res://Scenes/Terrain/Dungeon_1/Tiles/Floor_tile_1.tscn"),
+		preload("res://Scenes/Terrain/Dungeon_1/Tiles/Floor_tile_2.tscn"),
+		preload("res://Scenes/Terrain/Dungeon_1/Tiles/Floor_tile_3.tscn"),
+		],
+	"WALL": [preload("res://Scenes/Terrain/Dungeon_1/Tiles/Wall_tile.tscn")],
+	"ENTRANCE": [preload("res://Scenes/Terrain/Dungeon_1/Tiles/Entrance_tile.tscn")],
+	"EXIT": [preload("res://Scenes/Terrain/Dungeon_1/Tiles/Exit_tile.tscn")],
 }
 
 func build(room_list: Array) -> void:
@@ -17,16 +21,16 @@ func build(room_list: Array) -> void:
 				0: ## WALL
 					place_tile("WALL", Vector2i(x,y))
 				-1: ## CORRIDORS
-					place_tile("FLOOR_1", Vector2i(x,y))
+					place_tile("FLOOR", Vector2i(x,y))
 				-2: ## ENTRANCE
 					place_tile("ENTRANCE", Vector2i(x,y))
 				-3: ## EXIT
 					place_tile("EXIT", Vector2i(x,y))
 				_:
-					place_tile("FLOOR_1", Vector2i(x,y))
+					place_tile("FLOOR", Vector2i(x,y))
 
 func place_tile(tile_id: String, pos: Vector2i) -> void:
-	var tile: MapTile = TILE_DICTIONARY[tile_id].instantiate()
+	var tile: MapTile = TILE_DICTIONARY[tile_id].pick_random().instantiate()
 	MAP.tile_dictionary[pos] = tile
 	MAP.tile_visibility[pos] = MAP.VISIBILITY.UNSEEN
 	MAP.add_tile(tile, pos)
