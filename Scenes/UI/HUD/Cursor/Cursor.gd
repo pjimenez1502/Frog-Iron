@@ -5,8 +5,9 @@ class_name Cursor
 @onready var melee: TextureRect = $MELEE
 @onready var ranged: TextureRect = $RANGED
 @onready var interact: TextureRect = $INTERACT
+@onready var menu: TextureRect = $MENU
 
-enum CURSOR { DEFAULT, MELEE, RANGED, INTERACT }
+enum CURSOR { DEFAULT, MELEE, RANGED, INTERACT, MENU }
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -23,19 +24,29 @@ func set_cursor(cursor: CURSOR) -> void:
 			melee.visible = false
 			ranged.visible = false
 			interact.visible = false
+			menu.visible = false
 		CURSOR.MELEE:
 			default.visible = false
 			melee.visible = true
 			ranged.visible = false
 			interact.visible = false
+			menu.visible = false
 		CURSOR.RANGED:
 			default.visible = false
 			melee.visible = false
 			ranged.visible = true
 			interact.visible = false
+			menu.visible = false
 		CURSOR.INTERACT:
 			default.visible = false
 			melee.visible = false
 			ranged.visible = false
 			interact.visible = true
+			menu.visible = false
+		CURSOR.MENU:
+			default.visible = false
+			melee.visible = false
+			ranged.visible = false
+			interact.visible = false
+			menu.visible = true
 	

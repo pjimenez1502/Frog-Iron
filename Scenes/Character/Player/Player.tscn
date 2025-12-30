@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b5eq8lyfdnua5" path="res://Scenes/Character/Player/PlayerInput.gd" id="5_v7n4c"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="6_uwo8e"]
 [ext_resource type="Script" uid="uid://cvdsrijlqpqta" path="res://Scenes/Character/Player/CameraPivot.gd" id="8_yty6f"]
-[ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/outline.gdshader" id="9_nyt8s"]
+[ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/Outline.gdshader" id="9_nyt8s"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_oedxj"]
 [ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="9_v7n4c"]
 [ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Ranged/Bow.tres" id="10_ypnta"]

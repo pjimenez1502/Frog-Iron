@@ -58,7 +58,7 @@
 			"title": "ToDo",
 			"tasks": [
 				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
-				"ce990c58-9668-4fd0-a0bc-668d6de54d24",
+				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
@@ -346,7 +346,7 @@
 		{
 			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
 			"title": "SPECIES",
-			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \t\nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\n\nSPECIES IDEAS\n\n==== Drake ====\nStats:\n\t(Str: 5, Dex: 3, Int: 3, Wis: 4, Con: 5)\n\nAbility:\n\t> Re-evolve into a corrupt version of the ancestors, growing in size and stats, improve secondary weapon\n\nPassive:\n\t> Chemical resistance?\nDesc:\n\t- De-evolved from large flying beasts, %SPECIES% have lost their large size and ability to fly after millenia living underground, aftermath of a global chemical war that left their natal world's atmosphere unbreathable and it's surface inhospitable. %SPECIES% now use their long back appendages as crude weapons, remnants of their long ancestor's luscious wings.\n\n==== HUMAN  ====",
+			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \t\nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\nSynth\t\t\t\n\nSPECIES IDEAS\n\n==== Drake ====\nStats:\n\t(Str: 5, Dex: 3, Int: 3, Wis: 4, Con: 5)\n\nAbility:\n\t> Re-evolve into a corrupt version of the ancestors, growing in size and stats, improve secondary weapon\n\nPassive:\n\t> Chemical resistance?\nDesc:\n\t- De-evolved from large flying beasts, %SPECIES% have lost their large size and ability to fly after millenia living underground, aftermath of a global chemical war that left their natal world's atmosphere unbreathable and it's surface inhospitable. %SPECIES% now use their long back appendages as crude weapons, remnants of their long ancestor's luscious wings.\n\n==== HUMAN  ====",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -411,13 +411,6 @@
 			"title": "Options Menu",
 			"description": "\nSound\nControls",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
-			"steps": []
-		},
-		{
-			"uuid": "ce990c58-9668-4fd0-a0bc-668d6de54d24",
-			"title": "Fix both equipped weapons showing always",
-			"description": "",
-			"category": "ab293cf5-56c7-4c85-afb1-7c0d29395098",
 			"steps": []
 		},
 		{
@@ -565,15 +558,31 @@
 		{
 			"uuid": "e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 			"title": "Attack Crosshair",
-			"description": "On attack (ranged or melee), show a reticle and wait for a LClick to attack\nshow a circle with the effective range",
+			"description": "On attack (ranged or melee), show a reticle and wait for a LClick to attack\n- Rclick, escape or any other action or menu to cancel\n",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
-			"steps": []
+			"steps": [
+				{
+					"details": "Extra cursor for menus",
+					"done": false
+				},
+				{
+					"details": "Show range when applicable",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "3b72980f-091c-429c-944d-0ebb3390835b",
 			"title": "Show Equipped Weapons",
 			"description": "Right bottom corner\nShow melee and ranged weapon\n\nshow magazine and ammo",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "2edb0319-0b11-4762-a07a-219e5ec0246d",
+			"title": "NO INVENTORY",
+			"description": "\nInventory only for consumables (ammo, potions, etc)\nEquipment found can be swapped for current, but not carried",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}
 	],

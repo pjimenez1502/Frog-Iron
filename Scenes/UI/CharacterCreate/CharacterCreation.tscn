@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddt8kcb7jq2" path="res://Scenes/UI/Asset/PREV_button.png" id="4_6djk7"]
 [ext_resource type="Texture2D" uid="uid://duacl6b5eogej" path="res://Scenes/UI/Asset/NEXT_button.png" id="5_5uwk1"]
 [ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Asset/BorderSquare.png" id="5_fdbgy"]
-[ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/outline.gdshader" id="6_m60g3"]
+[ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/Outline.gdshader" id="6_m60g3"]
 [ext_resource type="Texture2D" uid="uid://dp55fxuh8n1fx" path="res://Scenes/UI/Asset/Button_BG.png" id="7_fdbgy"]
 
 [sub_resource type="Gradient" id="Gradient_fy4ai"]

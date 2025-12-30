@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c22ib2rmc7xhi"
-path="res://.godot/imported/cursor_ranged.png-0839af6112636595c7f30b5d79afd313.ctex"
+uid="uid://cewouxmup34wq"
+path="res://.godot/imported/cursor_menu.png-88d90832254cab2b4df51fa7e76ac9d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/HUD/Cursor/cursor_ranged.png"
-dest_files=["res://.godot/imported/cursor_ranged.png-0839af6112636595c7f30b5d79afd313.ctex"]
+source_file="res://Scenes/UI/HUD/Cursor/cursor_menu.png"
+dest_files=["res://.godot/imported/cursor_menu.png-88d90832254cab2b4df51fa7e76ac9d2.ctex"]
 
 [params]
 

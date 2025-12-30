@@ -22,6 +22,7 @@ func match_menu(menu: PlayMenu) -> void:
 	menu_views[menu].visible = true
 
 func open_menu(menu: PlayMenu) -> void:
+	SignalBus.CursorUpdate.emit(Cursor.CURSOR.MENU)
 	menu_tabs.current_tab = menu
 	visible = true
 	current_menu = menu
@@ -31,6 +32,7 @@ func close_all_tabs() -> void:
 		menu.visible = false
 
 func close_menu() -> void:
+	SignalBus.CursorUpdate.emit(Cursor.CURSOR.DEFAULT)
 	SignalBus.ViewFocusChange.emit(GameView.VIEW_FOCUS.GAME)
 	visible = false
 	current_menu = PlayMenu.NONE

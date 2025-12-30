@@ -1,10 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1f8xxeridxnk"]
+[gd_scene load_steps=12 format=3 uid="uid://d1f8xxeridxnk"]
 
 [ext_resource type="Script" uid="uid://iy0hjfckmmkm" path="res://Scenes/UI/HUD/Cursor/Cursor.gd" id="1_5vgfa"]
 [ext_resource type="Texture2D" uid="uid://b0rxxucg6r0f2" path="res://Scenes/UI/HUD/Cursor/cursor_default.png" id="2_3gyrs"]
+[ext_resource type="Shader" uid="uid://btd11ksrmjrwn" path="res://Assets/Material/Shader/2DOutline.gdshader" id="2_nlvqd"]
 [ext_resource type="Texture2D" uid="uid://d3rlo35rtkaq2" path="res://Scenes/UI/HUD/Cursor/cursor_melee.png" id="3_3gyrs"]
-[ext_resource type="Texture2D" uid="uid://cewouxmup34wq" path="res://Scenes/UI/HUD/Cursor/cursor_ranged.png" id="4_nlvqd"]
+[ext_resource type="Texture2D" uid="uid://c22ib2rmc7xhi" path="res://Scenes/UI/HUD/Cursor/cursor_ranged.png" id="4_nlvqd"]
 [ext_resource type="Texture2D" uid="uid://gdxdsprttlef" path="res://Scenes/UI/HUD/Cursor/cursor_interact.png" id="5_soega"]
+[ext_resource type="Texture2D" uid="uid://cewouxmup34wq" path="res://Scenes/UI/HUD/Cursor/cursor_menu.png" id="7_soega"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlvqd"]
+shader = ExtResource("2_nlvqd")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0000000475
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="Animation" id="Animation_vq2lg"]
 resource_name = "Cursor"
@@ -58,7 +68,9 @@ mouse_filter = 2
 script = ExtResource("1_5vgfa")
 
 [node name="DEFAULT" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
+material = SubResource("ShaderMaterial_nlvqd")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,8 +89,9 @@ mouse_filter = 2
 texture = ExtResource("2_3gyrs")
 
 [node name="MELEE" type="TextureRect" parent="."]
-modulate = Color(0.76, 0, 0, 1)
+visible = false
 texture_filter = 1
+material = SubResource("ShaderMaterial_nlvqd")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -97,8 +110,10 @@ mouse_filter = 2
 texture = ExtResource("3_3gyrs")
 
 [node name="RANGED" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.76, 0, 0, 1)
 texture_filter = 1
+material = SubResource("ShaderMaterial_nlvqd")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -117,8 +132,10 @@ mouse_filter = 2
 texture = ExtResource("4_nlvqd")
 
 [node name="INTERACT" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 0.7666667, 0, 1)
 texture_filter = 1
+material = SubResource("ShaderMaterial_nlvqd")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,6 +152,27 @@ scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(8, 8)
 mouse_filter = 2
 texture = ExtResource("5_soega")
+
+[node name="MENU" type="TextureRect" parent="."]
+modulate = Color(0.76, 0, 0, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_nlvqd")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0000305
+offset_right = 8.0
+offset_bottom = 7.9999695
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(8, 8)
+mouse_filter = 2
+texture = ExtResource("7_soega")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
