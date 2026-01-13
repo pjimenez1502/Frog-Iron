@@ -16,6 +16,8 @@ func death() -> void:
 	print("death")
 	character_dead()
 	loot.drop_loot()
+	if !SignalBus.EnemyTurn.is_connected(enemy_input.play_turn):
+		return
 	SignalBus.EnemyTurn.disconnect(enemy_input.play_turn)
 
 func setup(enemy_data: EnemyResource) -> void:

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AmmoResource" load_steps=2 format=3 uid="uid://cfx6rdycor8fq"]
+
+[ext_resource type="Script" uid="uid://c7lu7tl5ix5ku" path="res://Data/Item/AmmoResource.gd" id="1_uwja2"]
+
+[resource]
+script = ExtResource("1_uwja2")
+name = "Light Ammo"
+metadata/_custom_type_script = "uid://c7lu7tl5ix5ku"

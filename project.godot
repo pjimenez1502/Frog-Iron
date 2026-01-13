@@ -45,6 +45,10 @@ gdscript/warnings/untyped_declaration=1
 gdscript/warnings/narrowing_conversion=0
 gdscript/warnings/enum_variable_without_default=0
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [display]
 
 window/stretch/mode="viewport"

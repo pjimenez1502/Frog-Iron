@@ -563,7 +563,7 @@
 			"steps": [
 				{
 					"details": "Extra cursor for menus",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Show range when applicable",

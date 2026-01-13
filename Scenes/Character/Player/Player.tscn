@@ -7,11 +7,11 @@
 [ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="5_2e4qg"]
 [ext_resource type="Script" uid="uid://b5eq8lyfdnua5" path="res://Scenes/Character/Player/PlayerInput.gd" id="5_v7n4c"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="6_uwo8e"]
+[ext_resource type="Resource" uid="uid://burbf5oqbmmof" path="res://Data/Item/Equipable/Weapon/Ranged/Rifle.tres" id="7_ypnta"]
 [ext_resource type="Script" uid="uid://cvdsrijlqpqta" path="res://Scenes/Character/Player/CameraPivot.gd" id="8_yty6f"]
 [ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/Outline.gdshader" id="9_nyt8s"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_oedxj"]
 [ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="9_v7n4c"]
-[ext_resource type="Resource" uid="uid://bg6m32ufatn5h" path="res://Data/Item/Equipable/Weapon/Ranged/Bow.tres" id="10_ypnta"]
 [ext_resource type="Resource" uid="uid://sh4mi7xnrmlt" path="res://Data/Item/Equipable/Armor/T_Chestplate.tres" id="11_ypnta"]
 [ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="18_unv75"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="18_ypnta"]
@@ -140,7 +140,7 @@ character_tag = 1
 [node name="PlayerInventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_yty6f")
-inventory = Array[ExtResource("6_uwo8e")]([ExtResource("10_ypnta")])
+inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta")])
 starting_equipment = Array[ExtResource("6_uwo8e")]([ExtResource("9_v7n4c"), ExtResource("11_ypnta")])
 
 [node name="CharacterAttack" type="Node" parent="." node_paths=PackedStringArray("weapon_attatchment")]

@@ -290,18 +290,18 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
+[node name="PlayerHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -131.0
-offset_right = 773.0
+offset_right = 576.0
 grow_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("13_ntjdg")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/TextHUD"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,10 +310,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/TextHUD/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayerData" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/TextHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerData" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
@@ -322,7 +322,7 @@ bbcode_enabled = true
 text = "PlayerName, Human"
 fit_content = true
 
-[node name="PlayerHP" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/TextHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerHP" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
@@ -331,7 +331,7 @@ bbcode_enabled = true
 text = "Health:		[[color=\"red\"]////////////-------[/color]] 10/18"
 fit_content = true
 
-[node name="PlayerStamina" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/TextHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerStamina" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
@@ -340,7 +340,7 @@ bbcode_enabled = true
 text = "Stamina:	[[color=\"green\"]///////---[/color]] 07/10"
 fit_content = true
 
-[node name="PlayerIntegrity" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/TextHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerIntegrity" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
