@@ -1,5 +1,5 @@
-extends Node
-class_name Loot
+extends CharacterInventory
+class_name EnemyInventory
 
 @export var xp: int
 @export var coin: int

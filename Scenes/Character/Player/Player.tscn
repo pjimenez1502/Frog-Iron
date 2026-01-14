@@ -137,7 +137,7 @@ unique_name_in_owner = true
 script = ExtResource("3_f0b02")
 character_tag = 1
 
-[node name="PlayerInventory" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_yty6f")
 inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta")])

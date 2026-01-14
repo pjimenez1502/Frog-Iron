@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d3w7anlgskstc" path="res://Scenes/Character/GridMovement.gd" id="3_vh70q"]
 [ext_resource type="Script" uid="uid://dn77g08dss0ng" path="res://Scenes/Character/Enemy/EnemyInput.gd" id="4_7mb21"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="5_32uyh"]
-[ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="6_clcb0"]
+[ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/EnemyInventory.gd" id="6_clcb0"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="7_l3mli"]
 [ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Unarmed.tres" id="8_segp2"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_6euxv"]
@@ -80,7 +80,7 @@ base_stats = {
 "WIS": 2
 }
 
-[node name="Loot" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_clcb0")
 xp = 2

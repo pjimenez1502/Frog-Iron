@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_ghg1f"]
 [ext_resource type="PackedScene" uid="uid://cle0m3o5ilqoj" path="res://Scenes/Character/Enemy/Vermin/Rat/Rat.glb" id="3_lq07w"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_uhhdc"]
-[ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/Loot.gd" id="4_lu8p1"]
+[ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/EnemyInventory.gd" id="4_lu8p1"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="4_xa7qo"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="6_5bbps"]
 [ext_resource type="Script" uid="uid://d3w7anlgskstc" path="res://Scenes/Character/GridMovement.gd" id="6_g5da4"]
@@ -61,11 +61,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0"]
-bones/1/rotation = Quaternion(0.014809109, 0.9950232, -0.09852671, -0.0014663478)
-bones/2/rotation = Quaternion(-0.7523404, 0.007105109, 0.008115335, 0.6586863)
+bones/1/rotation = Quaternion(-0.043525003, 0.99418104, -0.09844335, 0.0043098694)
+bones/2/rotation = Quaternion(-0.7520058, -0.020883398, -0.023852665, 0.65839356)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1"]
-transform = Transform3D(0.99955714, -0.029181855, 0.0058362847, -8.5448846e-08, -0.19611609, -0.9805807, 0.02975976, 0.9801461, -0.19602926, 0, 0.030000001, 0.08)
+transform = Transform3D(0.9961741, 0.08569489, -0.017139073, -8.6613e-08, -0.19611616, -0.9805807, -0.08739202, 0.9768287, -0.19536585, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 
@@ -80,7 +80,7 @@ script = ExtResource("8_mejtj")
 unique_name_in_owner = true
 script = ExtResource("3_uhhdc")
 
-[node name="Loot" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_lu8p1")
 xp = 2

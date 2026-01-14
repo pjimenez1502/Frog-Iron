@@ -15,7 +15,7 @@ var attack_target: Character
 var attack_available: bool = true
 
 func _ready() -> void:
-	setup_weapons()
+	setup_weapons.call_deferred()
 
 func setup_weapons() -> void:
 	if melee_weapon:
@@ -27,7 +27,7 @@ func setup_weapons() -> void:
 		var melee: MeleeWeapon = melee_weapon_data.scene.instantiate()
 		weapon_attatchment.add_child(melee)
 		melee_weapon = melee
-		melee.setup(melee_weapon_data, %CharacterStats, %CharacterAnimation)
+		melee.setup(melee_weapon_data, character)
 	else:
 		melee_weapon_data = UNARMED
 		setup_weapons()
@@ -36,7 +36,7 @@ func setup_weapons() -> void:
 		var ranged: RangedWeapon = ranged_weapon_data.scene.instantiate()
 		ranged_weapon = ranged
 		weapon_attatchment.add_child(ranged)
-		ranged.setup(ranged_weapon_data, %CharacterStats, %CharacterAnimation)
+		ranged.setup(ranged_weapon_data, character)
 	else:
 		ranged_weapon_data = null
 
@@ -62,7 +62,15 @@ func ranged_attack(direction: Vector3) -> void:
 	ranged_weapon.attack(direction)
 	character.character_stats.change_stamina(-ranged_weapon.weapon_data.stamina_cost)
 
-
+func reload_ranged() -> void:
+	if !ranged_weapon:
+		return
+	await get_tree().create_timer(0.25).timeout
+	var remaining_in_magazine: int = ranged_weapon.current_magazine
+	var reloaded: int = clamp(remaining_in_magazine + character.character_inventory.ammo[ranged_weapon_data.ammo_type], 0, ranged_weapon_data.weapon_stats["MAGAZINE"])
+	ranged_weapon.current_magazine = reloaded
+	character.character_inventory.ammo[ranged_weapon_data.ammo_type] -= reloaded - remaining_in_magazine
+	ranged_weapon.update_weapon_status()
 
 func dir_to_target(target: Character) -> Vector3:
 	return (target.global_position - character.global_position).normalized()

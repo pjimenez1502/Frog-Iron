@@ -25,14 +25,15 @@ class_name GunResource
 	"CON": 0,
 }
 
-@export var ammo_type: AmmoResource.AmmoType
+enum AMMO_TYPES { LIGHT, HEAVY, SLUG }
+@export var ammo_type: AMMO_TYPES
 @export var stamina_cost: int = 1
 
 func get_tooltip_content() -> String:
 	var tooltip: String
 	var item_material: String = Global.rarity_prefixes[MATERIAL.keys()[material]][rarity]
 	tooltip = "[color=#%s]%s %s[/color]" % [Global.rarity_colors[rarity].to_html(), item_material, name]
-	tooltip += "\n Ammo: %s" % AmmoResource.AmmoType.keys()[ammo_type]
+	tooltip += "\n Ammo: %s" % AMMO_TYPES.keys()[ammo_type]
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	tooltip += "\n Damage: %d" % calculate_damage(GameDirector.player.character_stats)
 	tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)

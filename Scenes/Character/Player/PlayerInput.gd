@@ -1,6 +1,7 @@
 extends Node
 class_name PlayerInput
 
+var player: Player
 @onready var grid_movement: CharacterGridMovement = %GridMovement
 var movement_directions: Array[Vector2i] = [Vector2(0,-1), Vector2(-1,0), Vector2(0,1), Vector2(1,0)]
 var is_player_turn: bool

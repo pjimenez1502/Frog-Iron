@@ -1,4 +1,4 @@
-extends Node
+extends CharacterInventory
 class_name PlayerInventory
 
 @onready var player: Player = $".."
@@ -7,14 +7,6 @@ var coin: int = 0
 @export var inventory: Array[ItemResource]
 @export var starting_equipment: Array[ItemResource]
 
-var equipment: Dictionary[String, EquipableResource] = {
-	"MELEE_WEAPON": null,
-	"RANGED_WEAPON": null,
-	"HEAD": null,
-	"TORSO": null,
-	"ARMS": null,
-	"LEGS": null,
-}
 
 func _ready() -> void:
 	SignalBus.AddPlayerCoin.connect(add_coin)
@@ -35,6 +27,10 @@ func pay_with_coin(value: int) -> bool:
 		return true
 	return false
 
+# AMMO
+func get_remaining_ammo(ammo_type: GunResource.AMMO_TYPES) -> int:
+	return ammo[ammo_type]
+
 ## ITEM
 func add_item(item_data: ItemResource) -> void:
 	#print("Received Item: %s" % item_data.name)
@@ -53,7 +49,6 @@ func consume_item(item_data: ConsumableResource) -> void:
 	update_inventory_call()
 
 ## EQUIPMENT
-
 func equip_item(item_data: EquipableResource) -> void:
 	if item_data.equip_slot == Global.EquipSlot.MELEEWEAPON:
 		if check_already_equipped(item_data):
@@ -70,7 +65,6 @@ func equip_item(item_data: EquipableResource) -> void:
 			unequip_armor(item_data)
 			return
 		equip_armor(item_data)
-
 
 
 func equip_melee_weapon(item_data: EquipableResource) -> void:
@@ -163,3 +157,9 @@ func equip_starting_equipment() -> void:
 	for item: EquipableResource in starting_equipment:
 		equip_item(item)
 	update_inventory_call()
+	
+	ammo = {
+		GunResource.AMMO_TYPES.LIGHT: 20,
+		GunResource.AMMO_TYPES.HEAVY: 10,
+		GunResource.AMMO_TYPES.SLUG: 8
+	}

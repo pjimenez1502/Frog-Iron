@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=32 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -23,6 +23,7 @@
 [ext_resource type="Shader" uid="uid://b3at28jliselb" path="res://Assets/Material/Shader/CHAberration_Vignette.gdshader" id="14_ji1qt"]
 [ext_resource type="Script" uid="uid://bej2hrxtlknia" path="res://Scenes/UI/HUD/FPS_Counter.gd" id="16_gl824"]
 [ext_resource type="PackedScene" uid="uid://b218jse6ii6kd" path="res://Scenes/UI/PlayView/EmergentInventory/emergent_inventory.tscn" id="16_m0chj"]
+[ext_resource type="Script" uid="uid://ceeogxk05y3he" path="res://Scenes/UI/PlayView/WeaponHUD.gd" id="16_n05js"]
 [ext_resource type="PackedScene" uid="uid://bb85h5bl4ip1t" path="res://Scenes/UI/PlayView/Inventory/InventoryView.tscn" id="17_5me5s"]
 [ext_resource type="Script" uid="uid://bmdr78ylnhag2" path="res://Scenes/UI/PlayView/Inventory/ItemTooltip.gd" id="17_7ut3y"]
 [ext_resource type="PackedScene" uid="uid://45j0mp5qvy6g" path="res://Scenes/UI/PlayView/MapMenu.tscn" id="18_rkhqr"]
@@ -295,8 +296,9 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -131.0
+offset_top = -138.0
 offset_right = 576.0
+offset_bottom = 1.9995117
 grow_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("13_ntjdg")
@@ -315,6 +317,7 @@ layout_mode = 2
 
 [node name="PlayerData" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
 theme_override_font_sizes/normal_font_size = 16
@@ -324,6 +327,7 @@ fit_content = true
 
 [node name="PlayerHP" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
 theme_override_font_sizes/normal_font_size = 16
@@ -333,6 +337,7 @@ fit_content = true
 
 [node name="PlayerStamina" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
 theme_override_font_sizes/normal_font_size = 16
@@ -342,12 +347,63 @@ fit_content = true
 
 [node name="PlayerIntegrity" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12_rtcm5")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "Integrity:	[[color=\"purple\"]////////[/color]] 08/08"
 fit_content = true
+
+[node name="WeaponHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -138.0
+offset_bottom = 1.9995117
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_oklkm")
+script = ExtResource("16_n05js")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/MarginContainer"]
+layout_mode = 2
+
+[node name="Melee" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "melee_weapon: ∞"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Ranged" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "ranged_weapon: 6 / (6) [32]"
+fit_content = true
+horizontal_alignment = 2
 
 [node name="FPS Counter" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport"]
 anchors_preset = 1

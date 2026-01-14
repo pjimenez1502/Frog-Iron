@@ -68,6 +68,10 @@ func ranged_attack(direction: Vector3) -> void:
 	character.character_attack.ranged_attack(direction)
 	CharacterActed.emit()
 
+func reload() -> void:
+	pass
+	CharacterActed.emit()
+
 func interact(direction: Vector2i) -> void:
 	var interactable: InteractableObject = GameDirector.level_map.tile_dictionary[grid_position + direction].interactable
 	if !interactable:

@@ -14,6 +14,9 @@ signal PlayerStatIncrease
 signal AvailableStatUP
 signal PlayerLevelUpdate
 
+signal PlayerWeaponMeleeUpdate
+signal PlayerWeaponRangedUpdate
+
 signal PlayerDead
 signal UpdatePlayerVision
 

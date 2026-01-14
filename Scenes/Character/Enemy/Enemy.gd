@@ -1,7 +1,7 @@
 extends Character
 class_name Enemy
 
-@onready var loot: Loot = %Loot
+@onready var enemy_inv: EnemyInventory = %Inventory
 @onready var enemy_input: EnemyInput = $GridMovement/EnemyInput
 
 @export var spawn_cost: int = 1
@@ -15,7 +15,7 @@ func _ready() -> void:
 func death() -> void:
 	print("death")
 	character_dead()
-	loot.drop_loot()
+	enemy_inv.drop_loot()
 	if !SignalBus.EnemyTurn.is_connected(enemy_input.play_turn):
 		return
 	SignalBus.EnemyTurn.disconnect(enemy_input.play_turn)

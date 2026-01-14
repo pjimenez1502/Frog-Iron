@@ -1,7 +1,6 @@
 extends Character
 class_name Player
 
-@onready var player_inventory: PlayerInventory = %PlayerInventory
 var player_name: String
 var player_model: CharacterModel
 
@@ -21,6 +20,8 @@ func _ready() -> void:
 	SignalBus.AvailableStatUP.emit(available_statup)
 	SignalBus.PlayerLevelUpdate.emit(1)
 	SignalBus.PlayerEquipmentUpdate.connect(equipment_update)
+	
+	InputBus.input_RELOAD.connect(character_attack.reload_ranged)
 	
 	GameDirector.set_player(self)
 

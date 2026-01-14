@@ -7,6 +7,7 @@ var character_grid_movement: CharacterGridMovement
 var character_stats: CharacterStats
 var character_attack: CharacterAttack
 var character_animation: CharacterAnimation
+var character_inventory: CharacterInventory
 
 var velocity_mod: Vector3
 var dead: bool
@@ -20,6 +21,7 @@ func _ready() -> void:
 	character_stats = %CharacterStats
 	character_grid_movement = %GridMovement
 	character_attack = %CharacterAttack
+	character_inventory = %Inventory
 	
 	character_grid_movement.setup(self)
 	character_stats.DEAD.connect(death)
