@@ -14,6 +14,8 @@ var knockback: int = 0
 func setup(_weapon_data: WeaponResource, _character: Character) -> void:
 	weapon_data = _weapon_data
 	character = _character
+	
+	update_weapon_status()
 	set_target_layer()
 
 func attack(hit_position: Vector2i) -> void:
@@ -28,6 +30,10 @@ func attack(hit_position: Vector2i) -> void:
 	new_hit.global_position = GameDirector.level_map.grid_to_globalpos(hit_position)
 	#new_hit.look_at(new_hit.global_position + direction, Vector3.UP)
 
+func update_weapon_status() -> void:
+	SignalBus.PlayerWeaponMeleeUpdate.emit({
+		"name": weapon_data.name,
+		})
 
 func set_target_layer() -> void:
 	match character.character_stats.character_tag:

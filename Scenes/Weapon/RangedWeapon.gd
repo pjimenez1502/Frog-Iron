@@ -3,20 +3,17 @@ class_name RangedWeapon
 
 var character: Character
 
-#@onready var projectile_container: Node = $ProjectileContainer
-#@export var projectile_prefab: PackedScene
-
 var target_layer: Util.CollisionLayer
 var weapon_data: GunResource
 
 var knockback: int = 0
-var current_magazine: int = 0
+var current_magazine: int
 
 func setup(_weapon_data: GunResource, _character: Character) -> void:
 	weapon_data = _weapon_data
 	character = _character
 	
-	current_magazine = weapon_data.weapon_stats["MAGAZINE"]
+	current_magazine = weapon_data.weapon_stats["CURRENT_MAGAZINE"]
 	update_weapon_status()
 	set_target_layer()
 
@@ -25,7 +22,6 @@ func attack(direction: Vector3) -> void:
 	var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
 	var calc_knockback: int = knockback
 	
-	#spawn_projectile(calc_damage, calc_hitchance, calc_knockback, direction)
 	for shot: int in weapon_data.weapon_stats["SHOTS_PER_ACTION"]:
 		if current_magazine > 0: current_magazine -= 1
 		else:
@@ -56,19 +52,12 @@ func shoot(direction: Vector3) -> Array[Node3D]:
 	return hits
 
 func update_weapon_status() -> void:
+	weapon_data.weapon_stats["CURRENT_MAGAZINE"] = current_magazine
 	SignalBus.PlayerWeaponRangedUpdate.emit({
 		"name": weapon_data.name,
 		"current_mag": current_magazine,
 		"max_mag":  weapon_data.weapon_stats["MAGAZINE"],
 		"ammocount": character.character_inventory.get_remaining_ammo(weapon_data.ammo_type),})
-
-#func spawn_projectile(calc_damage: int, calc_hitchance: int, calc_knockback: int, direction: Vector3) -> void:
-	#var projectile_instance : Projectile = projectile_prefab.instantiate()
-	#projectile_container.add_child(projectile_instance)
-	#projectile_instance.global_transform.basis = global_transform.basis
-	#projectile_instance.global_position = global_position
-	#projectile_instance.look_at(global_position - direction)
-	#projectile_instance.setup_projectile(calc_damage, calc_hitchance, calc_knockback, target_layer)
 
 func set_target_layer() -> void:
 	match character.character_stats.character_tag:

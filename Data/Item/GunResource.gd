@@ -7,9 +7,11 @@ class_name GunResource
 	"SPREAD": 1.0,
 	"RANGE": 5,
 	"MAGAZINE": 6,
+	"CURRENT_MAGAZINE": 6,
 	"SHOTS_PER_ACTION": 1,
 	"HITCHANCE": 60,
 }
+@export var random_loaded: bool
 @export var damage_scaling: Dictionary = {
 	"STR": 0.0,
 	"DEX": 0.0,
@@ -28,6 +30,10 @@ class_name GunResource
 enum AMMO_TYPES { LIGHT, HEAVY, SLUG }
 @export var ammo_type: AMMO_TYPES
 @export var stamina_cost: int = 1
+
+func _ready() -> void:
+	if random_loaded:
+		weapon_stats["CURRENT_MAGAZINE"] = randi_range(0, weapon_stats["MAGAZINE"])
 
 func get_tooltip_content() -> String:
 	var tooltip: String

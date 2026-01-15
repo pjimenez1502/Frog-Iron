@@ -4,6 +4,7 @@ extends Control
 @onready var ranged: RichTextLabel = %Ranged
 
 func _ready() -> void:
+	SignalBus.PlayerWeaponMeleeUpdate.connect(update_melee)
 	SignalBus.PlayerWeaponRangedUpdate.connect(update_ranged)
 
 func update_melee(melee_data: Dictionary) -> void:
