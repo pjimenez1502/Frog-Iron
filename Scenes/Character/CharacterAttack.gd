@@ -39,6 +39,7 @@ func setup_weapons() -> void:
 		ranged.setup(ranged_weapon_data, character)
 	else:
 		ranged_weapon_data = null
+		SignalBus.PlayerWeaponRangedUpdate.emit({"name": null})
 
 func melee_attack(direction: Vector2i) -> void:
 	if !melee_weapon:

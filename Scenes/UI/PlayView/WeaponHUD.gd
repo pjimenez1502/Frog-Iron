@@ -12,5 +12,9 @@ func update_melee(melee_data: Dictionary) -> void:
 
 func update_ranged(ranged_data: Dictionary) -> void:
 	print(ranged_data)
+	## Color code gun name depending on rarity??
+	if !ranged_data["name"]:
+		ranged.text = ""
+		return
 	ranged.text = "[color=%s]%s : %d / %d [%d]" % [Global.hud_color.to_html(), ranged_data["name"], ranged_data["current_mag"], ranged_data["max_mag"], ranged_data["ammocount"]]
 	ranged.text = "[color=%s]%s : %d / %d [%d]" % [Global.hud_color.to_html(), ranged_data["name"], ranged_data["current_mag"], ranged_data["max_mag"], ranged_data["ammocount"]]
