@@ -31,11 +31,13 @@ func after_player_action() -> void:
 	update_enemies_visible()
 	turn_wait_timer.start(0.2)
 	await turn_wait_timer.timeout
-	SignalBus.EnemyTurn.emit()
 	
+	Engine.time_scale = Global.ENEMY_TURN_SPEED
+	SignalBus.EnemyTurn.emit()
 	turn_wait_timer.start(0.25)
 	await turn_wait_timer.timeout
 	SignalBus.TurnEnded.emit()
+	Engine.time_scale = 1
 
 func set_vision_distance(value: int) -> void:
 	player_vision_distance = value

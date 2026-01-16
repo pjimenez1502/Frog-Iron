@@ -24,14 +24,12 @@ enum EquipSlot { RANGEDWEAPON, MELEEWEAPON, HEAD, TORSO, ARMS, LEGS }
 const LEVEL_STATUP_REWARD: int = 2
 const LEVEL_GROWTH_MULT: float = 0.3
 
-#const INVUL_DURATION: float = 0.4
 
 ## BUDGETS
 const CHEST_BUDGET: int = 4
 const ENEMY_BUDGET_BASE: int = 20
 
-const PLAYER_TURN_DURATION: float = 0.2
-const ENEMY_TURN_DURATION: float = 0.1
+
 
 ## DUNGEON
 const TILE_SIZE: int = 4
@@ -47,3 +45,8 @@ const wis_sanity_mult: int = 2
 
 ## SETTINGS
 var hud_color: Color = Color(1.0, 1.0, 1.0, 1.0)
+
+## TURN TIMES
+var ENEMY_TURN_SPEED: float = 1.5
+const PLAYER_TURN_DURATION: float = 0.2
+const ENEMY_TURN_DURATION: float = 0.1
