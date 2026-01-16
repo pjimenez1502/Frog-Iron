@@ -4153,6 +4153,11 @@ _subresources={
 }
 },
 "materials": {
+"Item": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Material/Item/Item.tres",
+"use_external/path": "uid://dhi1kiwqaqumy"
+},
 "ZhenLowpo": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/Material/Creature/Zhen.tres",

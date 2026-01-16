@@ -9,6 +9,9 @@ class_name CharacterCreationMenu
 var preview_model: CharacterModel
 
 enum SPECIES { HUMAN, DRAKE, AVIAN, BOVINE }
+var AVAILABLE_SPECIES: Array[SPECIES] = [ SPECIES.DRAKE ]
+var selected_species: int
+
 var species_data: Dictionary = {
 	SPECIES.HUMAN: { 
 		"name": "Human",
@@ -59,15 +62,15 @@ var species_data: Dictionary = {
 		"scene": "res://Scenes/Character/Player/PlayerModels/Bovine.tscn"
 		},
 }
-var selected_species: SPECIES
+
 
 func _ready() -> void:
-	update_selected_species(selected_species)
+	update_selected_species(0)
 
-func update_selected_species(species: SPECIES) -> void:
-	selected_species = species
-	species_title.text = species_data[species].name
-	species_desc.text = species_description(species)
+func update_selected_species(index: int) -> void:
+	selected_species = AVAILABLE_SPECIES[index]
+	species_title.text = species_data[AVAILABLE_SPECIES[index]].name
+	species_desc.text = species_description(AVAILABLE_SPECIES[index])
 	update_preview()
 
 func update_preview() -> void:
@@ -86,8 +89,10 @@ func species_description(species: SPECIES) -> String:
 		desc += "\n -%s: +%d" % [stat, species_data[species]["stats"][stat]]
 	return desc
 
+var index: int
 func change_species_button(value: int) -> void:
-	update_selected_species(wrap(selected_species + value, 0, SPECIES.size()))
+	index = wrap(index + value, 0, AVAILABLE_SPECIES.size())
+	update_selected_species(index)
 
 func start() -> void:
 	character_preview.remove_child(preview_model)
