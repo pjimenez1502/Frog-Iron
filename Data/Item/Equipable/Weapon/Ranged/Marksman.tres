@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GunResource" load_steps=3 format=3 uid="uid://burbf5oqbmmof"]
+
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow.tscn" id="1_rpr6o"]
+[ext_resource type="Script" uid="uid://dktmm4i70dfet" path="res://Data/Item/GunResource.gd" id="2_ihviy"]
+
+[resource]
+script = ExtResource("2_ihviy")
+weapon_stats = {
+"CURRENT_MAGAZINE": 6,
+"DAMAGE": 8,
+"HITCHANCE": 60,
+"MAGAZINE": 6,
+"PROJECTILES": 1,
+"RANGE": 6,
+"SHOTS_PER_ACTION": 1,
+"SPREAD": 1.5
+}
+ammo_type = 1
+stamina_cost = 0
+scene = ExtResource("1_rpr6o")
+name = "Marksman's Rifle"
+desc = "Semi-auto. Powerful and precise."
+value = 800
+metadata/_custom_type_script = "uid://dktmm4i70dfet"

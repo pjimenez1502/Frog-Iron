@@ -11,9 +11,9 @@ var equipment: Dictionary[String, EquipableResource] = {
 }
 
 var ammo: Dictionary [GunResource.AMMO_TYPES, int] = {
-	GunResource.AMMO_TYPES.LIGHT: 20,
-	GunResource.AMMO_TYPES.HEAVY: 10,
-	GunResource.AMMO_TYPES.SLUG: 8
+	GunResource.AMMO_TYPES.LIGHT: 0,
+	GunResource.AMMO_TYPES.HEAVY: 0,
+	GunResource.AMMO_TYPES.SLUG: 0,
 }
 
 func update_ammo(type: GunResource.AMMO_TYPES, value: int) -> void:

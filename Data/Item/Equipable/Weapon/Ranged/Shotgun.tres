@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GunResource" load_steps=3 format=3 uid="uid://b4f1lk0upkten"]
+
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow.tscn" id="1_t7at4"]
+[ext_resource type="Script" uid="uid://dktmm4i70dfet" path="res://Data/Item/GunResource.gd" id="2_pcnsg"]
+
+[resource]
+script = ExtResource("2_pcnsg")
+weapon_stats = {
+"CURRENT_MAGAZINE": 2,
+"DAMAGE": 2,
+"HITCHANCE": 60,
+"MAGAZINE": 2,
+"PROJECTILES": 6,
+"RANGE": 3,
+"SHOTS_PER_ACTION": 1,
+"SPREAD": 12.0
+}
+ammo_type = 2
+stamina_cost = 0
+scene = ExtResource("1_t7at4")
+name = "Shotgun"
+desc = "Devastating at close range."
+value = 600
+metadata/_custom_type_script = "uid://dktmm4i70dfet"

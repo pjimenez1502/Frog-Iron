@@ -164,9 +164,9 @@ func equip_starting_equipment() -> void:
 		equip_item(item)
 	
 	ammo = {
-		GunResource.AMMO_TYPES.LIGHT: 20,
-		GunResource.AMMO_TYPES.HEAVY: 10,
-		GunResource.AMMO_TYPES.SLUG: 8
+		GunResource.AMMO_TYPES.LIGHT: 100,
+		GunResource.AMMO_TYPES.HEAVY: 100,
+		GunResource.AMMO_TYPES.SLUG: 80,
 	}
 	
 	update_inventory_call()

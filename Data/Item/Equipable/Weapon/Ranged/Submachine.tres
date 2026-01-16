@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GunResource" load_steps=3 format=3 uid="uid://d1gdeepflvfcu"]
+
+[ext_resource type="PackedScene" uid="uid://5u61rs18y8k8" path="res://Scenes/Weapon/_RANGED/Bow.tscn" id="1_odcg5"]
+[ext_resource type="Script" uid="uid://dktmm4i70dfet" path="res://Data/Item/GunResource.gd" id="2_hhpbk"]
+
+[resource]
+script = ExtResource("2_hhpbk")
+weapon_stats = {
+"CURRENT_MAGAZINE": 12,
+"DAMAGE": 2,
+"HITCHANCE": 60,
+"MAGAZINE": 12,
+"PROJECTILES": 1,
+"RANGE": 3,
+"SHOTS_PER_ACTION": 3,
+"SPREAD": 6.0
+}
+stamina_cost = 0
+scene = ExtResource("1_odcg5")
+name = "Submachine gun"
+value = 400
+metadata/_custom_type_script = "uid://dktmm4i70dfet"

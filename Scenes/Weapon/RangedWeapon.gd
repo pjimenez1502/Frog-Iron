@@ -32,21 +32,22 @@ func attack(direction: Vector3) -> void:
 		for hit: Node3D in hits:
 			if hit is Character:
 				hit.damage(calc_damage, calc_hitchance)
+		await get_tree().create_timer(0.05).timeout
 
 func shoot(direction: Vector3) -> Array[Node3D]:
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var hits: Array[Node3D]
+	var spread_calc: float = weapon_data.weapon_stats["SPREAD"]/10 * weapon_data.weapon_stats["RANGE"]
 	for i: int in weapon_data.weapon_stats["PROJECTILES"]:
 		var target_point: Vector3 = global_position + (direction*weapon_data.weapon_stats["RANGE"] * Global.TILE_SIZE) + Vector3(
-			randf_range(-weapon_data.weapon_stats["SPREAD"], weapon_data.weapon_stats["SPREAD"]),
-			randf_range(-weapon_data.weapon_stats["SPREAD"],weapon_data.weapon_stats["SPREAD"]) /2,
-			randf_range(-weapon_data.weapon_stats["SPREAD"],weapon_data.weapon_stats["SPREAD"]))
+			randf_range(-spread_calc, spread_calc),
+			randf_range(-spread_calc, spread_calc) /2,
+			randf_range(-spread_calc, spread_calc))
 		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(global_position, target_point, target_layer)
 		var intersect_data: Dictionary = space_state.intersect_ray(query)
 		if intersect_data:
 			hits.append(intersect_data.collider)
 		
-		await get_tree().create_timer(0.05).timeout
 		#print("Shot: %s, %s" % [str(global_position), str(target_point)])
 		DebugDraw3D.draw_line(global_position, target_point, Color.WHITE, .25)
 	return hits

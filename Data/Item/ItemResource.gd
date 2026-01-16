@@ -4,6 +4,7 @@ class_name ItemResource
 @export var name: String
 @export var desc: String
 @export var rarity: Global.Rarity
+@export var value: int
 
 func get_tooltip_content() -> String:
 	var tooltip: String
