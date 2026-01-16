@@ -98,10 +98,10 @@ func place_entrance_exit() -> void:
 ## CHECK
 func check_room_legal(parameters: Dictionary, room_pos: Vector2i, room_radius: Vector2i) -> bool:
 	for tile: Vector2i in get_room_tiles(room_pos, room_radius): ## CHECK OUT OF BOUNDS TILES
-		if tile.x < 0 or tile.x > parameters["SIZE"].x-1 or tile.y < 0 or tile.y > parameters["SIZE"].y-1:
+		if tile.x < 1 or tile.x > parameters["SIZE"].x-2 or tile.y < 1 or tile.y > parameters["SIZE"].y-2:
 			return false
 	for tile: Vector2i in get_room_tiles(room_pos, room_radius + Vector2i(1,1)): ## CHECK OCCUPIED OR TOUCHING TILES
-		if tile.x < 0 or tile.x > parameters["SIZE"].x-1 or tile.y < 0 or tile.y > parameters["SIZE"].y-1:
+		if tile.x < 1 or tile.x > parameters["SIZE"].x-2 or tile.y < 1 or tile.y > parameters["SIZE"].y-2:
 			continue
 		if map[tile.x][tile.y] != 0: 
 			return false
