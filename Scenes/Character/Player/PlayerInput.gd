@@ -22,6 +22,8 @@ func setup_input() -> void:
 	InputBus.input_MELEE.connect(melee)
 	InputBus.input_RANGED.connect(ranged)
 	
+	InputBus.input_RELOAD.connect(reload)
+	
 	InputBus.action_ACCEPT.connect(action_accept)
 	InputBus.action_CANCEL.connect(action_cancel)
 
@@ -44,6 +46,10 @@ func melee() -> void:
 func ranged() -> void:
 	if !is_player_turn: return
 	set_ranged_aim()
+
+func reload() -> void:
+	if !is_player_turn: return
+	grid_movement.reload()
 
 func clear_aim() -> void:
 	current_action = ACTIONS.NONE

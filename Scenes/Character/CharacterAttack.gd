@@ -65,9 +65,16 @@ func ranged_attack(direction: Vector3) -> void:
 
 func reload_ranged() -> void:
 	if !ranged_weapon:
+		SignalBus.DamageText.emit("No Weapon Equipped!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 		return
-	await get_tree().create_timer(0.25).timeout
+	
 	var remaining_in_magazine: int = ranged_weapon.current_magazine
+	if remaining_in_magazine >= ranged_weapon.weapon_data.weapon_stats["MAGAZINE"]:
+		SignalBus.DamageText.emit("Magazine already full!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
+		return
+		
+	SignalBus.DamageText.emit("Reload!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
+	await get_tree().create_timer(0.25).timeout
 	var reloaded: int = clamp(remaining_in_magazine + character.character_inventory.ammo[ranged_weapon_data.ammo_type], 0, ranged_weapon_data.weapon_stats["MAGAZINE"])
 	ranged_weapon.current_magazine = reloaded
 	character.character_inventory.update_ammo(ranged_weapon_data.ammo_type, -(reloaded - remaining_in_magazine))

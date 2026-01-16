@@ -69,7 +69,7 @@ func ranged_attack(direction: Vector3) -> void:
 	CharacterActed.emit()
 
 func reload() -> void:
-	pass
+	character.character_attack.reload_ranged()
 	CharacterActed.emit()
 
 func interact(direction: Vector2i) -> void:
