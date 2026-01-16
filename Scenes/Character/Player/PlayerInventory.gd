@@ -153,13 +153,21 @@ func check_already_equipped(item_data: EquipableResource) -> bool:
 			return true
 	return false
 
+func update_ammo(type: GunResource.AMMO_TYPES, value: int) -> void:
+	super.update_ammo(type, value)
+	update_ammo_call()
+func update_ammo_call() -> void:
+	SignalBus.PlayerAmmoUpdate.emit(ammo)
+
 func equip_starting_equipment() -> void:
 	for item: EquipableResource in starting_equipment:
 		equip_item(item)
-	update_inventory_call()
 	
 	ammo = {
 		GunResource.AMMO_TYPES.LIGHT: 20,
 		GunResource.AMMO_TYPES.HEAVY: 10,
 		GunResource.AMMO_TYPES.SLUG: 8
 	}
+	
+	update_inventory_call()
+	update_ammo_call()

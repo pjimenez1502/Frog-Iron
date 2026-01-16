@@ -70,7 +70,7 @@ func reload_ranged() -> void:
 	var remaining_in_magazine: int = ranged_weapon.current_magazine
 	var reloaded: int = clamp(remaining_in_magazine + character.character_inventory.ammo[ranged_weapon_data.ammo_type], 0, ranged_weapon_data.weapon_stats["MAGAZINE"])
 	ranged_weapon.current_magazine = reloaded
-	character.character_inventory.ammo[ranged_weapon_data.ammo_type] -= reloaded - remaining_in_magazine
+	character.character_inventory.update_ammo(ranged_weapon_data.ammo_type, -(reloaded - remaining_in_magazine))
 	ranged_weapon.update_weapon_status()
 
 func dir_to_target(target: Character) -> Vector3:

@@ -15,3 +15,6 @@ var ammo: Dictionary [GunResource.AMMO_TYPES, int] = {
 	GunResource.AMMO_TYPES.HEAVY: 10,
 	GunResource.AMMO_TYPES.SLUG: 8
 }
+
+func update_ammo(type: GunResource.AMMO_TYPES, value: int) -> void:
+	ammo[type] += value

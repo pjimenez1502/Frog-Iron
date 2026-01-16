@@ -15,6 +15,7 @@ func _ready() -> void:
 	SignalBus.PlayerCoinUpdate.connect(update_coin)
 	SignalBus.PlayerInventoryUpdate.connect(update_inventory)
 	SignalBus.PlayerEquipmentUpdate.connect(update_equipment)
+	SignalBus.PlayerAmmoUpdate.connect(update_ammo)
 	
 	InputBus.inv_DROP.connect(drop_item)
 
@@ -57,7 +58,14 @@ func update_equipment(equipment: Dictionary) -> void:
 		
 		equipment_entry.populate(equipment[slot_key])
 		equipment_entry.button.pressed.connect(use_item.bind(equipment_entry.item_data))
-
+		
+@onready var ammo_light_text: RichTextLabel = %AmmoLightText
+@onready var ammo_heavy_text: RichTextLabel = %AmmoHeavyText
+@onready var ammo_slug_text: RichTextLabel = %AmmoSlugText
+func update_ammo(ammo_data: Dictionary) -> void:
+	ammo_light_text.text = "[color=gray]Light:[/color] %d" % ammo_data[GunResource.AMMO_TYPES.LIGHT]
+	ammo_heavy_text.text = "[color=gray]Heavy:[/color] %d" % ammo_data[GunResource.AMMO_TYPES.HEAVY]
+	ammo_slug_text.text = "[color=gray]Slug:[/color] %d" % ammo_data[GunResource.AMMO_TYPES.SLUG]
 
 
 func use_item(item_data: ItemResource) -> void:

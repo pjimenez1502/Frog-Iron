@@ -9,6 +9,7 @@ signal AddPlayerCoin
 signal AddPlayerItem
 signal PlayerInventoryUpdate
 signal PlayerEquipmentUpdate
+signal PlayerAmmoUpdate
 signal PlayerInventoryDrop
 signal PlayerStatIncrease
 signal AvailableStatUP

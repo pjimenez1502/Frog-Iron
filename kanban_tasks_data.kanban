@@ -50,7 +50,9 @@
 				"73d2c789-8b03-4250-bea9-c3830459548b",
 				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
 				"3ff24d5d-1153-48fc-9364-93982688c09f",
-				"67385266-f8cb-4caa-ae21-d629515b3b87"
+				"67385266-f8cb-4caa-ae21-d629515b3b87",
+				"d18d8189-a08b-45cb-84b3-a5348b879ad9",
+				"36b67b98-bf78-483f-a70d-38eda93534d2"
 			]
 		},
 		{
@@ -59,8 +61,8 @@
 			"tasks": [
 				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
 				"2edb0319-0b11-4762-a07a-219e5ec0246d",
-				"510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
+				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
 				"3013a1f6-56cb-4b0a-9f18-a394c0970e17",
@@ -68,8 +70,7 @@
 				"1a75be70-390a-4048-9724-26bddff601e4",
 				"666b7031-4a8c-4a84-bb93-06965fcf7043",
 				"1754bde2-d3e5-49f4-bb7a-16456265641d",
-				"6c7e96ea-79ff-4b09-8bcc-7294302778e1",
-				"d18d8189-a08b-45cb-84b3-a5348b879ad9"
+				"6c7e96ea-79ff-4b09-8bcc-7294302778e1"
 			]
 		},
 		{
@@ -78,17 +79,17 @@
 			"tasks": [
 				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 				"2d111953-a982-48fb-9488-e87ed37e72bb",
-				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
-				"1f38471e-df60-4583-a2c3-78f4361c9099",
-				"3b72980f-091c-429c-944d-0ebb3390835b"
+				"562a4356-05b9-48ac-b287-4072a21e7dbb"
 			]
 		},
 		{
 			"uuid": "6949537f-6883-462a-b4ff-1073e5c1f452",
 			"title": "Done",
 			"tasks": [
+				"3b72980f-091c-429c-944d-0ebb3390835b",
+				"1f38471e-df60-4583-a2c3-78f4361c9099",
 				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
 				"214a39bb-612b-489f-a9e1-092453f1d42e",
 				"606f8f84-268b-49f5-91f7-a7c0892a5cb5",
@@ -299,13 +300,6 @@
 			"title": "Character Stats UI",
 			"description": "Track and Show stat increases available",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
-			"steps": []
-		},
-		{
-			"uuid": "510a61d6-8a5b-4b54-9116-5a3de0eeaa41",
-			"title": "Item Loot",
-			"description": "\nFrom Enemy:\n\t- Not that common. ex: not all enemies drop tons of stuff. Maybe some tough enemies drop an equipable or a cool item sometimes\n\t- It doesnt feel like enemies drop tons of shit that ends up in the ground and you have to avoid if there is something in the ground that you want\n\nFrom Chests:\n\t- Open small menu with contents on interaction. (visually represent if they are locked and requiere a key?)",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{
@@ -566,6 +560,10 @@
 					"done": true
 				},
 				{
+					"details": "Color for actions",
+					"done": false
+				},
+				{
 					"details": "Show range when applicable",
 					"done": false
 				}
@@ -582,6 +580,20 @@
 			"uuid": "2edb0319-0b11-4762-a07a-219e5ec0246d",
 			"title": "NO INVENTORY",
 			"description": "\nInventory only for consumables (ammo, potions, etc)\nEquipment found can be swapped for current, but not carried",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "36b67b98-bf78-483f-a70d-38eda93534d2",
+			"title": "Check Dodge Mechanics",
+			"description": "",
+			"category": "1e765dae-f210-46a2-a7e1-1e39505f1028",
+			"steps": []
+		},
+		{
+			"uuid": "562a4356-05b9-48ac-b287-4072a21e7dbb",
+			"title": "Add 1 extra wall layer ",
+			"description": "",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		}

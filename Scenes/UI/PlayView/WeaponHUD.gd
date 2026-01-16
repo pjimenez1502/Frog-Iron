@@ -11,7 +11,7 @@ func update_melee(melee_data: Dictionary) -> void:
 	melee.text = "[color=%s]%s : ∞" % [Global.hud_color.to_html(), melee_data["name"]]
 
 func update_ranged(ranged_data: Dictionary) -> void:
-	print(ranged_data)
+	#print(ranged_data)
 	## Color code gun name depending on rarity??
 	if !ranged_data["name"]:
 		ranged.text = ""
