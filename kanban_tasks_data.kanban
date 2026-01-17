@@ -48,6 +48,7 @@
 				"80b7d3e5-a001-42e5-bfa1-740c2563917e",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
+				"a09fa985-7033-4e11-aaf7-938ec2f23cb9",
 				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
 				"3ff24d5d-1153-48fc-9364-93982688c09f",
 				"67385266-f8cb-4caa-ae21-d629515b3b87",
@@ -213,7 +214,7 @@
 		{
 			"uuid": "73d2c789-8b03-4250-bea9-c3830459548b",
 			"title": "MAIN CONCEPT",
-			"description": "\nDungeon Crawler\n\n- customization - allow players to edit their pixelart character\n- easy to expand once finished (new enemies, new equipment, etc) via extensions (mods?)\n",
+			"description": "You are part of the crew of a derelict starship locked in orbit over a mysterious planet\nYou must explore this planets ruins in order to collect artifacts that keep away creatures and energies trying to destroy the ship\n\nGet launched in a pod into a dungeon. Once exited, the pod keeps drilling further down, you will find it again when you reach the end of the dungeon \n\nYou use modern gear:\n(Guns, suits, consumables)\nThat you can purchase and upgrade in the ship\n\nYou use dungeon gear:\n(Weapons, jewelry, consumables)\nThat you find in the dungeon",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -402,7 +403,7 @@
 		{
 			"uuid": "80b7d3e5-a001-42e5-bfa1-740c2563917e",
 			"title": "Options Menu",
-			"description": "\nSound\nControls",
+			"description": "\nSound\nControls\n\nUI color\n\nEnemy turn time speed",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		},
@@ -590,10 +591,10 @@
 			"steps": []
 		},
 		{
-			"uuid": "562a4356-05b9-48ac-b287-4072a21e7dbb",
-			"title": "Add 1 extra wall layer ",
-			"description": "",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"uuid": "a09fa985-7033-4e11-aaf7-938ec2f23cb9",
+			"title": "INVENTORY REWORK",
+			"description": "Different item types have different slots\n(SMALL): Consumables\n(LOOT): To carry found artifacts\n(LARGE): To carry pieces of equipment (weapon, armor)",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}
 	],

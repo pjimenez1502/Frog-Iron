@@ -19,7 +19,7 @@ func setup(_weapon_data: GunResource, _character: Character) -> void:
 
 func attack(direction: Vector3) -> void:
 	var calc_damage: int = weapon_data.calculate_damage(character.character_stats)
-	var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
+	#var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
 	var calc_knockback: int = knockback
 	
 	for shot: int in weapon_data.weapon_stats["SHOTS_PER_ACTION"]:
@@ -28,15 +28,15 @@ func attack(direction: Vector3) -> void:
 			SignalBus.DamageText.emit("Magazine Empty!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 			return
 		update_weapon_status()
-		var hits: Array[Node3D] = await shoot(direction)
-		for hit: Node3D in hits:
+		var hits: Dictionary[Node3D, int] = shoot(direction)
+		for hit: Node3D in hits.keys():
 			if hit is Character:
-				hit.damage(calc_damage, calc_hitchance)
+				hit.damage(calc_damage * hits[hit], 99)
 		await get_tree().create_timer(0.05).timeout
 
-func shoot(direction: Vector3) -> Array[Node3D]:
+func shoot(direction: Vector3) -> Dictionary[Node3D, int]:
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var hits: Array[Node3D]
+	var hits: Dictionary[Node3D, int]
 	var spread_calc: float = weapon_data.weapon_stats["SPREAD"]/10 * weapon_data.weapon_stats["RANGE"]
 	for i: int in weapon_data.weapon_stats["PROJECTILES"]:
 		var target_point: Vector3 = global_position + (direction*weapon_data.weapon_stats["RANGE"] * Global.TILE_SIZE) + Vector3(
@@ -46,7 +46,9 @@ func shoot(direction: Vector3) -> Array[Node3D]:
 		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(global_position, target_point, target_layer)
 		var intersect_data: Dictionary = space_state.intersect_ray(query)
 		if intersect_data:
-			hits.append(intersect_data.collider)
+			if hits.has(intersect_data.collider):
+				hits[intersect_data.collider] += 1
+			else: hits[intersect_data.collider] = 1
 		
 		#print("Shot: %s, %s" % [str(global_position), str(target_point)])
 		DebugDraw3D.draw_line(global_position, target_point, Color.WHITE, .25)
