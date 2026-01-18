@@ -81,7 +81,9 @@
 				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 				"2d111953-a982-48fb-9488-e87ed37e72bb",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
-				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
+				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
+				"7b44492f-c40b-4629-931d-128308994200",
+				"a656dce6-e08a-41de-9882-52f34eb2a4b6"
 			]
 		},
 		{
@@ -595,6 +597,20 @@
 			"title": "INVENTORY REWORK",
 			"description": "Different item types have different slots\n(SMALL): Consumables\n(LOOT): To carry found artifacts\n(LARGE): To carry pieces of equipment (weapon, armor)",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "7b44492f-c40b-4629-931d-128308994200",
+			"title": "Ammo Cap",
+			"description": "Ammo carried in pouches\n\nCan only carry one type of ammo in each pouch\nEach pouch has a max capacity\n",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "a656dce6-e08a-41de-9882-52f34eb2a4b6",
+			"title": "Faster enemies",
+			"description": "Some enemies can move an extra square per turn\n\nex: Can move 2 squares or move 1 square and attack\n\nGive player the option to do that? Spending stamina?\n\nSpeed stat??: equals to how many actions character can do in one turn",
+			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"steps": []
 		}
 	],

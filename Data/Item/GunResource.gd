@@ -9,7 +9,7 @@ class_name GunResource
 	"MAGAZINE": 6,
 	"CURRENT_MAGAZINE": 6,
 	"SHOTS_PER_ACTION": 1,
-	"HITCHANCE": 60,
+	#"HITCHANCE": 60,
 }
 @export var random_loaded: bool
 @export var damage_scaling: Dictionary = {
@@ -19,13 +19,13 @@ class_name GunResource
 	"WIS": 0.0,
 	"CON": 0.0,
 }
-@export var hitchance_scaling: Dictionary = {
-	"STR": 0,
-	"DEX": 0,
-	"INT": 0,
-	"WIS": 0,
-	"CON": 0,
-}
+#@export var hitchance_scaling: Dictionary = {
+	#"STR": 0,
+	#"DEX": 0,
+	#"INT": 0,
+	#"WIS": 0,
+	#"CON": 0,
+#}
 
 enum AMMO_TYPES { LIGHT, HEAVY, SLUG }
 @export var ammo_type: AMMO_TYPES
@@ -42,7 +42,7 @@ func get_tooltip_content() -> String:
 	tooltip += "\n Ammo: %s" % AMMO_TYPES.keys()[ammo_type]
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	tooltip += "\n Damage: %d" % calculate_damage(GameDirector.player.character_stats)
-	tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)
+	#tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)
 	#tooltip += "\n Stamina Cost: %d" % stamina_cost
 	for stat: String in bonus_stats:
 		if bonus_stats[stat] != 0:
@@ -58,11 +58,11 @@ func calculate_damage(character_stats: CharacterStats) -> int:
 	(damage_scaling["WIS"] * calculated_stats["WIS"]) +
 	(damage_scaling["CON"] * calculated_stats["CON"]))
 
-func calculate_hitchance(character_stats: CharacterStats) -> int:
-	var calculated_stats: Dictionary = character_stats.calculate_stats()
-	return (weapon_stats["HITCHANCE"] + 
-	(hitchance_scaling["STR"] * calculated_stats["STR"]) + 
-	(hitchance_scaling["DEX"] * calculated_stats["DEX"]) + 
-	(hitchance_scaling["INT"] * calculated_stats["INT"]) +
-	(hitchance_scaling["WIS"] * calculated_stats["WIS"]) +
-	(hitchance_scaling["CON"] * calculated_stats["CON"]))
+#func calculate_hitchance(character_stats: CharacterStats) -> int:
+	#var calculated_stats: Dictionary = character_stats.calculate_stats()
+	#return (weapon_stats["HITCHANCE"] + 
+	#(hitchance_scaling["STR"] * calculated_stats["STR"]) + 
+	#(hitchance_scaling["DEX"] * calculated_stats["DEX"]) + 
+	#(hitchance_scaling["INT"] * calculated_stats["INT"]) +
+	#(hitchance_scaling["WIS"] * calculated_stats["WIS"]) +
+	#(hitchance_scaling["CON"] * calculated_stats["CON"]))

@@ -20,7 +20,7 @@ func setup(_weapon_data: GunResource, _character: Character) -> void:
 func attack(direction: Vector3) -> void:
 	var calc_damage: int = weapon_data.calculate_damage(character.character_stats)
 	#var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
-	var calc_knockback: int = knockback
+	#var calc_knockback: int = knockback
 	
 	for shot: int in weapon_data.weapon_stats["SHOTS_PER_ACTION"]:
 		if current_magazine > 0: current_magazine -= 1
