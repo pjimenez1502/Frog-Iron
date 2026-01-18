@@ -115,70 +115,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV"]
+[node name="AmmoContainer" type="GridContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 columns = 3
-
-[node name="AmmoLight" type="Panel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/GridContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-
-[node name="AmmoLightText" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/GridContainer/AmmoLight"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "Light: 100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AmmoHeavy" type="Panel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/GridContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-
-[node name="AmmoHeavyText" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/GridContainer/AmmoHeavy"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "Heavy: 100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AmmoSlug" type="Panel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/GridContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-
-[node name="AmmoSlugText" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/GridContainer/AmmoSlug"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "[color=a22]Slug:[/color] 100"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Coin Value" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer"]
 unique_name_in_owner = true

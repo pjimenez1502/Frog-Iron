@@ -29,7 +29,13 @@ func pay_with_coin(value: int) -> bool:
 
 # AMMO
 func get_remaining_ammo(ammo_type: GunResource.AMMO_TYPES) -> int:
-	return ammo[ammo_type]
+	var ammo_count: int
+	for pouch: AmmoPouch in get_pouches_of_type(ammo_type):
+		ammo_count += pouch.content
+	return ammo_count
+
+func update_ammo_call() -> void:
+	SignalBus.PlayerAmmoUpdate.emit(ammo_inventory)
 
 ## ITEM
 func add_item(item_data: ItemResource) -> void:
@@ -47,6 +53,7 @@ func consume_item(item_data: ConsumableResource) -> void:
 	item_data.consumable_effect(get_parent())
 	inventory.erase(item_data)
 	update_inventory_call()
+
 
 ## EQUIPMENT
 func equip_item(item_data: EquipableResource) -> void:
@@ -153,21 +160,17 @@ func check_already_equipped(item_data: EquipableResource) -> bool:
 			return true
 	return false
 
-func update_ammo(type: GunResource.AMMO_TYPES, value: int) -> void:
-	super.update_ammo(type, value)
-	update_ammo_call()
-func update_ammo_call() -> void:
-	SignalBus.PlayerAmmoUpdate.emit(ammo)
+
 
 func equip_starting_equipment() -> void:
 	for item: EquipableResource in starting_equipment:
 		equip_item(item)
 	
-	ammo = {
-		GunResource.AMMO_TYPES.LIGHT: 100,
-		GunResource.AMMO_TYPES.HEAVY: 100,
-		GunResource.AMMO_TYPES.SLUG: 80,
-	}
+	init_ammo_inventory(3)
+	add_ammo(GunResource.AMMO_TYPES.LIGHT, 30)
+	add_ammo(GunResource.AMMO_TYPES.HEAVY, 20)
+	add_ammo(GunResource.AMMO_TYPES.SLUG, 20)
+	add_ammo(GunResource.AMMO_TYPES.HEAVY, 20)
 	
 	update_inventory_call()
 	update_ammo_call()

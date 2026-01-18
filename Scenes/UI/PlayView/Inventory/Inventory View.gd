@@ -58,14 +58,15 @@ func update_equipment(equipment: Dictionary) -> void:
 		
 		equipment_entry.populate(equipment[slot_key])
 		equipment_entry.button.pressed.connect(use_item.bind(equipment_entry.item_data))
-		
-@onready var ammo_light_text: RichTextLabel = %AmmoLightText
-@onready var ammo_heavy_text: RichTextLabel = %AmmoHeavyText
-@onready var ammo_slug_text: RichTextLabel = %AmmoSlugText
-func update_ammo(ammo_data: Dictionary) -> void:
-	ammo_light_text.text = "[color=gray]Light:[/color] %d" % ammo_data[GunResource.AMMO_TYPES.LIGHT]
-	ammo_heavy_text.text = "[color=gray]Heavy:[/color] %d" % ammo_data[GunResource.AMMO_TYPES.HEAVY]
-	ammo_slug_text.text = "[color=gray]Slug:[/color] %d" % ammo_data[GunResource.AMMO_TYPES.SLUG]
+
+const AMMO_POUCH = preload("uid://cm33clyafba8d")
+@onready var ammo_container: GridContainer = %AmmoContainer
+func update_ammo(ammo_data: Array) -> void:
+	print(ammo_data)
+	for pouch: CharacterInventory.AmmoPouch in ammo_data:
+		var pouch_view : AmmoPouchView = AMMO_POUCH.instantiate()
+		ammo_container.add_child(pouch_view)
+		pouch_view.update_pouch(pouch.look_at_pouch())
 
 
 func use_item(item_data: ItemResource) -> void:

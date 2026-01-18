@@ -60,8 +60,6 @@
 			"uuid": "2922da1b-8f41-4b85-b661-35d778cd22ea",
 			"title": "ToDo",
 			"tasks": [
-				"59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
-				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
@@ -83,6 +81,7 @@
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
 				"7b44492f-c40b-4629-931d-128308994200",
+				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"a656dce6-e08a-41de-9882-52f34eb2a4b6"
 			]
 		},
@@ -535,13 +534,6 @@
 			"title": "EmergentInventories get lost if another emergInv is opened before the previous one is closed",
 			"description": "",
 			"category": "1e765dae-f210-46a2-a7e1-1e39505f1028",
-			"steps": []
-		},
-		{
-			"uuid": "59b7015a-ca8f-4f53-b3b1-b34a8a255b2e",
-			"title": "RETHEME TO SCIFI",
-			"description": "",
-			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
 		{

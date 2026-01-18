@@ -63,22 +63,27 @@ func ranged_attack(direction: Vector3) -> void:
 	ranged_weapon.attack(direction)
 	character.character_stats.change_stamina(-ranged_weapon.weapon_data.stamina_cost)
 
-func reload_ranged() -> void:
+func reload_ranged() -> bool:
 	if !ranged_weapon:
 		SignalBus.DamageText.emit("No Weapon Equipped!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
-		return
+		return false
 	
 	var remaining_in_magazine: int = ranged_weapon.current_magazine
 	if remaining_in_magazine >= ranged_weapon.weapon_data.weapon_stats["MAGAZINE"]:
 		SignalBus.DamageText.emit("Magazine already full!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
-		return
+		return false
+	
+	var reload: int = character.character_inventory.get_ammo(ranged_weapon_data.ammo_type, ranged_weapon_data.weapon_stats["MAGAZINE"] - remaining_in_magazine)
+	if reload == 0:
+		SignalBus.DamageText.emit("No Ammo!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
+		return false
 		
 	SignalBus.DamageText.emit("Reload!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 	await get_tree().create_timer(0.25).timeout
-	var reloaded: int = clamp(remaining_in_magazine + character.character_inventory.ammo[ranged_weapon_data.ammo_type], 0, ranged_weapon_data.weapon_stats["MAGAZINE"])
-	ranged_weapon.current_magazine = reloaded
-	character.character_inventory.update_ammo(ranged_weapon_data.ammo_type, -(reloaded - remaining_in_magazine))
+	
+	ranged_weapon.current_magazine = remaining_in_magazine + reload
 	ranged_weapon.update_weapon_status()
+	return true
 
 func dir_to_target(target: Character) -> Vector3:
 	return (target.global_position - character.global_position).normalized()
