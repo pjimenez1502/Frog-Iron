@@ -17,7 +17,7 @@ const rarity_prefixes: Dictionary = {
 }
 
 enum ItemCategory { POTION, GRENADE, WEAPON, ARMOR, JEWELRY, LOOT }
-enum EquipSlot { RANGEDWEAPON, MELEEWEAPON, HEAD, TORSO, ARMS, LEGS }
+enum EquipSlot { WEAPON, HEAD, TORSO, LEGS, BOOTS, BACKPACK }
 
 
 ## PLAYER LEVEL

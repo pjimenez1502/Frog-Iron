@@ -24,7 +24,6 @@ hitchance_scaling = {
 "STR": 0,
 "WIS": 0
 }
-equip_slot = 1
 scene = ExtResource("1_8yxb0")
 name = "Unarmed"
 metadata/_custom_type_script = "uid://cf3j6hhshqwfm"

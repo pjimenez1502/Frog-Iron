@@ -19,7 +19,6 @@ hitchance_scaling = {
 "STR": 0,
 "WIS": 0
 }
-equip_slot = 1
 bonus_stats_weights = {
 "CON": 0,
 "DEX": 4,

@@ -5,6 +5,9 @@ class_name ItemResource
 @export var desc: String
 @export var rarity: Global.Rarity
 @export var value: int
+@export var stack_size: int = 1
+enum ITEMACTIONS { DROP, TAKE, EQUIP, UNEQUIP, CONSUME }
+var actions: Array[ITEMACTIONS]
 
 func get_tooltip_content() -> String:
 	var tooltip: String

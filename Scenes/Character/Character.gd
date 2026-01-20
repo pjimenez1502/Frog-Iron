@@ -23,6 +23,7 @@ func _ready() -> void:
 	character_attack = %CharacterAttack
 	character_inventory = %Inventory
 	
+	character_inventory.setup(self)
 	character_grid_movement.setup(self)
 	character_stats.DEAD.connect(death)
 

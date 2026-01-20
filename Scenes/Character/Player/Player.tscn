@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=34 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
@@ -8,16 +8,11 @@
 [ext_resource type="Script" uid="uid://b5eq8lyfdnua5" path="res://Scenes/Character/Player/PlayerInput.gd" id="5_v7n4c"]
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="6_uwo8e"]
 [ext_resource type="Resource" uid="uid://burbf5oqbmmof" path="res://Data/Item/Equipable/Weapon/Ranged/Marksman.tres" id="7_ypnta"]
-[ext_resource type="Resource" uid="uid://y0i7ovtw22g3" path="res://Data/Item/Equipable/Weapon/Ranged/Assault.tres" id="8_5vafk"]
 [ext_resource type="Script" uid="uid://cvdsrijlqpqta" path="res://Scenes/Character/Player/CameraPivot.gd" id="8_yty6f"]
-[ext_resource type="Resource" uid="uid://nudpnlo2nbdg" path="res://Data/Item/Equipable/Weapon/Ranged/Bolt.tres" id="9_3jo1j"]
 [ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/Outline.gdshader" id="9_nyt8s"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_oedxj"]
-[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="9_v7n4c"]
-[ext_resource type="Resource" uid="uid://bi5tewxtm7k18" path="res://Data/Item/Equipable/Weapon/Ranged/Pistol.tres" id="10_er2ma"]
-[ext_resource type="Resource" uid="uid://b4f1lk0upkten" path="res://Data/Item/Equipable/Weapon/Ranged/Shotgun.tres" id="11_twopa"]
+[ext_resource type="Resource" uid="uid://df2bsoy64o68x" path="res://Data/Item/Consumable/Potion_Health.tres" id="9_ypnta"]
 [ext_resource type="Resource" uid="uid://sh4mi7xnrmlt" path="res://Data/Item/Equipable/Armor/T_Chestplate.tres" id="11_ypnta"]
-[ext_resource type="Resource" uid="uid://d1gdeepflvfcu" path="res://Data/Item/Equipable/Weapon/Ranged/Submachine.tres" id="12_6tyfe"]
 [ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="18_unv75"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="18_ypnta"]
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="19_pwth1"]
@@ -145,8 +140,7 @@ character_tag = 1
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_yty6f")
-inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta"), ExtResource("8_5vafk"), ExtResource("9_3jo1j"), ExtResource("10_er2ma"), ExtResource("11_twopa"), ExtResource("12_6tyfe")])
-starting_equipment = Array[ExtResource("6_uwo8e")]([ExtResource("9_v7n4c"), ExtResource("11_ypnta")])
+starting_inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta"), ExtResource("11_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta")])
 
 [node name="CharacterAttack" type="Node" parent="." node_paths=PackedStringArray("weapon_attatchment")]
 unique_name_in_owner = true

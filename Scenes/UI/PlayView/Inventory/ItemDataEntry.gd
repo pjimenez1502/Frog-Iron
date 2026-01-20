@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 class_name ItemDataEntry
 
 @onready var button: Button = %Button
@@ -16,36 +16,41 @@ var icon_dictionary: Dictionary = {
 	"LEGS": load("res://Data/Item/_Icon/legs.png"),
 	"ARMS": load("res://Data/Item/_Icon/arms.png"),
 }
-var item_data : ItemResource
 
-func populate(_item_data: ItemResource) -> void:
-	item_data = _item_data
-	item_name.text = item_data.name
-	self_modulate = Global.rarity_colors[item_data.rarity]
-	item_name.modulate = Global.rarity_colors[item_data.rarity]
+var slot_data : CharacterInventory.InventorySlot
+
+func populate(_slot_data: CharacterInventory.InventorySlot) -> void:
+	slot_data = _slot_data
+	
+	item_name.text = _slot_data.item_data.name
+	if slot_data.quantity > 1:
+		item_name.text += " (x%d)" % slot_data.quantity
+	
+	self_modulate = Global.rarity_colors[_slot_data.item_data.rarity]
+	item_name.modulate = Global.rarity_colors[_slot_data.item_data.rarity]
 	item_icon.texture = get_icon()
 
 func get_icon() -> Texture2D:
-	if item_data is CoinResource:
-		return icon_dictionary["COIN"]
-	if item_data is ConsumableResource:
-		return icon_dictionary["CONSUMABLE"]
-	if item_data is EquipableResource:
-		match item_data.equip_slot:
-			Global.EquipSlot.MELEEWEAPON:
-				return icon_dictionary["MELEE"]
-			Global.EquipSlot.RANGEDWEAPON:
-				return icon_dictionary["RANGED"]
-			Global.EquipSlot.HEAD:
-				return icon_dictionary["HEAD"]
-			Global.EquipSlot.TORSO:
-				return icon_dictionary["TORSO"]
-			Global.EquipSlot.ARMS:
-				return icon_dictionary["ARMS"]
-			Global.EquipSlot.LEGS:
-				return icon_dictionary["LEGS"]
-	return null
+	return icon_dictionary["COIN"]
+	#
+	#if item_data is CoinResource:
+		#return icon_dictionary["COIN"]
+	#if item_data is ConsumableResource:
+		#return icon_dictionary["CONSUMABLE"]
+	#if item_data is EquipableResource:
+		#match item_data.equip_slot:
+			#Global.EquipSlot.WEAPON:
+				#return icon_dictionary["RANGED"]
+			#Global.EquipSlot.HEAD:
+				#return icon_dictionary["HEAD"]
+			#Global.EquipSlot.TORSO:
+				#return icon_dictionary["TORSO"]
+			#Global.EquipSlot.LEGS:
+				#return icon_dictionary["LEGS"]
+			#Global.EquipSlot.BOOTS:
+				#return icon_dictionary["ARMS"]
+	#return null
 
 func show_tooltip(value: bool) -> void:
 	hovered = value
-	SignalBus.ShowTooltip.emit(value, item_data.get_tooltip_content())
+	SignalBus.ShowTooltip.emit(value, slot_data.item_data.get_tooltip_content())

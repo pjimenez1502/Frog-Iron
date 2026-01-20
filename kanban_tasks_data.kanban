@@ -76,12 +76,11 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
+				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 				"2d111953-a982-48fb-9488-e87ed37e72bb",
 				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
-				"7b44492f-c40b-4629-931d-128308994200",
-				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"a656dce6-e08a-41de-9882-52f34eb2a4b6"
 			]
 		},
@@ -572,9 +571,9 @@
 		},
 		{
 			"uuid": "2edb0319-0b11-4762-a07a-219e5ec0246d",
-			"title": "NO INVENTORY",
-			"description": "\nInventory only for consumables (ammo, potions, etc)\nEquipment found can be swapped for current, but not carried",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"title": "INVENTORY",
+			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\nLclick to start grab and move\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n- \n\n",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
 		{
@@ -589,13 +588,6 @@
 			"title": "INVENTORY REWORK",
 			"description": "Different item types have different slots\n(SMALL): Consumables\n(LOOT): To carry found artifacts\n(LARGE): To carry pieces of equipment (weapon, armor)",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
-			"steps": []
-		},
-		{
-			"uuid": "7b44492f-c40b-4629-931d-128308994200",
-			"title": "Ammo Cap",
-			"description": "Ammo carried in pouches\n\nCan only carry one type of ammo in each pouch\nEach pouch has a max capacity\n",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": []
 		},
 		{

@@ -16,13 +16,14 @@ func populate_inv(_inventory: Array[ItemResource]) -> void:
 	show_inventory()
 
 func show_inventory() -> void:
-	clear_inventory()
-	for item: ItemResource in inventory:
-		var inventory_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
-		content.add_child(inventory_entry)
-		inventory_entry.populate(item)
-		inventory_entry.button.pressed.connect(grab_item.bind(inventory_entry.item_data))
-	visible = true
+	print(" NOT REIMPLEMENTED ")
+	#clear_inventory()
+	#for item: ItemResource in inventory:
+		#var inventory_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
+		#content.add_child(inventory_entry)
+		#inventory_entry.populate(item)
+		#inventory_entry.button.pressed.connect(grab_item.bind(inventory_entry.item_data))
+	#visible = true
 
 func clear_inventory() -> void:
 	for item: ItemDataEntry in content.get_children():

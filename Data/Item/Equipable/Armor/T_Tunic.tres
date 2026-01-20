@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ugs1j")
-equip_slot = 3
+equip_slot = 2
 bonus_stats = {
 "CON": -1,
 "DEX": 2,

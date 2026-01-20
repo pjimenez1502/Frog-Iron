@@ -1,15 +1,148 @@
 extends Node
 class_name CharacterInventory
 
-var equipment: Dictionary[String, EquipableResource] = {
-	"MELEE_WEAPON": null,
-	"RANGED_WEAPON": null,
+var character: Character
+
+var inventory: Array[InventorySlot]
+var equipment: Dictionary[String, EquipmentSlot] = {
+	"WEAPON_1": null,
+	"WEAPON_2": null,
 	"HEAD": null,
 	"TORSO": null,
 	"ARMS": null,
 	"LEGS": null,
-}
+	"BACKPACK": null}
 
+func setup(_character: Character) -> void:
+	character = _character
+	init_inventory(6)
+
+func init_inventory(inv_size: int) -> void:
+	for i: int in inv_size:
+		var inv_slot: InventorySlot = InventorySlot.new()
+		inv_slot.slot = i
+		inventory.append(inv_slot)
+
+func init_equipment() -> void:
+	equipment["WEAPON_1"] = EquipmentSlot.new().init_slot(Global.EquipSlot.WEAPON)
+	equipment["WEAPON_2"] = EquipmentSlot.new().init_slot(Global.EquipSlot.WEAPON)
+	equipment["HEAD"] = EquipmentSlot.new().init_slot(Global.EquipSlot.HEAD)
+	equipment["TORSO"] = EquipmentSlot.new().init_slot(Global.EquipSlot.TORSO)
+	equipment["LEGS"] = EquipmentSlot.new().init_slot(Global.EquipSlot.LEGS)
+	equipment["BOOTS"] = EquipmentSlot.new().init_slot(Global.EquipSlot.BOOTS)
+	equipment["BACKPACK"] = EquipmentSlot.new().init_slot(Global.EquipSlot.BACKPACK)
+
+
+
+func add_item(item_data: ItemResource) -> bool:
+	for inv_slot: InventorySlot in inventory: ## Try to place item in already matching slot
+		if inv_slot.item_data == item_data:
+			if !inv_slot.quantity < item_data.stack_size:
+				continue
+			inv_slot.quantity += 1
+			return true
+	
+	for inv_slot: InventorySlot in inventory: ## Find new slot
+		if inv_slot.item_data && !inv_slot.item_data == item_data: ## Slot used and doesnt match
+			continue
+		if !inv_slot.item_data: ## Slot empty
+			inv_slot.item_data = item_data
+			inv_slot.quantity = 1
+			return true
+	return false
+
+func use_item(item_slot: int) -> void:
+	var item_data: ItemResource = inventory[item_slot].item_data
+	if !item_data:
+		return
+	
+	if item_data is ConsumableResource:
+		consume_item(item_slot)
+	if item_data is EquipableResource:
+		equip_item(item_slot)
+
+func consume_item(item_slot: int) -> bool:
+	inventory[item_slot].item_data.consumable_effect(character)
+	remove_item(item_slot)
+	return true
+
+func equip_item(item_slot: int) -> void:
+	var item_data: ItemResource = inventory[item_slot].item_data
+	
+	match item_data.equip_slot:
+		Global.EquipSlot.WEAPON:
+				#player.character_attack.ranged_weapon_data = item_data
+				#player.character_attack.setup_weapons()
+			if !equipment["WEAPON_1"].item_data:
+				equipment["WEAPON_1"].item_data = item_data
+				remove_item(item_slot)
+				return
+			if !equipment["WEAPON_2"].item_data:
+				equipment["WEAPON_2"].item_data = item_data
+				remove_item(item_slot)
+				return
+			replace_equipment(item_slot, "WEAPON_1")
+			return
+		Global.EquipSlot.HEAD:
+			if !equipment["HEAD"].item_data:
+				equipment["HEAD"].item_data = item_data
+				remove_item(item_slot)
+				return
+			replace_equipment(item_slot, "HEAD")
+		Global.EquipSlot.TORSO:
+			if !equipment["TORSO"].item_data:
+				equipment["TORSO"].item_data = item_data
+				remove_item(item_slot)
+				return
+			replace_equipment(item_slot, "TORSO")
+		Global.EquipSlot.LEGS:
+			if !equipment["LEGS"].item_data:
+				equipment["LEGS"].item_data = item_data
+				remove_item(item_slot)
+				return
+			replace_equipment(item_slot, "LEGS")
+		Global.EquipSlot.BOOTS:
+			if !equipment["BOOTS"].item_data:
+				equipment["BOOTS"].item_data = item_data
+				remove_item(item_slot)
+				return
+			replace_equipment(item_slot, "BOOTS")
+
+func replace_equipment(item_slot: int, slot: String) -> void:
+	var replaced_item: ItemResource = equipment[slot].item_data
+	equipment[slot].item_data = inventory[item_slot].item_data
+	remove_item(item_slot)
+	add_item(replaced_item)
+	
+func drop_item(item_slot: int) -> void:
+	pass
+
+func remove_item(item_slot: int) -> void:
+	inventory[item_slot].quantity -= 1
+	if inventory[item_slot].quantity == 0:
+		inventory[item_slot].item_data = null
+
+
+
+class InventorySlot:
+	var slot: int
+	var item_data: ItemResource
+	var quantity: int
+
+class EquipmentSlot:
+	var slot_type: Global.EquipSlot
+	var locked: bool = false
+	var item_data: ItemResource
+	
+	func init_slot(type: Global.EquipSlot) -> EquipmentSlot:
+		slot_type = type
+		return self
+
+
+
+
+
+## AMMO #########################################
 var pouch_count: int = 0
 var ammo_inventory: Array[AmmoPouch]
 

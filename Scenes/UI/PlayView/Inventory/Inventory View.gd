@@ -3,7 +3,10 @@ extends Control
 const INVENTORT_ITEM_ENTRY = preload("uid://ttylk70icqys")
 
 @onready var coin_value: RichTextLabel = %"Coin Value"
-@onready var inventory_content: VBoxContainer = %Inventory_content
+
+@onready var bag: VBoxContainer = %Bag
+@onready var backpack: VBoxContainer = %Backpack
+
 
 @onready var weapon_slot: VBoxContainer = %Weapon
 @onready var head_slot: FoldableContainer = %Head
@@ -19,18 +22,22 @@ func _ready() -> void:
 	
 	InputBus.inv_DROP.connect(drop_item)
 
-func update_inventory(inventory: Array[ItemResource]) -> void:
+func update_inventory(inventory: Array[CharacterInventory.InventorySlot]) -> void:
 	clear_inventory()
-	for item: ItemResource in inventory:
+	for inv_slot: CharacterInventory.InventorySlot in inventory:
+		if !inv_slot.item_data:
+			return
 		var inventory_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
-		inventory_content.add_child(inventory_entry)
-		inventory_entry.populate(item)
-		inventory_entry.button.pressed.connect(use_item.bind(inventory_entry.item_data))
+		bag.add_child(inventory_entry)
+		
+		inventory_entry.populate(inv_slot)
+		inventory_entry.button.pressed.connect(use_item.bind(inv_slot))
 
 func drop_item() -> void:
-	for inv_item: ItemDataEntry in inventory_content.get_children():
-		if inv_item.hovered:
-			SignalBus.PlayerInventoryDrop.emit(inv_item.item_data)
+	pass
+	#for inv_item: ItemDataEntry in inventory_content.get_children():
+		#if inv_item.hovered:
+			#SignalBus.PlayerInventoryDrop.emit(inv_item.item_data)
 
 func update_equipment(equipment: Dictionary) -> void:
 	clear_equipment_slot(weapon_slot)
@@ -59,22 +66,22 @@ func update_equipment(equipment: Dictionary) -> void:
 		equipment_entry.populate(equipment[slot_key])
 		equipment_entry.button.pressed.connect(use_item.bind(equipment_entry.item_data))
 
-const AMMO_POUCH = preload("uid://cm33clyafba8d")
-@onready var ammo_container: GridContainer = %AmmoContainer
+#const AMMO_POUCH = preload("uid://cm33clyafba8d")
+#@onready var ammo_container: GridContainer = %AmmoContainer
 func update_ammo(ammo_data: Array) -> void:
-	print(ammo_data)
-	for pouch: CharacterInventory.AmmoPouch in ammo_data:
-		var pouch_view : AmmoPouchView = AMMO_POUCH.instantiate()
-		ammo_container.add_child(pouch_view)
-		pouch_view.update_pouch(pouch.look_at_pouch())
+	pass
+	#for pouch: CharacterInventory.AmmoPouch in ammo_data:
+		#var pouch_view : AmmoPouchView = AMMO_POUCH.instantiate()
+		#ammo_container.add_child(pouch_view)
+		#pouch_view.update_pouch(pouch.look_at_pouch())
 
-
-func use_item(item_data: ItemResource) -> void:
+func use_item(item_data: CharacterInventory.InventorySlot) -> void:
 	SignalBus.ItemUsed.emit(item_data)
 
 func clear_inventory() -> void:
-	for entry: ItemDataEntry in inventory_content.get_children():
+	for entry: ItemDataEntry in bag.get_children():
 		entry.queue_free()
+
 func clear_equipment_slot(slot: Container) -> void:
 	for child in slot.get_children():
 		child.queue_free()
