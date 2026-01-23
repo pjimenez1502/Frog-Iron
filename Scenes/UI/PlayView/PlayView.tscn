@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene load_steps=33 format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bb85h5bl4ip1t" path="res://Scenes/UI/PlayView/Inventory/InventoryView.tscn" id="17_5me5s"]
 [ext_resource type="Script" uid="uid://bmdr78ylnhag2" path="res://Scenes/UI/PlayView/Inventory/ItemTooltip.gd" id="17_7ut3y"]
 [ext_resource type="PackedScene" uid="uid://45j0mp5qvy6g" path="res://Scenes/UI/PlayView/MapMenu.tscn" id="18_rkhqr"]
+[ext_resource type="Script" uid="uid://c6fc3at5i1xo1" path="res://Scenes/UI/PlayView/Inventory/ItemActionsTooltip.gd" id="27_uvivi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
 shader = ExtResource("8_ufkdj")
@@ -640,11 +641,13 @@ theme = ExtResource("1_oklkm")
 top_level = true
 custom_minimum_size = Vector2(240, 70)
 offset_right = 240.0
-offset_bottom = 70.0
+offset_bottom = 162.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("17_7ut3y")
 
-[node name="Content" type="RichTextLabel" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip"]
+[node name="ItemDescription" type="RichTextLabel" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -652,6 +655,36 @@ bbcode_enabled = true
 text = "Name
 meowmeow"
 fit_content = true
+
+[node name="ItemActionMenu" type="VBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("27_uvivi")
+
+[node name="Consume" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Consume"
+
+[node name="Equip" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equip"
+
+[node name="Unequip" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unequip"
+
+[node name="Take" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Take"
+
+[node name="Drop" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Drop"
 
 [node name="Cursor" parent="OverLayed/Overlay Subviewport/SubViewport" instance=ExtResource("7_uldec")]
 theme = ExtResource("1_oklkm")

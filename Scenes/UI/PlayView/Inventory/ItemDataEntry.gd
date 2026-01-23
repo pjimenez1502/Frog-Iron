@@ -1,7 +1,7 @@
 extends Control
 class_name ItemDataEntry
 
-@onready var button: Button = %Button
+@onready var button: CustomRLButton = $"Button"
 @onready var item_name: RichTextLabel = %Name
 @onready var item_icon: TextureRect = %Icon
 var hovered: bool
@@ -24,14 +24,18 @@ func populate(_slot_data: CharacterInventory.InventorySlot) -> void:
 	
 	item_name.text = _slot_data.item_data.name
 	if slot_data.quantity > 1:
-		item_name.text += " (x%d)" % slot_data.quantity
+		item_name.text += " (x%d)" % _slot_data.quantity
 	
 	self_modulate = Global.rarity_colors[_slot_data.item_data.rarity]
 	item_name.modulate = Global.rarity_colors[_slot_data.item_data.rarity]
 	item_icon.texture = get_icon()
+	
+	button.mouse_entered.connect(mouse_enter)
+	button.mouse_exited.connect(mouse_exit)
+	button.MouseRight.connect(right_click)
 
 func get_icon() -> Texture2D:
-	return icon_dictionary["COIN"]
+	return null
 	#
 	#if item_data is CoinResource:
 		#return icon_dictionary["COIN"]
@@ -51,6 +55,15 @@ func get_icon() -> Texture2D:
 				#return icon_dictionary["ARMS"]
 	#return null
 
-func show_tooltip(value: bool) -> void:
-	hovered = value
-	SignalBus.ShowTooltip.emit(value, slot_data.item_data.get_tooltip_content())
+func mouse_enter() -> void:
+	hovered = true
+	SignalBus.TooltipAction.emit(ItemTooltip.TOOLTIP_ACTION.MOUSE_IN)
+	SignalBus.ShowTooltip.emit({"DESCRIPTION": slot_data.item_data.get_tooltip_content()})
+
+func mouse_exit() -> void:
+	hovered = false
+	SignalBus.TooltipAction.emit(ItemTooltip.TOOLTIP_ACTION.MOUSE_OUT)
+
+func right_click() -> void:
+	SignalBus.TooltipAction.emit(ItemTooltip.TOOLTIP_ACTION.R_CLICK)
+	SignalBus.ShowTooltip.emit({"ACTIONS": slot_data.item_data.actions, "SLOT": slot_data})

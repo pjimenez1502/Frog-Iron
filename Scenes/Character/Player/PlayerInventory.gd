@@ -7,15 +7,18 @@ func _ready() -> void:
 	SignalBus.AddPlayerCoin.connect(add_coin)
 	SignalBus.PlayerCoinUpdate.emit(coin)
 	
-	SignalBus.AddPlayerItem.connect(add_item)
-	SignalBus.ItemUsed.connect(use_item)
-	#SignalBus.PlayerInventoryDrop.connect(drop_from_inventory)
+	SignalBus.ItemTake.connect(add_item)
+	SignalBus.ItemDrop.connect(drop_item)
+	SignalBus.ItemEquip.connect(equip_item)
+	SignalBus.ItemUnequip.connect(unequip_item)
+	SignalBus.ItemConsume.connect(consume_item)
 	
 	equip_starting_equipment.call_deferred()
 
-func setup(_character: Character) -> void:
-	character = _character
-	init_inventory(6)
+#func setup(_character: Character) -> void:
+	#character = _character
+	#init_inventory(6)
+	#init_equipment()
 
 
 
@@ -25,15 +28,24 @@ func add_item(item_data: ItemResource) -> bool:
 	update_inventory_call()
 	return success
 
-func consume_item(item_slot: int) -> bool:
-	var success: bool = super.consume_item(item_slot)
+func drop_item(item_slot: InventorySlot) -> bool:
+	var success: bool = super.drop_item(item_slot)
 	update_inventory_call()
 	return success
 
 ## EQUIPMENT
-func equip_item(item_slot: int) -> void:
+func equip_item(item_slot: InventorySlot) -> void:
+	print(item_slot)
 	super.equip_item(item_slot)
 	update_inventory_call()
+
+func unequip_item(item_slot: InventorySlot) -> void:
+	pass
+
+func consume_item(item_slot: InventorySlot) -> bool:
+	var success: bool = super.consume_item(item_slot)
+	update_inventory_call()
+	return success
 
 
 
@@ -59,8 +71,8 @@ func get_remaining_ammo(ammo_type: GunResource.AMMO_TYPES) -> int:
 		ammo_count += pouch.content
 	return ammo_count
 
-func update_ammo_call() -> void:
-	SignalBus.PlayerAmmoUpdate.emit(ammo_inventory)
+#func update_ammo_call() -> void:
+	#SignalBus.PlayerAmmoUpdate.emit(ammo_inventory)
 
 
 
@@ -73,4 +85,4 @@ func equip_starting_equipment() -> void:
 	for item: ItemResource in starting_inventory:
 		add_item(item)
 	update_inventory_call()
-	update_ammo_call()
+	#update_ammo_call()

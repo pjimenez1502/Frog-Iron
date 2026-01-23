@@ -72,10 +72,10 @@ func increase_stat(stat: String, count: int) -> void:
 func update_equipment_bonus(equipment: Dictionary) -> void:
 	bonus_stats = { "STR": 0, "DEX": 0, "INT": 0, "WIS": 0, "CON": 0 }
 	for slot: String in equipment:
-		if !equipment[slot]:
+		if !equipment[slot].item_data:
 			continue
-		for stat: String in equipment[slot].bonus_stats:
-			bonus_stats[stat] += equipment[slot].bonus_stats[stat]
+		for stat: String in equipment[slot].item_data.bonus_stats:
+			bonus_stats[stat] += equipment[slot].item_data.bonus_stats[stat]
 
 func calculate_stats() -> Dictionary:
 	calculated_stats = {

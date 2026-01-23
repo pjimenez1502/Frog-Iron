@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ttylk70icqys"]
+[gd_scene load_steps=5 format=3 uid="uid://ttylk70icqys"]
 
 [ext_resource type="Script" uid="uid://bgm8oxs0yfamp" path="res://Scenes/UI/PlayView/Inventory/ItemDataEntry.gd" id="1_dpkof"]
 [ext_resource type="Texture2D" uid="uid://p4ttox7dc52m" path="res://Data/Item/_Icon/potion.png" id="1_m8isa"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_xlmwu"]
+[ext_resource type="Script" uid="uid://bubt2vddj17br" path="res://Scenes/UI/R_L_Button.gd" id="4_5bgff"]
 
 [node name="ItemData" type="ColorRect"]
 custom_minimum_size = Vector2(240, 32)
@@ -43,13 +44,11 @@ layout_mode = 2
 texture = ExtResource("1_m8isa")
 
 [node name="Button" type="Button" parent="."]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="mouse_entered" from="Button" to="." method="show_tooltip" binds= [true]]
-[connection signal="mouse_exited" from="Button" to="." method="show_tooltip" binds= [false]]
+focus_mode = 0
+script = ExtResource("4_5bgff")

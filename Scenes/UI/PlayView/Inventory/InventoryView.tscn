@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb85h5bl4ip1t"]
+[gd_scene load_steps=6 format=3 uid="uid://bb85h5bl4ip1t"]
 
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_1ltnd"]
 [ext_resource type="Script" uid="uid://k6jpgqu6wugu" path="res://Scenes/UI/PlayView/Inventory/Inventory View.gd" id="1_6jqdy"]
+[ext_resource type="Texture2D" uid="uid://t3118e8bnrh" path="res://Scenes/UI/Asset/Slot_Border.png" id="3_l02vn"]
 [ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Asset/BorderSquare.png" id="3_pygcv"]
-[ext_resource type="Texture2D" uid="uid://dwypcbbsnw4jr" path="res://Scenes/UI/Asset/Corner_Border.png" id="3_vybx7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hipwp"]
+texture = ExtResource("3_l02vn")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="Menu Panel" type="Panel"]
 anchors_preset = 8
@@ -74,50 +79,71 @@ bbcode_enabled = true
 text = "Weapon"
 fit_content = true
 
-[node name="Weapon_1_Slot" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
-layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="Weapon_2_Slot" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
-layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="Weapon" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
-visible = false
-layout_mode = 2
-title = "Weapon"
-
-[node name="Weapon" type="VBoxContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/Weapon"]
+[node name="Weapon_1_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
-[node name="Head" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+[node name="Weapon_2_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-title = "Head"
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
-[node name="Torso" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
-unique_name_in_owner = true
+[node name="Head_Title" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
 layout_mode = 2
-title = "Torso"
+bbcode_enabled = true
+text = "Head"
+fit_content = true
 
-[node name="Arms" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+[node name="Head_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-title = "Arms"
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
-[node name="Legs" type="FoldableContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
-unique_name_in_owner = true
+[node name="Torso_Title" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
 layout_mode = 2
-title = "Legs"
+bbcode_enabled = true
+text = "Body"
+fit_content = true
+
+[node name="Torso_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
+
+[node name="Legs_Title" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Legs"
+fit_content = true
+
+[node name="Legs_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
+
+[node name="Boots_Title" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Boots"
+fit_content = true
+
+[node name="Boots_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
 [node name="Artifacts" type="RichTextLabel" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content"]
 layout_mode = 2
@@ -129,37 +155,40 @@ fit_content = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Artifact_Slot_1" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+[node name="Artifact_Slot_1" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
-[node name="Artifact_Slot_2" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+[node name="Artifact_Slot_2" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
-[node name="Artifact_Slot_3" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+[node name="Artifact_Slot_3" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
-[node name="Artifact_Slot_4" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+[node name="Artifact_Slot_4" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
+
+[node name="Artifact_Slot_5" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/EQUIP/Equipment/Equipment_content/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
 [node name="INV" type="VBoxContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -188,14 +217,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Backpack_Slot" type="NinePatchRect" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/Inventory/Inventory"]
-unique_name_in_owner = true
+[node name="Backpack_Slot" type="PanelContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/Inventory/Inventory"]
+custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
-texture = ExtResource("3_vybx7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hipwp")
 
 [node name="Backpack" type="VBoxContainer" parent="MarginContainer/InventoryMenu/VBoxContainer/HBoxContainer/INV/Inventory/Inventory"]
 unique_name_in_owner = true

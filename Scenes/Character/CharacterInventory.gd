@@ -9,13 +9,14 @@ var equipment: Dictionary[String, EquipmentSlot] = {
 	"WEAPON_2": null,
 	"HEAD": null,
 	"TORSO": null,
-	"ARMS": null,
 	"LEGS": null,
+	"BOOTS": null,
 	"BACKPACK": null}
 
 func setup(_character: Character) -> void:
 	character = _character
 	init_inventory(6)
+	init_equipment()
 
 func init_inventory(inv_size: int) -> void:
 	for i: int in inv_size:
@@ -31,8 +32,19 @@ func init_equipment() -> void:
 	equipment["LEGS"] = EquipmentSlot.new().init_slot(Global.EquipSlot.LEGS)
 	equipment["BOOTS"] = EquipmentSlot.new().init_slot(Global.EquipSlot.BOOTS)
 	equipment["BACKPACK"] = EquipmentSlot.new().init_slot(Global.EquipSlot.BACKPACK)
+	print(equipment)
 
 
+
+#func use_item(item_slot: int) -> void:
+	#var item_data: ItemResource = inventory[item_slot].item_data
+	#if !item_data:
+		#return
+	#
+	#if item_data is ConsumableResource:
+		#consume_item(item_slot)
+	#if item_data is EquipableResource:
+		#equip_item(item_slot)
 
 func add_item(item_data: ItemResource) -> bool:
 	for inv_slot: InventorySlot in inventory: ## Try to place item in already matching slot
@@ -51,23 +63,11 @@ func add_item(item_data: ItemResource) -> bool:
 			return true
 	return false
 
-func use_item(item_slot: int) -> void:
-	var item_data: ItemResource = inventory[item_slot].item_data
-	if !item_data:
-		return
-	
-	if item_data is ConsumableResource:
-		consume_item(item_slot)
-	if item_data is EquipableResource:
-		equip_item(item_slot)
+func drop_item(item_slot: InventorySlot) -> bool:
+	return false
 
-func consume_item(item_slot: int) -> bool:
-	inventory[item_slot].item_data.consumable_effect(character)
-	remove_item(item_slot)
-	return true
-
-func equip_item(item_slot: int) -> void:
-	var item_data: ItemResource = inventory[item_slot].item_data
+func equip_item(item_slot: InventorySlot) -> void:
+	var item_data: ItemResource = item_slot.item_data
 	
 	match item_data.equip_slot:
 		Global.EquipSlot.WEAPON:
@@ -108,19 +108,26 @@ func equip_item(item_slot: int) -> void:
 				return
 			replace_equipment(item_slot, "BOOTS")
 
-func replace_equipment(item_slot: int, slot: String) -> void:
-	var replaced_item: ItemResource = equipment[slot].item_data
-	equipment[slot].item_data = inventory[item_slot].item_data
-	remove_item(item_slot)
-	add_item(replaced_item)
-	
-func drop_item(item_slot: int) -> void:
+func unequip_item(item_slot: InventorySlot) -> void:
 	pass
 
-func remove_item(item_slot: int) -> void:
-	inventory[item_slot].quantity -= 1
-	if inventory[item_slot].quantity == 0:
-		inventory[item_slot].item_data = null
+func consume_item(item_slot: InventorySlot) -> bool:
+	inventory[item_slot].item_data.consumable_effect(character)
+	remove_item(item_slot)
+	return true
+
+
+
+func replace_equipment(item_slot: InventorySlot, slot: String) -> void:
+	var replaced_item: ItemResource = equipment[slot].item_data
+	equipment[slot].item_data = item_slot.item_data
+	remove_item(item_slot)
+	add_item(replaced_item)
+
+func remove_item(item_slot: InventorySlot) -> void:
+	item_slot.quantity -= 1
+	if item_slot.quantity == 0:
+		item_slot.item_data = null
 
 
 
@@ -130,9 +137,9 @@ class InventorySlot:
 	var quantity: int
 
 class EquipmentSlot:
+	extends InventorySlot
 	var slot_type: Global.EquipSlot
 	var locked: bool = false
-	var item_data: ItemResource
 	
 	func init_slot(type: Global.EquipSlot) -> EquipmentSlot:
 		slot_type = type

@@ -6,11 +6,11 @@ signal UpdatePlayerData
 
 signal AddPlayerXP
 signal AddPlayerCoin
-signal AddPlayerItem
+#signal AddPlayerItem
 signal PlayerInventoryUpdate
 signal PlayerEquipmentUpdate
-signal PlayerAmmoUpdate
-signal PlayerInventoryDrop
+#signal PlayerAmmoUpdate
+#signal PlayerInventoryDrop
 signal PlayerStatIncrease
 signal AvailableStatUP
 signal PlayerLevelUpdate
@@ -32,7 +32,13 @@ signal PlayerCoinUpdate
 signal PlayerStatsUpdate
 
 signal CursorUpdate
-signal ItemUsed
+
+## Item Actions
+signal ItemTake
+signal ItemDrop
+signal ItemEquip
+signal ItemUnequip
+signal ItemConsume
 
 ## EmergentInv
 signal OpenEmergentInv
@@ -56,6 +62,7 @@ signal NavmeshBakeRequest
 
 signal ShowPopupText
 signal ShowTooltip
+signal TooltipAction
 
 signal DamageText
 

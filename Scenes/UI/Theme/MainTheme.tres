@@ -60,6 +60,8 @@ texture_margin_bottom = 8.0
 modulate_color = Color(0.5, 0.5, 0.5, 1)
 
 [resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("2_tcwhh")
 Button/styles/focus = SubResource("StyleBoxFlat_jh8l4")
 Button/styles/hover = SubResource("StyleBoxFlat_q7mtl")
 Button/styles/normal = SubResource("StyleBoxFlat_uqe2k")
