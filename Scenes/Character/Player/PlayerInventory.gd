@@ -35,12 +35,12 @@ func drop_item(item_slot: InventorySlot) -> bool:
 
 ## EQUIPMENT
 func equip_item(item_slot: InventorySlot) -> void:
-	print(item_slot)
 	super.equip_item(item_slot)
 	update_inventory_call()
 
-func unequip_item(item_slot: InventorySlot) -> void:
-	pass
+func unequip_item(item_slot: EquipmentSlot) -> void:
+	super.unequip_item(item_slot)
+	update_inventory_call()
 
 func consume_item(item_slot: InventorySlot) -> bool:
 	var success: bool = super.consume_item(item_slot)

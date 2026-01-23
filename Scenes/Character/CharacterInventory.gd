@@ -25,14 +25,14 @@ func init_inventory(inv_size: int) -> void:
 		inventory.append(inv_slot)
 
 func init_equipment() -> void:
-	equipment["WEAPON_1"] = EquipmentSlot.new().init_slot(Global.EquipSlot.WEAPON)
-	equipment["WEAPON_2"] = EquipmentSlot.new().init_slot(Global.EquipSlot.WEAPON)
-	equipment["HEAD"] = EquipmentSlot.new().init_slot(Global.EquipSlot.HEAD)
-	equipment["TORSO"] = EquipmentSlot.new().init_slot(Global.EquipSlot.TORSO)
-	equipment["LEGS"] = EquipmentSlot.new().init_slot(Global.EquipSlot.LEGS)
-	equipment["BOOTS"] = EquipmentSlot.new().init_slot(Global.EquipSlot.BOOTS)
-	equipment["BACKPACK"] = EquipmentSlot.new().init_slot(Global.EquipSlot.BACKPACK)
-	print(equipment)
+	equipment["WEAPON_1"] = EquipmentSlot.new().init_slot("WEAPON_1")
+	equipment["WEAPON_2"] = EquipmentSlot.new().init_slot("WEAPON_2")
+	equipment["HEAD"] = EquipmentSlot.new().init_slot("HEAD")
+	equipment["TORSO"] = EquipmentSlot.new().init_slot("TORSO")
+	equipment["LEGS"] = EquipmentSlot.new().init_slot("LEGS")
+	equipment["BOOTS"] = EquipmentSlot.new().init_slot("BOOTS")
+	equipment["BACKPACK"] = EquipmentSlot.new().init_slot("BACKPACK")
+	#print(equipment)
 
 
 
@@ -108,8 +108,10 @@ func equip_item(item_slot: InventorySlot) -> void:
 				return
 			replace_equipment(item_slot, "BOOTS")
 
-func unequip_item(item_slot: InventorySlot) -> void:
-	pass
+func unequip_item(item_slot: EquipmentSlot) -> void:
+	var slot_key: String = item_slot.slot_key
+	if add_item(equipment[slot_key].item_data):
+		equipment[slot_key].item_data = null
 
 func consume_item(item_slot: InventorySlot) -> bool:
 	inventory[item_slot].item_data.consumable_effect(character)
@@ -138,11 +140,11 @@ class InventorySlot:
 
 class EquipmentSlot:
 	extends InventorySlot
-	var slot_type: Global.EquipSlot
+	var slot_key: String
 	var locked: bool = false
 	
-	func init_slot(type: Global.EquipSlot) -> EquipmentSlot:
-		slot_type = type
+	func init_slot(key: String) -> EquipmentSlot:
+		slot_key = key
 		return self
 
 

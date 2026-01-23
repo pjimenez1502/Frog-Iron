@@ -26,9 +26,7 @@ func _ready() -> void:
 
 func update_inventory(inventory: Array[CharacterInventory.InventorySlot]) -> void:
 	clear_inventory()
-	print("UPDATED INV:")
 	for inv_slot: CharacterInventory.InventorySlot in inventory:
-		print(inv_slot.item_data)
 		if !inv_slot.item_data:
 			continue
 		var inventory_entry: ItemDataEntry = INVENTORT_ITEM_ENTRY.instantiate()
