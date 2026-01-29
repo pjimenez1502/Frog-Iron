@@ -18,7 +18,7 @@ func setup(_character: Character) -> void:
 	character = _character
 
 func set_at_grid_position(_grid_position: Vector2i) -> void:
-	character.global_position = GameDirector.level_map.grid_to_globalpos(_grid_position)
+	character.global_position = Util.grid_to_globalpos(_grid_position)
 	grid_position = _grid_position
 	CharacterMoved.emit(grid_position)
 
@@ -48,7 +48,7 @@ func action(direction: Vector2i) -> void:
 func move(direction: Vector2i) -> void:
 	GameDirector.level_map.move_entity(grid_position, grid_position+direction)
 	grid_position += direction
-	var target_position: Vector3 = GameDirector.level_map.grid_to_globalpos(grid_position)
+	var target_position: Vector3 = Util.grid_to_globalpos(grid_position)
 	move_tween = get_tree().create_tween()
 	move_tween.tween_property(character, "global_position", target_position as Vector3, Global.PLAYER_TURN_DURATION) 
 	
@@ -59,17 +59,15 @@ func move(direction: Vector2i) -> void:
 	if verbose:
 		print("Moved to: %s" % grid_position)
 
-func attack(direction: Vector2i) -> void:
-	character.character_attack.melee_attack(direction)
-	#print("Attacking: %s" % target)
+func attack(target: Vector2i) -> void:
+	character.character_attack.attack(target)
 	CharacterActed.emit()
 
-func ranged_attack(direction: Vector3) -> void:
-	character.character_attack.ranged_attack(direction)
-	CharacterActed.emit()
+func weapon_switch() -> void:
+	character.character_attack.weapon_switch()
 
 func reload() -> void:
-	await character.character_attack.reload_ranged()
+	await character.character_attack.reload()
 	CharacterActed.emit()
 
 func interact(direction: Vector2i) -> void:

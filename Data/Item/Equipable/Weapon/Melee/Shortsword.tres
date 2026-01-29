@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://jy6230hcgqdm"]
 
-[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="1_6vf5n"]
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/MeleeResource.gd" id="1_6vf5n"]
 [ext_resource type="PackedScene" uid="uid://5hq65fmgnl6q" path="res://Scenes/Weapon/_MELEE/ShortSword.tscn" id="1_rd3e7"]
 
 [resource]

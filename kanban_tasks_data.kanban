@@ -61,6 +61,7 @@
 			"title": "ToDo",
 			"tasks": [
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
+				"744589d8-c53c-46cd-918d-322db8e9d6ac",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
 				"9639bed6-c6c8-47a5-934f-6ed37a3dcfb7",
@@ -594,6 +595,13 @@
 			"uuid": "a656dce6-e08a-41de-9882-52f34eb2a4b6",
 			"title": "Faster enemies",
 			"description": "Some enemies can move an extra square per turn\n\nex: Can move 2 squares or move 1 square and attack\n\nGive player the option to do that? Spending stamina?\n\nSpeed stat??: equals to how many actions character can do in one turn",
+			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"steps": []
+		},
+		{
+			"uuid": "744589d8-c53c-46cd-918d-322db8e9d6ac",
+			"title": "Check Cover",
+			"description": "Multiple raycasts per shot\n\n\t- Full cover:\t\t\tFrom center to center. If blocked, shot misses\n\t- Cover:\t\t\t\t\tSlightly off center. If blocked, cover (25%)\n\t- Partial Cover:\t\tMore off center. If blocked, partial cover (50%)\n\t- No Cover:\t\t\t\tNone of the raycasts hit. (100%)",
 			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
 			"steps": []
 		}

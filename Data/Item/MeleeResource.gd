@@ -1,14 +1,9 @@
 extends WeaponResource
-class_name GunResource
+class_name MeleeResource
 
 @export var weapon_stats: Dictionary = {
 	"DAMAGE": 2,
-	"PROJECTILES": 1,
-	"SPREAD": 1.0,
-	"RANGE": 5,
-	"MAGAZINE": 6,
-	"CURRENT_MAGAZINE": 6,
-	"SHOTS_PER_ACTION": 1,
+	"HITCHANCE": 60,
 }
 
 @export var hitchance_scaling: Dictionary = {
@@ -18,25 +13,15 @@ class_name GunResource
 	"WIS": 0,
 	"CON": 0,
 }
-
-@export var random_loaded: bool
-
-enum AMMO_TYPES { LIGHT, HEAVY, SLUG }
-@export var ammo_type: AMMO_TYPES
 @export var stamina_cost: int = 1
-
-func _ready() -> void:
-	if random_loaded:
-		weapon_stats["CURRENT_MAGAZINE"] = randi_range(0, weapon_stats["MAGAZINE"])
 
 func get_tooltip_content() -> String:
 	var tooltip: String
 	var item_material: String = Global.rarity_prefixes[MATERIAL.keys()[material]][rarity]
 	tooltip = "[color=#%s]%s %s[/color]" % [Global.rarity_colors[rarity].to_html(), item_material, name]
-	tooltip += "\n Ammo: %s" % AMMO_TYPES.keys()[ammo_type]
 	tooltip += "\n[color=#888]%s[/color]" % desc
 	tooltip += "\n Damage: %d" % calculate_damage(GameDirector.player.character_stats)
-	#tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)
+	tooltip += "\n Hit Chance: %d%%" % calculate_hitchance(GameDirector.player.character_stats)
 	#tooltip += "\n Stamina Cost: %d" % stamina_cost
 	for stat: String in bonus_stats:
 		if bonus_stats[stat] != 0:

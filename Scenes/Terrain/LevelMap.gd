@@ -112,12 +112,6 @@ func move_entity(origin: Vector2i, destination: Vector2i) -> void:
 	entity_map[origin] = ENTITY_TYPE.EMPTY
 
 
-## UTIL
-#func globalpos_to_grid(pos: Vector3) -> Vector3i:
-	#return local_to_map(to_local(pos))
-func grid_to_globalpos(grid_pos: Vector2i) -> Vector3:
-	return Vector3(grid_pos.x * Global.TILE_SIZE, 0, grid_pos.y * Global.TILE_SIZE)
-
 func show_map(visible_tiles: Dictionary) -> String:
 	var map_text: String = ""
 	for row: int in map_size.y:

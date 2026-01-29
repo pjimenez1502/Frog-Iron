@@ -1,12 +1,12 @@
 extends Node
 class_name PlayerInput
 
-var player: Player
+
 @onready var grid_movement: CharacterGridMovement = %GridMovement
 var movement_directions: Array[Vector2i] = [Vector2(0,-1), Vector2(-1,0), Vector2(0,1), Vector2(1,0)]
 var is_player_turn: bool
 
-enum ACTIONS { NONE, MELEE, RANGED, INTERACT }
+enum ACTIONS { NONE, ATTACK, INTERACT }
 var current_action: ACTIONS = ACTIONS.NONE
 
 func _ready() -> void:
@@ -19,9 +19,8 @@ func setup_input() -> void:
 	InputBus.input_MOVE.connect(movement)
 	InputBus.input_INTERACT.connect(interact)
 	InputBus.input_WAIT.connect(wait)
-	InputBus.input_MELEE.connect(melee)
-	InputBus.input_RANGED.connect(ranged)
-	
+	InputBus.input_ATTACK.connect(attack)
+	InputBus.input_WEAPON_SWITCH.connect(weapon_switch)
 	InputBus.input_RELOAD.connect(reload)
 	
 	InputBus.action_ACCEPT.connect(action_accept)
@@ -39,13 +38,13 @@ func interact() -> void:
 	if !is_player_turn: return
 	set_interact_aim()
 
-func melee() -> void:
+func attack() -> void:
 	if !is_player_turn: return
-	set_melee_aim()
+	set_attack_aim()
 
-func ranged() -> void:
+func weapon_switch() -> void:
 	if !is_player_turn: return
-	set_ranged_aim()
+	grid_movement.weapon_switch()
 
 func reload() -> void:
 	if !is_player_turn: return
@@ -54,11 +53,11 @@ func reload() -> void:
 func clear_aim() -> void:
 	current_action = ACTIONS.NONE
 	SignalBus.CursorUpdate.emit(Cursor.CURSOR.DEFAULT)
-func set_melee_aim() -> void:
-	current_action = ACTIONS.MELEE
-	SignalBus.CursorUpdate.emit(Cursor.CURSOR.MELEE)
-func set_ranged_aim() -> void:
-	current_action = ACTIONS.RANGED
+#func set_melee_aim() -> void:
+	#current_action = ACTIONS.MELEE
+	#SignalBus.CursorUpdate.emit(Cursor.CURSOR.MELEE)
+func set_attack_aim() -> void:
+	current_action = ACTIONS.ATTACK
 	SignalBus.CursorUpdate.emit(Cursor.CURSOR.RANGED)
 func set_interact_aim() -> void:
 	current_action = ACTIONS.INTERACT
@@ -68,10 +67,12 @@ func action_accept() -> void:
 	match current_action:
 		ACTIONS.NONE:
 			return
-		ACTIONS.MELEE:
-			grid_movement.attack(Util.round_direction(Util.get_mouse_direction(grid_movement)))
-		ACTIONS.RANGED:
-			grid_movement.ranged_attack(Util.get_mouse_direction(grid_movement))
+		ACTIONS.ATTACK:
+			grid_movement.attack(Util.worldpos_to_gridpos(Util.get_mouse_pos(grid_movement.character)))
+			#print(Util.worldpos_to_gridpos(Util.get_mouse_pos(grid_movement.character)))
+			#grid_movement.attack(Util.round_direction(Util.get_mouse_direction(grid_movement)))
+		#ACTIONS.RANGED:
+			#grid_movement.ranged_attack(Util.get_mouse_direction(grid_movement))
 		ACTIONS.INTERACT:
 			grid_movement.interact(Util.round_direction(Util.get_mouse_direction(grid_movement)))
 	clear_aim()

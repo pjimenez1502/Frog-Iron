@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://bdntcukq7he2r"]
 
 [ext_resource type="PackedScene" uid="uid://cc856frj7mepq" path="res://Scenes/Weapon/_MELEE/Unarmed_Claws.tscn" id="1_8yxb0"]
-[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/WeaponResource.gd" id="1_j105c"]
+[ext_resource type="Script" uid="uid://cf3j6hhshqwfm" path="res://Data/Item/MeleeResource.gd" id="1_j105c"]
 
 [resource]
 script = ExtResource("1_j105c")

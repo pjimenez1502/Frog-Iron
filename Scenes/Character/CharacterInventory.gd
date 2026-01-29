@@ -71,17 +71,17 @@ func equip_item(item_slot: InventorySlot) -> void:
 	
 	match item_data.equip_slot:
 		Global.EquipSlot.WEAPON:
-				#player.character_attack.ranged_weapon_data = item_data
-				#player.character_attack.setup_weapons()
 			if !equipment["WEAPON_1"].item_data:
 				equipment["WEAPON_1"].item_data = item_data
+				character.character_attack.weapon_1_data = item_data
 				remove_item(item_slot)
-				return
-			if !equipment["WEAPON_2"].item_data:
+			elif !equipment["WEAPON_2"].item_data:
 				equipment["WEAPON_2"].item_data = item_data
+				character.character_attack.weapon_2_data = item_data
 				remove_item(item_slot)
-				return
-			replace_equipment(item_slot, "WEAPON_1")
+			else:
+				replace_equipment(item_slot, "WEAPON_1")
+			character.character_attack.setup_weapons()
 			return
 		Global.EquipSlot.HEAD:
 			if !equipment["HEAD"].item_data:
@@ -112,6 +112,13 @@ func unequip_item(item_slot: EquipmentSlot) -> void:
 	var slot_key: String = item_slot.slot_key
 	if add_item(equipment[slot_key].item_data):
 		equipment[slot_key].item_data = null
+	
+	if slot_key == "WEAPON_1":
+		character.character_attack.weapon_1_data = null
+		character.character_attack.setup_weapons()
+	if slot_key == "WEAPON_2":
+		character.character_attack.weapon_2_data = null
+		character.character_attack.setup_weapons()
 
 func consume_item(item_slot: InventorySlot) -> bool:
 	inventory[item_slot].item_data.consumable_effect(character)

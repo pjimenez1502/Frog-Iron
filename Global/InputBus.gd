@@ -5,8 +5,8 @@ var game_view: GameView
 ## MOVEMENT
 signal input_MOVE
 signal input_WAIT
-signal input_MELEE
-signal input_RANGED
+signal input_ATTACK
+signal input_WEAPON_SWITCH
 signal input_RELOAD
 signal input_INTERACT
 
@@ -49,10 +49,10 @@ func _input(event: InputEvent) -> void:
 				input_WAIT.emit()
 			if event.is_action_pressed("move_INTERACT"):
 				input_INTERACT.emit()
-			if event.is_action_pressed("move_MELEE"):
-				input_MELEE.emit()
-			if event.is_action_pressed("move_RANGED"):
-				input_RANGED.emit()
+			if event.is_action_pressed("move_ATTACK"):
+				input_ATTACK.emit()
+			if event.is_action_pressed("move_WEAPON_SWITCH"):
+				input_WEAPON_SWITCH.emit()
 			if event.is_action_pressed("move_RELOAD"):
 				input_RELOAD.emit()
 			

@@ -5,85 +5,81 @@ const UNARMED = preload("uid://bdntcukq7he2r")
 @onready var character: Character = $".."
 
 @export var weapon_attatchment: WeaponAttachment
-@export var melee_weapon_data: EquipableResource
-@export var ranged_weapon_data: EquipableResource
+enum weapon_slot { WEAPON_1, WEAPON_2 }
+var equipped: weapon_slot = weapon_slot.WEAPON_1
 
-var melee_weapon: MeleeWeapon
-var ranged_weapon: RangedWeapon
+@export var weapon_1_data: WeaponResource
+@export var weapon_2_data: WeaponResource
+var weapon_1: Weapon
+var weapon_2: Weapon
 
-var attack_target: Character
-var attack_available: bool = true
 
 func _ready() -> void:
 	setup_weapons.call_deferred()
 
 func setup_weapons() -> void:
-	if melee_weapon:
-		melee_weapon.queue_free()
-	if ranged_weapon:
-		ranged_weapon.queue_free()
+	if weapon_1:
+		weapon_1.queue_free()
+	if weapon_2:
+		weapon_2.queue_free()
 	
-	if melee_weapon_data:
-		var melee: MeleeWeapon = melee_weapon_data.scene.instantiate()
-		weapon_attatchment.add_child(melee)
-		melee_weapon = melee
-		melee.setup(melee_weapon_data, character)
+	if weapon_1_data:
+		var new_weapon_1: Weapon = weapon_1_data.scene.instantiate()
+		weapon_attatchment.add_child(new_weapon_1)
+		weapon_1 = new_weapon_1
+		weapon_1.setup(weapon_1_data, character, weapon_slot.WEAPON_1)
 	else:
-		melee_weapon_data = UNARMED
+		weapon_1_data = UNARMED
+		setup_weapons()
+	
+	if weapon_2_data:
+		var new_weapon_2: Weapon = weapon_2_data.scene.instantiate()
+		weapon_attatchment.add_child(new_weapon_2)
+		weapon_2 = new_weapon_2
+		weapon_2.setup(weapon_2_data, character, weapon_slot.WEAPON_1)
+	else:
+		weapon_2_data = UNARMED
 		setup_weapons()
 		
-	if ranged_weapon_data:
-		var ranged: RangedWeapon = ranged_weapon_data.scene.instantiate()
-		ranged_weapon = ranged
-		weapon_attatchment.add_child(ranged)
-		ranged.setup(ranged_weapon_data, character)
-	else:
-		ranged_weapon_data = null
-		SignalBus.PlayerWeaponRangedUpdate.emit({"name": null})
+	if character is Player:
+		print(weapon_1_data)
+		SignalBus.PlayerWeaponUpdate.emit(weapon_1.get_status_data(), weapon_2.get_status_data(), equipped)
 
-func melee_attack(direction: Vector2i) -> void:
-	if !melee_weapon:
-		print("NO MELEE WEAPON EQUIPPED")
-		return
-	
-	if !melee_weapon.weapon_data.stamina_cost <= character.character_stats.current_stamina:
+
+func attack(direction:Vector2) -> void:
+	var equipped_weapon: Weapon = weapon_1 if equipped == weapon_slot.WEAPON_1 else weapon_2
+	if equipped_weapon.weapon_data.stamina_cost > character.character_stats.current_stamina:
 		SignalBus.DamageText.emit("Too Exhausted!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 		return
-	melee_weapon.attack(character.character_grid_movement.grid_position + direction)
-	character.character_stats.change_stamina(-melee_weapon.weapon_data.stamina_cost)
+	equipped_weapon.attack(direction)
+	character.character_stats.change_stamina(-equipped_weapon.weapon_data.stamina_cost)
 
-func ranged_attack(direction: Vector3) -> void:
-	if !ranged_weapon:
-		print("NO RANGED WEAPON EQUIPPED")
-		return
+
+func reload() -> bool:
+	var equipped_weapon: Weapon = weapon_1 if equipped == weapon_slot.WEAPON_1 else weapon_2
+	var equipped_weapon_data: WeaponResource = weapon_1_data if equipped == weapon_slot.WEAPON_1 else weapon_2_data
 	
-	if !ranged_weapon.weapon_data.stamina_cost <= character.character_stats.current_stamina:
-		SignalBus.DamageText.emit("Too Exhausted!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
-		return
-	ranged_weapon.attack(direction)
-	character.character_stats.change_stamina(-ranged_weapon.weapon_data.stamina_cost)
-
-func reload_ranged() -> bool:
-	if !ranged_weapon:
-		SignalBus.DamageText.emit("No Weapon Equipped!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
+	if equipped_weapon is MeleeWeapon:
 		return false
 	
-	var remaining_in_magazine: int = ranged_weapon.current_magazine
-	if remaining_in_magazine >= ranged_weapon.weapon_data.weapon_stats["MAGAZINE"]:
+	var remaining_in_magazine: int = equipped_weapon.current_magazine
+	if remaining_in_magazine >= equipped_weapon.weapon_data.weapon_stats["MAGAZINE"]:
 		SignalBus.DamageText.emit("Magazine already full!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 		return false
 	
-	var reload: int = character.character_inventory.get_ammo(ranged_weapon_data.ammo_type, ranged_weapon_data.weapon_stats["MAGAZINE"] - remaining_in_magazine)
-	if reload == 0:
+	var reload_count: int = character.character_inventory.get_ammo(equipped_weapon_data.ammo_type, equipped_weapon_data.weapon_stats["MAGAZINE"] - remaining_in_magazine)
+	if reload_count == 0:
 		SignalBus.DamageText.emit("No Ammo!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 		return false
 		
 	SignalBus.DamageText.emit("Reload!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 	await get_tree().create_timer(0.25).timeout
 	
-	ranged_weapon.current_magazine = remaining_in_magazine + reload
-	ranged_weapon.update_weapon_status()
+	equipped_weapon.current_magazine = remaining_in_magazine + reload_count
+	equipped_weapon.update_weapon_status()
 	return true
 
-func dir_to_target(target: Character) -> Vector3:
-	return (target.global_position - character.global_position).normalized()
+
+func weapon_switch() -> void:
+	print("SWITCH WEAPONS")
+	pass

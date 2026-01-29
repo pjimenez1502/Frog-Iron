@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene load_steps=34 format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
@@ -12,8 +12,6 @@
 [ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/Outline.gdshader" id="9_nyt8s"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_oedxj"]
 [ext_resource type="Resource" uid="uid://df2bsoy64o68x" path="res://Data/Item/Consumable/Potion_Health.tres" id="9_ypnta"]
-[ext_resource type="Resource" uid="uid://b4f1lk0upkten" path="res://Data/Item/Equipable/Weapon/Ranged/Shotgun.tres" id="10_rsiqg"]
-[ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="11_unv75"]
 [ext_resource type="Resource" uid="uid://sh4mi7xnrmlt" path="res://Data/Item/Equipable/Armor/T_Chestplate.tres" id="11_ypnta"]
 [ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="18_unv75"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="18_ypnta"]
@@ -142,7 +140,7 @@ character_tag = 1
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_yty6f")
-starting_inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta"), ExtResource("11_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta"), ExtResource("10_rsiqg"), ExtResource("11_unv75")])
+starting_inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta"), ExtResource("11_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta")])
 
 [node name="CharacterAttack" type="Node" parent="." node_paths=PackedStringArray("weapon_attatchment")]
 unique_name_in_owner = true

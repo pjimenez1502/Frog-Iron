@@ -8,6 +8,14 @@ func first_closer(origin:Vector3, a: Vector3, b:Vector3) -> bool:
 func worldpos_to_screenpos(origin: Vector3) -> Vector2:
 	return GameDirector.current_camera.unproject_position(origin)
 
+
+func worldpos_to_gridpos(origin: Vector3) -> Vector2i:
+	var gridpos: Vector2i = Vector2i((origin.x+2) / Global.TILE_SIZE, (origin.z+2) / Global.TILE_SIZE)
+	return gridpos
+func grid_to_globalpos(grid_pos: Vector2i) -> Vector3:
+	return Vector3(grid_pos.x * Global.TILE_SIZE, 0, grid_pos.y * Global.TILE_SIZE)
+
+
 func get_mouse_direction(origin: Node3D) -> Vector3:
 	return ((get_mouse_pos(origin) - origin.global_position) * Vector3(1,0,1)).normalized()
 

@@ -1,37 +1,27 @@
-extends Node3D
+extends Weapon
 class_name RangedWeapon
 
-var character: Character
-
-var target_layer: Util.CollisionLayer
-var weapon_data: GunResource
-
-var knockback: int = 0
 var current_magazine: int
 
-func setup(_weapon_data: GunResource, _character: Character) -> void:
-	weapon_data = _weapon_data
-	character = _character
-	
+func setup(_weapon_data: WeaponResource, _character: Character, slot: CharacterAttack.weapon_slot) -> void:
+	super.setup(_weapon_data, _character, slot)
 	current_magazine = weapon_data.weapon_stats["CURRENT_MAGAZINE"]
-	update_weapon_status()
-	set_target_layer()
 
-func attack(direction: Vector3) -> void:
+func attack(target: Vector2i) -> void:
 	var calc_damage: int = weapon_data.calculate_damage(character.character_stats)
-	#var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
-	#var calc_knockback: int = knockback
+	var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
+	##var calc_knockback: int = knockback
 	
 	for shot: int in weapon_data.weapon_stats["SHOTS_PER_ACTION"]:
 		if current_magazine > 0: current_magazine -= 1
 		else:
 			SignalBus.DamageText.emit("Magazine Empty!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 			return
-		update_weapon_status()
-		var hits: Dictionary[Node3D, int] = shoot(direction)
+		var direction: Vector2i = target - character.character_grid_movement.grid_position
+		var hits: Dictionary[Node3D, int] = shoot(Util.grid_to_globalpos(direction).normalized())
 		for hit: Node3D in hits.keys():
 			if hit is Character:
-				hit.damage(calc_damage * hits[hit], 99)
+				hit.damage(calc_damage * hits[hit], calc_hitchance)
 		await get_tree().create_timer(0.05).timeout
 
 func shoot(direction: Vector3) -> Dictionary[Node3D, int]:
@@ -54,17 +44,12 @@ func shoot(direction: Vector3) -> Dictionary[Node3D, int]:
 		DebugDraw3D.draw_line(global_position, target_point, Color.WHITE, .25)
 	return hits
 
-func update_weapon_status() -> void:
-	weapon_data.weapon_stats["CURRENT_MAGAZINE"] = current_magazine
-	SignalBus.PlayerWeaponRangedUpdate.emit({
+func get_status_data() -> Dictionary:
+	var data: Dictionary = {
+		"type": "RANGED",
 		"name": weapon_data.name,
 		"current_mag": current_magazine,
 		"max_mag":  weapon_data.weapon_stats["MAGAZINE"],
-		"ammocount": character.character_inventory.get_remaining_ammo(weapon_data.ammo_type),})
-
-func set_target_layer() -> void:
-	match character.character_stats.character_tag:
-		character.character_stats.CHAR_TAG.PLAYER:
-			target_layer = Util.CollisionLayer.Enemy
-		character.character_stats.CHAR_TAG.ENEMY:
-			target_layer = Util.CollisionLayer.Player
+		"ammocount": character.character_inventory.get_remaining_ammo(weapon_data.ammo_type),
+	}
+	return data
