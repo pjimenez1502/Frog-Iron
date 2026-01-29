@@ -40,10 +40,8 @@ func setup_weapons() -> void:
 	else:
 		weapon_2_data = UNARMED
 		setup_weapons()
-		
-	if character is Player:
-		print(weapon_1_data)
-		SignalBus.PlayerWeaponUpdate.emit(weapon_1.get_status_data(), weapon_2.get_status_data(), equipped)
+	
+	send_hud_update_if_player()
 
 
 func attack(direction:Vector2) -> void:
@@ -53,6 +51,7 @@ func attack(direction:Vector2) -> void:
 		return
 	equipped_weapon.attack(direction)
 	character.character_stats.change_stamina(-equipped_weapon.weapon_data.stamina_cost)
+	send_hud_update_if_player()
 
 
 func reload() -> bool:
@@ -76,9 +75,13 @@ func reload() -> bool:
 	await get_tree().create_timer(0.25).timeout
 	
 	equipped_weapon.current_magazine = remaining_in_magazine + reload_count
-	equipped_weapon.update_weapon_status()
+	send_hud_update_if_player()
 	return true
 
+func send_hud_update_if_player() -> void:
+	if character is Player:
+		#print(weapon_1_data)
+		SignalBus.PlayerWeaponUpdate.emit(weapon_1.get_status_data(), weapon_2.get_status_data(), equipped)
 
 func weapon_switch() -> void:
 	print("SWITCH WEAPONS")

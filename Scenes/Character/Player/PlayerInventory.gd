@@ -66,10 +66,11 @@ func pay_with_coin(value: int) -> bool:
 
 ## AMMO
 func get_remaining_ammo(ammo_type: GunResource.AMMO_TYPES) -> int:
-	var ammo_count: int
-	for pouch: AmmoPouch in get_pouches_of_type(ammo_type):
-		ammo_count += pouch.content
-	return ammo_count
+	var found: int
+	for inv_slot: InventorySlot in inventory:
+		if inv_slot.item_data is AmmoResource and inv_slot.item_data.ammo_type == ammo_type:
+			found += inv_slot.quantity
+	return found
 
 #func update_ammo_call() -> void:
 	#SignalBus.PlayerAmmoUpdate.emit(ammo_inventory)

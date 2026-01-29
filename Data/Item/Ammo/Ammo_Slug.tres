@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmmoResource" load_steps=2 format=3 uid="uid://bkm2831110i7w"]
+
+[ext_resource type="Script" uid="uid://cl3glo5mfo5g1" path="res://Data/Item/Ammo_Resource.gd" id="1_veudc"]
+
+[resource]
+script = ExtResource("1_veudc")
+ammo_type = 2
+name = "Slug Ammo"
+value = 5
+stack_size = 99
+metadata/_custom_type_script = "uid://cl3glo5mfo5g1"
