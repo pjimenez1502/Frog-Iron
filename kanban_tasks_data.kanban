@@ -80,9 +80,9 @@
 				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 				"2d111953-a982-48fb-9488-e87ed37e72bb",
-				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
-				"a656dce6-e08a-41de-9882-52f34eb2a4b6"
+				"a656dce6-e08a-41de-9882-52f34eb2a4b6",
+				"1f6ec449-5ceb-4582-bbc7-15201fe177b5"
 			]
 		},
 		{
@@ -90,6 +90,7 @@
 			"title": "Done",
 			"tasks": [
 				"3b72980f-091c-429c-944d-0ebb3390835b",
+				"e44aa1e7-9a2e-4c18-b9e9-edc36b6360f7",
 				"1f38471e-df60-4583-a2c3-78f4361c9099",
 				"bf59a53c-75cc-4b06-8ed1-d7e25f96f359",
 				"214a39bb-612b-489f-a9e1-092453f1d42e",
@@ -573,7 +574,7 @@
 		{
 			"uuid": "2edb0319-0b11-4762-a07a-219e5ec0246d",
 			"title": "INVENTORY",
-			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\nLclick to start grab and move\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n- \n\n",
+			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\n\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n- \n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -600,9 +601,16 @@
 		},
 		{
 			"uuid": "744589d8-c53c-46cd-918d-322db8e9d6ac",
-			"title": "Check Cover",
+			"title": "COVER",
 			"description": "Multiple raycasts per shot\n\n\t- Full cover:\t\t\tFrom center to center. If blocked, shot misses\n\t- Cover:\t\t\t\t\tSlightly off center. If blocked, cover (25%)\n\t- Partial Cover:\t\tMore off center. If blocked, partial cover (50%)\n\t- No Cover:\t\t\t\tNone of the raycasts hit. (100%)",
 			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
+			"steps": []
+		},
+		{
+			"uuid": "1f6ec449-5ceb-4582-bbc7-15201fe177b5",
+			"title": "Show Tooltip when hovering enemy",
+			"description": "\nShow chance to hit with current weapon\nShow Cover Level",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		}
 	],

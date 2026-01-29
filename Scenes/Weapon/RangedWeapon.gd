@@ -7,7 +7,7 @@ func setup(_weapon_data: WeaponResource, _character: Character, slot: CharacterA
 	super.setup(_weapon_data, _character, slot)
 	current_magazine = weapon_data.weapon_stats["CURRENT_MAGAZINE"]
 
-func attack(target: Vector2i) -> void:
+func attack(target: Vector2i) -> bool:
 	var calc_damage: int = weapon_data.calculate_damage(character.character_stats)
 	var calc_hitchance: int = weapon_data.calculate_hitchance(character.character_stats)
 	##var calc_knockback: int = knockback
@@ -16,13 +16,14 @@ func attack(target: Vector2i) -> void:
 		if current_magazine > 0: current_magazine -= 1
 		else:
 			SignalBus.DamageText.emit("Magazine Empty!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
-			return
+			return false
 		var direction: Vector2i = target - character.character_grid_movement.grid_position
 		var hits: Dictionary[Node3D, int] = shoot(Util.grid_to_globalpos(direction).normalized())
 		for hit: Node3D in hits.keys():
 			if hit is Character:
 				hit.damage(calc_damage * hits[hit], calc_hitchance)
 		await get_tree().create_timer(0.05).timeout
+	return true
 
 func shoot(direction: Vector3) -> Dictionary[Node3D, int]:
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state

@@ -49,7 +49,8 @@ func attack(direction:Vector2) -> void:
 	if equipped_weapon.weapon_data.stamina_cost > character.character_stats.current_stamina:
 		SignalBus.DamageText.emit("Too Exhausted!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 		return
-	equipped_weapon.attack(direction)
+	if !await equipped_weapon.attack(direction):
+		return
 	character.character_stats.change_stamina(-equipped_weapon.weapon_data.stamina_cost)
 	send_hud_update_if_player()
 
