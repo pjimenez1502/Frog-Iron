@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://quyp3hv3edt"]
+[gd_resource type="Theme" format=3 uid="uid://quyp3hv3edt"]
 
 [ext_resource type="Texture2D" uid="uid://c2hdf6ivt8kwr" path="res://Scenes/UI/Asset/BorderSquare.png" id="1_ta5cs"]
 [ext_resource type="FontFile" uid="uid://d4bwotd6bjflf" path="res://Assets/Font/m5x7.ttf" id="2_tcwhh"]

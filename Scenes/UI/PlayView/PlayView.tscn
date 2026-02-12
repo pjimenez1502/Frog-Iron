@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cj5nus31jyaxt"]
+[gd_scene format=3 uid="uid://cj5nus31jyaxt"]
 
 [ext_resource type="Script" uid="uid://b7qrrwnibpr1" path="res://Scenes/UI/PlayView/PlayView.gd" id="1_j5275"]
 [ext_resource type="Theme" uid="uid://quyp3hv3edt" path="res://Scenes/UI/Theme/MainTheme.tres" id="1_oklkm"]
@@ -61,7 +61,7 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
-[node name="PlayView" type="Control"]
+[node name="PlayView" type="Control" unique_id=1363871363]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,10 +73,10 @@ script = ExtResource("1_j5275")
 DEMO_DUNGEON = ExtResource("2_oklkm")
 GENERATED_DUNGEON = ExtResource("4_enbyk")
 
-[node name="Game" type="CanvasLayer" parent="."]
+[node name="Game" type="CanvasLayer" parent="." unique_id=392797971]
 layer = 2
 
-[node name="Game SubViewport" type="SubViewportContainer" parent="Game"]
+[node name="Game SubViewport" type="SubViewportContainer" parent="Game" unique_id=1264652263]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -84,13 +84,13 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="Game/Game SubViewport"]
+[node name="SubViewport" type="SubViewport" parent="Game/Game SubViewport" unique_id=427190355]
 unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Vignette" type="ColorRect" parent="Game"]
+[node name="Vignette" type="ColorRect" parent="Game" unique_id=2064996350]
 material = SubResource("ShaderMaterial_uldec")
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_povyt")
 
-[node name="Chromatic Aberration" type="ColorRect" parent="Game"]
+[node name="Chromatic Aberration" type="ColorRect" parent="Game" unique_id=17714951]
 top_level = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_ntjdg")
@@ -110,10 +110,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=136421414]
 layer = 2
 
-[node name="ScreenBulge" type="ColorRect" parent="HUD"]
+[node name="ScreenBulge" type="ColorRect" parent="HUD" unique_id=1650334737]
 light_mask = 0
 z_as_relative = false
 material = SubResource("ShaderMaterial_0bgg3")
@@ -125,7 +125,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_oklkm")
 
-[node name="HUD SubViewport" type="SubViewportContainer" parent="HUD"]
+[node name="HUD SubViewport" type="SubViewportContainer" parent="HUD" unique_id=838899696]
 light_mask = 0
 visibility_layer = 0
 anchors_preset = 15
@@ -135,13 +135,13 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HUD/HUD SubViewport"]
+[node name="SubViewport" type="SubViewport" parent="HUD/HUD SubViewport" unique_id=1803006546]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="DamageNumberOverlay" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
+[node name="DamageNumberOverlay" type="Control" parent="HUD/HUD SubViewport/SubViewport" unique_id=1904081133]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,7 +151,7 @@ grow_vertical = 2
 theme = ExtResource("1_oklkm")
 script = ExtResource("4_7ut3y")
 
-[node name="HUD" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
+[node name="HUD" type="Control" parent="HUD/HUD SubViewport/SubViewport" unique_id=255650331]
 visible = false
 layout_mode = 3
 anchors_preset = 7
@@ -168,7 +168,7 @@ grow_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("3_ch5r3")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/HUD"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/HUD" unique_id=306845460]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,12 +176,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer" unique_id=1080011981]
 layout_mode = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="XP_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer"]
+[node name="XP_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer" unique_id=196979152]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 6)
 layout_mode = 2
@@ -197,7 +197,7 @@ texture_under = ExtResource("4_3p3yu")
 texture_progress = ExtResource("5_povyt")
 tint_progress = Color(0, 1, 1, 1)
 
-[node name="HP_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer"]
+[node name="HP_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer" unique_id=575048495]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 16)
 layout_mode = 2
@@ -213,7 +213,7 @@ texture_under = ExtResource("4_3p3yu")
 texture_progress = ExtResource("5_povyt")
 tint_progress = Color(1, 0, 0, 1)
 
-[node name="HP_Label" type="Label" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer/HP_Bar"]
+[node name="HP_Label" type="Label" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer/HP_Bar" unique_id=283062334]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 14
@@ -231,7 +231,7 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="STAMINA_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer"]
+[node name="STAMINA_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer" unique_id=172077608]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 16)
 layout_mode = 2
@@ -247,7 +247,7 @@ texture_under = ExtResource("4_3p3yu")
 texture_progress = ExtResource("5_povyt")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="STAMINA_Label" type="Label" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer/STAMINA_Bar"]
+[node name="STAMINA_Label" type="Label" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer/STAMINA_Bar" unique_id=524617099]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 14
@@ -265,7 +265,7 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SANITY_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer"]
+[node name="SANITY_Bar" type="TextureProgressBar" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer" unique_id=508097068]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 16)
 layout_mode = 2
@@ -281,7 +281,7 @@ texture_under = ExtResource("4_3p3yu")
 texture_progress = ExtResource("5_povyt")
 tint_progress = Color(0.96975356, 0.72907287, 1, 1)
 
-[node name="SANITY_Label" type="Label" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer/SANITY_Bar"]
+[node name="SANITY_Label" type="Label" parent="HUD/HUD SubViewport/SubViewport/HUD/MarginContainer/VBoxContainer/SANITY_Bar" unique_id=410373139]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 14
@@ -299,7 +299,7 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
+[node name="PlayerHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport" unique_id=79793032]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -311,7 +311,7 @@ grow_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("13_ntjdg")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD" unique_id=1838718505]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -320,10 +320,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer" unique_id=16421656]
 layout_mode = 2
 
-[node name="PlayerData" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerData" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=2109207384]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -333,7 +333,7 @@ bbcode_enabled = true
 text = "PlayerName, Human"
 fit_content = true
 
-[node name="PlayerHP" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerHP" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=962617610]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -343,7 +343,7 @@ bbcode_enabled = true
 text = "Health:		[[color=\"red\"]////////////-------[/color]] 10/18"
 fit_content = true
 
-[node name="PlayerStamina" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerStamina" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=202739968]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -353,7 +353,7 @@ bbcode_enabled = true
 text = "Stamina:	[[color=\"green\"]///////---[/color]] 07/10"
 fit_content = true
 
-[node name="PlayerIntegrity" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer"]
+[node name="PlayerIntegrity" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=1247907886]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -363,7 +363,7 @@ bbcode_enabled = true
 text = "Integrity:	[[color=\"purple\"]////////[/color]] 08/08"
 fit_content = true
 
-[node name="WeaponHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport"]
+[node name="WeaponHUD" type="Control" parent="HUD/HUD SubViewport/SubViewport" unique_id=1415487870]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -378,17 +378,17 @@ grow_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("16_n05js")
 
-[node name="Weapon_1" type="PanelContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD"]
+[node name="Weapon_1" type="PanelContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD" unique_id=2146319183]
 unique_name_in_owner = true
 layout_mode = 1
 offset_right = 324.0
 offset_bottom = 93.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_n0q20")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1" unique_id=172162389]
 layout_mode = 2
 
-[node name="Weapon_1_Name" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1/VBoxContainer"]
+[node name="Weapon_1_Name" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1/VBoxContainer" unique_id=1644714098]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -398,7 +398,7 @@ bbcode_enabled = true
 text = "- Marksman Rifle -"
 fit_content = true
 
-[node name="Weapon_1_Ammo" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1/VBoxContainer"]
+[node name="Weapon_1_Ammo" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1/VBoxContainer" unique_id=1221250583]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -409,7 +409,7 @@ text = "06/10 (32)"
 fit_content = true
 horizontal_alignment = 2
 
-[node name="Weapon_2" type="PanelContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD"]
+[node name="Weapon_2" type="PanelContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD" unique_id=526051683]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 64.0
@@ -419,10 +419,10 @@ offset_bottom = 193.0
 scale = Vector2(0.8, 0.8)
 theme_override_styles/panel = SubResource("StyleBoxTexture_n0q20")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2" unique_id=1742756863]
 layout_mode = 2
 
-[node name="Weapon_2_Name" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2/VBoxContainer"]
+[node name="Weapon_2_Name" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2/VBoxContainer" unique_id=1500272172]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -432,7 +432,7 @@ bbcode_enabled = true
 text = "- Marksman Rifle -"
 fit_content = true
 
-[node name="Weapon_2_Ammo" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2/VBoxContainer"]
+[node name="Weapon_2_Ammo" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2/VBoxContainer" unique_id=1767185820]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -443,7 +443,7 @@ text = "06/10 (32)"
 fit_content = true
 horizontal_alignment = 2
 
-[node name="FPS Counter" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport"]
+[node name="FPS Counter" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport" unique_id=730148801]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -461,10 +461,10 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("16_gl824")
 
-[node name="OverLayed" type="CanvasLayer" parent="."]
+[node name="OverLayed" type="CanvasLayer" parent="." unique_id=1651951093]
 layer = 2
 
-[node name="Overlay Subviewport" type="SubViewportContainer" parent="OverLayed"]
+[node name="Overlay Subviewport" type="SubViewportContainer" parent="OverLayed" unique_id=667080948]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -473,13 +473,13 @@ grow_vertical = 2
 stretch = true
 mouse_target = true
 
-[node name="SubViewport" type="SubViewport" parent="OverLayed/Overlay Subviewport"]
+[node name="SubViewport" type="SubViewport" parent="OverLayed/Overlay Subviewport" unique_id=1626861956]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="PlayMenu" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport"]
+[node name="PlayMenu" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport" unique_id=600768012]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -490,7 +490,7 @@ grow_vertical = 2
 theme = ExtResource("1_oklkm")
 script = ExtResource("12_uldec")
 
-[node name="Background" type="ColorRect" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu"]
+[node name="Background" type="ColorRect" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu" unique_id=1461163471]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -499,7 +499,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4745098)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu" unique_id=1980190338]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -515,11 +515,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="MenuTop" type="HBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer"]
+[node name="MenuTop" type="HBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer" unique_id=1537606121]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 
-[node name="MenuTabs" type="TabBar" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop"]
+[node name="MenuTabs" type="TabBar" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop" unique_id=1289857358]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -536,18 +536,18 @@ tab_2/title = "Skills"
 tab_3/title = "Map"
 tab_4/title = "Options"
 
-[node name="Close" type="TextureButton" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop"]
+[node name="Close" type="TextureButton" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop" unique_id=1438268797]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 texture_normal = ExtResource("13_t3llb")
 stretch_mode = 0
 
-[node name="Content" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer"]
+[node name="Content" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer" unique_id=471595850]
 custom_minimum_size = Vector2(600, 374)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="CharacterMenu" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" instance=ExtResource("14_0bptl")]
+[node name="CharacterMenu" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=620505351 instance=ExtResource("14_0bptl")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -560,7 +560,7 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="InventoryMenu" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" instance=ExtResource("17_5me5s")]
+[node name="InventoryMenu" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=2071266704 instance=ExtResource("17_5me5s")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -574,7 +574,7 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="SkillsMenu" type="Panel" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content"]
+[node name="SkillsMenu" type="Panel" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=2047534836]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -584,7 +584,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapMenu" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" instance=ExtResource("18_rkhqr")]
+[node name="MapMenu" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=1994479826 instance=ExtResource("18_rkhqr")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 0.0
@@ -592,7 +592,7 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="OptionsMenu" type="Panel" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content"]
+[node name="OptionsMenu" type="Panel" parent="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=1815501199]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -602,7 +602,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PopupText" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport"]
+[node name="PopupText" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport" unique_id=2014715722]
 texture_filter = 1
 custom_minimum_size = Vector2(600, 160)
 layout_mode = 3
@@ -616,7 +616,7 @@ grow_horizontal = 2
 theme = ExtResource("1_oklkm")
 script = ExtResource("4_ch5r3")
 
-[node name="MarginContainer" type="MarginContainer" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText"]
+[node name="MarginContainer" type="MarginContainer" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText" unique_id=1081424234]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -628,10 +628,10 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Panel" type="Panel" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer"]
+[node name="Panel" type="Panel" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer" unique_id=1028937155]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel" unique_id=1710777042]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -644,7 +644,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel"]
+[node name="TextureRect" type="TextureRect" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel" unique_id=1323619761]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -659,7 +659,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("5_3p3yu")
 
-[node name="Control" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel"]
+[node name="Control" type="Control" parent="OverLayed/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel" unique_id=263320047]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -671,10 +671,10 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Emergent Inventory" parent="OverLayed/Overlay Subviewport/SubViewport" instance=ExtResource("16_m0chj")]
+[node name="Emergent Inventory" parent="OverLayed/Overlay Subviewport/SubViewport" unique_id=623269277 instance=ExtResource("16_m0chj")]
 theme = ExtResource("1_oklkm")
 
-[node name="Tooltip" type="PanelContainer" parent="OverLayed/Overlay Subviewport/SubViewport"]
+[node name="Tooltip" type="PanelContainer" parent="OverLayed/Overlay Subviewport/SubViewport" unique_id=1945007727]
 top_level = true
 custom_minimum_size = Vector2(240, 70)
 offset_right = 240.0
@@ -684,7 +684,7 @@ size_flags_vertical = 0
 theme = ExtResource("1_oklkm")
 script = ExtResource("17_7ut3y")
 
-[node name="ItemDescription" type="RichTextLabel" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip"]
+[node name="ItemDescription" type="RichTextLabel" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip" unique_id=2064127250]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -693,37 +693,37 @@ text = "Name
 meowmeow"
 fit_content = true
 
-[node name="ItemActionMenu" type="VBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip"]
+[node name="ItemActionMenu" type="VBoxContainer" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip" unique_id=1112583513]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("27_uvivi")
 
-[node name="Consume" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+[node name="Consume" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=1090004736]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Consume"
 
-[node name="Equip" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+[node name="Equip" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=1092555669]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Equip"
 
-[node name="Unequip" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+[node name="Unequip" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=726872587]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Unequip"
 
-[node name="Take" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+[node name="Take" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=1849580701]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Take"
 
-[node name="Drop" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu"]
+[node name="Drop" type="Button" parent="OverLayed/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=141321391]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Drop"
 
-[node name="Cursor" parent="OverLayed/Overlay Subviewport/SubViewport" instance=ExtResource("7_uldec")]
+[node name="Cursor" parent="OverLayed/Overlay Subviewport/SubViewport" unique_id=1496111378 instance=ExtResource("7_uldec")]
 theme = ExtResource("1_oklkm")
 
 [connection signal="tab_changed" from="OverLayed/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop/MenuTabs" to="OverLayed/Overlay Subviewport/SubViewport/PlayMenu" method="_tab_changed"]

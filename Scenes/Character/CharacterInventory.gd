@@ -130,6 +130,12 @@ func consume_item(item_slot: InventorySlot) -> bool:
 func replace_equipment(item_slot: InventorySlot, slot: String) -> void:
 	var replaced_item: ItemResource = equipment[slot].item_data
 	equipment[slot].item_data = item_slot.item_data
+	
+	if slot == "WEAPON_1":
+		character.character_attack.weapon_1_data = item_slot.item_data
+	if slot == "WEAPON_2":
+		character.character_attack.weapon_2_data = item_slot.item_data
+	
 	remove_item(item_slot)
 	add_item(replaced_item)
 
@@ -153,8 +159,6 @@ class EquipmentSlot:
 	func init_slot(key: String) -> EquipmentSlot:
 		slot_key = key
 		return self
-
-
 
 
 

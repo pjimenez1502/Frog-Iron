@@ -70,7 +70,8 @@
 				"1a75be70-390a-4048-9724-26bddff601e4",
 				"666b7031-4a8c-4a84-bb93-06965fcf7043",
 				"1754bde2-d3e5-49f4-bb7a-16456265641d",
-				"6c7e96ea-79ff-4b09-8bcc-7294302778e1"
+				"6c7e96ea-79ff-4b09-8bcc-7294302778e1",
+				"3745ee17-fa3e-4a2e-b007-ca14c6f50928"
 			]
 		},
 		{
@@ -574,7 +575,7 @@
 		{
 			"uuid": "2edb0319-0b11-4762-a07a-219e5ec0246d",
 			"title": "INVENTORY",
-			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\n\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n- \n\n",
+			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\n\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n\n- Unload weapon (recover ammo from weapon)\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -610,6 +611,13 @@
 			"uuid": "1f6ec449-5ceb-4582-bbc7-15201fe177b5",
 			"title": "Show Tooltip when hovering enemy",
 			"description": "\nShow chance to hit with current weapon\nShow Cover Level",
+			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "3745ee17-fa3e-4a2e-b007-ca14c6f50928",
+			"title": "Screen effects depending on status",
+			"description": "\nLOW HP:\n\tRed Vignette, high color aberration?",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
 			"steps": []
 		}

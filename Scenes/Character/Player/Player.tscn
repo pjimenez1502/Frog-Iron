@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://crvptphshx3l7"]
+[gd_scene format=3 uid="uid://crvptphshx3l7"]
 
 [ext_resource type="Script" uid="uid://bdhkscstpu75b" path="res://Scenes/Character/Player/Player.gd" id="1_gvmva"]
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="3_f0b02"]
@@ -117,44 +117,44 @@ size = Vector2(2, 2)
 [sub_resource type="ViewportTexture" id="ViewportTexture_er2ma"]
 viewport_path = NodePath("HealthBar/SubViewport")
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=590234653 groups=["Player"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_gvmva")
 
-[node name="View" type="Node3D" parent="."]
+[node name="View" type="Node3D" parent="." unique_id=1322712093]
 
-[node name="3D" type="Node3D" parent="View"]
+[node name="3D" type="Node3D" parent="View" unique_id=1434952852]
 unique_name_in_owner = true
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
-[node name="GridMovement" type="Node3D" parent="."]
+[node name="GridMovement" type="Node3D" parent="." unique_id=1104581986]
 unique_name_in_owner = true
 script = ExtResource("4_oedxj")
 
-[node name="PlayerInput" type="Node" parent="GridMovement"]
+[node name="PlayerInput" type="Node" parent="GridMovement" unique_id=805385797]
 script = ExtResource("5_v7n4c")
 
-[node name="CharacterStats" type="Node" parent="."]
+[node name="CharacterStats" type="Node" parent="." unique_id=586623005]
 unique_name_in_owner = true
 script = ExtResource("3_f0b02")
 character_tag = 1
 
-[node name="Inventory" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="." unique_id=300438240]
 unique_name_in_owner = true
 script = ExtResource("4_yty6f")
 starting_inventory = Array[ExtResource("6_uwo8e")]([ExtResource("7_ypnta"), ExtResource("11_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta"), ExtResource("9_ypnta"), ExtResource("10_rsiqg"), ExtResource("11_unv75"), ExtResource("12_unv75"), ExtResource("12_unv75")])
 
-[node name="CharacterAttack" type="Node" parent="." node_paths=PackedStringArray("weapon_attatchment")]
+[node name="CharacterAttack" type="Node" parent="." unique_id=36334402 node_paths=PackedStringArray("weapon_attatchment")]
 unique_name_in_owner = true
 script = ExtResource("18_ypnta")
 weapon_attatchment = NodePath("../WeaponAttachment")
 
-[node name="CharacterAnimation" type="Node" parent="."]
+[node name="CharacterAnimation" type="Node" parent="." unique_id=597208278]
 unique_name_in_owner = true
 script = ExtResource("9_oedxj")
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterAnimation"]
+[node name="AnimationTree" type="AnimationTree" parent="CharacterAnimation" unique_id=996755529]
 unique_name_in_owner = true
 tree_root = SubResource("AnimationNodeBlendTree_372xo")
 parameters/WalkBlend/blend_position = 0.0006200075
@@ -164,42 +164,42 @@ parameters/Torso/current_state = "Idle"
 parameters/Torso/transition_request = ""
 parameters/Torso/current_index = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1382962368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_v7n4c")
 
-[node name="Camera Pivot" type="Node3D" parent="."]
+[node name="Camera Pivot" type="Node3D" parent="." unique_id=1157079024]
 transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0, 0)
 script = ExtResource("8_yty6f")
 
-[node name="Camera" type="Camera3D" parent="Camera Pivot"]
+[node name="Camera" type="Camera3D" parent="Camera Pivot" unique_id=541982519]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 1.5, 3.8)
 current = true
 fov = 100.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera Pivot/Camera"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera Pivot/Camera" unique_id=944473380]
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_nyt8s")
 
-[node name="Camera3D Far" type="Camera3D" parent="Camera Pivot"]
+[node name="Camera3D Far" type="Camera3D" parent="Camera Pivot" unique_id=1996420568]
 transform = Transform3D(1, 0, 0, 0, 0.7880109, 0.61566156, 0, -0.61566156, 0.7880109, 0, 7, 7)
 fov = 100.0
 
-[node name="Vision" type="Node3D" parent="Camera Pivot"]
+[node name="Vision" type="Node3D" parent="Camera Pivot" unique_id=485853950]
 transform = Transform3D(1, 0, 0, 0, 0.86602515, -0.49999988, 0, 0.49999988, 0.86602515, 0, 0, 0)
 
-[node name="PlayerLight" type="OmniLight3D" parent="Camera Pivot/Vision"]
+[node name="PlayerLight" type="OmniLight3D" parent="Camera Pivot/Vision" unique_id=768692499]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8320885, 0)
 light_energy = 0.5
 shadow_caster_mask = 4294967293
 omni_range = 20.0
 omni_attenuation = 0.1
 
-[node name="WeaponAttachment" type="Node3D" parent="."]
+[node name="WeaponAttachment" type="Node3D" parent="." unique_id=1196191867]
 script = ExtResource("5_2e4qg")
 
-[node name="HealthBar" type="Sprite3D" parent="."]
+[node name="HealthBar" type="Sprite3D" parent="." unique_id=1172153662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 pixel_size = 0.001
 billboard = 1
@@ -209,10 +209,10 @@ texture = SubResource("ViewportTexture_er2ma")
 script = ExtResource("18_unv75")
 hide_when_full = true
 
-[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+[node name="SubViewport" type="SubViewport" parent="HealthBar" unique_id=1792300926]
 size = Vector2i(160, 16)
 
-[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport"]
+[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport" unique_id=161547906]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 16)
 offset_right = 160.0
@@ -229,7 +229,7 @@ texture_under = ExtResource("19_pwth1")
 texture_progress = ExtResource("20_5vafk")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar"]
+[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar" unique_id=590258809]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

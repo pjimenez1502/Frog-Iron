@@ -38,6 +38,7 @@ func update_inventory(inventory: Array[CharacterInventory.InventorySlot]) -> voi
 
 func update_equipment(equipment: Dictionary) -> void:
 	clear_equipment()
+	print_equipment(equipment)
 	
 	for slot_key: String in equipment.keys():
 		if !equipment[slot_key] or !equipment[slot_key].item_data:
@@ -111,3 +112,9 @@ func set_inv_actions(item: ItemResource) -> void:
 
 func set_equipped_actions(item: ItemResource) -> void:
 	item.actions = [ItemResource.ITEMACTIONS.UNEQUIP, ItemResource.ITEMACTIONS.DROP]
+
+
+func print_equipment(equipment: Dictionary) -> void:
+	for slot_key: String in equipment.keys():
+		if equipment[slot_key].item_data:
+			print(slot_key, " - ", equipment[slot_key].item_data)
