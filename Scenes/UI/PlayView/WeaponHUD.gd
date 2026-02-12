@@ -14,7 +14,7 @@ var stowed_scale: float = 0.8
 func _ready() -> void:
 	SignalBus.PlayerWeaponUpdate.connect(update_weapons)
 
-func update_weapons(weapon_1_data: Dictionary, weapon_2_data: Dictionary, equipped: CharacterAttack.weapon_slot) -> void:
+func update_weapons(weapon_1_data: Dictionary, weapon_2_data: Dictionary, selected_weapon: String) -> void:
 	weapon_1_name.text = weapon_1_data["name"]
 	if weapon_1_data["type"] == "MELEE":
 		weapon_1_ammo.text = "∞"
@@ -26,7 +26,26 @@ func update_weapons(weapon_1_data: Dictionary, weapon_2_data: Dictionary, equipp
 		weapon_2_ammo.text = "∞"
 	elif weapon_2_data["type"] == "RANGED":
 		weapon_2_ammo.text = "%d/%d (%d)" % [weapon_2_data["current_mag"], weapon_2_data["max_mag"], weapon_2_data["ammocount"]]
+	switch_selected(selected_weapon)
 
+var selected: String = "WEAPON_1"
+func switch_selected(selected_weapon: String) -> void:
+	if selected_weapon == selected: return
+	selected = selected_weapon
+	var weapon_tween: Tween = get_tree().create_tween()
+	match selected_weapon:
+		"WEAPON_1":
+			weapon_tween.set_parallel(true)
+			weapon_tween.tween_property(weapon_1, "position", Vector2.ZERO, .25)
+			weapon_tween.tween_property(weapon_2, "position", stowed_position, .25)
+			weapon_tween.tween_property(weapon_1, "scale", Vector2.ONE, .25)
+			weapon_tween.tween_property(weapon_2, "scale", Vector2.ONE * 0.8, .25)
+		"WEAPON_2":
+			weapon_tween.set_parallel(true)
+			weapon_tween.tween_property(weapon_2, "position", Vector2.ZERO, .25)
+			weapon_tween.tween_property(weapon_1, "position", stowed_position, .25)
+			weapon_tween.tween_property(weapon_2, "scale", Vector2.ONE, .25)
+			weapon_tween.tween_property(weapon_1, "scale", Vector2.ONE * 0.8, .25)
 
 
 #"current_mag": current_magazine,

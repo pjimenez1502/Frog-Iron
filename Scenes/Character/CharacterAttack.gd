@@ -6,7 +6,7 @@ const UNARMED = preload("uid://bdntcukq7he2r")
 
 @export var weapon_attatchment: WeaponAttachment
 enum weapon_slot { WEAPON_1, WEAPON_2 }
-var equipped: weapon_slot = weapon_slot.WEAPON_1
+var selected_weapon: weapon_slot = weapon_slot.WEAPON_1
 
 @export var weapon_1_data: WeaponResource
 @export var weapon_2_data: WeaponResource
@@ -45,7 +45,7 @@ func setup_weapons() -> void:
 
 
 func attack(direction:Vector2) -> void:
-	var equipped_weapon: Weapon = weapon_1 if equipped == weapon_slot.WEAPON_1 else weapon_2
+	var equipped_weapon: Weapon = weapon_1 if selected_weapon == weapon_slot.WEAPON_1 else weapon_2
 	if equipped_weapon.weapon_data.stamina_cost > character.character_stats.current_stamina:
 		SignalBus.DamageText.emit("Too Exhausted!", character, DamageTextOverlay.TYPE.MESSAGE, DamageTextOverlay.SIZE.SMALL)
 		return
@@ -56,8 +56,8 @@ func attack(direction:Vector2) -> void:
 
 
 func reload() -> bool:
-	var equipped_weapon: Weapon = weapon_1 if equipped == weapon_slot.WEAPON_1 else weapon_2
-	var equipped_weapon_data: WeaponResource = weapon_1_data if equipped == weapon_slot.WEAPON_1 else weapon_2_data
+	var equipped_weapon: Weapon = weapon_1 if selected_weapon == weapon_slot.WEAPON_1 else weapon_2
+	var equipped_weapon_data: WeaponResource = weapon_1_data if selected_weapon == weapon_slot.WEAPON_1 else weapon_2_data
 	
 	if equipped_weapon is MeleeWeapon:
 		return false
@@ -82,8 +82,10 @@ func reload() -> bool:
 func send_hud_update_if_player() -> void:
 	if character is Player:
 		#print(weapon_1_data)
-		SignalBus.PlayerWeaponUpdate.emit(weapon_1.get_status_data(), weapon_2.get_status_data(), equipped)
+		SignalBus.PlayerWeaponUpdate.emit(weapon_1.get_status_data(), weapon_2.get_status_data(), "WEAPON_1" if selected_weapon == weapon_slot.WEAPON_1 else "WEAPON_2")
 
 func weapon_switch() -> void:
 	print("SWITCH WEAPONS")
-	pass
+	if selected_weapon == weapon_slot.WEAPON_1: selected_weapon = weapon_slot.WEAPON_2
+	else: selected_weapon = weapon_slot.WEAPON_1
+	send_hud_update_if_player()
