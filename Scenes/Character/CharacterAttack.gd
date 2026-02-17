@@ -85,7 +85,7 @@ func send_hud_update_if_player() -> void:
 		SignalBus.PlayerWeaponUpdate.emit(weapon_1.get_status_data(), weapon_2.get_status_data(), "WEAPON_1" if selected_weapon == weapon_slot.WEAPON_1 else "WEAPON_2")
 
 func weapon_switch() -> void:
-	print("SWITCH WEAPONS")
+	#print("SWITCH WEAPONS")
 	if selected_weapon == weapon_slot.WEAPON_1: selected_weapon = weapon_slot.WEAPON_2
 	else: selected_weapon = weapon_slot.WEAPON_1
 	send_hud_update_if_player()

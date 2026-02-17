@@ -38,7 +38,7 @@ func update_inventory(inventory: Array[CharacterInventory.InventorySlot]) -> voi
 
 func update_equipment(equipment: Dictionary) -> void:
 	clear_equipment()
-	print_equipment(equipment)
+	#print_equipment(equipment)
 	
 	for slot_key: String in equipment.keys():
 		if !equipment[slot_key] or !equipment[slot_key].item_data:

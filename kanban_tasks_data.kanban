@@ -42,13 +42,12 @@
 			"title": "STASH",
 			"tasks": [
 				"96f4ef18-d49b-4659-80c1-9fd8bb8b0176",
-				"dbeeb071-035a-41fd-ae70-777918e76f4a",
+				"9c6e0669-9d42-4678-adf6-fe4696329f0c",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
 				"4de87959-b07e-4826-a150-8efaf0887e59",
 				"80b7d3e5-a001-42e5-bfa1-740c2563917e",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
-				"a09fa985-7033-4e11-aaf7-938ec2f23cb9",
 				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
 				"3ff24d5d-1153-48fc-9364-93982688c09f",
 				"67385266-f8cb-4caa-ae21-d629515b3b87",
@@ -61,6 +60,7 @@
 			"title": "ToDo",
 			"tasks": [
 				"8973c324-1b6b-4b89-bba6-2e2101300e31",
+				"8e1cf0b3-e70a-41fa-bf4e-b7a4a7976637",
 				"744589d8-c53c-46cd-918d-322db8e9d6ac",
 				"79dd6f0c-4e14-44ca-a411-ce71c11a499b",
 				"95d12487-7eb5-4a68-a65d-ec22a5252160",
@@ -80,10 +80,10 @@
 			"tasks": [
 				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
-				"2d111953-a982-48fb-9488-e87ed37e72bb",
-				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8",
+				"324fddee-a5f3-4ece-8281-c797cf398bd1",
 				"a656dce6-e08a-41de-9882-52f34eb2a4b6",
-				"1f6ec449-5ceb-4582-bbc7-15201fe177b5"
+				"1f6ec449-5ceb-4582-bbc7-15201fe177b5",
+				"6ac221ca-efa7-4e7d-b243-5c4ad79bf5c8"
 			]
 		},
 		{
@@ -180,13 +180,6 @@
 			]
 		},
 		{
-			"uuid": "dbeeb071-035a-41fd-ae70-777918e76f4a",
-			"title": "Enemy Expansion",
-			"description": "\nLvl and stat system at spawn\n\nMore melee attacks?\nRanged attacks\nPreference to stay at range?\n\n\n\n\nEnemies:\n\nRat\t\t\t-\tBasic\nBat\t\t\t-\tHigh close detection range (Dex)\nSlime\t\t-\n\n\nSkeleton\n\nNaga",
-			"category": "c8877ce3-7840-4081-a914-d20ebf5412a2",
-			"steps": []
-		},
-		{
 			"uuid": "46152144-11fe-4a23-984d-145b9544ab88",
 			"title": "Inventory",
 			"description": "\nGold\n\nEquipment Slots: (8 slots)\n- Head\n- Torso\n- Arms\n- Legs\n- Tail?\n= necklace\n= ring\n\n= Melee Weapon\n= Ranged Weapon\n\nBag: (8 slots?)",
@@ -217,7 +210,7 @@
 		{
 			"uuid": "73d2c789-8b03-4250-bea9-c3830459548b",
 			"title": "MAIN CONCEPT",
-			"description": "You are part of the crew of a derelict starship locked in orbit over a mysterious planet\nYou must explore this planets ruins in order to collect artifacts that keep away creatures and energies trying to destroy the ship\n\nGet launched in a pod into a dungeon. Once exited, the pod keeps drilling further down, you will find it again when you reach the end of the dungeon \n\nYou use modern gear:\n(Guns, suits, consumables)\nThat you can purchase and upgrade in the ship\n\nYou use dungeon gear:\n(Weapons, jewelry, consumables)\nThat you find in the dungeon",
+			"description": "You are part of the crew of a derelict starship locked in orbit over a mysterious planet\nYou must explore this planets ruins in order to collect artifacts that keep away creatures and energies trying to destroy the ship\n\nGet launched in a pod into a dungeon. Once exited, the pod keeps drilling further down, you will find it again when you reach the end of the dungeon \n\n\n\nYou use modern gear:\n(Guns, suits, consumables)\nThat you can purchase and upgrade in the ship\n\nYou use dungeon gear:\n(Weapons, jewelry, consumables)\nThat you find in the dungeon",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -462,7 +455,7 @@
 		{
 			"uuid": "96f4ef18-d49b-4659-80c1-9fd8bb8b0176",
 			"title": "STATUS EFFECTS",
-			"description": "\nPoisoned\t- damage per turn, reduced healing\nbleeding - damage per turn\n\n\n",
+			"description": "\nPoisoned\t- damage per turn, reduced recovery\nbleeding - damage per turn\n\n\nSilicon Corruption\t-\t",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
@@ -532,13 +525,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "2d111953-a982-48fb-9488-e87ed37e72bb",
-			"title": "EmergentInventories get lost if another emergInv is opened before the previous one is closed",
-			"description": "",
-			"category": "1e765dae-f210-46a2-a7e1-1e39505f1028",
-			"steps": []
-		},
-		{
 			"uuid": "1f38471e-df60-4583-a2c3-78f4361c9099",
 			"title": "Setup Shaders in layers",
 			"description": "convert screen reading shaders to texture shaders to control what they can see\n\nhttps://www.reddit.com/r/godot/comments/w33crg/hello_is_there_any_way_to_apply_a_canvas_item/\n",
@@ -548,7 +534,7 @@
 		{
 			"uuid": "e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 			"title": "Attack Crosshair",
-			"description": "On attack (ranged or melee), show a reticle and wait for a LClick to attack\n- Rclick, escape or any other action or menu to cancel\n",
+			"description": "\nOn attack or interact, show a reticle and wait for LClick\n- Rclick, escape or any other action or menu to cancel\n",
 			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
 			"steps": [
 				{
@@ -587,13 +573,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "a09fa985-7033-4e11-aaf7-938ec2f23cb9",
-			"title": "INVENTORY REWORK",
-			"description": "Different item types have different slots\n(SMALL): Consumables\n(LOOT): To carry found artifacts\n(LARGE): To carry pieces of equipment (weapon, armor)",
-			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
-			"steps": []
-		},
-		{
 			"uuid": "a656dce6-e08a-41de-9882-52f34eb2a4b6",
 			"title": "Faster enemies",
 			"description": "Some enemies can move an extra square per turn\n\nex: Can move 2 squares or move 1 square and attack\n\nGive player the option to do that? Spending stamina?\n\nSpeed stat??: equals to how many actions character can do in one turn",
@@ -619,6 +598,27 @@
 			"title": "Screen effects depending on status",
 			"description": "\nLOW HP:\n\tRed Vignette, high color aberration?",
 			"category": "5e3edb57-6550-420f-a1c3-b3f1ff91fa15",
+			"steps": []
+		},
+		{
+			"uuid": "8e1cf0b3-e70a-41fa-bf4e-b7a4a7976637",
+			"title": "AI Behaviour",
+			"description": "When not in hostile mode following player, AI should wonder and act independently",
+			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
+			"steps": []
+		},
+		{
+			"uuid": "9c6e0669-9d42-4678-adf6-fe4696329f0c",
+			"title": "ENEMIES",
+			"description": "\nBIO (Silicon based)\n\tCrawler\t\t\t\t\t-> Slow, low dmg, low hp\n\tSmall quadruped\t-> Fast(2 tiles), low dmg, low hp\n\n\nMECH (metal/stone)\n\n\tTurrets\t\t\t\t\t\t-> No movement, multiple types\n\n\n\nHybrids (Aligned to Silicon)\n\timproved versions of other creatures (silicon creatures reinforced with mech, mech creatures corrupted with silicon)",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
+			"steps": []
+		},
+		{
+			"uuid": "324fddee-a5f3-4ece-8281-c797cf398bd1",
+			"title": "Reimplement Loot system",
+			"description": "",
+			"category": "1e765dae-f210-46a2-a7e1-1e39505f1028",
 			"steps": []
 		}
 	],

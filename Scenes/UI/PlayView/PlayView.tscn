@@ -443,6 +443,22 @@ text = "06/10 (32)"
 fit_content = true
 horizontal_alignment = 2
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport/WeaponHUD" unique_id=40301622]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -54.99951
+offset_right = 128.0
+offset_bottom = -25.999512
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "X: [img=, b]res://Scenes/UI/HUD/Cursor/cursor_ranged.png[/img] Z: [img=16, b]res://Scenes/UI/HUD/switch_icon.png[/img] R: [img=16, b]res://Scenes/UI/HUD/reload_icon.png"
+
 [node name="FPS Counter" type="RichTextLabel" parent="HUD/HUD SubViewport/SubViewport" unique_id=730148801]
 anchors_preset = 1
 anchor_left = 1.0
