@@ -44,13 +44,10 @@
 				"96f4ef18-d49b-4659-80c1-9fd8bb8b0176",
 				"9c6e0669-9d42-4678-adf6-fe4696329f0c",
 				"c88cb1ca-ee09-4405-9a35-43db31db161e",
-				"4de87959-b07e-4826-a150-8efaf0887e59",
 				"80b7d3e5-a001-42e5-bfa1-740c2563917e",
 				"eeaada73-88c3-4954-9a3c-64c7c2f9230b",
 				"73d2c789-8b03-4250-bea9-c3830459548b",
-				"033c5afc-3a7a-4774-a24a-23395fb68aa1",
 				"3ff24d5d-1153-48fc-9364-93982688c09f",
-				"67385266-f8cb-4caa-ae21-d629515b3b87",
 				"d18d8189-a08b-45cb-84b3-a5348b879ad9",
 				"36b67b98-bf78-483f-a70d-38eda93534d2"
 			]
@@ -320,24 +317,10 @@
 			"steps": []
 		},
 		{
-			"uuid": "4de87959-b07e-4826-a150-8efaf0887e59",
-			"title": "Stackable Items?",
-			"description": "ex: multiple potions together?",
-			"category": "114073a4-1e9a-4023-bf3c-69a71193098e",
-			"steps": []
-		},
-		{
 			"uuid": "c52ce17b-65e5-41c6-a482-0deb9a8f7526",
 			"title": "3D Player",
 			"description": "\nSelect species when starting run\nspecies can change ingame\ncolor customization??\n\n\nEquipables show in model\nweapon animations",
 			"category": "a1886d67-74d1-4025-9877-4525aba4402a",
-			"steps": []
-		},
-		{
-			"uuid": "033c5afc-3a7a-4774-a24a-23395fb68aa1",
-			"title": "SPECIES",
-			"description": "\nSpecies: (all sum to +10)\n\nHuman\t\t(Str:+2, Dex: +2, Int:+2, Wis:+2, Con:+2)\t=>\t\nDrake\t\t\t(Str:+2, Dex: +2, Int:+1, Wis:+4, Con:+1)\t=>\tDraconic Ascension: Absorb enemy souls to charge a temporary power up\nAvian\t\t\t(Str:+0, Dex: +4, Int:+2, Wis:+3, Con:+1)\t=>\tWind gust: Push yourself backwards and enemies away\nBovine\t\t(Str:+4, Dex: +0, Int:+0, Wis:+2, Con:+4)\t=>\tHeavy burl: Knock enemies up (area stun)\nLupine\t\t(Str:+2, Dex: +1, Int:+1, Wis:+4, Con:+1)\t=> \t\nViper\t\t\t(Str:+0, Dex: +3, Int:+4, Wis:+2, Con:+1)\t=>\tHypnotic Gaze: Confuse / turn enemies\nSynth\t\t\t\n\nSPECIES IDEAS\n\n==== Drake ====\nStats:\n\t(Str: 5, Dex: 3, Int: 3, Wis: 4, Con: 5)\n\nAbility:\n\t> Re-evolve into a corrupt version of the ancestors, growing in size and stats, improve secondary weapon\n\nPassive:\n\t> Chemical resistance?\nDesc:\n\t- De-evolved from large flying beasts, %SPECIES% have lost their large size and ability to fly after millenia living underground, aftermath of a global chemical war that left their natal world's atmosphere unbreathable and it's surface inhospitable. %SPECIES% now use their long back appendages as crude weapons, remnants of their long ancestor's luscious wings.\n\n==== HUMAN  ====",
-			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},
 		{

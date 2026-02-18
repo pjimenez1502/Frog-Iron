@@ -10,7 +10,7 @@ class_name Cursor
 enum CURSOR { DEFAULT, MELEE, RANGED, INTERACT, MENU }
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	SignalBus.CursorUpdate.connect(set_cursor)
 	set_cursor(CURSOR.DEFAULT)
 

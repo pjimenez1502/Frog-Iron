@@ -14,7 +14,6 @@ signal PlayerEquipmentUpdate
 signal PlayerStatIncrease
 signal AvailableStatUP
 signal PlayerLevelUpdate
-
 signal PlayerWeaponUpdate
 
 signal PlayerDead
@@ -31,6 +30,8 @@ signal PlayerCoinUpdate
 signal PlayerStatsUpdate
 
 signal CursorUpdate
+
+signal CharacterTooltipShow
 
 ## Item Actions
 signal ItemTake
