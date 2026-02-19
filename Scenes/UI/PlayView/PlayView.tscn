@@ -27,6 +27,13 @@
 [ext_resource type="Script" uid="uid://c6fc3at5i1xo1" path="res://Scenes/UI/PlayView/Inventory/ItemActionsTooltip.gd" id="27_uvivi"]
 [ext_resource type="Script" uid="uid://dql470f7f5i0p" path="res://Scenes/UI/PlayView/CharacterTooltip.gd" id="29_n0q20"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0q20"]
+texture = ExtResource("17_ltxw1")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uldec"]
 shader = ExtResource("8_ufkdj")
 shader_parameter/vignette_intensity = 0.4
@@ -43,20 +50,13 @@ shader_parameter/vignette_opacity = 0.5
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntjdg"]
-viewport_path = NodePath("Game/HUD SubViewport/SubViewport")
+viewport_path = NodePath("Game/HUD SubViewportContainer/HUD SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bgg3"]
 resource_local_to_scene = true
 shader = ExtResource("8_0bgg3")
 shader_parameter/intensity = 0.200000057
 shader_parameter/ST = SubResource("ViewportTexture_ntjdg")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0q20"]
-texture = ExtResource("17_ltxw1")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
 
 [node name="PlayView" type="Control" unique_id=1363871363]
 layout_mode = 3
@@ -72,21 +72,506 @@ GENERATED_DUNGEON = ExtResource("4_enbyk")
 
 [node name="Game" type="CanvasLayer" parent="." unique_id=392797971]
 
-[node name="Game SubViewport" type="SubViewportContainer" parent="Game" unique_id=1264652263]
+[node name="Interactuable SubViewportContainer" type="SubViewportContainer" parent="Game" unique_id=1264652263]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 stretch = true
 mouse_target = true
 
-[node name="SubViewport" type="SubViewport" parent="Game/Game SubViewport" unique_id=427190355]
+[node name="World SubViewport" type="SubViewport" parent="Game/Interactuable SubViewportContainer" unique_id=427190355]
 unique_name_in_owner = true
 handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+
+[node name="Overlay SubViewport" type="SubViewport" parent="Game/Interactuable SubViewportContainer" unique_id=1626861956]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="PlayMenu" type="Control" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport" unique_id=600768012]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oklkm")
+script = ExtResource("12_uldec")
+
+[node name="Background" type="ColorRect" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu" unique_id=1461163471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4745098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu" unique_id=1980190338]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -208.0
+offset_right = 300.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 0
+
+[node name="MenuTop" type="HBoxContainer" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer" unique_id=1537606121]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="MenuTabs" type="TabBar" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/MenuTop" unique_id=1289857358]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+current_tab = 0
+clip_tabs = false
+close_with_middle_mouse = false
+scrolling_enabled = false
+scroll_to_selected = false
+tab_count = 5
+tab_0/title = "Character"
+tab_1/title = "Inventory"
+tab_2/title = "Skills"
+tab_3/title = "Map"
+tab_4/title = "Options"
+
+[node name="Close" type="TextureButton" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/MenuTop" unique_id=1438268797]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture_normal = ExtResource("13_t3llb")
+stretch_mode = 0
+
+[node name="Content" type="Control" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer" unique_id=471595850]
+custom_minimum_size = Vector2(600, 374)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="CharacterMenu" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/Content" unique_id=620505351 instance=ExtResource("14_0bptl")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="InventoryMenu" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/Content" unique_id=2071266704 instance=ExtResource("17_5me5s")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="SkillsMenu" type="Panel" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/Content" unique_id=2047534836]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapMenu" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/Content" unique_id=1994479826 instance=ExtResource("18_rkhqr")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="OptionsMenu" type="Panel" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/Content" unique_id=1815501199]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupText" type="Control" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport" unique_id=2014715722]
+texture_filter = 1
+custom_minimum_size = Vector2(600, 160)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 160.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("1_oklkm")
+script = ExtResource("4_ch5r3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PopupText" unique_id=1081424234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PopupText/MarginContainer" unique_id=1028937155]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PopupText/MarginContainer/Panel" unique_id=1710777042]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PopupText/MarginContainer/Panel" unique_id=1323619761]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -21.0
+offset_right = -11.0
+offset_bottom = 19.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_3p3yu")
+
+[node name="Control" type="Control" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/PopupText/MarginContainer/Panel" unique_id=263320047]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Emergent Inventory" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport" unique_id=623269277 instance=ExtResource("16_m0chj")]
+mouse_filter = 1
+theme = ExtResource("1_oklkm")
+
+[node name="Tooltip" type="PanelContainer" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport" unique_id=1945007727]
+top_level = true
+custom_minimum_size = Vector2(240, 70)
+offset_right = 240.0
+offset_bottom = 162.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_oklkm")
+script = ExtResource("17_7ut3y")
+
+[node name="ItemDescription" type="RichTextLabel" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip" unique_id=2064127250]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Name
+meowmeow"
+fit_content = true
+
+[node name="ItemActionMenu" type="VBoxContainer" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip" unique_id=1112583513]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("27_uvivi")
+
+[node name="Consume" type="Button" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip/ItemActionMenu" unique_id=1090004736]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Consume"
+
+[node name="Equip" type="Button" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip/ItemActionMenu" unique_id=1092555669]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equip"
+
+[node name="Unequip" type="Button" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip/ItemActionMenu" unique_id=726872587]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unequip"
+
+[node name="Take" type="Button" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip/ItemActionMenu" unique_id=1849580701]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Take"
+
+[node name="Drop" type="Button" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/Tooltip/ItemActionMenu" unique_id=141321391]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Drop"
+
+[node name="CharacterTooltip" type="PanelContainer" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport" unique_id=1056336677]
+top_level = true
+custom_minimum_size = Vector2(240, 70)
+offset_right = 240.0
+offset_bottom = 162.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_oklkm")
+script = ExtResource("29_n0q20")
+
+[node name="CharacterData" type="RichTextLabel" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport/CharacterTooltip" unique_id=2061856720]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Name
+meowmeow"
+fit_content = true
+
+[node name="Cursor" parent="Game/Interactuable SubViewportContainer/Overlay SubViewport" unique_id=1496111378 instance=ExtResource("7_uldec")]
+theme = ExtResource("1_oklkm")
+
+[node name="HUD SubViewportContainer" type="SubViewportContainer" parent="Game" unique_id=1170213647]
+visibility_layer = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HUD SubViewport" type="SubViewport" parent="Game/HUD SubViewportContainer" unique_id=1803006546]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="DamageNumberOverlay" type="Control" parent="Game/HUD SubViewportContainer/HUD SubViewport" unique_id=1904081133]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_oklkm")
+script = ExtResource("4_7ut3y")
+
+[node name="PlayerHUD" type="Control" parent="Game/HUD SubViewportContainer/HUD SubViewport" unique_id=79793032]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -138.0
+offset_right = 576.0
+offset_bottom = 1.9995117
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_oklkm")
+script = ExtResource("13_ntjdg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Game/HUD SubViewportContainer/HUD SubViewport/PlayerHUD" unique_id=1838718505]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/HUD SubViewportContainer/HUD SubViewport/PlayerHUD/MarginContainer" unique_id=16421656]
+layout_mode = 2
+
+[node name="PlayerData" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=2109207384]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "PlayerName, Human"
+fit_content = true
+
+[node name="PlayerHP" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=962617610]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Health:		[[color=\"red\"]////////////-------[/color]] 10/18"
+fit_content = true
+
+[node name="PlayerStamina" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=202739968]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Stamina:	[[color=\"green\"]///////---[/color]] 07/10"
+fit_content = true
+
+[node name="PlayerIntegrity" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=1247907886]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Integrity:	[[color=\"purple\"]////////[/color]] 08/08"
+fit_content = true
+
+[node name="WeaponHUD" type="Control" parent="Game/HUD SubViewportContainer/HUD SubViewport" unique_id=1415487870]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -242.0
+offset_bottom = 1.9995117
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_oklkm")
+script = ExtResource("16_n05js")
+
+[node name="Weapon_1" type="PanelContainer" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD" unique_id=2146319183]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 324.0
+offset_bottom = 93.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_n0q20")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD/Weapon_1" unique_id=172162389]
+layout_mode = 2
+
+[node name="Weapon_1_Name" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD/Weapon_1/VBoxContainer" unique_id=1644714098]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "- Marksman Rifle -"
+fit_content = true
+
+[node name="Weapon_1_Ammo" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD/Weapon_1/VBoxContainer" unique_id=1221250583]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "06/10 (32)"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Weapon_2" type="PanelContainer" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD" unique_id=526051683]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 64.0
+offset_top = 100.0
+offset_right = 388.0
+offset_bottom = 193.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxTexture_n0q20")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD/Weapon_2" unique_id=1742756863]
+layout_mode = 2
+
+[node name="Weapon_2_Name" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD/Weapon_2/VBoxContainer" unique_id=1500272172]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "- Marksman Rifle -"
+fit_content = true
+
+[node name="Weapon_2_Ammo" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD/Weapon_2/VBoxContainer" unique_id=1767185820]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "06/10 (32)"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport/WeaponHUD" unique_id=40301622]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -54.99951
+offset_right = 128.0
+offset_bottom = -25.999512
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "X: [img=, b]res://Scenes/UI/HUD/Cursor/cursor_ranged.png[/img] Z: [img=16, b]res://Scenes/UI/HUD/switch_icon.png[/img] R: [img=16, b]res://Scenes/UI/HUD/reload_icon.png"
+
+[node name="FPS Counter" type="RichTextLabel" parent="Game/HUD SubViewportContainer/HUD SubViewport" unique_id=730148801]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_top = 9.0
+offset_right = -4.0
+offset_bottom = 39.0
+grow_horizontal = 0
+mouse_filter = 2
+theme = ExtResource("1_oklkm")
+theme_override_fonts/normal_font = ExtResource("12_rtcm5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "FPS: 10"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("16_gl824")
 
 [node name="Vignette" type="ColorRect" parent="Game" unique_id=2064996350]
 material = SubResource("ShaderMaterial_uldec")
@@ -121,496 +606,5 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_oklkm")
 
-[node name="HUD SubViewport" type="SubViewportContainer" parent="Game" unique_id=838899696]
-light_mask = 0
-visibility_layer = 0
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Game/HUD SubViewport" unique_id=1803006546]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="DamageNumberOverlay" type="Control" parent="Game/HUD SubViewport/SubViewport" unique_id=1904081133]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("1_oklkm")
-script = ExtResource("4_7ut3y")
-
-[node name="PlayerHUD" type="Control" parent="Game/HUD SubViewport/SubViewport" unique_id=79793032]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -138.0
-offset_right = 576.0
-offset_bottom = 1.9995117
-grow_vertical = 0
-mouse_filter = 2
-theme = ExtResource("1_oklkm")
-script = ExtResource("13_ntjdg")
-
-[node name="MarginContainer" type="MarginContainer" parent="Game/HUD SubViewport/SubViewport/PlayerHUD" unique_id=1838718505]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Game/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer" unique_id=16421656]
-layout_mode = 2
-
-[node name="PlayerData" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=2109207384]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "PlayerName, Human"
-fit_content = true
-
-[node name="PlayerHP" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=962617610]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "Health:		[[color=\"red\"]////////////-------[/color]] 10/18"
-fit_content = true
-
-[node name="PlayerStamina" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=202739968]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "Stamina:	[[color=\"green\"]///////---[/color]] 07/10"
-fit_content = true
-
-[node name="PlayerIntegrity" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/PlayerHUD/MarginContainer/VBoxContainer" unique_id=1247907886]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "Integrity:	[[color=\"purple\"]////////[/color]] 08/08"
-fit_content = true
-
-[node name="WeaponHUD" type="Control" parent="Game/HUD SubViewport/SubViewport" unique_id=1415487870]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -340.0
-offset_top = -242.0
-offset_bottom = 1.9995117
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-theme = ExtResource("1_oklkm")
-script = ExtResource("16_n05js")
-
-[node name="Weapon_1" type="PanelContainer" parent="Game/HUD SubViewport/SubViewport/WeaponHUD" unique_id=2146319183]
-unique_name_in_owner = true
-layout_mode = 1
-offset_right = 324.0
-offset_bottom = 93.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_n0q20")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Game/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1" unique_id=172162389]
-layout_mode = 2
-
-[node name="Weapon_1_Name" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1/VBoxContainer" unique_id=1644714098]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "- Marksman Rifle -"
-fit_content = true
-
-[node name="Weapon_1_Ammo" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/WeaponHUD/Weapon_1/VBoxContainer" unique_id=1221250583]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "06/10 (32)"
-fit_content = true
-horizontal_alignment = 2
-
-[node name="Weapon_2" type="PanelContainer" parent="Game/HUD SubViewport/SubViewport/WeaponHUD" unique_id=526051683]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 64.0
-offset_top = 100.0
-offset_right = 388.0
-offset_bottom = 193.0
-scale = Vector2(0.8, 0.8)
-theme_override_styles/panel = SubResource("StyleBoxTexture_n0q20")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Game/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2" unique_id=1742756863]
-layout_mode = 2
-
-[node name="Weapon_2_Name" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2/VBoxContainer" unique_id=1500272172]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "- Marksman Rifle -"
-fit_content = true
-
-[node name="Weapon_2_Ammo" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/WeaponHUD/Weapon_2/VBoxContainer" unique_id=1767185820]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "06/10 (32)"
-fit_content = true
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport/WeaponHUD" unique_id=40301622]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.0
-offset_top = -54.99951
-offset_right = 128.0
-offset_bottom = -25.999512
-grow_horizontal = 2
-grow_vertical = 0
-bbcode_enabled = true
-text = "X: [img=, b]res://Scenes/UI/HUD/Cursor/cursor_ranged.png[/img] Z: [img=16, b]res://Scenes/UI/HUD/switch_icon.png[/img] R: [img=16, b]res://Scenes/UI/HUD/reload_icon.png"
-
-[node name="FPS Counter" type="RichTextLabel" parent="Game/HUD SubViewport/SubViewport" unique_id=730148801]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -105.0
-offset_top = 9.0
-offset_right = -4.0
-offset_bottom = 39.0
-grow_horizontal = 0
-mouse_filter = 2
-theme = ExtResource("1_oklkm")
-theme_override_fonts/normal_font = ExtResource("12_rtcm5")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "FPS: 10"
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("16_gl824")
-
-[node name="Overlay Subviewport" type="SubViewportContainer" parent="Game" unique_id=667080948]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Game/Overlay Subviewport" unique_id=1626861956]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="PlayMenu" type="Control" parent="Game/Overlay Subviewport/SubViewport" unique_id=600768012]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_oklkm")
-script = ExtResource("12_uldec")
-
-[node name="Background" type="ColorRect" parent="Game/Overlay Subviewport/SubViewport/PlayMenu" unique_id=1461163471]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.4745098)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Game/Overlay Subviewport/SubViewport/PlayMenu" unique_id=1980190338]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -208.0
-offset_right = 300.0
-offset_bottom = 208.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="MenuTop" type="HBoxContainer" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer" unique_id=1537606121]
-custom_minimum_size = Vector2(0, 42)
-layout_mode = 2
-
-[node name="MenuTabs" type="TabBar" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop" unique_id=1289857358]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-focus_behavior_recursive = 1
-current_tab = 0
-clip_tabs = false
-close_with_middle_mouse = false
-scrolling_enabled = false
-scroll_to_selected = false
-tab_count = 5
-tab_0/title = "Character"
-tab_1/title = "Inventory"
-tab_2/title = "Skills"
-tab_3/title = "Map"
-tab_4/title = "Options"
-
-[node name="Close" type="TextureButton" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop" unique_id=1438268797]
-custom_minimum_size = Vector2(42, 42)
-layout_mode = 2
-texture_normal = ExtResource("13_t3llb")
-stretch_mode = 0
-
-[node name="Content" type="Control" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer" unique_id=471595850]
-custom_minimum_size = Vector2(600, 374)
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 2
-
-[node name="CharacterMenu" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=620505351 instance=ExtResource("14_0bptl")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="InventoryMenu" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=2071266704 instance=ExtResource("17_5me5s")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="SkillsMenu" type="Panel" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=2047534836]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MapMenu" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=1994479826 instance=ExtResource("18_rkhqr")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="OptionsMenu" type="Panel" parent="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/Content" unique_id=1815501199]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PopupText" type="Control" parent="Game/Overlay Subviewport/SubViewport" unique_id=2014715722]
-texture_filter = 1
-custom_minimum_size = Vector2(600, 160)
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -300.0
-offset_right = 300.0
-offset_bottom = 160.0
-grow_horizontal = 2
-mouse_filter = 2
-theme = ExtResource("1_oklkm")
-script = ExtResource("4_ch5r3")
-
-[node name="MarginContainer" type="MarginContainer" parent="Game/Overlay Subviewport/SubViewport/PopupText" unique_id=1081424234]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Panel" type="Panel" parent="Game/Overlay Subviewport/SubViewport/PopupText/MarginContainer" unique_id=1028937155]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Game/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel" unique_id=1710777042]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Game/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel" unique_id=1323619761]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -51.0
-offset_top = -21.0
-offset_right = -11.0
-offset_bottom = 19.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("5_3p3yu")
-
-[node name="Control" type="Control" parent="Game/Overlay Subviewport/SubViewport/PopupText/MarginContainer/Panel" unique_id=263320047]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Emergent Inventory" parent="Game/Overlay Subviewport/SubViewport" unique_id=623269277 instance=ExtResource("16_m0chj")]
-theme = ExtResource("1_oklkm")
-
-[node name="Tooltip" type="PanelContainer" parent="Game/Overlay Subviewport/SubViewport" unique_id=1945007727]
-top_level = true
-custom_minimum_size = Vector2(240, 70)
-offset_right = 240.0
-offset_bottom = 162.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("1_oklkm")
-script = ExtResource("17_7ut3y")
-
-[node name="ItemDescription" type="RichTextLabel" parent="Game/Overlay Subviewport/SubViewport/Tooltip" unique_id=2064127250]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "Name
-meowmeow"
-fit_content = true
-
-[node name="ItemActionMenu" type="VBoxContainer" parent="Game/Overlay Subviewport/SubViewport/Tooltip" unique_id=1112583513]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("27_uvivi")
-
-[node name="Consume" type="Button" parent="Game/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=1090004736]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Consume"
-
-[node name="Equip" type="Button" parent="Game/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=1092555669]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Equip"
-
-[node name="Unequip" type="Button" parent="Game/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=726872587]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Unequip"
-
-[node name="Take" type="Button" parent="Game/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=1849580701]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Take"
-
-[node name="Drop" type="Button" parent="Game/Overlay Subviewport/SubViewport/Tooltip/ItemActionMenu" unique_id=141321391]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Drop"
-
-[node name="CharacterTooltip" type="PanelContainer" parent="Game/Overlay Subviewport/SubViewport" unique_id=1056336677]
-top_level = true
-custom_minimum_size = Vector2(240, 70)
-offset_right = 240.0
-offset_bottom = 162.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("1_oklkm")
-script = ExtResource("29_n0q20")
-
-[node name="CharacterData" type="RichTextLabel" parent="Game/Overlay Subviewport/SubViewport/CharacterTooltip" unique_id=2061856720]
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "Name
-meowmeow"
-fit_content = true
-
-[node name="Cursor" parent="Game/Overlay Subviewport/SubViewport" unique_id=1496111378 instance=ExtResource("7_uldec")]
-theme = ExtResource("1_oklkm")
-
-[connection signal="tab_changed" from="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop/MenuTabs" to="Game/Overlay Subviewport/SubViewport/PlayMenu" method="_tab_changed"]
-[connection signal="pressed" from="Game/Overlay Subviewport/SubViewport/PlayMenu/VBoxContainer/MenuTop/Close" to="Game/Overlay Subviewport/SubViewport/PlayMenu" method="close_menu"]
+[connection signal="tab_changed" from="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/MenuTop/MenuTabs" to="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu" method="_tab_changed"]
+[connection signal="pressed" from="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu/VBoxContainer/MenuTop/Close" to="Game/Interactuable SubViewportContainer/Overlay SubViewport/PlayMenu" method="close_menu"]

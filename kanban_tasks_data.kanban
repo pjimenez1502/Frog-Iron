@@ -544,7 +544,7 @@
 		{
 			"uuid": "2edb0319-0b11-4762-a07a-219e5ec0246d",
 			"title": "INVENTORY",
-			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\n\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n\n- Unload weapon (recover ammo from weapon)\n\n",
+			"description": "Inventory in slots (list)\n\nDefault 6 slots inventory (pocket space)\nCan equip backpacks to increase space\n\nEQUIPABLES:\nWeapon1, Weapon 2\nHead\nTorso\nLegs\nBoots??\nBackpack\n\nARTIFACTS:\nX slots, equipables than can be equipped in any of the slots and provide special effects, maybe with a downside\n\n\nRclick for Action tooltip popup\n\n\n-- ITEM ACTIONS\n- Drop (all)\n- Take/Deposit (if in external inv)\n- Consume (consumables)\n- Equip/Unequip (equipment)\n- Move to Inventory/Backpack\t(move slot between fast inventory and backpack)\n\t\t\t(backpack items require a turn to be used/moved?)\n\n- Unload weapon (recover ammo from weapon)\n\n",
 			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		},

@@ -38,18 +38,19 @@ node_connections = [&"output", 0, &"WalkBlend"]
 size = Vector3(1.8, 1.8, 1.8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_58y3j"]
-height = 1.0
+height = 0.5
 radius = 8.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lxplw"]
-height = 1.0
+height = 0.5
 radius = 16.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cq6uo"]
 viewport_path = NodePath("HealthBar/SubViewport")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_cq6uo"]
-radius = 2.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_fotdw"]
+margin = 0.1
+size = Vector3(2, 2, 2)
 
 [node name="Rat" type="CharacterBody3D" unique_id=1391258997 groups=["Enemy"]]
 collision_layer = 4
@@ -65,11 +66,11 @@ unique_name_in_owner = true
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/3D/Rat" index="0" unique_id=1653867038]
-bones/1/rotation = Quaternion(0.02082068, 0.9949155, -0.09851605, -0.0020616113)
-bones/2/rotation = Quaternion(-0.75229764, 0.00998914, 0.011409425, 0.65864885)
+bones/1/rotation = Quaternion(-0.05277091, 0.99373317, -0.09839899, 0.0052253962)
+bones/2/rotation = Quaternion(-0.75182813, -0.0253217, -0.02892202, 0.6582378)
 
 [node name="Head" type="BoneAttachment3D" parent="View/3D/Rat/Skeleton3D" index="1" unique_id=824024824]
-transform = Transform3D(0.9991245, -0.04102342, 0.0082046, -8.381903e-08, -0.19611607, -0.9805807, 0.041835833, 0.97972196, -0.19594443, 0, 0.030000001, 0.08)
+transform = Transform3D(0.9943757, 0.103852026, -0.020770505, -9.126961e-08, -0.1961161, -0.98058057, -0.10590874, 0.9750655, -0.19501317, 0, 0.030000001, 0.08)
 bone_name = "Head"
 bone_idx = 1
 
@@ -122,7 +123,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/CloseDetection" unique_id=1030523027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_58y3j")
 
 [node name="FarDetection" type="Area3D" parent="Detection" unique_id=54841801]
@@ -130,7 +130,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/FarDetection" unique_id=632863517]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_lxplw")
 
 [node name="LOS_Raycast" type="RayCast3D" parent="Detection" unique_id=402426862]
@@ -189,13 +188,15 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MouseArea" type="Area3D" parent="." unique_id=916642015]
+[node name="MouseHoverArea" type="Area3D" parent="." unique_id=916642015]
+unique_name_in_owner = true
 script = ExtResource("14_5gvrg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseArea" unique_id=1335361223]
-shape = SubResource("SphereShape3D_cq6uo")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseHoverArea" unique_id=1335361223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_fotdw")
 
-[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MouseHoverArea" to="MouseHoverArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MouseHoverArea" to="MouseHoverArea" method="_on_mouse_exited"]
 
 [editable path="View/3D"]

@@ -34,6 +34,10 @@ func round_direction(direction: Vector3) -> Vector2:
 	#print("Direction: ", round_direction)
 	return _round_direction
 
+func unproject_position(origin: Node3D) -> Vector2:
+	var camera: Camera3D = origin.get_viewport().get_camera_3d()
+	return camera.unproject_position(origin.global_position)
+
 
 
 ## ROOM LIST PRINT

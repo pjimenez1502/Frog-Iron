@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func death() -> void:
 	print("death")
+	%MouseHoverArea.on_death()
 	character_dead()
 	enemy_inv.drop_loot()
 	if !SignalBus.EnemyTurn.is_connected(enemy_input.play_turn):

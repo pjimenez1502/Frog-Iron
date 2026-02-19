@@ -1,7 +1,7 @@
 extends ViewScene
 class_name PlayView
 
-@onready var sub_viewport: SubViewport = %SubViewport
+@onready var world_subviewport: SubViewport = %"World SubViewport"
 @export var DEMO_DUNGEON: PackedScene
 @export var GENERATED_DUNGEON: PackedScene
 
@@ -10,11 +10,11 @@ func _ready() -> void:
 	SignalBus.ViewFocusChange.emit(GameView.VIEW_FOCUS.GAME)
 
 func set_scene(scene: PackedScene) -> Node3D:
-	for child: Node3D in sub_viewport.get_children():
+	for child: Node3D in world_subviewport.get_children():
 		child.queue_free()
 		
 	var instance: Node3D = scene.instantiate()
-	sub_viewport.add_child(instance)
+	world_subviewport.add_child(instance)
 	return instance
 
 func launch_dungeon_scene(_seed: int = -1) -> void:
