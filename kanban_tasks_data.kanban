@@ -75,6 +75,7 @@
 			"uuid": "801bf3e5-4495-4d0e-8137-bfffa6a51b9a",
 			"title": "Doing",
 			"tasks": [
+				"b4893fa6-7b3b-4697-a2a1-697ab4c59a72",
 				"2edb0319-0b11-4762-a07a-219e5ec0246d",
 				"e2d84ace-5db2-46a9-870f-2d31eb5e7414",
 				"324fddee-a5f3-4ece-8281-c797cf398bd1",
@@ -602,6 +603,13 @@
 			"title": "Reimplement Loot system",
 			"description": "",
 			"category": "1e765dae-f210-46a2-a7e1-1e39505f1028",
+			"steps": []
+		},
+		{
+			"uuid": "b4893fa6-7b3b-4697-a2a1-697ab4c59a72",
+			"title": "Creatures First Pass",
+			"description": "Design X creatures for each side\n\nSet them up and implement creature AI",
+			"category": "33cae5c0-924f-469b-8ae0-fc57a5e7b440",
 			"steps": []
 		}
 	],

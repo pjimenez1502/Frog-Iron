@@ -1,7 +1,6 @@
 extends Character
 class_name Player
 
-var player_name: String
 var player_model: CharacterModel
 
 func _ready() -> void:
@@ -28,7 +27,7 @@ func setup_player(player_data: Dictionary, _player_model: CharacterModel, _playe
 	CharacterView.add_child(_player_model)
 	character_stats.base_stats = player_data["stats"]
 	player_model = _player_model
-	player_name = player_name
+	character_profile.set_data({"name": _player_name, "alignment": EnemyResource.ALIGNMENTS.HUMAN})
 	setup_attachments()
 
 func increase_stat(stat:String, count:int) -> void:

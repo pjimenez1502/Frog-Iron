@@ -9,13 +9,14 @@
 [ext_resource type="Script" uid="uid://ss7kp80edhto" path="res://Data/Item/ItemResource.gd" id="6_uwo8e"]
 [ext_resource type="Resource" uid="uid://burbf5oqbmmof" path="res://Data/Item/Equipable/Weapon/Ranged/Marksman.tres" id="7_ypnta"]
 [ext_resource type="Script" uid="uid://cvdsrijlqpqta" path="res://Scenes/Character/Player/CameraPivot.gd" id="8_yty6f"]
-[ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/Outline.gdshader" id="9_nyt8s"]
+[ext_resource type="Shader" uid="uid://bbdiwj0brgakf" path="res://Assets/Material/Shader/outline.gdshader" id="9_nyt8s"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_oedxj"]
 [ext_resource type="Resource" uid="uid://df2bsoy64o68x" path="res://Data/Item/Consumable/Potion_Health.tres" id="9_ypnta"]
 [ext_resource type="Resource" uid="uid://b4f1lk0upkten" path="res://Data/Item/Equipable/Weapon/Ranged/Shotgun.tres" id="10_rsiqg"]
 [ext_resource type="Resource" uid="uid://jy6230hcgqdm" path="res://Data/Item/Equipable/Weapon/Melee/Shortsword.tres" id="11_unv75"]
 [ext_resource type="Resource" uid="uid://sh4mi7xnrmlt" path="res://Data/Item/Equipable/Armor/T_Chestplate.tres" id="11_ypnta"]
 [ext_resource type="Resource" uid="uid://6xyfbqpwkayq" path="res://Data/Item/Ammo/Ammo_Heavy.tres" id="12_unv75"]
+[ext_resource type="Script" uid="uid://v525jdea3ou8" path="res://Scenes/Character/CharacterProfile.gd" id="15_pwth1"]
 [ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="18_unv75"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="18_ypnta"]
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="19_pwth1"]
@@ -163,6 +164,10 @@ parameters/BowDrawTime/seek_request = -1.0
 parameters/Torso/current_state = "Idle"
 parameters/Torso/transition_request = ""
 parameters/Torso/current_index = 0
+
+[node name="CharacterProfile" type="Node" parent="." unique_id=1319787949]
+unique_name_in_owner = true
+script = ExtResource("15_pwth1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1382962368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

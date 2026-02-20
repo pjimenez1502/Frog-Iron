@@ -21,8 +21,9 @@ func death() -> void:
 		return
 	SignalBus.EnemyTurn.disconnect(enemy_input.play_turn)
 
-func setup(enemy_data: EnemyResource) -> void:
+func enemy_setup(enemy_data: EnemyResource) -> void:
 	character_stats.set_stats(enemy_data.base_stats)
+	character_profile.set_data({"name":enemy_data.name, "alignment": enemy_data.alignment})
 
 func character_dead() -> void:
 	GameDirector.enemy_list.erase(self)

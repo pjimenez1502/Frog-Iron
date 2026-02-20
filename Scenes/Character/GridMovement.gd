@@ -14,7 +14,7 @@ var move_tween: Tween
 func _ready() -> void:
 	pass
 
-func setup(_character: Character) -> void:
+func gridmov_setup(_character: Character) -> void:
 	character = _character
 
 func set_at_grid_position(_grid_position: Vector2i) -> void:

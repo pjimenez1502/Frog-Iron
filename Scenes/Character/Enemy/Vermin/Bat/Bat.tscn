@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b235ocj8pmmsh"]
+[gd_scene format=3 uid="uid://b235ocj8pmmsh"]
 
 [ext_resource type="Script" uid="uid://cex1bkgmgbrq2" path="res://Scenes/Character/Enemy/Enemy.gd" id="1_c4gba"]
 [ext_resource type="PackedScene" uid="uid://bl8i65qg1jmdg" path="res://Scenes/Character/Enemy/Vermin/Bat/Bat.glb" id="2_a6dhk"]
@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://bgox7ty3piajd" path="res://Scenes/Character/CharacterStats.gd" id="5_32uyh"]
 [ext_resource type="Script" uid="uid://bqng241ukc7jp" path="res://Scenes/Character/Enemy/EnemyInventory.gd" id="6_clcb0"]
 [ext_resource type="Script" uid="uid://bh80q01mwti4q" path="res://Scenes/Character/CharacterAttack.gd" id="7_l3mli"]
-[ext_resource type="Resource" uid="uid://bdntcukq7he2r" path="res://Data/Item/Equipable/Weapon/Melee/Unarmed.tres" id="8_segp2"]
 [ext_resource type="Script" uid="uid://ucehgts20fne" path="res://Scenes/Character/CharacterAnimation.gd" id="9_6euxv"]
+[ext_resource type="Script" uid="uid://v525jdea3ou8" path="res://Scenes/Character/CharacterProfile.gd" id="9_t8c2a"]
 [ext_resource type="Script" uid="uid://cyaxe8bpi7vcm" path="res://Scenes/Character/Player/WeaponAttachment.gd" id="10_r5b01"]
 [ext_resource type="Script" uid="uid://c32qd7iv7348x" path="res://Scenes/Character/GameHealthBar.gd" id="11_t8c2a"]
 [ext_resource type="Texture2D" uid="uid://dbkduc6pw2bv4" path="res://Scenes/UI/HUD/Healthbar_texture.png" id="12_y63vs"]
@@ -47,29 +47,29 @@ radius = 18.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_t8c2a"]
 viewport_path = NodePath("HealthBar/SubViewport")
 
-[node name="Bat" type="CharacterBody3D" groups=["Enemy"]]
+[node name="Bat" type="CharacterBody3D" unique_id=1695960849 groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_c4gba")
 spawn_cost = 2
 
-[node name="View" type="Node3D" parent="."]
+[node name="View" type="Node3D" parent="." unique_id=162723478]
 
-[node name="3D" type="Node3D" parent="View"]
+[node name="3D" type="Node3D" parent="View" unique_id=1072929403]
 unique_name_in_owner = true
 
-[node name="Bat2" parent="View/3D" instance=ExtResource("2_a6dhk")]
+[node name="Bat2" parent="View/3D" unique_id=879671 instance=ExtResource("2_a6dhk")]
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="View/3D/Bat2/Bat" index="0"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="View/3D/Bat2/Bat" parent_id_path=PackedInt32Array(879671, 1525755793) index="0" unique_id=485681910]
 
-[node name="GridMovement" type="Node3D" parent="."]
+[node name="GridMovement" type="Node3D" parent="." unique_id=806181807]
 unique_name_in_owner = true
 script = ExtResource("3_vh70q")
 
-[node name="EnemyInput" type="Node" parent="GridMovement"]
+[node name="EnemyInput" type="Node" parent="GridMovement" unique_id=106741483]
 script = ExtResource("4_7mb21")
 
-[node name="CharacterStats" type="Node" parent="."]
+[node name="CharacterStats" type="Node" parent="." unique_id=1934381875]
 unique_name_in_owner = true
 script = ExtResource("5_32uyh")
 base_stats = {
@@ -80,58 +80,61 @@ base_stats = {
 "WIS": 2
 }
 
-[node name="Inventory" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="." unique_id=1256380111]
 unique_name_in_owner = true
 script = ExtResource("6_clcb0")
 xp = 2
 coin = 4
 
-[node name="CharacterAttack" type="Node" parent="." node_paths=PackedStringArray("weapon_attatchment")]
+[node name="CharacterAttack" type="Node" parent="." unique_id=508991182 node_paths=PackedStringArray("weapon_attatchment")]
 unique_name_in_owner = true
 script = ExtResource("7_l3mli")
 weapon_attatchment = NodePath("../WeaponAttachment")
-melee_weapon_data = ExtResource("8_segp2")
 
-[node name="CharacterAnimation" type="Node" parent="."]
+[node name="CharacterAnimation" type="Node" parent="." unique_id=887249193]
 unique_name_in_owner = true
 script = ExtResource("9_6euxv")
 metadata/_custom_type_script = "uid://ucehgts20fne"
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterAnimation"]
+[node name="AnimationTree" type="AnimationTree" parent="CharacterAnimation" unique_id=1664726143]
 unique_name_in_owner = true
 tree_root = SubResource("AnimationNodeBlendTree_g5da4")
 parameters/WalkBlend/blend_position = -0.0053476095
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CharacterProfile" type="Node" parent="." unique_id=1187292845]
+unique_name_in_owner = true
+script = ExtResource("9_t8c2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=128144864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_mejtj")
 
-[node name="Detection" type="Node3D" parent="."]
+[node name="Detection" type="Node3D" parent="." unique_id=1104973381]
 
-[node name="CloseDetection" type="Area3D" parent="Detection"]
+[node name="CloseDetection" type="Area3D" parent="Detection" unique_id=1682994807]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/CloseDetection"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/CloseDetection" unique_id=651476506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_58y3j")
 
-[node name="FarDetection" type="Area3D" parent="Detection"]
+[node name="FarDetection" type="Area3D" parent="Detection" unique_id=888465446]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/FarDetection"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection/FarDetection" unique_id=1867747858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_lxplw")
 
-[node name="LOS_Raycast" type="RayCast3D" parent="Detection"]
+[node name="LOS_Raycast" type="RayCast3D" parent="Detection" unique_id=1145014880]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="WeaponAttachment" type="Node3D" parent="."]
+[node name="WeaponAttachment" type="Node3D" parent="." unique_id=1014859038]
 script = ExtResource("10_r5b01")
 
-[node name="HealthBar" type="Sprite3D" parent="."]
+[node name="HealthBar" type="Sprite3D" parent="." unique_id=1838961739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 pixel_size = 0.001
 billboard = 1
@@ -141,10 +144,10 @@ texture = SubResource("ViewportTexture_t8c2a")
 script = ExtResource("11_t8c2a")
 hide_when_full = true
 
-[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+[node name="SubViewport" type="SubViewport" parent="HealthBar" unique_id=1919972119]
 size = Vector2i(160, 16)
 
-[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport"]
+[node name="HP_Bar" type="TextureProgressBar" parent="HealthBar/SubViewport" unique_id=737490498]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 16)
 offset_right = 160.0
@@ -161,7 +164,7 @@ texture_under = ExtResource("12_y63vs")
 texture_progress = ExtResource("13_3jcda")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar"]
+[node name="HP_Label" type="Label" parent="HealthBar/SubViewport/HP_Bar" unique_id=1515215941]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

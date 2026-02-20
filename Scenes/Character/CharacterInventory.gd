@@ -13,7 +13,7 @@ var equipment: Dictionary[String, EquipmentSlot] = {
 	"BOOTS": null,
 	"BACKPACK": null}
 
-func setup(_character: Character) -> void:
+func inventory_setup(_character: Character) -> void:
 	character = _character
 	init_inventory(6)
 	init_equipment()

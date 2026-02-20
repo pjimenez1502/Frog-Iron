@@ -2,6 +2,8 @@ extends Resource
 class_name EnemyResource
 
 @export var name: String
+enum ALIGNMENTS { SIL, ROCK, HUMAN }
+@export var alignment: ALIGNMENTS
 @export var description: String
 
 @export var spawn_cost: int

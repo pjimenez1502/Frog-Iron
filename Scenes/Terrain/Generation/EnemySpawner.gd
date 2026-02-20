@@ -24,7 +24,7 @@ func spawn_enemies(room_list: Array, parameters: Dictionary, _rng: RandomNumberG
 		var enemy_data: EnemyResource = enemy_pool[_rng.rand_weighted(enemy_weights)]
 		var enemy: Enemy = enemy_data.scene.instantiate()
 		ENEMY_CONTAINER.add_child(enemy)
-		enemy.setup(enemy_data)
+		enemy.enemy_setup(enemy_data)
 		enemy.character_grid_movement.set_at_grid_position(found_pos)
 		budget -= enemy.spawn_cost
 		MAP.add_entity_to_entitymap(found_pos, LevelMap.ENTITY_TYPE.ENEMY)

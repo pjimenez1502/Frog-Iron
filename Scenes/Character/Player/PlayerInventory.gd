@@ -15,11 +15,6 @@ func _ready() -> void:
 	
 	equip_starting_equipment.call_deferred()
 
-#func setup(_character: Character) -> void:
-	#character = _character
-	#init_inventory(6)
-	#init_equipment()
-
 
 
 ## ITEM
